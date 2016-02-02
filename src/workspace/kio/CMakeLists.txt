@@ -10,7 +10,7 @@ include_directories (
    )
 
 find_package (Qt5 REQUIRED NO_MODULE COMPONENTS Sql)
-find_package (KF5 REQUIRED COMPONENTS KIO I18n)
+find_package (KF5 REQUIRED COMPONENTS KIO I18n Activities)
 
 ########### next target ###############
 

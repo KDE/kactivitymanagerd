@@ -10,6 +10,7 @@ find_package (KF5I18n       ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5Config     ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5CoreAddons ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5KIO        ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package (KF5Activities ${KF5_DEP_VERSION} CONFIG REQUIRED)
 
 set (
    kactivities_imports_LIB_SRCS

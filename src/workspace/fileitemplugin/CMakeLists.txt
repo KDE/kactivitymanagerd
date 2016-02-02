@@ -1,6 +1,6 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
 
-find_package (KF5 REQUIRED COMPONENTS KIO)
+find_package (KF5 REQUIRED COMPONENTS KIO Activities)
 find_package (Qt5 REQUIRED NO_MODULE COMPONENTS Sql)
 
 include_directories (

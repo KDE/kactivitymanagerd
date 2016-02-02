@@ -6,6 +6,7 @@ find_package (KF5KCMUtils ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5Declarative ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5XmlGui ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5GlobalAccel ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package (KF5Activities ${KF5_DEP_VERSION} CONFIG REQUIRED)
 
 set (KAMD_KCM_DATADIR
    ${KDE_INSTALL_DATADIR_KF5}/kactivitymanagerd/workspace/settings/

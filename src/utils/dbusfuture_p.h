@@ -28,8 +28,6 @@
 #include <QFuture>
 #include <QFutureWatcherBase>
 
-#include "debug_p.h"
-
 namespace DBusFuture {
 
 namespace detail { //_

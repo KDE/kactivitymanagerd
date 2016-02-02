@@ -41,8 +41,8 @@
 #include <utils/qsqlquery_iterator.h>
 #include <common/database/Database.h>
 
-#include "lib/core/info.h"
-#include "lib/core/consumer.h"
+#include <KActivities/Info>
+#include <KActivities/Consumer>
 
 #include <QProcess>
 

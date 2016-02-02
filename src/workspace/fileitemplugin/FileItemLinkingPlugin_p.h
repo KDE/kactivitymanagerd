@@ -26,8 +26,8 @@
 
 #include <KFileItemListProperties>
 
-#include "lib/core/consumer.h"
-#include "lib/core/info.h"
+#include <KActivities/Consumer>
+#include <KActivities/Info>
 
 struct Action {
     QString title;

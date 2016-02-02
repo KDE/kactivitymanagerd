@@ -27,7 +27,7 @@
 
 #include <KFileItemListProperties>
 
-#include "lib/core/consumer.h"
+#include <KActivities/Consumer>
 
 class FileItemLinkingPluginActionLoader: public QThread {
     Q_OBJECT

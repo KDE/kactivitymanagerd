@@ -276,7 +276,7 @@ void Application::quit()
     QApplication::quit();
 }
 
-#include "../lib/core/version.h"
+#include "Version.h"
 QString Application::serviceVersion() const
 {
     return KACTIVITIES_VERSION_STRING;

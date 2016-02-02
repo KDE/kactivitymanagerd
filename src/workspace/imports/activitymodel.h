@@ -30,9 +30,9 @@
 #include <memory>
 
 // Local
-#include <lib/core/controller.h>
-#include <lib/core/consumer.h>
-#include <lib/core/info.h>
+#include <KActivities/Controller>
+#include <KActivities/Consumer>
+#include <KActivities/Info>
 
 class QModelIndex;
 class QDBusPendingCallWatcher;

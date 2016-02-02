@@ -27,8 +27,8 @@
 #include <memory>
 
 // Local
-#include <lib/core/controller.h>
-#include <lib/core/info.h>
+#include <KActivities/Controller>
+#include <KActivities/Info>
 
 namespace KActivities {
 namespace Imports {
