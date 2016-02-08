@@ -67,5 +67,3 @@ endif ()
 
 add_subdirectory (service)
 
-add_subdirectory (workspace)
-
