@@ -57,7 +57,7 @@ set (
    ${CMAKE_MODULE_PATH}
    )
 
-add_definitions (-DTRANSLATION_DOMAIN=\"kactivitymanagerd5\")
+add_definitions (-DTRANSLATION_DOMAIN=\"kactivities5\")
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ki18n_install (po)
 endif ()
