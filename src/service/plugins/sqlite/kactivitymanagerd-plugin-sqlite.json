@@ -3,17 +3,34 @@
         "Authors": [
             {
                 "Email": "ivan.cukic@kde.org", 
-                "Name": "Ivan Cukic"
+                "Name": "Ivan Cukic", 
+                "Name[x-test]": "xxIvan Cukicxx"
             }
         ], 
         "Category": "", 
         "Dependencies": [], 
         "Description": "Plugin to store and score events in Sqlite", 
+        "Description[de]": "Modul zum Speichern und Bewerten von Ereignissen in SQLite", 
+        "Description[es]": "Complemento para almacenar y puntuar eventos en Sqlite", 
+        "Description[nl]": "Plug-in om gebeurtenissen in Sqlite op te slaan en van een score te voorzien", 
+        "Description[pt]": "'Plugin' para guardar e classificar os eventos em SQLite", 
+        "Description[pt_BR]": "Plugin para armazenar e classificar os eventos no Sqlite", 
+        "Description[sv]": "Insticksprogram för att lagra och betygsätta händelser i SQLite", 
+        "Description[uk]": "Додаток для зберігання і оцінки подій у Sqlite", 
+        "Description[x-test]": "xxPlugin to store and score events in Sqlitexx", 
         "EnabledByDefault": true, 
         "Icon": "server-database", 
         "Id": "org.kde.ActivityManager.ResourceScoring", 
         "License": "GPL", 
         "Name": "Sqlite Feeder", 
+        "Name[de]": "Sqlite-Modul", 
+        "Name[es]": "Alimentador Sqlite", 
+        "Name[nl]": "Sqlite-feeder", 
+        "Name[pt]": "Fonte de SQLite", 
+        "Name[pt_BR]": "Fonte de notícias do Sqlite", 
+        "Name[sv]": "SQLite-inmatning", 
+        "Name[uk]": "Передавання даних Sqlite", 
+        "Name[x-test]": "xxSqlite Feederxx", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

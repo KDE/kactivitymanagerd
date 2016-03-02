@@ -3,17 +3,34 @@
         "Authors": [
             {
                 "Email": "makhsm@gmail.com", 
-                "Name": "Makis Marimpis"
+                "Name": "Makis Marimpis", 
+                "Name[x-test]": "xxMakis Marimpisxx"
             }
         ], 
         "Category": "", 
         "Dependencies": [], 
         "Description": "Adds global keyboard shortcuts for activity switching", 
+        "Description[de]": "Fügt globale Tastatur-Kurzbefehle für das Wechseln von Aktivitäten hinzu", 
+        "Description[es]": "Añade accesos rápidos de teclado globales para cambiar de actividad", 
+        "Description[nl]": "Voegt globale sneltoetsen toe aan omschakelen van activiteit", 
+        "Description[pt]": "Adiciona atalhos globais de teclado para a mudança de actividades", 
+        "Description[pt_BR]": "Adiciona atalhos de teclado globais para alternar atividades", 
+        "Description[sv]": "Lägger till globala snabbtangenter för aktivitetsbyte", 
+        "Description[uk]": "Додає загальні клавіатурні скорочення для перемикання просторів дій", 
+        "Description[x-test]": "xxAdds global keyboard shortcuts for activity switchingxx", 
         "EnabledByDefault": false, 
         "Icon": "configure-shortcuts", 
         "Id": "org.kde.ActivityManager.GlobalShortcuts", 
         "License": "GPL", 
         "Name": "Global Shortcuts", 
+        "Name[de]": "Globale Kurzbefehle", 
+        "Name[es]": "Accesos rápidos globales", 
+        "Name[nl]": "Globale sneltoetsen", 
+        "Name[pt]": "Atalhos Globais", 
+        "Name[pt_BR]": "Atalhos globais", 
+        "Name[sv]": "Globala genvägar", 
+        "Name[uk]": "Загальні клавіатурні скорочення", 
+        "Name[x-test]": "xxGlobal Shortcutsxx", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

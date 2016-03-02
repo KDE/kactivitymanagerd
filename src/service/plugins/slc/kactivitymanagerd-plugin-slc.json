@@ -3,17 +3,30 @@
         "Authors": [
             {
                 "Email": "ivan.cukic@kde.org", 
-                "Name": "Ivan Cukic"
+                "Name": "Ivan Cukic", 
+                "Name[x-test]": "xxIvan Cukicxx"
             }
         ], 
         "Category": "", 
         "Dependencies": [], 
         "Description": "Provides data to Share-Like-Connect applet", 
+        "Description[de]": "Liefert Daten für das Miniprogramm Share-Like-Connect", 
+        "Description[es]": "Proporciona datos a la miniaplicación Compartir-Me gusta-Conectar", 
+        "Description[nl]": "Levert gegevens aan het applet Share-Like-Connect", 
+        "Description[pt]": "Fornece dados para a 'applet' Share-Like-Connect", 
+        "Description[pt_BR]": "Fornece dados para o miniaplicativo Share-Like-Connect", 
+        "Description[sv]": "Tillhandahåller data för Share-Like-Connect miniprogram", 
+        "Description[uk]": "Надає дані аплетові Оприлюднити-Уподобати-З’єднати", 
+        "Description[x-test]": "xxProvides data to Share-Like-Connect appletxx", 
         "EnabledByDefault": true, 
         "Icon": "mail-forward", 
         "Id": "org.kde.ActivityManager.SLC", 
         "License": "GPL", 
         "Name": "Share-Like-Connect", 
+        "Name[es]": "Compartir-Me gusta-Conectar", 
+        "Name[nl]": "'Share-Like-Connect'", 
+        "Name[uk]": "Оприлюднти-Уподобати-З’єднати", 
+        "Name[x-test]": "xxShare-Like-Connectxx", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

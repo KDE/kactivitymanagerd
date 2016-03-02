@@ -3,17 +3,34 @@
         "Authors": [
             {
                 "Email": "ivan.cukic@kde.org", 
-                "Name": "Ivan Cukic"
+                "Name": "Ivan Cukic", 
+                "Name[x-test]": "xxIvan Cukicxx"
             }
         ], 
         "Category": "", 
         "Dependencies": [], 
         "Description": "When switching activities, or when starting and stopping them, execute specified applications", 
+        "Description[de]": "Beim Wechseln, Starten oder Beenden von Aktivitäten, angegebene Anwendungen ausführen", 
+        "Description[es]": "Al cambiar de actividad, o cuando se inician o se detienen, ejecutar las aplicaciones indicadas", 
+        "Description[nl]": "Bij omschakelen van activiteiten of bij starten en stoppen ervan, voer de gespecificeerde toepassingen uit", 
+        "Description[pt]": "Ao mudar de actividades, ou quando as iniciar e parar, executa as aplicações indicadas", 
+        "Description[pt_BR]": "Ao mudar, iniciar e parar atividades, executa os aplicativos indicados", 
+        "Description[sv]": "När aktiviteter byts, eller när de stoppas och startas, kör angivna program", 
+        "Description[uk]": "Запускати вказані програми під час перемикання просторів дій або їхнього запуску чи завершення роботи", 
+        "Description[x-test]": "xxWhen switching activities, or when starting and stopping them, execute specified applicationsxx", 
         "EnabledByDefault": true, 
         "Icon": "preferences-system-windows", 
         "Id": "org.kde.ActivityManager.RunApplication", 
         "License": "GPL", 
         "Name": "Run applications on activity state change", 
+        "Name[de]": "Anwendungsstart bei Zustandsänderung einer Aktivität", 
+        "Name[es]": "Ejecutar aplicaciones cuando cambia el estado de la actividad", 
+        "Name[nl]": "Toepassingen uitvoeren bij wijziging van de status van activiteit", 
+        "Name[pt]": "Executar as aplicações na mudança do estado da actividade", 
+        "Name[pt_BR]": "Executar aplicativos na alteração do estado da atividade", 
+        "Name[sv]": "Kör program vid ändring av aktivitetstillstånd", 
+        "Name[uk]": "Запуск програм під час зміни стану простору дій", 
+        "Name[x-test]": "xxRun applications on activity state changexx", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 
