@@ -8,7 +8,9 @@ Exec=kactivitymanagerd
 
 Name=Activity Manager
 Name[ca]=Gestor d'activitats
+Name[ca@valencia]=Gestor d'activitats
 Name[de]=Aktivitätenverwaltung
+Name[en_GB]=Activity Manager
 Name[es]=Gestor de actividades
 Name[nl]=Activiteitenbeheerder
 Name[pl]=Zarządzanie działaniami
@@ -26,7 +28,9 @@ Name[x-test]=xxActivity Managerxx
 
 Comment=The activity management backend
 Comment[ca]=El dorsal pel gestor d'activitats
+Comment[ca@valencia]=El dorsal pel gestor d'activitats
 Comment[de]=Backend der Aktivitätenverwaltung
+Comment[en_GB]=The activity management backend
 Comment[es]=El motor de gestión de actividades
 Comment[nl]=De activiteitenbeheerder-backend
 Comment[pl]=Silnik zarządzania działaniami
