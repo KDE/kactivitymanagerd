@@ -71,10 +71,10 @@ void KSMServer::Private::serviceOwnerChanged(const QString &service,
         if (KDBusConnectionPool::threadConnection().interface()->isServiceRegistered(KWIN_SERVICE)) {
             // Creating the new dbus interface
             // TODO: in multi-head environment there are multiple kwin instances
-            // running and they will export different dbus name on different
-            // root window. We have no support for that currently.
-            // In future, the session management for Wayland may also need to be
-            // reimplemented in some way.
+            //       running and they will export different dbus name on different
+            //       root window. We have no support for that currently.
+            //       In future, the session management for Wayland may also need to be
+            //       reimplemented in some way.
             kwin = new QDBusInterface(KWIN_SERVICE, QStringLiteral("/KWin"), QStringLiteral("org.kde.KWin"));
 
             // If the service is valid, initialize it
