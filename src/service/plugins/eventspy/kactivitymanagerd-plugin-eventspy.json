@@ -34,6 +34,7 @@
         "Description[sv]": "Samlar in händelser från program som stöder senare dokumentspecifikationer", 
         "Description[uk]": "Збирає записи подій від програм, у яких реалізовано специфікацію нещодавніх документів", 
         "Description[x-test]": "xxCollects events from applications that support recent documents specificationxx", 
+        "Description[zh_CN]": "从支持最近文档标准的应用程序收集事件", 
         "EnabledByDefault": true, 
         "Icon": "preferences-system", 
         "Id": "org.kde.ActivityManager.EventSpy", 
@@ -60,6 +61,7 @@
         "Name[sv]": "Händelseövervakare", 
         "Name[uk]": "Журнал подій", 
         "Name[x-test]": "xxEvent Spyxx", 
+        "Name[zh_CN]": "事件记录", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

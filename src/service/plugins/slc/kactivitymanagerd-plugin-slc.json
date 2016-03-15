@@ -36,6 +36,7 @@
         "Description[sv]": "Tillhandahåller data för Share-Like-Connect miniprogram", 
         "Description[uk]": "Надає дані аплетові Оприлюднити-Уподобати-З’єднати", 
         "Description[x-test]": "xxProvides data to Share-Like-Connect appletxx", 
+        "Description[zh_CN]": "向分享-喜爱-连接部件提供数据", 
         "EnabledByDefault": true, 
         "Icon": "mail-forward", 
         "Id": "org.kde.ActivityManager.SLC", 
@@ -53,6 +54,7 @@
         "Name[sr]": "Подели-оцени-повежи (СЛЦ)", 
         "Name[uk]": "Оприлюднти-Уподобати-З’єднати", 
         "Name[x-test]": "xxShare-Like-Connectxx", 
+        "Name[zh_CN]": "分享-喜爱-连接", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 
