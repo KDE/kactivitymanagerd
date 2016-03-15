@@ -32,6 +32,7 @@
         "Description[sv]": "När aktiviteter byts, eller när de stoppas och startas, kör angivna program", 
         "Description[uk]": "Запускати вказані програми під час перемикання просторів дій або їхнього запуску чи завершення роботи", 
         "Description[x-test]": "xxWhen switching activities, or when starting and stopping them, execute specified applicationsxx", 
+        "Description[zh_CN]": "切换活动或者启动停止他们时，执行指定程序", 
         "EnabledByDefault": true, 
         "Icon": "preferences-system-windows", 
         "Id": "org.kde.ActivityManager.RunApplication", 
@@ -59,6 +60,7 @@
         "Name[sv]": "Kör program vid ändring av aktivitetstillstånd", 
         "Name[uk]": "Запуск програм під час зміни стану простору дій", 
         "Name[x-test]": "xxRun applications on activity state changexx", 
+        "Name[zh_CN]": "活动状态变化时执行程序", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

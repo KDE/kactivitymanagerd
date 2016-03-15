@@ -34,6 +34,7 @@
         "Description[sv]": "Lägger till globala snabbtangenter för aktivitetsbyte", 
         "Description[uk]": "Додає загальні клавіатурні скорочення для перемикання просторів дій", 
         "Description[x-test]": "xxAdds global keyboard shortcuts for activity switchingxx", 
+        "Description[zh_CN]": "添加活动切换的全局键盘快捷方式", 
         "EnabledByDefault": false, 
         "Icon": "configure-shortcuts", 
         "Id": "org.kde.ActivityManager.GlobalShortcuts", 
@@ -63,6 +64,7 @@
         "Name[sv]": "Globala genvägar", 
         "Name[uk]": "Загальні клавіатурні скорочення", 
         "Name[x-test]": "xxGlobal Shortcutsxx", 
+        "Name[zh_CN]": "全局快捷键", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

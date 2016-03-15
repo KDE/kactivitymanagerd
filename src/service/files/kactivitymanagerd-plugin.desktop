@@ -9,7 +9,9 @@ Comment[da]=Plugin til aktivitetshåndtering
 Comment[de]=Modul für Aktivitätenverwaltung
 Comment[en_GB]=Activity manager plugin
 Comment[es]=Complemento del gestor de actividades
+Comment[fi]=Aktiviteettienhallintaliitännäinen
 Comment[nl]=Plug-in van activiteitenbeheerder
+Comment[nn]=Programtillegg for aktivitetshandsamar
 Comment[pl]=Wtyczka do zarządzania działaniami
 Comment[pt]='Plugin' de gestão de actividades
 Comment[pt_BR]=Plugin do gerenciador de atividades
@@ -23,6 +25,7 @@ Comment[sr@latin]=Priključak menadžera aktivnosti
 Comment[sv]=Aktivitetshanterare
 Comment[uk]=Додаток керування просторами дій
 Comment[x-test]=xxActivity manager pluginxx
+Comment[zh_CN]=活动管理器插件
 
 [PropertyDef::X-ActivityManager-PluginOverrides]
 Type=QString

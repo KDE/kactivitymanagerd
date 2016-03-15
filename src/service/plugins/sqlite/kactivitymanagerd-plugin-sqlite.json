@@ -33,6 +33,7 @@
         "Description[sv]": "Insticksprogram för att lagra och betygsätta händelser i SQLite", 
         "Description[uk]": "Додаток для зберігання і оцінки подій у Sqlite", 
         "Description[x-test]": "xxPlugin to store and score events in Sqlitexx", 
+        "Description[zh_CN]": "使用 Sqlite 对事件存储和打分的插件", 
         "EnabledByDefault": true, 
         "Icon": "server-database", 
         "Id": "org.kde.ActivityManager.ResourceScoring", 
@@ -60,6 +61,7 @@
         "Name[sv]": "SQLite-inmatning", 
         "Name[uk]": "Передавання даних Sqlite", 
         "Name[x-test]": "xxSqlite Feederxx", 
+        "Name[zh_CN]": "Sqlite 存储", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 
