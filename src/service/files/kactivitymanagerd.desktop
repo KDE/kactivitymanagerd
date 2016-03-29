@@ -9,6 +9,7 @@ Exec=kactivitymanagerd
 Name=Activity Manager
 Name[ca]=Gestor d'activitats
 Name[ca@valencia]=Gestor d'activitats
+Name[cs]=Správce aktivit
 Name[da]=Aktivitetshåndtering
 Name[de]=Aktivitätenverwaltung
 Name[el]=Διαχειριστής δραστηριοτήτων
