@@ -348,15 +348,12 @@ int main(int argc, char **argv)
 
         // Creating the watcher, but not on the wall
 
-        QDBusServiceWatcher watcher(QStringLiteral("org.kde.ActivityManager"),
-                QDBusConnection::sessionBus());
+        QDBusServiceWatcher watcher(KAMD_DBUS_SERVICE,
+                                    QDBusConnection::sessionBus(),
+                                    QDBusServiceWatcher::WatchForRegistration);
 
         QObject::connect(&watcher, &QDBusServiceWatcher::serviceRegistered,
             [] (const QString &service) {
-                if (service != KAMD_DBUS_SERVICE) {
-                    return;
-                }
-
                 QTextStream(stdout)
                     << "Service started, version: " << runningServiceVersion()
                     << "\n";
