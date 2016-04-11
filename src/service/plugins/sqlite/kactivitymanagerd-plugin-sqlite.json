@@ -34,6 +34,7 @@
         "Description[uk]": "Додаток для зберігання і оцінки подій у Sqlite", 
         "Description[x-test]": "xxPlugin to store and score events in Sqlitexx", 
         "Description[zh_CN]": "使用 Sqlite 对事件存储和打分的插件", 
+        "Description[zh_TW]": "在 Sqlite 中儲存並評分事件", 
         "EnabledByDefault": true, 
         "Icon": "server-database", 
         "Id": "org.kde.ActivityManager.ResourceScoring", 
@@ -63,6 +64,7 @@
         "Name[uk]": "Передавання даних Sqlite", 
         "Name[x-test]": "xxSqlite Feederxx", 
         "Name[zh_CN]": "Sqlite 存储", 
+        "Name[zh_TW]": "Sqlite Feeder", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 

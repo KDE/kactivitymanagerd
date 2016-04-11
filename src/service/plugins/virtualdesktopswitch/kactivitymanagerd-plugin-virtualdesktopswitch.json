@@ -34,6 +34,7 @@
         "Description[uk]": "Під час перемикання на простір дій відкриває віртуальну стільницю, яку було використано у цьому просторі останньою", 
         "Description[x-test]": "xxWhen switching to an activity, opens the virtual desktop last used with that activityxx", 
         "Description[zh_CN]": "切换活动时打开最后使用的虚拟桌面", 
+        "Description[zh_TW]": "切換到某個活動時，開啟上次使用的虛擬桌面", 
         "EnabledByDefault": false, 
         "Icon": "preferences-system-windows", 
         "Id": "org.kde.ActivityManager.VirtualDesktopSwitch", 
@@ -64,6 +65,7 @@
         "Name[uk]": "Перемикач віртуальних стільниць", 
         "Name[x-test]": "xxVirtual desktop switcherxx", 
         "Name[zh_CN]": "虚拟桌面切换器", 
+        "Name[zh_TW]": "虛擬桌面切換器", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 
