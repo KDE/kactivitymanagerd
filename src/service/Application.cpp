@@ -142,7 +142,7 @@ void Application::init()
 {
     if (!KDBusConnectionPool::threadConnection().registerService(
             KAMD_DBUS_SERVICE)) {
-        exit(EXIT_SUCCESS);
+        QCoreApplication::exit(EXIT_SUCCESS);
     }
 
     // KAMD is a daemon, if it crashes it is not a problem as
@@ -325,7 +325,7 @@ int main(int argc, char **argv)
     const auto arguments = application.arguments();
 
     if (arguments.size() == 0) {
-        exit(EXIT_FAILURE);
+        QCoreApplication::exit(EXIT_FAILURE);
 
     } else if (arguments.size() != 1 && (arguments.size() != 2 || arguments[1] == "--help")) {
 
@@ -336,14 +336,14 @@ int main(int argc, char **argv)
             << "start-daemon\tStarts the service without forking (use with caution)\n"
             << "--help\tThis help message\n";
 
-        exit(EXIT_SUCCESS);
+        QCoreApplication::exit(EXIT_SUCCESS);
 
     } else if (arguments.size() == 1 || arguments[1] == "start") {
 
         // Checking whether the service is already running
         if (isServiceRunning()) {
             QTextStream(stdout) << "Already running\n";
-            exit(EXIT_SUCCESS);
+            QCoreApplication::exit(EXIT_SUCCESS);
         }
 
         // Creating the watcher, but not on the wall
@@ -358,7 +358,7 @@ int main(int argc, char **argv)
                     << "Service started, version: " << runningServiceVersion()
                     << "\n";
 
-                exit(EXIT_SUCCESS);
+                QCoreApplication::exit(EXIT_SUCCESS);
             });
 
         // Starting the dameon
@@ -373,7 +373,7 @@ int main(int argc, char **argv)
     } else if (arguments[1] == "stop") {
         if (!isServiceRunning()) {
             QTextStream(stdout) << "Service not running\n";
-            exit(EXIT_SUCCESS);
+            QCoreApplication::exit(EXIT_SUCCESS);
         }
 
         callOnRunningService<void>("quit");
@@ -411,23 +411,3 @@ int main(int argc, char **argv)
     }
 }
 
-#ifndef DISABLE_CSIGNAL_HANDLING
-
-#include <csignal>
-
-struct CleanUpOnExit{
-
-    CleanUpOnExit() {
-        signal(SIGINT,   &CleanUpOnExit::exit);
-        signal(SIGTERM,  &CleanUpOnExit::exit);
-    }
-
-    static void exit(int sig) {
-        Q_UNUSED(sig)
-
-        QCoreApplication::exit(0);
-    }
-
-} cleanup;
-
-#endif
