@@ -58,7 +58,7 @@ namespace {
     }
 
     std::map<DatabaseInfo, std::weak_ptr<Database>> databases;
-};
+}
 
 class QSqlDatabaseWrapper {
 private:
@@ -289,4 +289,3 @@ QVariant Database::value(const QString &query) const
 }
 
 } // namespace Common
-
