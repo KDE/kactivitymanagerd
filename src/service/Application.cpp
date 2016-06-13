@@ -310,6 +310,9 @@ namespace  {
 
 int main(int argc, char **argv)
 {
+    // Disable session management for this process
+    qunsetenv("SESSION_MANAGER");
+
     Application application(argc, argv);
     application.setApplicationName(QStringLiteral("ActivityManager"));
     application.setOrganizationDomain(QStringLiteral("kde.org"));
