@@ -104,13 +104,13 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
 
     if (!usedActivity.isEmpty()) {
         // qDebug() << "Sending link event added: activities:/" << usedActivity;
-        org::kde::KDirNotify::emitFilesAdded(QStringLiteral("activities:/")
-                                             + usedActivity);
+        org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("activities:/")
+                                             + usedActivity));
 
         if (usedActivity == StatsPlugin::self()->currentActivity()) {
             // qDebug() << "Sending link event added: activities:/current";
             org::kde::KDirNotify::emitFilesAdded(
-                QStringLiteral("activities:/current"));
+                QUrl(QStringLiteral("activities:/current")));
         }
     }
 
@@ -164,12 +164,12 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
 
         // qDebug() << "Sending link event removed: activities:/" << usedActivity << '/' << mangled;
         org::kde::KDirNotify::emitFilesRemoved(
-            { QStringLiteral("activities:/") + usedActivity + '/' + mangled });
+            { QUrl(QStringLiteral("activities:/") + usedActivity + '/' + mangled) });
 
         if (usedActivity == StatsPlugin::self()->currentActivity()) {
             // qDebug() << "Sending link event removed: activities:/current/" << mangled;
             org::kde::KDirNotify::emitFilesRemoved({
-                QStringLiteral("activities:/current/") + mangled});
+                QUrl(QStringLiteral("activities:/current/") + mangled) });
         }
     }
 
@@ -265,7 +265,7 @@ void ResourceLinking::onActivityAdded(const QString &activity)
 
     // Notify KIO
     // qDebug() << "Added: activities:/  (" << activity << ")";
-    org::kde::KDirNotify::emitFilesAdded(QStringLiteral("activities:/"));
+    org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("activities:/")));
 }
 
 void ResourceLinking::onActivityRemoved(const QString &activity)
@@ -273,7 +273,7 @@ void ResourceLinking::onActivityRemoved(const QString &activity)
     // Notify KIO
     // qDebug() << "Removed: activities:/" << activity;
     org::kde::KDirNotify::emitFilesRemoved(
-        { QStringLiteral("activities:/") + activity });
+        { QUrl(QStringLiteral("activities:/") + activity) });
 
     // Remove statistics for the activity
 }
@@ -285,5 +285,5 @@ void ResourceLinking::onCurrentActivityChanged(const QString &activity)
     // Notify KIO
     // qDebug() << "Changed: activities:/current -> " << activity;
     org::kde::KDirNotify::emitFilesAdded(
-        { QStringLiteral("activities:/current") });
+        { QUrl(QStringLiteral("activities:/current")) });
 }

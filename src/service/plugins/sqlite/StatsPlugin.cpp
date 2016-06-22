@@ -215,19 +215,15 @@ void StatsPlugin::closeResourceEvent(const QString &usedActivity,
 
 void StatsPlugin::detectResourceInfo(const QString &_uri)
 {
-    QString file = _uri;
+    const QUrl uri = QUrl::fromUserInput(_uri);
 
-    if (!file.startsWith('/')) {
-        QUrl uri(_uri);
+    if (!uri.isLocalFile()) return;
 
-        if (!uri.isLocalFile()) return;
+    const QString file = uri.toLocalFile();
 
-        file = uri.toLocalFile();
+    if (!QFile::exists(file)) return;
 
-        if (!QFile::exists(file)) return;
-    }
-
-    KFileItem item(file);
+    KFileItem item(uri);
 
     if (insertResourceInfo(file)) {
         saveResourceMimetype(file, item.mimetype(), true);

@@ -57,6 +57,7 @@ set (
    ${CMAKE_MODULE_PATH}
    )
 
+add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 add_definitions (-DTRANSLATION_DOMAIN=\"kactivities5\")
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ki18n_install (po)
