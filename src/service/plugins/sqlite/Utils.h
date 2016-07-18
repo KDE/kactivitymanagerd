@@ -26,6 +26,8 @@
 
 namespace Utils {
 
+    static unsigned int errorCount = 0;
+
     inline bool prepare(Common::Database &database,
                         QSqlQuery &query,
                         const QString &queryString)
@@ -58,7 +60,7 @@ namespace Utils {
         bool success = query.exec();
 
         if (eh == FailOnError) {
-            if (!success) {
+            if ((!success) && (errorCount++ < 2)) {
                 qDebug() << query.lastQuery();
                 qDebug() << query.lastError();
             }
