@@ -127,8 +127,8 @@ void KSMServer::Private::processLater(const QString &activity, bool start)
         }
     } else {
         // We don't have kwin. No way to invoke the session stuff
-        emit subSessionSendEvent(start ? KSMServer::Started
-                                       : KSMServer::Stopped);
+        subSessionSendEvent(start ? KSMServer::Started
+                                  : KSMServer::Stopped);
     }
 }
 
@@ -152,6 +152,7 @@ void KSMServer::Private::process()
 void KSMServer::Private::makeRunning(bool value)
 {
     if (!kwin) {
+        qDebug() << "Activities KSM: No kwin, marking activity as: " << value;
         subSessionSendEvent(value ? KSMServer::Started : KSMServer::Stopped);
         return;
     }
@@ -162,6 +163,7 @@ void KSMServer::Private::makeRunning(bool value)
 
     const auto watcher = new QDBusPendingCallWatcher(call, this);
 
+    qDebug() << "Activities KSM: Telling kwin to start/stop activity : " << processingActivity << value;
     QObject::connect(
         watcher, SIGNAL(finished(QDBusPendingCallWatcher *)),
         this,
@@ -172,10 +174,12 @@ void KSMServer::Private::makeRunning(bool value)
 
 void KSMServer::Private::startCallFinished(QDBusPendingCallWatcher *call)
 {
+    qDebug() << "Activities KSM: Start call is finished";
     QDBusPendingReply<bool> reply = *call;
 
     if (reply.isError()) {
-        emit subSessionSendEvent(KSMServer::Started);
+        qDebug() << "Activities KSM: Error in getting a reply for start, marking as started";
+        subSessionSendEvent(KSMServer::Started);
 
     } else {
         // If we got false, it means something is going on with ksmserver
@@ -183,8 +187,10 @@ void KSMServer::Private::startCallFinished(QDBusPendingCallWatcher *call)
         const auto retval = reply.argumentAt<0>();
 
         if (!retval) {
+            qDebug() << "Activities KSM: Error starting, marking as stopped";
             subSessionSendEvent(KSMServer::Stopped);
         } else {
+            qDebug() << "Activities KSM: All OK starting, marking as starting";
             subSessionSendEvent(KSMServer::Started);
         }
     }
@@ -194,9 +200,11 @@ void KSMServer::Private::startCallFinished(QDBusPendingCallWatcher *call)
 
 void KSMServer::Private::stopCallFinished(QDBusPendingCallWatcher *call)
 {
+    qDebug() << "Activities KSM: Stop call is finished";
     QDBusPendingReply<bool> reply = *call;
 
     if (reply.isError()) {
+        qDebug() << "Activities KSM: Error in getting a reply for stop, marking as stopped";
         subSessionSendEvent(KSMServer::Stopped);
 
     } else {
@@ -205,8 +213,10 @@ void KSMServer::Private::stopCallFinished(QDBusPendingCallWatcher *call)
         const auto retval = reply.argumentAt<0>();
 
         if (!retval) {
+            qDebug() << "Activities KSM: Error stopping, marking as started";
             subSessionSendEvent(KSMServer::FailedToStop);
         } else {
+            qDebug() << "Activities KSM: All OK stopping, marking as stopped";
             subSessionSendEvent(KSMServer::Stopped);
         }
     }
