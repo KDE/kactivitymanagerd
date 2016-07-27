@@ -36,6 +36,7 @@
 #include <klocalizedstring.h>
 #include <kauthorized.h>
 #include <kdelibs4migration.h>
+#include <ksharedconfig.h>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
@@ -101,11 +102,14 @@ Activities::Private::Private(Activities *parent)
     // Is this our first start?
     if (activities.isEmpty()) {
         // We need to add this only after the service has been properly started
+        KConfigGroup cg(KSharedConfig::openConfig("kdeglobals"), "Activities");
+        const QString name = cg.readEntry("defaultActivityName", i18n("Default"));
+
         QMetaObject::invokeMethod(
                 q,
                 "AddActivity",
                 Qt::QueuedConnection,
-                Q_ARG(QString, i18n("Default")));
+                Q_ARG(QString, name));
     }
 }
 
