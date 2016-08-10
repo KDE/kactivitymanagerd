@@ -113,9 +113,7 @@ public:
 public Q_SLOTS:
     // Schedules config syncing to be done after
     // a predefined time interval
-    // if soon == true, the syncing is performed
-    // after a few seconds, otherwise a few minutes
-    void scheduleConfigSync(const bool soon = false);
+    void scheduleConfigSync();
 
     // Immediately syncs the configuration file
     void configSync();
