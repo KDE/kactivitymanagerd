@@ -432,7 +432,9 @@ bool Activities::SetCurrentActivity(const QString &activity)
 
 QString Activities::AddActivity(const QString &name)
 {
-    if (!KAuthorized::authorize("plasma-desktop/add_activities")) {
+    // We do not care about authorization if this is the first start
+    if (!d->activities.isEmpty() &&
+            !KAuthorized::authorize("plasma-desktop/add_activities")) {
         return QString();
     }
 
