@@ -204,7 +204,7 @@ QString Activities::Private::addActivity(const QString &name)
 
     emit q->ActivityAdded(activity);
 
-    scheduleConfigSync(true);
+    scheduleConfigSync();
 
     if (activitiesCount == 1) {
         q->SetCurrentActivity(activity);
@@ -264,24 +264,22 @@ void Activities::Private::removeActivity(const QString &activity)
     QMetaObject::invokeMethod(this, "configSync", Qt::QueuedConnection);
 }
 
-void Activities::Private::scheduleConfigSync(const bool soon)
+void Activities::Private::scheduleConfigSync()
 {
     static const auto shortInterval = 1000;
-    static const auto longInterval = 2 * 60 * 1000;
 
     // If the timer is not running, or has a longer interval than we need,
     // start it
-    if ((soon && configSyncTimer.interval() > shortInterval)
-            || !configSyncTimer.isActive()) {
-
+    if (!configSyncTimer.isActive()) {
         QMetaObject::invokeMethod(
             &configSyncTimer, "start", Qt::QueuedConnection,
-            Q_ARG(int, soon ? shortInterval : longInterval));
+            Q_ARG(int, shortInterval));
     }
 }
 
 void Activities::Private::configSync()
 {
+    // Stop the timer and reset the interval to zero
     QMetaObject::invokeMethod(&configSyncTimer, "stop", Qt::QueuedConnection);
     config.sync();
 }
@@ -396,6 +394,7 @@ Activities::Activities(QObject *parent)
 
     // Initializing config
 
+    qDebug() << "Config timer connecting...";
     d->connect(&d->configSyncTimer, SIGNAL(timeout()),
                SLOT(configSync()),
                Qt::QueuedConnection);
@@ -432,7 +431,9 @@ bool Activities::SetCurrentActivity(const QString &activity)
 
 QString Activities::AddActivity(const QString &name)
 {
-    if (!KAuthorized::authorize("plasma-desktop/add_activities")) {
+    // We do not care about authorization if this is the first start
+    if (!d->activities.isEmpty() &&
+            !KAuthorized::authorize("plasma-desktop/add_activities")) {
         return QString();
     }
 
@@ -503,7 +504,7 @@ ActivityInfo Activities::ActivityInformation(const QString &activity) const
         }                                                                      \
                                                                                \
         d->activity##What##Config().writeEntry(activity, value);               \
-        d->scheduleConfigSync(true);                                           \
+        d->scheduleConfigSync();                                               \
                                                                                \
         emit Activity##What##Changed(activity, value);                         \
         emit ActivityChanged(activity);                                        \
