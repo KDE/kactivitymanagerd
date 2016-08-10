@@ -270,6 +270,13 @@ void Activities::Private::scheduleConfigSync()
 
     // If the timer is not running, or has a longer interval than we need,
     // start it
+    // Note: If you want to add multiple different delays for different
+    // events based on the importance of how quickly something needs
+    // to be synced to the config, don't. Since the QTimer lives in a
+    // separate thread, we have to communicate with it in via
+    // queued connections, which means that we don't know whether
+    // the timer was already started when this method was invoked,
+    // we do not know whether the interval is properly set etc.
     if (!configSyncTimer.isActive()) {
         QMetaObject::invokeMethod(
             &configSyncTimer, "start", Qt::QueuedConnection,
