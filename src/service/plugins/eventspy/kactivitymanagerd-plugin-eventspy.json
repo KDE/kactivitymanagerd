@@ -17,6 +17,7 @@
         "Description[cs]": "Sbírá z aplikací události jenž podporují určení nedávných dokumentů", 
         "Description[da]": "Indsamler hændelser fra programmer som understøtter specifikationen for nylige dokumenter", 
         "Description[de]": "Sammelt Ereignisse von Anwendungen, die die Spezifikation zuletzt geöffnete Dokumente unterstützen", 
+        "Description[el]": "Συλλέγει γεγονότα από εφαρμογές που υποστηρίζουν πρόσφατες προδιαγραφές εγγράφων", 
         "Description[es]": "Recopila eventos de las aplicaciones que usan la especificación de documentos recientes", 
         "Description[et]": "Sündmuste kogumine rakendustelt, mis toetavad viimati kasutatud dokumentide spetsifikatsiooni", 
         "Description[fi]": "Kerää tapahtumia sovelluksilta, jotka tukevat viimeaikaisten tiedostojen määrittelyä", 
