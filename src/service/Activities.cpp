@@ -86,17 +86,35 @@ Activities::Private::Private(Activities *parent)
     //     << QStandardPaths::standardLocations(config.locationType())
     //     ;
 
-    // Reading activities from the config file
+    // Reading activities from the config file.
+    // Saving only the running activities means that if we have any
+    // errors in the config, we might end up with all activities
+    // stopped
+
+    const auto defaultState
+        = !mainConfig().hasKey("runningActivities") ? Activities::Running :
+          !mainConfig().hasKey("stoppedActivities") ? Activities::Stopped :
+                                                      Activities::Running;
 
     const auto runningActivities
-        = mainConfig()
-              .readEntry("runningActivities", QStringList())
-              .toSet();
+        = mainConfig().readEntry("runningActivities", QStringList()).toSet();
+    const auto stoppedActivities
+        = mainConfig().readEntry("stoppedActivities", QStringList()).toSet();
+
+    // Do we have a running activity?
+    bool atLeastOneRunning = false;
 
     for (const auto &activity: activityNameConfig().keyList()) {
-        activities[activity] = runningActivities.contains(activity)
-                                      ? Activities::Running
-                                      : Activities::Stopped;
+        auto state =
+            runningActivities.contains(activity) ? Activities::Running :
+            stoppedActivities.contains(activity) ? Activities::Stopped :
+                                                   defaultState;
+
+        activities[activity] = state;
+
+        if (state == Activities::Running) {
+            atLeastOneRunning = true;
+        }
     }
 
     // Is this our first start?
@@ -110,6 +128,17 @@ Activities::Private::Private(Activities *parent)
                 "AddActivity",
                 Qt::QueuedConnection,
                 Q_ARG(QString, name));
+
+    } else if (!atLeastOneRunning) {
+        // If we have no running activities, but we have activities,
+        // we are in a problem. This should not happen unless the
+        // configuration file is in a big problem and told us there
+        // are no running activities, and enlists all of them as stopped.
+        // In that case, we will pretend all of them are running
+        qWarning() << "The config file enlisted all activities as stopped";
+        for (const auto &keys: activities.keys()) {
+            activities[keys] = Activities::Running;
+        }
     }
 }
 
@@ -333,6 +362,9 @@ void Activities::Private::setActivityState(const QString &activity,
         mainConfig().writeEntry("runningActivities",
                                 activities.keys(Activities::Running)
                                 + activities.keys(Activities::Starting));
+        mainConfig().writeEntry("stoppedActivities",
+                                activities.keys(Activities::Stopped)
+                                + activities.keys(Activities::Stopping));
         scheduleConfigSync();
     }
 }
