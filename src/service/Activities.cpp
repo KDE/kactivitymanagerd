@@ -51,7 +51,7 @@
 // Private
 #define ACTIVITY_MANAGER_CONFIG_FILE_NAME QStringLiteral("kactivitymanagerdrc")
 
-Activities::Private::ConfigurationChecker::ConfigurationChecker()
+Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransitionChecker()
 {
     // Checking whether we need to transfer the KActivities/KDE4
     // configuration file to the new location.
@@ -76,7 +76,7 @@ Activities::Private::ConfigurationChecker::ConfigurationChecker()
 }
 
 Activities::Private::Private(Activities *parent)
-    : configChecker()
+    : kde4ConfigurationTransitionChecker()
     , config(QStringLiteral("kactivitymanagerdrc"))
     , q(parent)
 {
