@@ -60,10 +60,10 @@ public:
     void setActivityState(const QString &activity, Activities::State state);
 
     // Configuration
-    class ConfigurationChecker {
+    class KDE4ConfigurationTransitionChecker {
     public:
-        ConfigurationChecker();
-    } configChecker;
+        KDE4ConfigurationTransitionChecker();
+    } kde4ConfigurationTransitionChecker;
     QTimer configSyncTimer;
     KConfig config;
 
