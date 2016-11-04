@@ -43,6 +43,7 @@
         "Description[uk]": "Надає дані аплетові Оприлюднити-Уподобати-З’єднати", 
         "Description[x-test]": "xxProvides data to Share-Like-Connect appletxx", 
         "Description[zh_CN]": "向分享-喜爱-连接部件提供数据", 
+        "Description[zh_TW]": "將資料提供給 Share-Like-Connect 小程式", 
         "EnabledByDefault": true, 
         "Icon": "mail-forward", 
         "Id": "org.kde.ActivityManager.SLC", 

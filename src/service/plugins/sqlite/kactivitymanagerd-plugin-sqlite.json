@@ -36,6 +36,7 @@
         "Description[uk]": "Додаток для зберігання і оцінки подій у SQLite", 
         "Description[x-test]": "xxPlugin to store and score events in SQLitexx", 
         "Description[zh_CN]": "使用 SQLITE 存储和打分事件的插件", 
+        "Description[zh_TW]": "在 SQLite 中儲存並評分事件", 
         "EnabledByDefault": true, 
         "Icon": "server-database", 
         "Id": "org.kde.ActivityManager.ResourceScoring", 

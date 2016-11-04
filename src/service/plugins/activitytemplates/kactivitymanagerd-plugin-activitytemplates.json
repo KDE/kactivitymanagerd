@@ -40,6 +40,7 @@
         "Description[uk]": "Підтримка створення шаблонних просторів дій", 
         "Description[x-test]": "xxSupport for creating templated activitiesxx", 
         "Description[zh_CN]": "支持创建模板活动", 
+        "Description[zh_TW]": "支援以樣本建立活動", 
         "EnabledByDefault": true, 
         "Icon": "edit-copy", 
         "Id": "org.kde.ActivityManager.ActivityTemplates", 
@@ -73,6 +74,7 @@
         "Name[uk]": "Шаблони просторів дій", 
         "Name[x-test]": "xxActivity Templatesxx", 
         "Name[zh_CN]": "活动模板", 
+        "Name[zh_TW]": "活動樣本", 
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ], 
