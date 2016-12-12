@@ -65,7 +65,7 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
                                              QString targettedResource,
                                              QString usedActivity)
 {
-    // qDebug() << "Linking " << targettedResource << " to " << usedActivity << " from " << initiatingAgent;
+    qDebug() << "Linking " << targettedResource << " to " << usedActivity << " from " << initiatingAgent;
 
     if (!validateArguments(initiatingAgent, targettedResource, usedActivity)) {
         qWarning() << "Invalid arguments" << initiatingAgent
@@ -218,6 +218,10 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
                                         QString &usedActivity)
 {
     // Validating targetted resource
+    if (targettedResource.isEmpty()) {
+        return false;
+    }
+
     if (targettedResource.startsWith(QStringLiteral("file://"))) {
         targettedResource = QUrl(targettedResource).toLocalFile();
     }
