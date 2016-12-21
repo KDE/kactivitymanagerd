@@ -73,6 +73,10 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
         return;
     }
 
+    if (usedActivity == ":any") {
+        usedActivity = ":global";
+    }
+
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "ResourceLinking::LinkResourceToActivity",
                "Agent shoud not be empty");
@@ -141,13 +145,21 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                "Resource shoud not be empty");
 
     Utils::prepare(resourcesDatabase(), unlinkResourceFromActivityQuery,
-        QStringLiteral(
-            "DELETE FROM ResourceLink "
-            "WHERE "
-            "usedActivity      = COALESCE(:usedActivity     , '') AND "
-            "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
-            "targettedResource = COALESCE(:targettedResource, '') "
-        ));
+        usedActivity == ":any" ?
+            QStringLiteral(
+                "DELETE FROM ResourceLink "
+                "WHERE "
+                "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
+                "targettedResource = COALESCE(:targettedResource, '') "
+            ) :
+            QStringLiteral(
+                "DELETE FROM ResourceLink "
+                "WHERE "
+                "usedActivity      = COALESCE(:usedActivity     , '') AND "
+                "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
+                "targettedResource = COALESCE(:targettedResource, '') "
+            )
+        );
 
     DATABASE_TRANSACTION(resourcesDatabase());
 
@@ -219,6 +231,7 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
 {
     // Validating targetted resource
     if (targettedResource.isEmpty()) {
+        qDebug() << "Resource is invalid -- empty";
         return false;
     }
 
@@ -230,6 +243,7 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
         QFileInfo file(targettedResource);
 
         if (!file.exists()) {
+            qDebug() << "Resource is invalid -- the file does not exist";
             return false;
         }
 
@@ -252,7 +266,10 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
     // If the activity is not empty and the passed activity
     // does not exist, cancel the request
     if (!usedActivity.isEmpty()
+        && usedActivity != ":global"
+        && usedActivity != ":any"
         && !StatsPlugin::self()->listActivities().contains(usedActivity)) {
+        qDebug() << "Activity is invalid, it does not exist";
         return false;
     }
 
