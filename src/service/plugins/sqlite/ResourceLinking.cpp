@@ -144,26 +144,32 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                "ResourceLinking::UnlinkResourceFromActivity",
                "Resource shoud not be empty");
 
-    Utils::prepare(resourcesDatabase(), unlinkResourceFromActivityQuery,
-        usedActivity == ":any" ?
+    QSqlQuery *query = nullptr;
+
+    if (usedActivity == ":any") {
+        Utils::prepare(resourcesDatabase(), unlinkResourceFromAllActivitiesQuery,
             QStringLiteral(
                 "DELETE FROM ResourceLink "
                 "WHERE "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
                 "targettedResource = COALESCE(:targettedResource, '') "
-            ) :
+            ));
+        query = unlinkResourceFromAllActivitiesQuery.get();
+    } else {
+        Utils::prepare(resourcesDatabase(), unlinkResourceFromActivityQuery,
             QStringLiteral(
                 "DELETE FROM ResourceLink "
                 "WHERE "
                 "usedActivity      = COALESCE(:usedActivity     , '') AND "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
                 "targettedResource = COALESCE(:targettedResource, '') "
-            )
-        );
+            ));
+        query = unlinkResourceFromActivityQuery.get();
+    }
 
     DATABASE_TRANSACTION(resourcesDatabase());
 
-    Utils::exec(Utils::FailOnError, *unlinkResourceFromActivityQuery,
+    Utils::exec(Utils::FailOnError, *query,
         ":usedActivity"      , usedActivity,
         ":initiatingAgent"   , initiatingAgent,
         ":targettedResource" , targettedResource

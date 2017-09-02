@@ -89,6 +89,7 @@ private:
     QString currentActivity() const;
 
     std::unique_ptr<QSqlQuery> linkResourceToActivityQuery;
+    std::unique_ptr<QSqlQuery> unlinkResourceFromAllActivitiesQuery;
     std::unique_ptr<QSqlQuery> unlinkResourceFromActivityQuery;
     std::unique_ptr<QSqlQuery> isResourceLinkedToActivityQuery;
 };
