@@ -40,6 +40,7 @@
 
 class ResourceScoreMaintainer::Private : public QThread {
 public:
+    ~Private();
     typedef QString ApplicationName;
     typedef QString ActivityID;
     typedef QList<QString> ResourceList;
@@ -54,6 +55,11 @@ public:
     void processActivity(const ActivityID &activity,
                          const Applications &applications);
 };
+
+ResourceScoreMaintainer::Private::~Private()
+{
+    quit();
+}
 
 void ResourceScoreMaintainer::Private::run()
 {

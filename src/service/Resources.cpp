@@ -54,6 +54,11 @@ Resources::Private::Private(Resources *parent)
 {
 }
 
+Resources::Private::~Private()
+{
+    quit();
+}
+
 namespace {
 EventList events;
 QMutex events_mutex;

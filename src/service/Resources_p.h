@@ -38,6 +38,7 @@ class Resources::Private : public QThread {
 
 public:
     Private(Resources *parent);
+    ~Private();
 
     void run() Q_DECL_OVERRIDE;
 
