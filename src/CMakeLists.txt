@@ -65,5 +65,10 @@ else ()
       )
 endif ()
 
+configure_file(org.kde.activitymanager.service.in
+               ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service
+        DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
+
 add_subdirectory (service)
 
