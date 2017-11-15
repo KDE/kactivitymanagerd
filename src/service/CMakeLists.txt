@@ -63,6 +63,7 @@ target_link_libraries (kactivitymanagerd
    Qt5::Core
    Qt5::DBus
    Qt5::Gui
+   Qt5::Widgets
    KF5::DBusAddons
    KF5::CoreAddons
    KF5::ConfigCore
