@@ -56,7 +56,8 @@ Resources::Private::Private(Resources *parent)
 
 Resources::Private::~Private()
 {
-    quit();
+    requestInterruption();
+    wait(1500); // Enough time for the sleep(1) + processing in run()
 }
 
 namespace {
@@ -66,7 +67,7 @@ QMutex events_mutex;
 
 void Resources::Private::run()
 {
-    forever {
+    while (!isInterruptionRequested()) {
         // initial delay before processing the events
         sleep(1);
 

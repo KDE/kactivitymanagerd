@@ -58,14 +58,15 @@ public:
 
 ResourceScoreMaintainer::Private::~Private()
 {
-    quit();
+    requestInterruption();
+    wait(1500); // Enough time for the sleep(1) + processing in run()
 }
 
 void ResourceScoreMaintainer::Private::run()
 {
     using namespace kamd::utils;
 
-    forever {
+    while (!isInterruptionRequested()) {
         // initial delay before processing the resources
         sleep(1);
 
