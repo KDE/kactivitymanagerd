@@ -121,13 +121,16 @@ Activities::Private::Private(Activities *parent)
     if (activities.isEmpty()) {
         // We need to add this only after the service has been properly started
         KConfigGroup cg(KSharedConfig::openConfig("kdeglobals"), "Activities");
-        const QString name = cg.readEntry("defaultActivityName", i18n("Default"));
+        //NOTE: config key still singular for retrocompatibility
+        const QStringList names = cg.readEntry("defaultActivityName", QStringList{i18n("Default")});
 
-        QMetaObject::invokeMethod(
-                q,
-                "AddActivity",
-                Qt::QueuedConnection,
-                Q_ARG(QString, name));
+        for (const auto &name : names) {
+            QMetaObject::invokeMethod(
+                    q,
+                    "AddActivity",
+                    Qt::QueuedConnection,
+                    Q_ARG(QString, name));
+        }
 
     } else if (!atLeastOneRunning) {
         // If we have no running activities, but we have activities,
