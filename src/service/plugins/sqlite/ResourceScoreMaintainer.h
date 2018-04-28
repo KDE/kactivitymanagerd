@@ -20,6 +20,8 @@
 #ifndef PLUGINS_SQLITE_RESOURCE_SCORE_MAINTAINER_H
 #define PLUGINS_SQLITE_RESOURCE_SCORE_MAINTAINER_H
 
+#include <QObject>
+
 // Utils
 #include <utils/d_ptr.h>
 
@@ -29,7 +31,7 @@ class QString;
 /**
  * ResourceScoreMaintainer represents a queue of resource processing requests.
  */
-class ResourceScoreMaintainer {
+class ResourceScoreMaintainer: public QObject {
 public:
     static ResourceScoreMaintainer *self();
 

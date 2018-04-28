@@ -23,7 +23,6 @@
 // Qt
 #include <QList>
 #include <QMutex>
-#include <QThread>
 
 
 // System
@@ -38,9 +37,14 @@
 #include "ResourceScoreCache.h"
 
 
-class ResourceScoreMaintainer::Private : public QThread {
+class ResourceScoreMaintainer::Private {
 public:
+    Private()
+    {
+    }
+
     ~Private();
+
     typedef QString ApplicationName;
     typedef QString ActivityID;
     typedef QList<QString> ResourceList;
@@ -49,50 +53,45 @@ public:
     typedef QHash<ActivityID, Applications> ResourceTree;
 
     ResourceTree scheduledResources;
-    QMutex scheduledResources_mutex;
 
-    void run() Q_DECL_OVERRIDE;
     void processActivity(const ActivityID &activity,
                          const Applications &applications);
+
+    void processResources();
+
+    QTimer processResourcesTimer;
 };
 
 ResourceScoreMaintainer::Private::~Private()
 {
-    requestInterruption();
-    wait(1500); // Enough time for the sleep(1) + processing in run()
 }
 
-void ResourceScoreMaintainer::Private::run()
+void ResourceScoreMaintainer::Private::processResources()
 {
     using namespace kamd::utils;
 
-    while (!isInterruptionRequested()) {
-        // initial delay before processing the resources
-        sleep(1);
+    // initial delay before processing the resources
+    sleep(1);
 
-        ResourceTree resources;
+    ResourceTree resources;
 
-        {
-            QMutexLocker lock(&scheduledResources_mutex);
-            std::swap(resources, scheduledResources);
-        }
+    std::swap(resources, scheduledResources);
 
-        const auto activity = StatsPlugin::self()->currentActivity();
+    const auto activity = StatsPlugin::self()->currentActivity();
 
-        // Let us first process the events related to the current
-        // activity so that the stats are available quicker
+    // Let us first process the events related to the current
+    // activity so that the stats are available quicker
 
-        if (resources.contains(activity)) {
-            processActivity(activity, resources[activity]);
-            resources.remove(activity);
-        }
-
-        for_each_assoc(resources,
-            [this](const ActivityID & activity, const Applications & applications) {
-                processActivity(activity, applications);
-            }
-        );
+    if (resources.contains(activity)) {
+        processActivity(activity, resources[activity]);
+        resources.remove(activity);
     }
+
+    for_each_assoc(resources,
+        [this](const ActivityID & activity, const Applications & applications) {
+            processActivity(activity, applications);
+        }
+    );
 }
 
 void ResourceScoreMaintainer::Private::processActivity(const ActivityID
@@ -118,8 +117,11 @@ ResourceScoreMaintainer *ResourceScoreMaintainer::self()
 }
 
 ResourceScoreMaintainer::ResourceScoreMaintainer()
-    : d()
 {
+    d->processResourcesTimer.setInterval(1000);
+    d->processResourcesTimer.setSingleShot(true);
+    connect(&d->processResourcesTimer, &QTimer::timeout,
+            this, [=] { d->processResources(); });
 }
 
 ResourceScoreMaintainer::~ResourceScoreMaintainer()
@@ -129,8 +131,6 @@ ResourceScoreMaintainer::~ResourceScoreMaintainer()
 void ResourceScoreMaintainer::processResource(const QString &resource,
                                               const QString &application)
 {
-    QMutexLocker lock(&d->scheduledResources_mutex);
-
     // Checking whether the item is already scheduled for
     // processing
 
@@ -153,5 +153,5 @@ void ResourceScoreMaintainer::processResource(const QString &resource,
         d->scheduledResources[activity][application] << resource;
     }
 
-    d->start();
+    d->processResourcesTimer.start();
 }
