@@ -185,13 +185,20 @@ bool Application::Private::loadPlugin(const KPluginMetaData& plugin)
     auto &modules = Module::get();
 
     if (pluginInstance) {
-        pluginInstance->init(modules);
+        bool success = pluginInstance->init(modules);
 
-        pluginIds << plugin.pluginId();
-        plugins << pluginInstance;
+        if (success) {
+            pluginIds << plugin.pluginId();
+            plugins << pluginInstance;
 
-        qCDebug(KAMD_LOG_APPLICATION)   << "[   OK   ] loaded:  " << plugin.pluginId();
-        return true;
+            qCDebug(KAMD_LOG_APPLICATION)   << "[   OK   ] loaded:  " << plugin.pluginId();
+            return true;
+        } else {
+            qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] init: " << plugin.pluginId() << loader.errorString();
+            // TODO: Show a notification for a plugin that failed to load
+            delete pluginInstance;
+            return false;
+        }
 
     } else {
         qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] loading: " << plugin.pluginId() << loader.errorString();

@@ -69,13 +69,14 @@ bool StatsPlugin::init(QHash<QString, QObject *> &modules)
 {
     Plugin::init(modules);
 
+    if (!resourcesDatabase()) {
+        return false;
+    }
+
     m_activities = modules[QStringLiteral("activities")];
     m_resources = modules[QStringLiteral("resources")];
 
     m_resourceLinking->init();
-
-    // Initializing the database
-    resourcesDatabase();
 
     connect(m_resources, SIGNAL(ProcessedResourceEvents(EventList)),
             this, SLOT(addEvents(EventList)));
@@ -165,7 +166,7 @@ void StatsPlugin::openResourceEvent(const QString &usedActivity,
 
     detectResourceInfo(targettedResource);
 
-    Utils::prepare(resourcesDatabase(), openResourceEventQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), openResourceEventQuery, QStringLiteral(
         "INSERT INTO ResourceEvent"
         "        (usedActivity,  initiatingAgent,  targettedResource,  start,  end) "
         "VALUES (:usedActivity, :initiatingAgent, :targettedResource, :start, :end)"
@@ -195,7 +196,7 @@ void StatsPlugin::closeResourceEvent(const QString &usedActivity,
                "StatsPlugin::closeResourceEvent",
                "Resource shoud not be empty");
 
-    Utils::prepare(resourcesDatabase(), closeResourceEventQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), closeResourceEventQuery, QStringLiteral(
         "UPDATE ResourceEvent "
         "SET end = :end "
         "WHERE "
@@ -236,7 +237,7 @@ void StatsPlugin::detectResourceInfo(const QString &_uri)
 bool StatsPlugin::insertResourceInfo(const QString &uri)
 {
 
-    Utils::prepare(resourcesDatabase(), getResourceInfoQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), getResourceInfoQuery, QStringLiteral(
         "SELECT targettedResource FROM ResourceInfo WHERE "
             "  targettedResource = :targettedResource "
     ));
@@ -248,7 +249,7 @@ bool StatsPlugin::insertResourceInfo(const QString &uri)
         return false;
     }
 
-    Utils::prepare(resourcesDatabase(), insertResourceInfoQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), insertResourceInfoQuery, QStringLiteral(
         "INSERT INTO ResourceInfo( "
             "  targettedResource"
             ", title"
@@ -276,9 +277,9 @@ void StatsPlugin::saveResourceTitle(const QString &uri, const QString &title,
 {
     insertResourceInfo(uri);
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
-    Utils::prepare(resourcesDatabase(), saveResourceTitleQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), saveResourceTitleQuery, QStringLiteral(
         "UPDATE ResourceInfo SET "
             "  title = :title"
             ", autoTitle = :autoTitle "
@@ -299,9 +300,9 @@ void StatsPlugin::saveResourceMimetype(const QString &uri,
 {
     insertResourceInfo(uri);
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
-    Utils::prepare(resourcesDatabase(), saveResourceMimetypeQuery, QStringLiteral(
+    Utils::prepare(*resourcesDatabase(), saveResourceMimetypeQuery, QStringLiteral(
         "UPDATE ResourceInfo SET "
             "  mimetype = :mimetype"
             ", autoMimetype = :autoMimetype "
@@ -392,7 +393,7 @@ void StatsPlugin::addEvents(const EventList &events)
 
     if (eventsToProcess.begin() == eventsToProcess.end()) return;
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     for (auto event : eventsToProcess) {
 
@@ -444,19 +445,19 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count,
     // If we need to delete everything,
     // no need to bother with the count and the date
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     if (what == QStringLiteral("everything")) {
         // Instantiating these every time is not a big overhead
         // since this method is rarely executed.
 
-        auto removeEventsQuery = resourcesDatabase().createQuery();
+        auto removeEventsQuery = resourcesDatabase()->createQuery();
         removeEventsQuery.prepare(
                 "DELETE FROM ResourceEvent "
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity)"
             );
 
-        auto removeScoreCachesQuery = resourcesDatabase().createQuery();
+        auto removeScoreCachesQuery = resourcesDatabase()->createQuery();
         removeScoreCachesQuery.prepare(
                 "DELETE FROM ResourceScoreCache "
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity)");
@@ -480,14 +481,14 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count,
         // if something was accessed before, and the user did not
         // remove the history, it is not really a secret.
 
-        auto removeEventsQuery = resourcesDatabase().createQuery();
+        auto removeEventsQuery = resourcesDatabase()->createQuery();
         removeEventsQuery.prepare(
                 "DELETE FROM ResourceEvent "
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
                 "AND end > :since"
             );
 
-        auto removeScoreCachesQuery = resourcesDatabase().createQuery();
+        auto removeScoreCachesQuery = resourcesDatabase()->createQuery();
         removeScoreCachesQuery.prepare(
                 "DELETE FROM ResourceScoreCache "
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
@@ -515,20 +516,20 @@ void StatsPlugin::DeleteEarlierStats(const QString &activity, int months)
 
     // Deleting a specified length of time
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     const auto time = QDateTime::currentDateTime().addMonths(-months);
     const auto usedActivity = activity.isEmpty() ? QVariant()
                                                  : QVariant(activity);
 
-    auto removeEventsQuery = resourcesDatabase().createQuery();
+    auto removeEventsQuery = resourcesDatabase()->createQuery();
     removeEventsQuery.prepare(
             "DELETE FROM ResourceEvent "
             "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
             "AND start < :time"
         );
 
-    auto removeScoreCachesQuery = resourcesDatabase().createQuery();
+    auto removeScoreCachesQuery = resourcesDatabase()->createQuery();
     removeScoreCachesQuery.prepare(
             "DELETE FROM ResourceScoreCache "
             "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
@@ -564,7 +565,7 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity,
                "StatsPlugin::DeleteStatsForResource",
                "We can not handle CURRENT_AGENT_TAG here");
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     // Check against sql injection
     if (activity.contains('\'') || client.contains('\'')) return;
@@ -580,7 +581,7 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity,
             client == ANY_AGENT_TAG ? " 1 " :
                 QStringLiteral(" initiatingAgent = '%1' ").arg(client);
 
-    auto removeEventsQuery = resourcesDatabase().createQuery();
+    auto removeEventsQuery = resourcesDatabase()->createQuery();
     removeEventsQuery.prepare(
             "DELETE FROM ResourceEvent "
             "WHERE "
@@ -589,7 +590,7 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity,
                 + "targettedResource LIKE :targettedResource ESCAPE '\\'"
         );
 
-    auto removeScoreCachesQuery = resourcesDatabase().createQuery();
+    auto removeScoreCachesQuery = resourcesDatabase()->createQuery();
     removeScoreCachesQuery.prepare(
             "DELETE FROM ResourceScoreCache "
             "WHERE "

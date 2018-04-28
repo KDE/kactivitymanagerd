@@ -87,7 +87,7 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
                "ResourceLinking::LinkResourceToActivity",
                "Resource shoud not be empty");
 
-    Utils::prepare(resourcesDatabase(), linkResourceToActivityQuery,
+    Utils::prepare(*resourcesDatabase(), linkResourceToActivityQuery,
         QStringLiteral(
             "INSERT OR REPLACE INTO ResourceLink"
             "        (usedActivity,  initiatingAgent,  targettedResource) "
@@ -98,7 +98,7 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
             ")"
         ));
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     Utils::exec(Utils::FailOnError, *linkResourceToActivityQuery,
         ":usedActivity"      , usedActivity,
@@ -147,7 +147,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
     QSqlQuery *query = nullptr;
 
     if (usedActivity == ":any") {
-        Utils::prepare(resourcesDatabase(), unlinkResourceFromAllActivitiesQuery,
+        Utils::prepare(*resourcesDatabase(), unlinkResourceFromAllActivitiesQuery,
             QStringLiteral(
                 "DELETE FROM ResourceLink "
                 "WHERE "
@@ -156,7 +156,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
             ));
         query = unlinkResourceFromAllActivitiesQuery.get();
     } else {
-        Utils::prepare(resourcesDatabase(), unlinkResourceFromActivityQuery,
+        Utils::prepare(*resourcesDatabase(), unlinkResourceFromActivityQuery,
             QStringLiteral(
                 "DELETE FROM ResourceLink "
                 "WHERE "
@@ -167,7 +167,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
         query = unlinkResourceFromActivityQuery.get();
     }
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     Utils::exec(Utils::FailOnError, *query,
         ":usedActivity"      , usedActivity,
@@ -213,7 +213,7 @@ bool ResourceLinking::IsResourceLinkedToActivity(QString initiatingAgent,
                "ResourceLinking::IsResourceLinkedToActivity",
                "Resource shoud not be empty");
 
-    Utils::prepare(resourcesDatabase(), isResourceLinkedToActivityQuery,
+    Utils::prepare(*resourcesDatabase(), isResourceLinkedToActivityQuery,
         QStringLiteral(
             "SELECT * FROM ResourceLink "
             "WHERE "

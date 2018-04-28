@@ -53,35 +53,13 @@ public:
 
 };
 
-Common::Database &resourcesDatabase()
+Common::Database::Ptr resourcesDatabase()
 {
     static ResourcesDatabaseMigrator instance;
-    return *(instance.d->database);
-}
-
-void ResourcesDatabaseMigrator::migrateDatabase(const QString &newDatabaseFile) const
-{
-    // Checking whether we need to transfer the KActivities/KDE4
-    // sqlite database file to the new location.
-    if (QFile(newDatabaseFile).exists()) {
-        return;
-    }
-
-    // Testing for kdehome
-    Kdelibs4Migration migration;
-    if (!migration.kdeHomeFound()) {
-        return;
-    }
-
-    QString oldDatabaseFile(
-        migration.locateLocal("data", "activitymanager/resources/database"));
-    if (!oldDatabaseFile.isEmpty()) {
-        QFile(oldDatabaseFile).copy(newDatabaseFile);
-    }
+    return instance.d->database;
 }
 
 ResourcesDatabaseMigrator::ResourcesDatabaseMigrator()
-    : d()
 {
     const QString databaseDir
         = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
@@ -94,18 +72,13 @@ ResourcesDatabaseMigrator::ResourcesDatabaseMigrator()
         qWarning() << "Database folder can not be created!";
     }
 
-    const QString newDatabaseFile = databaseDir + QStringLiteral("database");
-
-    migrateDatabase(newDatabaseFile);
-
     d->database = Common::Database::instance(
             Common::Database::ResourcesDatabase,
             Common::Database::ReadWrite);
 
-    Q_ASSERT_X(d->database, "SQLite plugin/Database constructor",
-                            "Database could not be opened");
-
-    Common::ResourcesDatabaseSchema::initSchema(*d->database);
+    if (d->database) {
+        Common::ResourcesDatabaseSchema::initSchema(*d->database);
+    }
 }
 
 ResourcesDatabaseMigrator::~ResourcesDatabaseMigrator()

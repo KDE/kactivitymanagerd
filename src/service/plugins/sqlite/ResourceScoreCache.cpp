@@ -38,13 +38,13 @@
 class ResourceScoreCache::Queries {
 private:
     Queries()
-        : createResourceScoreCacheQuery(resourcesDatabase().createQuery())
-        , getResourceScoreCacheQuery(resourcesDatabase().createQuery())
-        , updateResourceScoreCacheQuery(resourcesDatabase().createQuery())
-        , getScoreAdditionQuery(resourcesDatabase().createQuery())
+        : createResourceScoreCacheQuery(resourcesDatabase()->createQuery())
+        , getResourceScoreCacheQuery(resourcesDatabase()->createQuery())
+        , updateResourceScoreCacheQuery(resourcesDatabase()->createQuery())
+        , getScoreAdditionQuery(resourcesDatabase()->createQuery())
     {
 
-        Utils::prepare(resourcesDatabase(),
+        Utils::prepare(*resourcesDatabase(),
             createResourceScoreCacheQuery, QStringLiteral(
             "INSERT INTO ResourceScoreCache "
             "VALUES (:usedActivity, :initiatingAgent, :targettedResource, "
@@ -53,7 +53,7 @@ private:
                     ":firstUpdate)"
         ));
 
-        Utils::prepare(resourcesDatabase(),
+        Utils::prepare(*resourcesDatabase(),
             getResourceScoreCacheQuery, QStringLiteral(
             "SELECT cachedScore, lastUpdate, firstUpdate FROM ResourceScoreCache "
             "WHERE "
@@ -62,7 +62,7 @@ private:
                 ":targettedResource = targettedResource "
         ));
 
-        Utils::prepare(resourcesDatabase(),
+        Utils::prepare(*resourcesDatabase(),
             updateResourceScoreCacheQuery, QStringLiteral(
             "UPDATE ResourceScoreCache SET "
                 "cachedScore = :cachedScore, "
@@ -73,7 +73,7 @@ private:
                 ":targettedResource = targettedResource "
         ));
 
-        Utils::prepare(resourcesDatabase(),
+        Utils::prepare(*resourcesDatabase(),
             getScoreAdditionQuery, QStringLiteral(
             "SELECT start, end "
             "FROM ResourceEvent "
@@ -153,7 +153,7 @@ void ResourceScoreCache::update()
     QDateTime currentTime = QDateTime::currentDateTime();
     qreal score = 0;
 
-    DATABASE_TRANSACTION(resourcesDatabase());
+    DATABASE_TRANSACTION(*resourcesDatabase());
 
     qDebug() << "Creating the cache for: " << d->resource;
 

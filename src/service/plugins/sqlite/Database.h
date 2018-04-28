@@ -33,6 +33,7 @@
 
 // Local
 #include <Debug.h>
+#include <common/database/Database.h>
 
 class QDateTime;
 class QSqlDatabase;
@@ -56,9 +57,9 @@ private:
 
     D_PTR;
 
-    friend Common::Database &resourcesDatabase();
+    friend Common::Database::Ptr resourcesDatabase();
 };
 
-Common::Database &resourcesDatabase();
+Common::Database::Ptr resourcesDatabase();
 
 #endif // PLUGINS_SQLITE_RESOURCESDATABASE_H

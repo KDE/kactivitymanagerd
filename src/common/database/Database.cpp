@@ -181,7 +181,7 @@ Database::Ptr Database::instance(Source source, OpenMode openMode)
     ptr->d->database.reset(new QSqlDatabaseWrapper(info));
 
     if (!ptr->d->database->isOpen()) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     databases[info] = ptr;
@@ -202,9 +202,10 @@ Database::Ptr Database::instance(Source source, OpenMode openMode)
     auto walResult = ptr->pragma(QStringLiteral("journal_mode = WAL"));
 
     if (walResult != "wal") {
-        qFatal("KActivities: Database can not be opened in WAL mode. Check the "
-               "SQLite version (required >3.7.0). And whether your filesystem "
-               "supports shared memory");
+        qWarning() << "KActivities: Database can not be opened in WAL mode. Check the "
+                      "SQLite version (required >3.7.0). And whether your filesystem "
+                      "supports shared memory";
+        return nullptr;
     }
 
     // We don't have a big database, lets flush the WAL when
