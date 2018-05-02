@@ -40,7 +40,7 @@ namespace detail { //_
     inline void test_continuation(const QJSValue &continuation)
     {
         if (!continuation.isCallable()) {
-            qWarning() << "Passed handler is not callable: " << continuation.toString();
+            qCWarning(KAMD_LOG_RESOURCES) << "Passed handler is not callable: " << continuation.toString();
         }
     }
 
@@ -50,7 +50,7 @@ namespace detail { //_
     {
         auto result = continuation.call({ future.result() });
         if (result.isError()) {
-            qWarning() << "Handler returned this error: " << result.toString();
+            qCWarning(KAMD_LOG_RESOURCES) << "Handler returned this error: " << result.toString();
         }
     }
 
@@ -59,7 +59,7 @@ namespace detail { //_
         Q_UNUSED(future);
         auto result = continuation.call({});
         if (result.isError()) {
-            qWarning() << "Handler returned this error: " << result.toString();
+            qCWarning(KAMD_LOG_RESOURCES) << "Handler returned this error: " << result.toString();
         }
     }
 #endif

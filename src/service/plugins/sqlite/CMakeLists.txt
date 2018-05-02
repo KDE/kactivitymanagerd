@@ -10,6 +10,7 @@ set (
    ResourceScoreMaintainer.cpp
    ResourceLinking.cpp
 
+   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/service/Debug.cpp
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/database/Database.cpp
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/database/schema/ResourcesDatabaseSchema.cpp
 

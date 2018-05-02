@@ -155,7 +155,7 @@ void ResourceScoreCache::update()
 
     DATABASE_TRANSACTION(*resourcesDatabase());
 
-    qDebug() << "Creating the cache for: " << d->resource;
+    qCDebug(KAMD_LOG_RESOURCES) << "Creating the cache for: " << d->resource;
 
     // This can fail if we have the cache already made
     auto isCacheNew = Utils::exec(
@@ -180,9 +180,9 @@ void ResourceScoreCache::update()
         lastUpdate.setTime_t(result["lastUpdate"].toUInt());
         firstUpdate.setTime_t(result["firstUpdate"].toUInt());
 
-        qDebug() << "Already in database? " << (!isCacheNew);
-        qDebug() << "      First update : " << firstUpdate;
-        qDebug() << "       Last update : " << lastUpdate;
+        qCDebug(KAMD_LOG_RESOURCES) << "Already in database? " << (!isCacheNew);
+        qCDebug(KAMD_LOG_RESOURCES) << "      First update : " << firstUpdate;
+        qCDebug(KAMD_LOG_RESOURCES) << "       Last update : " << lastUpdate;
 
         if (isCacheNew) {
             // If we haven't had the cache before, set the score to 0
@@ -200,10 +200,10 @@ void ResourceScoreCache::update()
     // Calculating the updated score
     // We are processing all events since the last cache update
 
-    qDebug() << "After the adjustment";
-    qDebug() << "     Current score : " << score;
-    qDebug() << "      First update : " << firstUpdate;
-    qDebug() << "       Last update : " << lastUpdate;
+    qCDebug(KAMD_LOG_RESOURCES) << "After the adjustment";
+    qCDebug(KAMD_LOG_RESOURCES) << "     Current score : " << score;
+    qCDebug(KAMD_LOG_RESOURCES) << "      First update : " << firstUpdate;
+    qCDebug(KAMD_LOG_RESOURCES) << "       Last update : " << lastUpdate;
 
     Utils::exec(Utils::FailOnError, Queries::self().getScoreAdditionQuery,
         ":usedActivity", d->activity,
@@ -220,7 +220,7 @@ void ResourceScoreCache::update()
         const auto end = result["end"].toUInt();
         const auto intervalLength = end - lastEventStart;
 
-        qDebug() << "Interval length is " << intervalLength;
+        qCDebug(KAMD_LOG_RESOURCES) << "Interval length is " << intervalLength;
 
         if (intervalLength == 0) {
             // We have an Accessed event - otherwise, this wouldn't be 0
@@ -232,7 +232,7 @@ void ResourceScoreCache::update()
         }
     }
 
-    qDebug() << "         New score : " << score;
+    qCDebug(KAMD_LOG_RESOURCES) << "         New score : " << score;
 
     // Updating the score
 
@@ -245,10 +245,10 @@ void ResourceScoreCache::update()
     );
 
     // Notifying the world
-    qDebug() << "ResourceScoreUpdated:"
-             << d->activity
-             << d->application
-             << d->resource
+    qCDebug(KAMD_LOG_RESOURCES) << "ResourceScoreUpdated:"
+                                << d->activity
+                                << d->application
+                                << d->resource
         ;
     emit QMetaObject::invokeMethod(StatsPlugin::self(),
                                    "ResourceScoreUpdated",

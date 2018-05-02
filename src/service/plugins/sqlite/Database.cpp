@@ -65,11 +65,11 @@ ResourcesDatabaseMigrator::ResourcesDatabaseMigrator()
         = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
           + QStringLiteral("/kactivitymanagerd/resources/");
 
-    qDebug() << "Creating directory: " << databaseDir;
+    qCDebug(KAMD_LOG_RESOURCES) << "Creating directory: " << databaseDir;
     auto created = QDir().mkpath(databaseDir);
 
     if (!created || !QDir(databaseDir).exists()) {
-        qWarning() << "Database folder can not be created!";
+        qCWarning(KAMD_LOG_RESOURCES) << "Database folder can not be created!";
     }
 
     d->database = Common::Database::instance(

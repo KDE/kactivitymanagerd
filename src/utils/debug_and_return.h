@@ -31,7 +31,7 @@ namespace utils {
 template<typename T>
 T debug_and_return(const char * message, T && value) {
     #ifdef QT_DEBUG
-    qDebug() << message << " " << value;
+    qCDebug(KAMD_LOG_RESOURCES) << message << " " << value;
     #endif
 
     return std::forward<T>(value);
@@ -41,7 +41,7 @@ template<typename T>
 T debug_and_return(bool debug, const char * message, T && value) {
     #ifdef QT_DEBUG
     if (debug) {
-        qDebug() << message << " " << value;
+        qCDebug(KAMD_LOG_RESOURCES) << message << " " << value;
     }
     #endif
 

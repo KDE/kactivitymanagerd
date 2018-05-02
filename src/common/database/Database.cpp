@@ -35,6 +35,8 @@
 #include <mutex>
 #include <map>
 
+#include "Debug.h"
+
 namespace Common {
 
 namespace {
@@ -92,10 +94,10 @@ public:
         m_open = m_database.open();
 
         if (!m_open) {
-            qWarning() << "KActivities: Database is not open: "
-                       << m_database.connectionName()
-                       << m_database.databaseName()
-                       << m_database.lastError();
+            qCWarning(KAMD_LOG_RESOURCES) << "KActivities: Database is not open: "
+                                          << m_database.connectionName()
+                                          << m_database.databaseName()
+                                          << m_database.lastError();
 
             if (info.openMode == Database::ReadWrite) {
                 qFatal("KActivities: Opening the database in RW mode should always succeed");
@@ -105,7 +107,7 @@ public:
 
     ~QSqlDatabaseWrapper()
     {
-        qDebug() << "Closing SQL connection: " << m_connectionName;
+        qCDebug(KAMD_LOG_RESOURCES) << "Closing SQL connection: " << m_connectionName;
     }
 
     QSqlDatabase &get()
@@ -202,9 +204,9 @@ Database::Ptr Database::instance(Source source, OpenMode openMode)
     auto walResult = ptr->pragma(QStringLiteral("journal_mode = WAL"));
 
     if (walResult != "wal") {
-        qWarning() << "KActivities: Database can not be opened in WAL mode. Check the "
-                      "SQLite version (required >3.7.0). And whether your filesystem "
-                      "supports shared memory";
+        qCWarning(KAMD_LOG_RESOURCES) << "KActivities: Database can not be opened in WAL mode. Check the "
+                                         "SQLite version (required >3.7.0). And whether your filesystem "
+                                         "supports shared memory";
         return nullptr;
     }
 
@@ -212,7 +214,7 @@ Database::Ptr Database::instance(Source source, OpenMode openMode)
     // it reaches 400k, not 4M as is default
     ptr->setPragma(QStringLiteral("wal_autocheckpoint = 100"));
 
-    qDebug() << "KActivities: Database connection: " << ptr->d->database->connectionName()
+    qCDebug(KAMD_LOG_RESOURCES) << "KActivities: Database connection: " << ptr->d->database->connectionName()
         << "\n    query_only:         " << ptr->pragma(QStringLiteral("query_only"))
         << "\n    journal_mode:       " << ptr->pragma(QStringLiteral("journal_mode"))
         << "\n    wal_autocheckpoint: " << ptr->pragma(QStringLiteral("wal_autocheckpoint"))
@@ -253,7 +255,7 @@ QSqlQuery Database::execQuery(const QString &query, bool ignoreErrors) const
     lastExecutedQuery = query;
 
     if (!ignoreErrors && result.lastError().isValid()) {
-        qWarning() << "SQL: "
+        qCWarning(KAMD_LOG_RESOURCES) << "SQL: "
                    << "\n    error: " << result.lastError()
                    << "\n    query: " << query;
     }

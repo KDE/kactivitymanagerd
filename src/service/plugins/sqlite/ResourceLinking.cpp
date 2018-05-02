@@ -65,11 +65,11 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
                                              QString targettedResource,
                                              QString usedActivity)
 {
-    qDebug() << "Linking " << targettedResource << " to " << usedActivity << " from " << initiatingAgent;
+    qCDebug(KAMD_LOG_RESOURCES) << "Linking " << targettedResource << " to " << usedActivity << " from " << initiatingAgent;
 
     if (!validateArguments(initiatingAgent, targettedResource, usedActivity)) {
-        qWarning() << "Invalid arguments" << initiatingAgent
-                   << targettedResource << usedActivity;
+        qCWarning(KAMD_LOG_RESOURCES) << "Invalid arguments" << initiatingAgent
+                                      << targettedResource << usedActivity;
         return;
     }
 
@@ -107,12 +107,12 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
     );
 
     if (!usedActivity.isEmpty()) {
-        // qDebug() << "Sending link event added: activities:/" << usedActivity;
+        // qCDebug(KAMD_LOG_RESOURCES) << "Sending link event added: activities:/" << usedActivity;
         org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("activities:/")
                                              + usedActivity));
 
         if (usedActivity == StatsPlugin::self()->currentActivity()) {
-            // qDebug() << "Sending link event added: activities:/current";
+            // qCDebug(KAMD_LOG_RESOURCES) << "Sending link event added: activities:/current";
             org::kde::KDirNotify::emitFilesAdded(
                 QUrl(QStringLiteral("activities:/current")));
         }
@@ -126,11 +126,11 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                                                  QString targettedResource,
                                                  QString usedActivity)
 {
-    // qDebug() << "Unlinking " << targettedResource << " from " << usedActivity << " from " << initiatingAgent;
+    // qCDebug(KAMD_LOG_RESOURCES) << "Unlinking " << targettedResource << " from " << usedActivity << " from " << initiatingAgent;
 
     if (!validateArguments(initiatingAgent, targettedResource, usedActivity)) {
-        qWarning() << "Invalid arguments" << initiatingAgent
-                   << targettedResource << usedActivity;
+        qCWarning(KAMD_LOG_RESOURCES) << "Invalid arguments" << initiatingAgent
+                                      << targettedResource << usedActivity;
         return;
     }
 
@@ -180,12 +180,12 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
         auto mangled = QString::fromLatin1(targettedResource.toUtf8().toBase64(
             QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals));
 
-        // qDebug() << "Sending link event removed: activities:/" << usedActivity << '/' << mangled;
+        // qCDebug(KAMD_LOG_RESOURCES) << "Sending link event removed: activities:/" << usedActivity << '/' << mangled;
         org::kde::KDirNotify::emitFilesRemoved(
             { QUrl(QStringLiteral("activities:/") + usedActivity + '/' + mangled) });
 
         if (usedActivity == StatsPlugin::self()->currentActivity()) {
-            // qDebug() << "Sending link event removed: activities:/current/" << mangled;
+            // qCDebug(KAMD_LOG_RESOURCES) << "Sending link event removed: activities:/current/" << mangled;
             org::kde::KDirNotify::emitFilesRemoved({
                 QUrl(QStringLiteral("activities:/current/") + mangled) });
         }
@@ -237,7 +237,7 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
 {
     // Validating targetted resource
     if (targettedResource.isEmpty()) {
-        qDebug() << "Resource is invalid -- empty";
+        qCDebug(KAMD_LOG_RESOURCES) << "Resource is invalid -- empty";
         return false;
     }
 
@@ -249,7 +249,7 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
         QFileInfo file(targettedResource);
 
         if (!file.exists()) {
-            qDebug() << "Resource is invalid -- the file does not exist";
+            qCDebug(KAMD_LOG_RESOURCES) << "Resource is invalid -- the file does not exist";
             return false;
         }
 
@@ -275,13 +275,13 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent,
         && usedActivity != ":global"
         && usedActivity != ":any"
         && !StatsPlugin::self()->listActivities().contains(usedActivity)) {
-        qDebug() << "Activity is invalid, it does not exist";
+        qCDebug(KAMD_LOG_RESOURCES) << "Activity is invalid, it does not exist";
         return false;
     }
 
-    // qDebug() << "agent" << initiatingAgent
-    //          << "resource" << targettedResource
-    //          << "activity" << usedActivity;
+    // qCDebug(KAMD_LOG_RESOURCES) << "agent" << initiatingAgent
+    //                             << "resource" << targettedResource
+    //                             << "activity" << usedActivity;
 
     return true;
 }
@@ -291,14 +291,14 @@ void ResourceLinking::onActivityAdded(const QString &activity)
     Q_UNUSED(activity);
 
     // Notify KIO
-    // qDebug() << "Added: activities:/  (" << activity << ")";
+    // qCDebug(KAMD_LOG_RESOURCES) << "Added: activities:/  (" << activity << ")";
     org::kde::KDirNotify::emitFilesAdded(QUrl(QStringLiteral("activities:/")));
 }
 
 void ResourceLinking::onActivityRemoved(const QString &activity)
 {
     // Notify KIO
-    // qDebug() << "Removed: activities:/" << activity;
+    // qCDebug(KAMD_LOG_RESOURCES) << "Removed: activities:/" << activity;
     org::kde::KDirNotify::emitFilesRemoved(
         { QUrl(QStringLiteral("activities:/") + activity) });
 
@@ -310,7 +310,7 @@ void ResourceLinking::onCurrentActivityChanged(const QString &activity)
     Q_UNUSED(activity);
 
     // Notify KIO
-    // qDebug() << "Changed: activities:/current -> " << activity;
+    // qCDebug(KAMD_LOG_RESOURCES) << "Changed: activities:/current -> " << activity;
     org::kde::KDirNotify::emitFilesAdded(
         { QUrl(QStringLiteral("activities:/current")) });
 }

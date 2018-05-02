@@ -55,7 +55,7 @@ Plugin::~Plugin()
 KConfigGroup Plugin::config() const
 {
     if (d->name.isEmpty()) {
-        qWarning() << "The plugin needs a name in order to have a config section";
+        qCWarning(KAMD_LOG_APPLICATION) << "The plugin needs a name in order to have a config section";
         return KConfigGroup();
     }
 
@@ -71,7 +71,7 @@ void Plugin::setName(const QString &name)
     Q_ASSERT_X(d->name.isEmpty(), "Plugin::setName", "The name can not be set twice");
     Q_ASSERT_X(!name.isEmpty(), "Plugin::setName", "The name can not be empty");
 
-    qDebug() << "Setting the name of " << (void*)this << " to " << name;
+    qCDebug(KAMD_LOG_APPLICATION) << "Setting the name of " << (void*)this << " to " << name;
     d->name = name;
 }
 

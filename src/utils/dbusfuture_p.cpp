@@ -29,7 +29,7 @@ void DBusCallFutureInterface<void>::callFinished()
 {
     deleteLater();
 
-    // qDebug() << "This is call end";
+    // qCDebug(KAMD_LOG_RESOURCES) << "This is call end";
 
     this->reportFinished();
 }

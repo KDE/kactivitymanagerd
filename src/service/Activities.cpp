@@ -138,7 +138,7 @@ Activities::Private::Private(Activities *parent)
         // configuration file is in a big problem and told us there
         // are no running activities, and enlists all of them as stopped.
         // In that case, we will pretend all of them are running
-        qWarning() << "The config file enlisted all activities as stopped";
+        qCWarning(KAMD_LOG_ACTIVITIES) << "The config file enlisted all activities as stopped";
         for (const auto &keys: activities.keys()) {
             activities[keys] = Activities::Running;
         }
@@ -436,7 +436,7 @@ Activities::Activities(QObject *parent)
 
     // Initializing config
 
-    qDebug() << "Config timer connecting...";
+    qCDebug(KAMD_LOG_ACTIVITIES) << "Config timer connecting...";
     d->connect(&d->configSyncTimer, SIGNAL(timeout()),
                SLOT(configSync()),
                Qt::QueuedConnection);

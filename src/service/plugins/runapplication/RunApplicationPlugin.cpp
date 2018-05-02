@@ -119,10 +119,10 @@ void RunApplicationPlugin::executeIn(const QString &path) const
         QString filePath = directory.filePath(item);
         KService service(filePath);
         if (service.isValid() && service.isApplication()) {
-            qDebug() << "Starting: " << service.exec();
+            qCDebug(KAMD_LOG_APPLICATION) << "Starting: " << service.exec();
             QProcess::startDetached(service.exec());
         } else {
-            qDebug() << "Openning file: " << QUrl::fromLocalFile(filePath);
+            qCDebug(KAMD_LOG_APPLICATION) << "Openning file: " << QUrl::fromLocalFile(filePath);
             QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
         }
     }

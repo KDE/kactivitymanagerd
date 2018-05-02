@@ -14,6 +14,7 @@ include_directories (
 set (
    runapplication_SRCS
    RunApplicationPlugin.cpp
+   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/service/Debug.cpp
    ${plugin_implementation_SRCS}
    )
 

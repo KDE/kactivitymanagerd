@@ -237,7 +237,7 @@ bool Application::loadPlugin(const QString &pluginId)
 
 Application::~Application()
 {
-    qDebug() << "Cleaning up...";
+    qCDebug(KAMD_LOG_APPLICATION) << "Cleaning up...";
 
     // Waiting for the threads to finish
     for (const auto thread : s_moduleThreads) {

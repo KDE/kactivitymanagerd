@@ -68,7 +68,7 @@ public:
     };
 
     #define DATABASE_TRANSACTION(A) \
-        /* enable this for debugging only: qDebug() << "Location:" << __FILE__ << __LINE__; */ \
+        /* enable this for debugging only: qCDebug(KAMD_LOG_RESOURCES) << "Location:" << __FILE__ << __LINE__; */ \
         Common::Database::Locker lock(A)
 
 private:
