@@ -15,6 +15,8 @@ find_package (KF5WindowSystem ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5GlobalAccel ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5XmlGui ${KF5_DEP_VERSION} CONFIG REQUIRED)
 find_package (KF5KIO ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package (KF5Crash ${KF5_DEP_VERSION} CONFIG REQUIRED)
+
 
 # Standard stuff
 
@@ -69,6 +71,7 @@ target_link_libraries (kactivitymanagerd
    KF5::ConfigCore
    KF5::I18n
    KF5::WindowSystem
+   KF5::Crash
    kactivitymanagerd_plugin
    )
 
