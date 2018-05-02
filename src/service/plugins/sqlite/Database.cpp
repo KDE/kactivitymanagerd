@@ -41,7 +41,7 @@
 #include <memory>
 
 // Local
-#include "Debug.h"
+#include "DebugResources.h"
 #include "Utils.h"
 
 #include <common/database/Database.h>

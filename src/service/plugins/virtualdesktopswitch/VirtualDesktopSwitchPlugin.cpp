@@ -18,7 +18,6 @@
 #include "VirtualDesktopSwitchPlugin.h"
 
 #include <QString>
-#include <Debug.h>
 
 #include <kwindowsystem.h>
 

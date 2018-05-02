@@ -43,7 +43,7 @@
 #include <utils/range.h>
 
 // Local
-#include "Debug.h"
+#include "DebugActivities.h"
 #include "activitiesadaptor.h"
 #include "ksmserver/KSMServer.h"
 #include "common/dbus/common.h"

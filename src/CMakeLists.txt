@@ -70,5 +70,21 @@ configure_file(org.kde.activitymanager.service.in
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service
         DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 
+ecm_qt_declare_logging_category(debug_SRCS
+   HEADER DebugActivities.h
+   IDENTIFIER KAMD_LOG_ACTIVITIES
+   CATEGORY_NAME org.kde.kactivities.activities
+   DEFAULT_SEVERITY Warning)
+ecm_qt_declare_logging_category(debug_SRCS
+   HEADER DebugResources.h
+   IDENTIFIER KAMD_LOG_RESOURCES
+   CATEGORY_NAME org.kde.kactivities.resources
+   DEFAULT_SEVERITY Warning)
+ecm_qt_declare_logging_category(debug_SRCS
+   HEADER DebugApplication.h
+   IDENTIFIER KAMD_LOG_APPLICATION
+   CATEGORY_NAME org.kde.kactivities.application
+   DEFAULT_SEVERITY Warning)
+
 add_subdirectory (service)
 

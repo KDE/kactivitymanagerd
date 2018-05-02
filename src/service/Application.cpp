@@ -57,7 +57,7 @@
 #include "Features.h"
 #include "Config.h"
 #include "Plugin.h"
-#include "Debug.h"
+#include "DebugApplication.h"
 #include "common/dbus/common.h"
 
 

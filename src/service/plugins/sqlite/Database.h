@@ -32,7 +32,6 @@
 #include <utils/d_ptr.h>
 
 // Local
-#include <Debug.h>
 #include <common/database/Database.h>
 
 class QDateTime;

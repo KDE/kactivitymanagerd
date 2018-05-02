@@ -37,7 +37,7 @@
 #include <utils/d_ptr_implementation.h>
 
 // Local
-#include <Debug.h>
+#include "DebugActivities.h"
 
 #define KWIN_SERVICE QStringLiteral("org.kde.KWin")
 

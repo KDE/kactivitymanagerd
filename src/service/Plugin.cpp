@@ -28,7 +28,7 @@
 #include <utils/d_ptr_implementation.h>
 
 // Local
-#include "Debug.h"
+#include "DebugApplication.h"
 
 
 class Plugin::Private {

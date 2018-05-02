@@ -35,7 +35,7 @@
 #include <mutex>
 #include <map>
 
-#include "Debug.h"
+#include "DebugResources.h"
 
 namespace Common {
 

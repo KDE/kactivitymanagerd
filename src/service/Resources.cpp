@@ -40,7 +40,6 @@
 #include <time.h>
 
 // Local
-#include "Debug.h"
 #include "Application.h"
 #include "Activities.h"
 #include "resourcesadaptor.h"

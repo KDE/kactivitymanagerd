@@ -29,7 +29,7 @@
 #include <utils/qsqlquery_iterator.h>
 
 // Local
-#include "Debug.h"
+#include "DebugResources.h"
 #include "StatsPlugin.h"
 #include "Database.h"
 #include "Utils.h"

@@ -20,7 +20,7 @@ find_package (KF5KIO ${KF5_DEP_VERSION} CONFIG REQUIRED)
 
 set (CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp Debug.cpp)
+add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp ${debug_SRCS})
 generate_export_header(kactivitymanagerd_plugin)
 target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt5::Core Qt5::DBus KF5::CoreAddons KF5::ConfigCore)
 
@@ -30,7 +30,7 @@ set (kactivitymanager_SRCS
    Application.cpp
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/dbus/org.kde.ActivityManager.Activities.cpp
 
-   Debug.cpp
+   ${debug_SRCS}
    Activities.cpp
    Resources.cpp
    Features.cpp

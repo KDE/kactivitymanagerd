@@ -24,6 +24,8 @@
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 #include <memory>
 
+#include "DebugResources.h"
+
 namespace Utils {
 
     static unsigned int errorCount = 0;

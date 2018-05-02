@@ -24,7 +24,7 @@
 #include <QProcess>
 #include <QDesktopServices>
 
-#include <Debug.h>
+#include "DebugApplication.h"
 
 #include <KService>
 

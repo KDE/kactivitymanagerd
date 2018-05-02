@@ -35,7 +35,7 @@
 #include <utils/range.h>
 
 // Local
-#include "Debug.h"
+#include "DebugResources.h"
 #include "Database.h"
 #include "Utils.h"
 #include "StatsPlugin.h"

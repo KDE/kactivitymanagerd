@@ -36,7 +36,6 @@
 #include <utils/range.h>
 
 // Local
-#include "Debug.h"
 #include "Database.h"
 #include "ResourceScoreMaintainer.h"
 #include "ResourceLinking.h"

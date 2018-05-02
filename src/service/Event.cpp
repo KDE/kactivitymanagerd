@@ -22,7 +22,7 @@
 #include "Event.h"
 
 // Local
-#include "Debug.h"
+#include <QDebug>
 
 
 Event::Event()
