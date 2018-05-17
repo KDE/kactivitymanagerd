@@ -42,7 +42,7 @@ class ResourceLinking : public QObject {
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Resources.Linking")
 
 public:
-    ResourceLinking(QObject *parent);
+    explicit ResourceLinking(QObject *parent);
 
     void init();
 

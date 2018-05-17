@@ -29,8 +29,8 @@ class EventSpyPlugin : public Plugin {
     Q_OBJECT
 
 public:
-    EventSpyPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
-    virtual ~EventSpyPlugin();
+    explicit EventSpyPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
+    ~EventSpyPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
 

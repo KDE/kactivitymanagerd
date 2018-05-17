@@ -284,7 +284,7 @@ Resources::~Resources()
 {
 }
 
-void Resources::RegisterResourceEvent(QString application, uint _windowId,
+void Resources::RegisterResourceEvent(const QString &application, uint _windowId,
                                       const QString &uri, uint event)
 {
     if (event > Event::LastEventType

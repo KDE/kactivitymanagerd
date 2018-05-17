@@ -48,7 +48,7 @@ class KACTIVITYMANAGERD_PLUGIN_EXPORT Plugin : public Module {
     Q_OBJECT
 
 public:
-    Plugin(QObject *parent);
+    explicit Plugin(QObject *parent);
     virtual ~Plugin();
 
     /**

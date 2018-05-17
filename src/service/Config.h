@@ -27,7 +27,7 @@ class Config : public Module {
     Q_OBJECT
 
 public:
-    Config(QObject *parent = Q_NULLPTR);
+    explicit Config(QObject *parent = Q_NULLPTR);
     virtual ~Config();
 
 Q_SIGNALS:

@@ -30,7 +30,7 @@ class TemplatesPlugin : public Plugin {
 public:
     TemplatesPlugin(QObject *parent = Q_NULLPTR,
                     const QVariantList &args = QVariantList());
-    virtual ~TemplatesPlugin();
+    ~TemplatesPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
 

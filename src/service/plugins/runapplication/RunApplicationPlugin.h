@@ -25,8 +25,8 @@ class RunApplicationPlugin : public Plugin {
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.virtualdesktopswitch")
 
 public:
-    RunApplicationPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
-    virtual ~RunApplicationPlugin();
+    explicit RunApplicationPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
+    ~RunApplicationPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
 

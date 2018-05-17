@@ -27,7 +27,7 @@ class SlcPlugin : public Plugin {
 
 public:
     explicit SlcPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
-    ~SlcPlugin();
+    ~SlcPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
 

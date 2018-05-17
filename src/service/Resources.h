@@ -54,7 +54,7 @@ public Q_SLOTS:
      * @param uri URI of the resource on which the event happened
      * @param event type of the event
      */
-    void RegisterResourceEvent(QString application, uint windowId,
+    void RegisterResourceEvent(const QString &application, uint windowId,
                                const QString &uri, uint event);
 
     /**

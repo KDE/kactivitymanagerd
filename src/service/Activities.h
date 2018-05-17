@@ -58,7 +58,7 @@ public:
     /**
      * Creates new Activities object
      */
-    Activities(QObject *parent = Q_NULLPTR);
+    explicit Activities(QObject *parent = Q_NULLPTR);
 
     /**
      * Destroys this interface
