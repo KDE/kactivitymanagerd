@@ -36,7 +36,6 @@ cxx_check_feature ("c++11" "initializer-lists"  "N2672" HAVE_CXX11_INITIALIZER_L
 
 # Config file
 set (KAMD_FULL_BIN_DIR "${KDE_INSTALL_FULL_BINDIR}")
-set (KAMD_DATA_DIR "${KDE_INSTALL_DATADIR}/kactivitymanagerd/")
 set (KAMD_PLUGIN_VERSION 1)
 set (KAMD_PLUGIN_DIR "kactivitymanagerd/${KAMD_PLUGIN_VERSION}")
 set (KAMD_FULL_PLUGIN_DIR "${KDE_INSTALL_FULL_PLUGINDIR}/${KAMD_PLUGIN_DIR}/")

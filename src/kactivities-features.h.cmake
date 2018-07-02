@@ -1,8 +1,6 @@
 #ifndef CONFIG_FEATURES_H_
 #define CONFIG_FEATURES_H_
 
-#cmakedefine KAMD_DATA_DIR "@KAMD_DATA_DIR@"
-
 #cmakedefine KAMD_PLUGIN_DIR "@KAMD_PLUGIN_DIR@"
 #cmakedefine KAMD_FULL_PLUGIN_DIR "@KAMD_FULL_PLUGIN_DIR@"
 
