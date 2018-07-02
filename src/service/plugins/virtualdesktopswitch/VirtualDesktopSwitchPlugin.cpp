@@ -27,7 +27,7 @@ const auto configPattern = QStringLiteral("desktop-for-%1");
 
 VirtualDesktopSwitchPlugin::VirtualDesktopSwitchPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
-    , m_activitiesService(Q_NULLPTR)
+    , m_activitiesService(nullptr)
 {
     Q_UNUSED(args);
 

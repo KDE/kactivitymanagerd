@@ -40,7 +40,7 @@ class KACTIVITYMANAGERD_PLUGIN_EXPORT Module : public QObject {
     Q_OBJECT
 
 public:
-    explicit Module(const QString &name, QObject *parent = Q_NULLPTR);
+    explicit Module(const QString &name, QObject *parent = nullptr);
     virtual ~Module();
 
     static QObject *get(const QString &name);

@@ -63,7 +63,7 @@ QObject *Module::get(const QString &name)
     }
 
     qCWarning(KAMD_LOG_APPLICATION) << "The requested module doesn't exist:" << name;
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 QHash<QString, QObject *> &Module::get()

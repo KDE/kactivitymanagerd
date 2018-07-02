@@ -46,12 +46,12 @@
 
 KAMD_EXPORT_PLUGIN(sqliteplugin, StatsPlugin, "kactivitymanagerd-plugin-sqlite.json")
 
-StatsPlugin *StatsPlugin::s_instance = Q_NULLPTR;
+StatsPlugin *StatsPlugin::s_instance = nullptr;
 
 StatsPlugin::StatsPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
-    , m_activities(Q_NULLPTR)
-    , m_resources(Q_NULLPTR)
+    , m_activities(nullptr)
+    , m_resources(nullptr)
     , m_resourceLinking(new ResourceLinking(this))
 {
     Q_UNUSED(args);

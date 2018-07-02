@@ -30,7 +30,7 @@ class GlobalShortcutsPlugin : public Plugin {
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.globalshortcutsplugin")
 
 public:
-    explicit GlobalShortcutsPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
+    explicit GlobalShortcutsPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
     ~GlobalShortcutsPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;

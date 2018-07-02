@@ -45,7 +45,7 @@ class StatsPlugin : public Plugin {
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.sqlite")
 
 public:
-    explicit StatsPlugin(QObject *parent = Q_NULLPTR,
+    explicit StatsPlugin(QObject *parent = nullptr,
                          const QVariantList &args = QVariantList());
 
     static StatsPlugin *self();

@@ -43,7 +43,7 @@
 
 KSMServer::Private::Private(KSMServer *parent)
     : serviceWatcher(new QDBusServiceWatcher(this))
-    , kwin(Q_NULLPTR)
+    , kwin(nullptr)
     , processing(false)
     , q(parent)
 {
@@ -66,7 +66,7 @@ void KSMServer::Private::serviceOwnerChanged(const QString &service,
     if (service == KWIN_SERVICE) {
         // Delete the old object, just in case
         delete kwin;
-        kwin = Q_NULLPTR;
+        kwin = nullptr;
 
         if (KDBusConnectionPool::threadConnection().interface()->isServiceRegistered(KWIN_SERVICE)) {
             // Creating the new dbus interface
@@ -84,7 +84,7 @@ void KSMServer::Private::serviceOwnerChanged(const QString &service,
 
             } else {
                 delete kwin;
-                kwin = Q_NULLPTR;
+                kwin = nullptr;
             }
         }
     }

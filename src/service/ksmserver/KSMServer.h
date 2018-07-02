@@ -40,7 +40,7 @@ public:
         FailedToStop = 2
     };
 
-    explicit KSMServer(QObject *parent = Q_NULLPTR);
+    explicit KSMServer(QObject *parent = nullptr);
     virtual ~KSMServer();
 
 public Q_SLOTS:

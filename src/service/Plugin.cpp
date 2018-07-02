@@ -34,7 +34,7 @@
 class Plugin::Private {
 public:
     Private()
-        : config(Q_NULLPTR)
+        : config(nullptr)
     {
     }
 

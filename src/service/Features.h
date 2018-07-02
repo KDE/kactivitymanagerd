@@ -42,7 +42,7 @@ class Features : public Module {
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Features")
 
 public:
-    explicit Features(QObject *parent = Q_NULLPTR);
+    explicit Features(QObject *parent = nullptr);
     virtual ~Features();
 
 public Q_SLOTS:

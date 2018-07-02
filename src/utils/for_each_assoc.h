@@ -75,7 +75,7 @@ template <typename Container, typename Function>
 Function for_each_assoc(const Container &c, Function f)
 {
     return details::_for_each_assoc_helper_container
-        <Container, Function>(c, f, Q_NULLPTR);
+        <Container, Function>(c, f, nullptr);
 }
 
 } // namespace utils

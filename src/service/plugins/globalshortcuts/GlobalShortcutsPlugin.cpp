@@ -34,7 +34,7 @@ const auto objectNamePatternLength = objectNamePattern.length() - 2;
 
 GlobalShortcutsPlugin::GlobalShortcutsPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
-    , m_activitiesService(Q_NULLPTR)
+    , m_activitiesService(nullptr)
     , m_signalMapper(new QSignalMapper(this))
     , m_actionCollection(new KActionCollection(this))
 {

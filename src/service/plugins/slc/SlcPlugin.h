@@ -26,7 +26,7 @@ class SlcPlugin : public Plugin {
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.slc")
 
 public:
-    explicit SlcPlugin(QObject *parent = Q_NULLPTR, const QVariantList &args = QVariantList());
+    explicit SlcPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
     ~SlcPlugin() Q_DECL_OVERRIDE;
 
     bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;

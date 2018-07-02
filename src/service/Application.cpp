@@ -74,7 +74,7 @@ T *runInQThread()
 
     class Thread : public QThread {
     public:
-        Thread(T *ptr = Q_NULLPTR)
+        Thread(T *ptr = nullptr)
             : QThread()
             , object(ptr)
         {
@@ -131,7 +131,7 @@ public:
     static Application *s_instance;
 };
 
-Application *Application::Private::s_instance = Q_NULLPTR;
+Application *Application::Private::s_instance = nullptr;
 
 Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
@@ -252,7 +252,7 @@ Application::~Application()
         delete plugin;
     }
 
-    Private::s_instance = Q_NULLPTR;
+    Private::s_instance = nullptr;
 }
 
 int Application::newInstance()
@@ -326,7 +326,7 @@ int main(int argc, char **argv)
     application.setApplicationName(QStringLiteral("ActivityManager"));
     application.setOrganizationDomain(QStringLiteral("kde.org"));
 
-    // KAboutData about("kactivitymanagerd", Q_NULLPTR, ki18n("KDE Activity Manager"), "3.0",
+    // KAboutData about("kactivitymanagerd", nullptr, ki18n("KDE Activity Manager"), "3.0",
     //         ki18n("KDE Activity Management Service"),
     //         KAboutData::License_GPL,
     //         ki18n("(c) 2010, 2011, 2012 Ivan Cukic"), KLocalizedString(),

@@ -41,7 +41,7 @@ class Resources : public Module {
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Resources")
 
 public:
-    explicit Resources(QObject *parent = Q_NULLPTR);
+    explicit Resources(QObject *parent = nullptr);
     virtual ~Resources();
 
 public Q_SLOTS:

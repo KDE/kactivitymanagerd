@@ -39,7 +39,7 @@ KAMD_EXPORT_PLUGIN(runapplicationplugin, RunApplicationPlugin, "kactivitymanager
 
 RunApplicationPlugin::RunApplicationPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
-    , m_activitiesService(Q_NULLPTR)
+    , m_activitiesService(nullptr)
 {
     Q_UNUSED(args);
 
