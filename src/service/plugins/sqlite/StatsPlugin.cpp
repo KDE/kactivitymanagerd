@@ -155,13 +155,13 @@ void StatsPlugin::openResourceEvent(const QString &usedActivity,
 {
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "StatsPlugin::openResourceEvent",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!usedActivity.isEmpty(),
                "StatsPlugin::openResourceEvent",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!targettedResource.isEmpty(),
                "StatsPlugin::openResourceEvent",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     detectResourceInfo(targettedResource);
 
@@ -187,13 +187,13 @@ void StatsPlugin::closeResourceEvent(const QString &usedActivity,
 {
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "StatsPlugin::closeResourceEvent",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!usedActivity.isEmpty(),
                "StatsPlugin::closeResourceEvent",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!targettedResource.isEmpty(),
                "StatsPlugin::closeResourceEvent",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     Utils::prepare(*resourcesDatabase(), closeResourceEventQuery, QStringLiteral(
         "UPDATE ResourceEvent "
@@ -553,13 +553,13 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity,
 {
     Q_ASSERT_X(!client.isEmpty(),
                "StatsPlugin::DeleteStatsForResource",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!activity.isEmpty(),
                "StatsPlugin::DeleteStatsForResource",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!resource.isEmpty(),
                "StatsPlugin::DeleteStatsForResource",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
     Q_ASSERT_X(client != CURRENT_AGENT_TAG,
                "StatsPlugin::DeleteStatsForResource",
                "We can not handle CURRENT_AGENT_TAG here");

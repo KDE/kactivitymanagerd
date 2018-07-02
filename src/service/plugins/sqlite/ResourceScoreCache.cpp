@@ -132,13 +132,13 @@ ResourceScoreCache::ResourceScoreCache(const QString &activity,
 
     Q_ASSERT_X(!d->application.isEmpty(),
                "ResourceScoreCache::constructor",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!d->activity.isEmpty(),
                "ResourceScoreCache::constructor",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!d->resource.isEmpty(),
                "ResourceScoreCache::constructor",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
 }
 

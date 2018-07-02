@@ -79,13 +79,13 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
 
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "ResourceLinking::LinkResourceToActivity",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!usedActivity.isEmpty(),
                "ResourceLinking::LinkResourceToActivity",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!targettedResource.isEmpty(),
                "ResourceLinking::LinkResourceToActivity",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     Utils::prepare(*resourcesDatabase(), linkResourceToActivityQuery,
         QStringLiteral(
@@ -136,13 +136,13 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
 
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "ResourceLinking::UnlinkResourceFromActivity",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!usedActivity.isEmpty(),
                "ResourceLinking::UnlinkResourceFromActivity",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!targettedResource.isEmpty(),
                "ResourceLinking::UnlinkResourceFromActivity",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     QSqlQuery *query = nullptr;
 
@@ -205,13 +205,13 @@ bool ResourceLinking::IsResourceLinkedToActivity(QString initiatingAgent,
 
     Q_ASSERT_X(!initiatingAgent.isEmpty(),
                "ResourceLinking::IsResourceLinkedToActivity",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!usedActivity.isEmpty(),
                "ResourceLinking::IsResourceLinkedToActivity",
-               "Activity shoud not be empty");
+               "Activity should not be empty");
     Q_ASSERT_X(!targettedResource.isEmpty(),
                "ResourceLinking::IsResourceLinkedToActivity",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     Utils::prepare(*resourcesDatabase(), isResourceLinkedToActivityQuery,
         QStringLiteral(

@@ -138,10 +138,10 @@ void ResourceScoreMaintainer::processResource(const QString &resource,
 
     Q_ASSERT_X(!application.isEmpty(),
                "ResourceScoreMaintainer::processResource",
-               "Agent shoud not be empty");
+               "Agent should not be empty");
     Q_ASSERT_X(!resource.isEmpty(),
                "ResourceScoreMaintainer::processResource",
-               "Resource shoud not be empty");
+               "Resource should not be empty");
 
     if (d->scheduledResources.contains(activity)
         && d->scheduledResources[activity].contains(application)
