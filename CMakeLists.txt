@@ -34,6 +34,7 @@ include (KDECompilerSettings NO_POLICY_SCOPE)
 include (GenerateExportHeader)
 include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
+include (ECMSetupQtPluginMacroNames)
 
 # Qt
 set (CMAKE_AUTOMOC ON)

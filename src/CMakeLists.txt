@@ -86,5 +86,7 @@ ecm_qt_declare_logging_category(debug_SRCS
    CATEGORY_NAME org.kde.kactivities.application
    DEFAULT_SEVERITY Warning)
 
+ecm_setup_qtplugin_macro_names(JSON_ARG3 "KAMD_EXPORT_PLUGIN")
+
 add_subdirectory (service)
 
