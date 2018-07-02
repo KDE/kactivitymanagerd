@@ -2,15 +2,6 @@
 
 project (kactivitymanagerd-runapplication)
 
-include_directories (
-   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src
-   ${CMAKE_BINARY_DIR}/src
-   ${CMAKE_CURRENT_SOURCE_DIR}
-   ${CMAKE_CURRENT_SOURCE_DIR}/../..
-   ${CMAKE_CURRENT_BINARY_DIR}
-   ${KConfig_INCLUDE_DIR}
-   )
-
 set (
    runapplication_SRCS
    RunApplicationPlugin.cpp

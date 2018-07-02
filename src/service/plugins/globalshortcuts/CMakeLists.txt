@@ -2,15 +2,6 @@
 
 project (activitymanager-globalshortcuts)
 
-include_directories (
-   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src
-   ${CMAKE_BINARY_DIR}/src
-   ${CMAKE_CURRENT_SOURCE_DIR}
-   ${CMAKE_CURRENT_SOURCE_DIR}/../..
-   ${CMAKE_CURRENT_BINARY_DIR}
-   ${KConfig_INCLUDE_DIR}
-   )
-
 set (
    globalshortcuts_SRCS
    GlobalShortcutsPlugin.cpp

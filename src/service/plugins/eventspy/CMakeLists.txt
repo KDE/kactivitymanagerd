@@ -4,15 +4,6 @@ project (activitymanager-eventspy)
 
 find_package (KF5KIO ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
-include_directories (
-   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src
-   ${CMAKE_BINARY_DIR}/src
-   ${CMAKE_CURRENT_SOURCE_DIR}
-   ${CMAKE_CURRENT_SOURCE_DIR}/../..
-   ${CMAKE_CURRENT_BINARY_DIR}
-   ${KConfig_INCLUDE_DIR}
-   )
-
 set (
    evenyspy_SRCS
    EventSpy.cpp

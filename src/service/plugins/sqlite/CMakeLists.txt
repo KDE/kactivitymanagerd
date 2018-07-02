@@ -31,16 +31,6 @@ qt5_add_dbus_adaptor (
    resourcescoringadaptor
    )
 
-include_directories (
-   ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src
-   ${CMAKE_BINARY_DIR}/src
-   ${CMAKE_CURRENT_SOURCE_DIR}
-   ${CMAKE_CURRENT_SOURCE_DIR}/../..
-   ${CMAKE_CURRENT_BINARY_DIR}
-   ${CMAKE_CURRENT_BINARY_DIR}/../..
-   ${KConfig_INCLUDE_DIR}
-   )
-
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_sqlite
    JSON kactivitymanagerd-plugin-sqlite.json
