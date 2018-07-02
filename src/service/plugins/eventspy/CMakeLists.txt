@@ -2,7 +2,7 @@
 
 project (activitymanager-eventspy)
 
-find_package (KF5KIO ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package (KF5KIO ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
 include_directories (
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src

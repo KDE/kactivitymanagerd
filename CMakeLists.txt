@@ -7,7 +7,8 @@ project (KActivities)
 option (KACTIVITIES_LIBRARY_ONLY "If true, compiles only the KActivities library, without the service and other modules." OFF)
 option (KACTIVITIES_ENABLE_EXCEPTIONS "If you have Boost 1.53, you need to build KActivities with exceptions enabled. This is UNTESTED and EXPERIMENTAL!" OFF)
 
-set (REQUIRED_QT_VERSION 5.3.0)
+set(QT_MIN_VERSION "5.9.0")
+set(KF5_MIN_VERSION "5.42.0")
 
 # We don't build in-source
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
@@ -36,13 +37,11 @@ include (ECMQtDeclareLoggingCategory)
 
 # Qt
 set (CMAKE_AUTOMOC ON)
-find_package (Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
+find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
 
 # KDE Frameworks
-set(KF5_VERSION "5.19.0") # handled by release scripts
-set(KF5_DEP_VERSION "5.18.0") # handled by release scripts
-find_package (KF5DBusAddons ${KF5_DEP_VERSION} CONFIG REQUIRED)
-find_package (KF5I18n ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package (KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
 # Basic includes
 include (CPack)
