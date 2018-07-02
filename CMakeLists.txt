@@ -46,10 +46,6 @@ find_package (KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
 # Basic includes
 include (CPack)
 
-include (ECMPackageConfigHelpers)
-include (ECMSetupVersion)
-
-
 # Adding local CMake modules
 set (
    CMAKE_MODULE_PATH
