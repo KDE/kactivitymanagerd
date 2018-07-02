@@ -81,7 +81,7 @@ install (FILES
    )
 
 install (TARGETS
-   kactivitymanagerd kactivitymanagerd_plugin ${KF5_INSTALL_TARGETS_DEFAULT_ARGS}
+   kactivitymanagerd kactivitymanagerd_plugin ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
    )
 
 install (FILES
