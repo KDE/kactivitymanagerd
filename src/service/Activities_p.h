@@ -43,7 +43,7 @@ class Activities::Private : public QObject {
 
 public:
     Private(Activities *parent);
-    ~Private();
+    ~Private() override;
 
     // Loads the last activity
     // the user has used

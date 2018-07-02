@@ -80,7 +80,7 @@ T *runInQThread()
         {
         }
 
-        void run() Q_DECL_OVERRIDE
+        void run() override
         {
             std::unique_ptr<T> o(object);
             exec();

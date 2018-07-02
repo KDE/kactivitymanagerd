@@ -31,9 +31,9 @@ class GlobalShortcutsPlugin : public Plugin {
 
 public:
     explicit GlobalShortcutsPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
-    ~GlobalShortcutsPlugin() Q_DECL_OVERRIDE;
+    ~GlobalShortcutsPlugin() override;
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
 private Q_SLOTS:
     void activityAdded(const QString &activity);

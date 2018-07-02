@@ -26,9 +26,9 @@ class RunApplicationPlugin : public Plugin {
 
 public:
     explicit RunApplicationPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
-    ~RunApplicationPlugin() Q_DECL_OVERRIDE;
+    ~RunApplicationPlugin() override;
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
 private Q_SLOTS:
     void currentActivityChanged(const QString &activity);

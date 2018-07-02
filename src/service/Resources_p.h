@@ -38,9 +38,9 @@ class Resources::Private : public QThread {
 
 public:
     Private(Resources *parent);
-    ~Private();
+    ~Private() override;
 
-    void run() Q_DECL_OVERRIDE;
+    void run() override;
 
     // Inserts the event directly into the queue
     void insertEvent(const Event &newEvent);

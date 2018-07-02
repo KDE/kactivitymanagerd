@@ -50,7 +50,7 @@ public:
 
 private:
     ResourcesDatabaseMigrator();
-    ~ResourcesDatabaseMigrator();
+    ~ResourcesDatabaseMigrator() override;
 
     void migrateDatabase(const QString &newDatabaseFile) const;
 

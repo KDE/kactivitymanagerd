@@ -50,7 +50,7 @@ public:
 
     static StatsPlugin *self();
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
     QString currentActivity() const;
     QStringList listActivities() const;
@@ -58,11 +58,11 @@ public:
     inline
     QObject *activitiesInterface() const { return m_activities; }
 
-    bool isFeatureOperational(const QStringList &feature) const Q_DECL_OVERRIDE;
-    QStringList listFeatures(const QStringList &feature) const Q_DECL_OVERRIDE;
+    bool isFeatureOperational(const QStringList &feature) const override;
+    QStringList listFeatures(const QStringList &feature) const override;
 
-    QDBusVariant featureValue(const QStringList &property) const Q_DECL_OVERRIDE;
-    void setFeatureValue(const QStringList &property, const QDBusVariant &value) Q_DECL_OVERRIDE;
+    QDBusVariant featureValue(const QStringList &property) const override;
+    void setFeatureValue(const QStringList &property, const QDBusVariant &value) override;
 
 //
 // D-BUS Interface methods

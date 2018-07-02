@@ -49,7 +49,7 @@ class KACTIVITYMANAGERD_PLUGIN_EXPORT Plugin : public Module {
 
 public:
     explicit Plugin(QObject *parent);
-    virtual ~Plugin();
+    ~Plugin() override;
 
     /**
      * Initializes the plugin.

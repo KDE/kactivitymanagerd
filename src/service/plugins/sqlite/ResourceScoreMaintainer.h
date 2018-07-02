@@ -35,7 +35,7 @@ class ResourceScoreMaintainer: public QObject {
 public:
     static ResourceScoreMaintainer *self();
 
-    virtual ~ResourceScoreMaintainer();
+    ~ResourceScoreMaintainer() override;
 
     void processResource(const QString &resource, const QString &application);
 

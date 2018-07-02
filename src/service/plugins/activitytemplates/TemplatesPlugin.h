@@ -30,14 +30,14 @@ class TemplatesPlugin : public Plugin {
 public:
     explicit TemplatesPlugin(QObject *parent = nullptr,
                              const QVariantList &args = QVariantList());
-    ~TemplatesPlugin() Q_DECL_OVERRIDE;
+    ~TemplatesPlugin() override;
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
-    QDBusVariant featureValue(const QStringList &property) const Q_DECL_OVERRIDE;
+    QDBusVariant featureValue(const QStringList &property) const override;
 
-    virtual void setFeatureValue(const QStringList &property,
-                                 const QDBusVariant &value) Q_DECL_OVERRIDE;
+    void setFeatureValue(const QStringList &property,
+                         const QDBusVariant &value) override;
 
 public Q_SLOTS:
     void createActivity(const QDBusVariant &values);

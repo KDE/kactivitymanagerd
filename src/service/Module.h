@@ -41,7 +41,7 @@ class KACTIVITYMANAGERD_PLUGIN_EXPORT Module : public QObject {
 
 public:
     explicit Module(const QString &name, QObject *parent = nullptr);
-    virtual ~Module();
+    ~Module() override;
 
     static QObject *get(const QString &name);
     static QHash<QString, QObject *> &get();

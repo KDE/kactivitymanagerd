@@ -42,7 +42,7 @@ class Resources : public Module {
 
 public:
     explicit Resources(QObject *parent = nullptr);
-    virtual ~Resources();
+    ~Resources() override;
 
 public Q_SLOTS:
     /**

@@ -26,9 +26,9 @@ class VirtualDesktopSwitchPlugin : public Plugin {
 
 public:
     explicit VirtualDesktopSwitchPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
-    ~VirtualDesktopSwitchPlugin() Q_DECL_OVERRIDE;
+    ~VirtualDesktopSwitchPlugin() override;
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
 private Q_SLOTS:
     void currentActivityChanged(const QString &activity);

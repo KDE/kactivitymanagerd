@@ -63,7 +63,7 @@ public:
     /**
      * Destroys this interface
      */
-    virtual ~Activities();
+    ~Activities() override;
 
     // workspace activities control
 public Q_SLOTS:

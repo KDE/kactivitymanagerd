@@ -41,7 +41,7 @@ public:
     };
 
     explicit KSMServer(QObject *parent = nullptr);
-    virtual ~KSMServer();
+    ~KSMServer() override;
 
 public Q_SLOTS:
     void startActivitySession(const QString &activity);

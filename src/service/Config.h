@@ -28,7 +28,7 @@ class Config : public Module {
 
 public:
     explicit Config(QObject *parent = nullptr);
-    virtual ~Config();
+    ~Config() override;
 
 Q_SIGNALS:
     void pluginConfigChanged();

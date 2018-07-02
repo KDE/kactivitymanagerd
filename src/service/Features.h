@@ -43,7 +43,7 @@ class Features : public Module {
 
 public:
     explicit Features(QObject *parent = nullptr);
-    virtual ~Features();
+    ~Features() override;
 
 public Q_SLOTS:
     /**

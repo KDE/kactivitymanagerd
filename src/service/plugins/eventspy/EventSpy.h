@@ -30,9 +30,9 @@ class EventSpyPlugin : public Plugin {
 
 public:
     explicit EventSpyPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
-    ~EventSpyPlugin() Q_DECL_OVERRIDE;
+    ~EventSpyPlugin() override;
 
-    bool init(QHash<QString, QObject *> &modules) Q_DECL_OVERRIDE;
+    bool init(QHash<QString, QObject *> &modules) override;
 
 private Q_SLOTS:
     void directoryUpdated(const QString &dir);
