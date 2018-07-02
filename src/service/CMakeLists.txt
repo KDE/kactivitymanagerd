@@ -20,8 +20,6 @@ find_package (KF5Crash ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
 # Standard stuff
 
-set (CMAKE_INCLUDE_CURRENT_DIR ON)
-
 add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp ${debug_SRCS})
 generate_export_header(kactivitymanagerd_plugin)
 target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt5::Core Qt5::DBus KF5::CoreAddons KF5::ConfigCore)
