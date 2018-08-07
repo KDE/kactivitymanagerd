@@ -46,7 +46,7 @@
         "Description[x-test]": "xxAdds global keyboard shortcuts for activity switchingxx",
         "Description[zh_CN]": "添加活动切换的全局键盘快捷方式",
         "Description[zh_TW]": "新增活動切換的全域快速鍵",
-        "EnabledByDefault": false,
+        "EnabledByDefault": true,
         "Icon": "configure-shortcuts",
         "Id": "org.kde.ActivityManager.GlobalShortcuts",
         "License": "GPL",

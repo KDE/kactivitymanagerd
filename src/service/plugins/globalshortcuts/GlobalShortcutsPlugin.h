@@ -37,7 +37,7 @@ public:
 
 private Q_SLOTS:
     void activityAdded(const QString &activity);
-    void activityRemoved(const QString &activity = QString());
+    void activityRemoved(const QString &activity);
     void activityChanged(const QString &activity);
 
 private:

@@ -423,3 +423,8 @@ int main(int argc, char **argv)
     }
 }
 
+QStringList Application::loadedPlugins() const
+{
+    return d->pluginIds;
+}
+

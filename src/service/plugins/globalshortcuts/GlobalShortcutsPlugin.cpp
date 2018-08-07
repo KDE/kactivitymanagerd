@@ -39,6 +39,9 @@ GlobalShortcutsPlugin::GlobalShortcutsPlugin(QObject *parent, const QVariantList
     , m_actionCollection(new KActionCollection(this))
 {
     Q_UNUSED(args);
+
+    m_actionCollection->setComponentName("ActivityManager");
+    m_actionCollection->setComponentDisplayName(i18n("Activity Manager"));
 }
 
 GlobalShortcutsPlugin::~GlobalShortcutsPlugin()
@@ -69,8 +72,6 @@ bool GlobalShortcutsPlugin::init(QHash<QString, QObject *> &modules)
 
     m_actionCollection->readSettings();
 
-    activityRemoved();
-
     return true;
 }
 
@@ -88,12 +89,12 @@ void GlobalShortcutsPlugin::activityAdded(const QString &activity)
         objectNamePattern.arg(activity));
 
     action->setText(i18nc("@action", "Switch to activity \"%1\"", activityName(activity)));
-    KGlobalAccel::self()->setGlobalShortcut(action, QList<QKeySequence>{});
+    KGlobalAccel::self()->setDefaultShortcut(action, QList<QKeySequence>{});
 
     connect(action, SIGNAL(triggered()), m_signalMapper, SLOT(map()));
     m_signalMapper->setMapping(action, activity);
 
-    m_actionCollection->writeSettings();
+    // m_actionCollection->writeSettings();
 }
 
 QString GlobalShortcutsPlugin::activityForAction(QAction *action) const
