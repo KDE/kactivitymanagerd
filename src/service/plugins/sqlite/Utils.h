@@ -63,8 +63,8 @@ namespace Utils {
 
         if (eh == FailOnError) {
             if ((!success) && (errorCount++ < 2)) {
-                qCDebug(KAMD_LOG_RESOURCES) << query.lastQuery();
-                qCDebug(KAMD_LOG_RESOURCES) << query.lastError();
+                qCWarning(KAMD_LOG_RESOURCES) << query.lastQuery();
+                qCWarning(KAMD_LOG_RESOURCES) << query.lastError();
             }
             Q_ASSERT_X(success, "Uils::exec", "Query failed");
         }
