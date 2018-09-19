@@ -111,11 +111,11 @@ public:
         const auto pluginName = plugin.pluginId();
         qCDebug(KAMD_LOG_APPLICATION) << "Plugin Name is " << pluginName << plugin.fileName();
 
-        if (pluginName == "org.kde.ActivityManager.ResourceScoring") {
+        if (pluginName == QLatin1String("org.kde.ActivityManager.ResourceScoring")) {
             // SQLite plugin is necessary for the proper workspace behaviour
             return true;
         } else {
-            return config.readEntry(pluginName + "Enabled", plugin.isEnabledByDefault());
+            return config.readEntry(pluginName + QStringLiteral("Enabled"), plugin.isEnabledByDefault());
         }
     }
 
@@ -156,7 +156,7 @@ void Application::init()
 
     QMetaObject::invokeMethod(this, "loadPlugins", Qt::QueuedConnection);
 
-    QDBusConnection::sessionBus().registerObject("/ActivityManager", this,
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager"), this,
             QDBusConnection::ExportAllSlots);
 }
 
@@ -296,8 +296,8 @@ namespace  {
     template <typename Return>
     Return callOnRunningService(const QString &method)
     {
-        static QDBusInterface remote(KAMD_DBUS_SERVICE, "/ActivityManager",
-                                     "org.kde.ActivityManager.Application");
+        static QDBusInterface remote(KAMD_DBUS_SERVICE, QStringLiteral("/ActivityManager"),
+                                     QStringLiteral("org.kde.ActivityManager.Application"));
         QDBusReply<Return> reply = remote.call(method);
 
         return (Return)reply;
@@ -305,7 +305,7 @@ namespace  {
 
     QString runningServiceVersion()
     {
-        return callOnRunningService<QString>("serviceVersion");
+        return callOnRunningService<QString>(QStringLiteral("serviceVersion"));
     }
 
     bool isServiceRunning()
@@ -339,7 +339,7 @@ int main(int argc, char **argv)
     if (arguments.size() == 0) {
         QCoreApplication::exit(EXIT_FAILURE);
 
-    } else if (arguments.size() != 1 && (arguments.size() != 2 || arguments[1] == "--help")) {
+    } else if (arguments.size() != 1 && (arguments.size() != 2 || arguments[1] == QLatin1String("--help"))) {
 
         QTextStream(stdout)
             << "start\tStarts the service\n"
@@ -350,7 +350,7 @@ int main(int argc, char **argv)
 
         QCoreApplication::exit(EXIT_SUCCESS);
 
-    } else if (arguments.size() == 1 || arguments[1] == "start") {
+    } else if (arguments.size() == 1 || arguments[1] == QLatin1String("start")) {
 
         // Checking whether the service is already running
         if (isServiceRunning()) {
@@ -376,25 +376,25 @@ int main(int argc, char **argv)
         // Starting the dameon
 
         QProcess::startDetached(
-                KAMD_FULL_BIN_DIR "/kactivitymanagerd",
-                QStringList{"start-daemon"}
+                QLatin1String(KAMD_FULL_BIN_DIR "/kactivitymanagerd"),
+                QStringList{QStringLiteral("start-daemon")}
             );
 
         return application.exec();
 
-    } else if (arguments[1] == "stop") {
+    } else if (arguments[1] == QLatin1String("stop")) {
         if (!isServiceRunning()) {
             QTextStream(stdout) << "Service not running\n";
             QCoreApplication::exit(EXIT_SUCCESS);
         }
 
-        callOnRunningService<void>("quit");
+        callOnRunningService<void>(QStringLiteral("quit"));
 
         QTextStream(stdout) << "Service stopped\n";
 
         return EXIT_SUCCESS;
 
-    } else if (arguments[1] == "status") {
+    } else if (arguments[1] == QLatin1String("status")) {
 
         // Checking whether the service is already running
         if (isServiceRunning()) {
@@ -407,7 +407,7 @@ int main(int argc, char **argv)
 
         return EXIT_SUCCESS;
 
-    } else if (arguments[1] == "start-daemon") {
+    } else if (arguments[1] == QLatin1String("start-daemon")) {
         // Really starting the activity manager
 
         KDBusService service(KDBusService::Unique);

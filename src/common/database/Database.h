@@ -108,11 +108,11 @@ QString parseStarPattern(const QString &pattern, const QString &joker,
             // Just skip the current character
             isEscaped = false;
 
-        } else if (*currentPosition == '\\') {
+        } else if (*currentPosition == QLatin1Char('\\')) {
             // Skip two characters
             isEscaped = true;
 
-        } else if (*currentPosition == '*') {
+        } else if (*currentPosition == QLatin1Char('*')) {
             // Replacing the star with the sql like joker - %
             resultPattern.append(escape(stringFromIterators(
                                     currentStart, currentPosition)) + joker);

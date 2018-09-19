@@ -70,7 +70,7 @@ private:
 };
 
 Config::Config(QObject *parent)
-    : Module("config", parent)
+    : Module(QStringLiteral("config"), parent)
     , d(this)
 {
 }

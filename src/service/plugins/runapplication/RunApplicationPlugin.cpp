@@ -43,7 +43,7 @@ RunApplicationPlugin::RunApplicationPlugin(QObject *parent, const QVariantList &
 {
     Q_UNUSED(args);
 
-    setName("org.kde.ActivityManager.RunApplication");
+    setName(QStringLiteral("org.kde.ActivityManager.RunApplication"=);
 }
 
 RunApplicationPlugin::~RunApplicationPlugin()
@@ -54,7 +54,7 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
 {
     Plugin::init(modules);
 
-    m_activitiesService = modules["activities"];
+    m_activitiesService = modules[QStringLiteral("activities")];
 
     connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)),
             this, SLOT(currentActivityChanged(QString)));
@@ -62,7 +62,7 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
             this, SLOT(activityStateChanged(QString, int)));
 
     const auto currentActivity = Plugin::retrieve<QString>(
-            m_activitiesService, "CurrentActivity", "QString");
+            m_activitiesService, QStringLiteral("CurrentActivity"), QStringLiteral("QString"));
 
     currentActivityChanged(currentActivity);
 
@@ -72,7 +72,7 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
 QString RunApplicationPlugin::activityDirectory(const QString &activity) const
 {
     return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-           + QStringLiteral("/kactivitymanagerd/activities/") + activity + '/';
+           + QStringLiteral("/kactivitymanagerd/activities/") + activity + QLatin1Char('/');
 }
 
 void RunApplicationPlugin::currentActivityChanged(const QString &activity)
@@ -82,12 +82,12 @@ void RunApplicationPlugin::currentActivityChanged(const QString &activity)
     }
 
     if (!m_currentActivity.isEmpty()) {
-        executeIn(activityDirectory(activity) + "deactivated");
+        executeIn(activityDirectory(activity) + QStringLiteral("deactivated"));
     }
 
     m_currentActivity = activity;
 
-    executeIn(activityDirectory(activity) + "activated");
+    executeIn(activityDirectory(activity) + QStringLiteral("activated"));
 
     if (!m_previousActivities.contains(activity)) {
         // This is the first time we have switched

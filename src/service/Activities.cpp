@@ -57,7 +57,7 @@ Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransi
     // configuration file to the new location.
     const QString newConfigLocation
         = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
-          + '/' + ACTIVITY_MANAGER_CONFIG_FILE_NAME;
+          + QLatin1Char('/') + ACTIVITY_MANAGER_CONFIG_FILE_NAME;
 
     if (QFile(newConfigLocation).exists()) {
         return;
@@ -69,7 +69,7 @@ Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransi
         return;
     }
 
-    QString oldConfigFile(migration.locateLocal("config", "activitymanagerrc"));
+    QString oldConfigFile(migration.locateLocal("config", QStringLiteral("activitymanagerrc")));
     if (!oldConfigFile.isEmpty()) {
         QFile(oldConfigFile).copy(newConfigLocation);
     }
@@ -120,7 +120,7 @@ Activities::Private::Private(Activities *parent)
     // Is this our first start?
     if (activities.isEmpty()) {
         // We need to add this only after the service has been properly started
-        KConfigGroup cg(KSharedConfig::openConfig("kdeglobals"), "Activities");
+        KConfigGroup cg(KSharedConfig::openConfig(QStringLiteral("kdeglobals")), QStringLiteral("Activities"));
         //NOTE: config key still singular for retrocompatibility
         const QStringList names = cg.readEntry("defaultActivityName", QStringList{i18n("Default")});
 
@@ -475,7 +475,7 @@ QString Activities::AddActivity(const QString &name)
 {
     // We do not care about authorization if this is the first start
     if (!d->activities.isEmpty() &&
-            !KAuthorized::authorize("plasma-desktop/add_activities")) {
+            !KAuthorized::authorize(QStringLiteral("plasma-desktop/add_activities"))) {
         return QString();
     }
 
@@ -484,7 +484,7 @@ QString Activities::AddActivity(const QString &name)
 
 void Activities::RemoveActivity(const QString &activity)
 {
-    if (!KAuthorized::authorize("plasma-desktop/add_activities")) {
+    if (!KAuthorized::authorize(QStringLiteral("plasma-desktop/add_activities"))) {
         return;
     }
 
