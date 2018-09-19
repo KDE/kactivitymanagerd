@@ -43,7 +43,7 @@ RunApplicationPlugin::RunApplicationPlugin(QObject *parent, const QVariantList &
 {
     Q_UNUSED(args);
 
-    setName(QStringLiteral("org.kde.ActivityManager.RunApplication"=);
+    setName(QStringLiteral("org.kde.ActivityManager.RunApplication"));
 }
 
 RunApplicationPlugin::~RunApplicationPlugin()
@@ -62,7 +62,7 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
             this, SLOT(activityStateChanged(QString, int)));
 
     const auto currentActivity = Plugin::retrieve<QString>(
-            m_activitiesService, QStringLiteral("CurrentActivity"), QStringLiteral("QString"));
+            m_activitiesService, "CurrentActivity", "QString");
 
     currentActivityChanged(currentActivity);
 
