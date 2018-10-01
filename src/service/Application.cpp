@@ -290,31 +290,6 @@ QString Application::serviceVersion() const
     return KACTIVITIES_VERSION_STRING;
 }
 
-// Leaving object oriented world :)
-
-namespace  {
-    template <typename Return>
-    Return callOnRunningService(const QString &method)
-    {
-        static QDBusInterface remote(KAMD_DBUS_SERVICE, QStringLiteral("/ActivityManager"),
-                                     QStringLiteral("org.kde.ActivityManager.Application"));
-        QDBusReply<Return> reply = remote.call(method);
-
-        return (Return)reply;
-    }
-
-    QString runningServiceVersion()
-    {
-        return callOnRunningService<QString>(QStringLiteral("serviceVersion"));
-    }
-
-    bool isServiceRunning()
-    {
-        return QDBusConnection::sessionBus().interface()->isServiceRegistered(
-                KAMD_DBUS_SERVICE);
-    }
-}
-
 int main(int argc, char **argv)
 {
     // Disable session management for this process
@@ -325,102 +300,11 @@ int main(int argc, char **argv)
     Application application(argc, argv);
     application.setApplicationName(QStringLiteral("ActivityManager"));
     application.setOrganizationDomain(QStringLiteral("kde.org"));
+    KDBusService service(KDBusService::Unique);
 
-    // KAboutData about("kactivitymanagerd", nullptr, ki18n("KDE Activity Manager"), "3.0",
-    //         ki18n("KDE Activity Management Service"),
-    //         KAboutData::License_GPL,
-    //         ki18n("(c) 2010, 2011, 2012 Ivan Cukic"), KLocalizedString(),
-    //         "http://www.kde.org/");
+    application.init();
 
-    // KCmdLineArgs::init(argc, argv, &about);
-
-    const auto arguments = application.arguments();
-
-    if (arguments.size() == 0) {
-        QCoreApplication::exit(EXIT_FAILURE);
-
-    } else if (arguments.size() != 1 && (arguments.size() != 2 || arguments[1] == QLatin1String("--help"))) {
-
-        QTextStream(stdout)
-            << "start\tStarts the service\n"
-            << "stop\tStops the server\n"
-            << "status\tPrints basic server information\n"
-            << "start-daemon\tStarts the service without forking (use with caution)\n"
-            << "--help\tThis help message\n";
-
-        QCoreApplication::exit(EXIT_SUCCESS);
-
-    } else if (arguments.size() == 1 || arguments[1] == QLatin1String("start")) {
-
-        // Checking whether the service is already running
-        if (isServiceRunning()) {
-            QTextStream(stdout) << "Already running\n";
-            QCoreApplication::exit(EXIT_SUCCESS);
-        }
-
-        // Creating the watcher, but not on the wall
-
-        QDBusServiceWatcher watcher(KAMD_DBUS_SERVICE,
-                                    QDBusConnection::sessionBus(),
-                                    QDBusServiceWatcher::WatchForRegistration);
-
-        QObject::connect(&watcher, &QDBusServiceWatcher::serviceRegistered,
-            [] (const QString &service) {
-                QTextStream(stdout)
-                    << "Service started, version: " << runningServiceVersion()
-                    << "\n";
-
-                QCoreApplication::exit(EXIT_SUCCESS);
-            });
-
-        // Starting the dameon
-
-        QProcess::startDetached(
-                QLatin1String(KAMD_FULL_BIN_DIR "/kactivitymanagerd"),
-                QStringList{QStringLiteral("start-daemon")}
-            );
-
-        return application.exec();
-
-    } else if (arguments[1] == QLatin1String("stop")) {
-        if (!isServiceRunning()) {
-            QTextStream(stdout) << "Service not running\n";
-            QCoreApplication::exit(EXIT_SUCCESS);
-        }
-
-        callOnRunningService<void>(QStringLiteral("quit"));
-
-        QTextStream(stdout) << "Service stopped\n";
-
-        return EXIT_SUCCESS;
-
-    } else if (arguments[1] == QLatin1String("status")) {
-
-        // Checking whether the service is already running
-        if (isServiceRunning()) {
-            QTextStream(stdout) << "The service is running, version: "
-                                << runningServiceVersion() << "\n";
-        } else {
-            QTextStream(stdout) << "The service is not running\n";
-
-        }
-
-        return EXIT_SUCCESS;
-
-    } else if (arguments[1] == QLatin1String("start-daemon")) {
-        // Really starting the activity manager
-
-        KDBusService service(KDBusService::Unique);
-
-        application.init();
-
-        return application.exec();
-
-    } else {
-        QTextStream(stdout) << "Unrecognized command: " << arguments[1] << '\n';
-
-        return EXIT_FAILURE;
-    }
+    return application.exec();
 }
 
 QStringList Application::loadedPlugins() const
