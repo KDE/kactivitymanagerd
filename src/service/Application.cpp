@@ -31,7 +31,7 @@
 #include <QDBusReply>
 
 // KDE
-// #include <KCrash>
+#include <KCrash>
 // #include <KAboutData>
 // #include <KCmdLineArgs>
 #include <KPluginMetaData>
@@ -300,6 +300,8 @@ int main(int argc, char **argv)
     Application application(argc, argv);
     application.setApplicationName(QStringLiteral("ActivityManager"));
     application.setOrganizationDomain(QStringLiteral("kde.org"));
+
+    KCrash::initialize();
     KDBusService service(KDBusService::Unique);
 
     application.init();
