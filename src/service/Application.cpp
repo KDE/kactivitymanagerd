@@ -31,7 +31,7 @@
 #include <QDBusReply>
 
 // KDE
-// #include <KCrash>
+#include <KCrash>
 // #include <KAboutData>
 // #include <KCmdLineArgs>
 #include <KPluginMetaData>
@@ -333,6 +333,8 @@ int main(int argc, char **argv)
     //         "http://www.kde.org/");
 
     // KCmdLineArgs::init(argc, argv, &about);
+
+    KCrash::initialize();
 
     const auto arguments = application.arguments();
 
