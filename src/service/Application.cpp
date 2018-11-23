@@ -32,8 +32,6 @@
 
 // KDE
 #include <KCrash>
-// #include <KAboutData>
-// #include <KCmdLineArgs>
 #include <KPluginMetaData>
 #include <KPluginLoader>
 #include <ksharedconfig.h>
