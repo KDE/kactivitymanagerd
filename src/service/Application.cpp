@@ -32,8 +32,6 @@
 
 // KDE
 #include <KCrash>
-// #include <KAboutData>
-// #include <KCmdLineArgs>
 #include <KPluginMetaData>
 #include <KPluginLoader>
 #include <ksharedconfig.h>
@@ -325,14 +323,6 @@ int main(int argc, char **argv)
     Application application(argc, argv);
     application.setApplicationName(QStringLiteral("ActivityManager"));
     application.setOrganizationDomain(QStringLiteral("kde.org"));
-
-    // KAboutData about("kactivitymanagerd", nullptr, ki18n("KDE Activity Manager"), "3.0",
-    //         ki18n("KDE Activity Management Service"),
-    //         KAboutData::License_GPL,
-    //         ki18n("(c) 2010, 2011, 2012 Ivan Cukic"), KLocalizedString(),
-    //         "http://www.kde.org/");
-
-    // KCmdLineArgs::init(argc, argv, &about);
 
     KCrash::initialize();
 
