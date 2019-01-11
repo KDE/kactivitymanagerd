@@ -116,7 +116,7 @@ public:
         return std::exp(-days / 32.0);
     }
 
-    inline qreal timeFactor(QDateTime fromTime, QDateTime toTime) const
+    inline qreal timeFactor(const QDateTime &fromTime, const QDateTime &toTime) const
     {
         return timeFactor(fromTime.daysTo(toTime));
     }

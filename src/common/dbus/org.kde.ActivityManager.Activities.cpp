@@ -40,7 +40,7 @@ ActivityInfoStaticInit ActivityInfoStaticInit::_instance;
 
 } // namespace details
 
-QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo r)
+QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo &r)
 {
     arg.beginStructure();
 

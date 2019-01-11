@@ -53,7 +53,7 @@ typedef QList<ActivityInfo> ActivityInfoList;
 Q_DECLARE_METATYPE(ActivityInfo)
 Q_DECLARE_METATYPE(ActivityInfoList)
 
-QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo);
+QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo&);
 const QDBusArgument &operator>>(const QDBusArgument &arg, ActivityInfo &rec);
 
 QDebug operator<<(QDebug dbg, const ActivityInfo &r);
