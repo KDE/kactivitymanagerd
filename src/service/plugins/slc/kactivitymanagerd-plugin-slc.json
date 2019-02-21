@@ -115,7 +115,7 @@
         "Name[tr]": "Paylaş-Beğen-Bağlan",
         "Name[uk]": "Оприлюднити-Уподобати-З’єднати",
         "Name[x-test]": "xxShare-Like-Connectxx",
-        "Name[zh_CN]": "分享-喜爱-连接",
+        "Name[zh_CN]": "分享-点赞-连接",
         "Name[zh_TW]": "Share-Like-Connect",
         "ServiceTypes": [
             "ActivityManager/Plugin"
