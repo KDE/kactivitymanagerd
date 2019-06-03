@@ -35,7 +35,6 @@
 #include <common/database/Database.h>
 
 class QDateTime;
-class QSqlDatabase;
 class QSqlError;
 
 namespace Common {

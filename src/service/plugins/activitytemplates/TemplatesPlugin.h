@@ -20,8 +20,6 @@
 
 #include <Plugin.h>
 
-class QSignalMapper;
-class KActionCollection;
 
 class TemplatesPlugin : public Plugin {
     Q_OBJECT

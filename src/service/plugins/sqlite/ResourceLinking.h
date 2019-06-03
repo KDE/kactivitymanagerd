@@ -29,7 +29,6 @@
 #include <Plugin.h>
 
 class QSqlQuery;
-class QFileSystemWatcher;
 
 /**
  * Communication with the outer world.

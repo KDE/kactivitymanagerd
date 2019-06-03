@@ -30,7 +30,6 @@
 #include <Plugin.h>
 
 class QSqlQuery;
-class QFileSystemWatcher;
 class ResourceLinking;
 
 /**
