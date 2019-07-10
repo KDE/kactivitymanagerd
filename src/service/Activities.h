@@ -79,6 +79,16 @@ public Q_SLOTS:
     bool SetCurrentActivity(const QString &activity);
 
     /**
+     * Switches to the previous activity
+     */
+    bool PreviousActivity();
+
+    /**
+     * Switches to the next activity
+     */
+    bool NextActivity();
+
+    /**
      * Adds a new activity
      * @param name name of the activity
      * @returns id of the newly created activity

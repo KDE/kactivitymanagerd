@@ -9,6 +9,12 @@
       <arg type="b" direction="out"/>
       <arg name="activity" type="s" direction="in"/>
     </method>
+    <method name="PreviousActivity">
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="NextActivity">
+      <arg type="b" direction="out"/>
+    </method>
 
     <method name="AddActivity">
       <arg type="s" direction="out"/>

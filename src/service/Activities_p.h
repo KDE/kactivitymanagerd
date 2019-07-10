@@ -54,6 +54,9 @@ public:
 
 public Q_SLOTS:
     bool setCurrentActivity(const QString &activity);
+    bool previousActivity();
+    bool nextActivity();
+    void updateSortedActivityList();
 
 public:
     void setActivityState(const QString &activity, Activities::State state);
@@ -70,6 +73,7 @@ public:
     KSMServer *ksmserver;
 
     QHash<QString, Activities::State> activities;
+    QVector<ActivityInfo> sortedActivities;
     QReadWriteLock activitiesLock;
     QString currentActivity;
 

@@ -51,6 +51,16 @@
 // Private
 #define ACTIVITY_MANAGER_CONFIG_FILE_NAME QStringLiteral("kactivitymanagerdrc")
 
+namespace {
+    inline
+    bool nameBasedOrdering(const ActivityInfo &info, const ActivityInfo &other)
+    {
+        const auto comp =
+            QString::compare(info.name, other.name, Qt::CaseInsensitive);
+        return comp < 0 || (comp == 0 && info.id < other.id);
+    }
+}
+
 Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransitionChecker()
 {
     // Checking whether we need to transfer the KActivities/KDE4
@@ -143,6 +153,23 @@ Activities::Private::Private(Activities *parent)
             activities[keys] = Activities::Running;
         }
     }
+
+    QMetaObject::invokeMethod(
+        this,
+        "updateSortedActivityList",
+        Qt::QueuedConnection);
+}
+
+void Activities::Private::updateSortedActivityList() {
+    QVector<ActivityInfo> a;
+    for (const auto &activity : activities.keys()) {
+        a.append(q->ActivityInformation(activity));
+    }
+
+    std::sort(a.begin(), a.end(), &nameBasedOrdering);
+
+    QWriteLocker lock(&activitiesLock);
+    sortedActivities = a;
 }
 
 void Activities::Private::loadLastActivity()
@@ -204,6 +231,32 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
     return true;
 }
 
+bool Activities::Private::previousActivity()
+{
+    const auto a = q->ListActivities(Activities::Running);
+
+    for (int i = 0; i < a.count(); ++i) {
+        if (a[i] == currentActivity) {
+            return setCurrentActivity(a[(i + a.size() - 1) % a.size()]);
+        }
+    }
+
+    return false;
+}
+
+bool Activities::Private::nextActivity()
+{
+    const auto a = q->ListActivities(Activities::Running);
+
+    for (int i = 0; i < a.count(); ++i) {
+        if (a[i] == currentActivity) {
+            return setCurrentActivity(a[(i + 1) % a.size()]);
+        }
+    }
+
+    return false;
+}
+
 QString Activities::Private::addActivity(const QString &name)
 {
     QString activity;
@@ -233,6 +286,8 @@ QString Activities::Private::addActivity(const QString &name)
     setActivityState(activity, Running);
 
     q->SetActivityName(activity, name);
+
+    updateSortedActivityList();
 
     emit q->ActivityAdded(activity);
 
@@ -274,6 +329,13 @@ void Activities::Private::removeActivity(const QString &activity)
         QWriteLocker lock(&activitiesLock);
         // Removing the activity
         activities.remove(activity);
+
+        for (int i = 0; i < sortedActivities.count(); ++i) {
+            if (sortedActivities[i].id == activity) {
+                sortedActivities.remove(i);
+                break;
+            }
+        }
 
         // If the removed activity was the current one,
         // set another activity as current
@@ -370,6 +432,8 @@ void Activities::Private::setActivityState(const QString &activity,
                                 + activities.keys(Activities::Stopping));
         scheduleConfigSync();
     }
+
+    updateSortedActivityList();
 }
 
 void Activities::Private::ensureCurrentActivityIsRunning()
@@ -471,6 +535,16 @@ bool Activities::SetCurrentActivity(const QString &activity)
     return d->setCurrentActivity(activity);
 }
 
+bool Activities::PreviousActivity()
+{
+    return d->previousActivity();
+}
+
+bool Activities::NextActivity()
+{
+    return d->nextActivity();
+}
+
 QString Activities::AddActivity(const QString &name)
 {
     // We do not care about authorization if this is the first start
@@ -494,13 +568,25 @@ void Activities::RemoveActivity(const QString &activity)
 QStringList Activities::ListActivities() const
 {
     QReadLocker lock(&d->activitiesLock);
-    return d->activities.keys();
+
+    QStringList s;
+    for (const auto &a : d->sortedActivities) {
+        s << a.id;
+    }
+    return s;
 }
 
 QStringList Activities::ListActivities(int state) const
 {
     QReadLocker lock(&d->activitiesLock);
-    return d->activities.keys((State)state);
+
+    QStringList s;
+    for (const auto &a : d->sortedActivities) {
+        if (a.state == (State)state) {
+            s << a.id;
+        }
+    }
+    return s;
 }
 
 QList<ActivityInfo> Activities::ListActivitiesWithInformation() const
@@ -596,4 +682,3 @@ int Activities::ActivityState(const QString &activity) const
     QReadLocker lock(&d->activitiesLock);
     return d->activities.contains(activity) ? d->activities[activity] : Invalid;
 }
-
