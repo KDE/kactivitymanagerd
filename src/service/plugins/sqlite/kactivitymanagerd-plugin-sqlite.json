@@ -45,7 +45,7 @@
         "Category": "",
         "Dependencies": [],
         "Description": "Plugin to store and score events in SQLite",
-        "Description[ca@valencia]": "Connector per emmagatzemar i classificar esdeveniments en el SQLite",
+        "Description[ca@valencia]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",
         "Description[ca]": "Connector per emmagatzemar i classificar esdeveniments en el SQLite",
         "Description[da]": "Plugin til at gemme og score hændelser i SQLite",
         "Description[de]": "Modul zum Speichern und Bewerten von Ereignissen in SQLite",

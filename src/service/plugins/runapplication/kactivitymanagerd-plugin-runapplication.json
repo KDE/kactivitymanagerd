@@ -45,7 +45,7 @@
         "Category": "",
         "Dependencies": [],
         "Description": "When switching activities, or when starting and stopping them, execute specified applications",
-        "Description[ca@valencia]": "En commutar d'activitat, o en iniciar o aturar-les, executar les aplicacions especificades",
+        "Description[ca@valencia]": "En commutar d'activitat, o en iniciar o aturar-les, executa les aplicacions especificades",
         "Description[ca]": "En commutar d'activitat, o en iniciar o aturar-les, executar les aplicacions especificades",
         "Description[da]": "Køb bestemte programmer ved skift mellem aktiviteter eller når de startes eller stoppes",
         "Description[de]": "Beim Wechseln, Starten oder Beenden von Aktivitäten, angegebene Anwendungen ausführen",

@@ -85,7 +85,7 @@
         "Id": "org.kde.ActivityManager.VirtualDesktopSwitch",
         "License": "GPL",
         "Name": "Virtual desktop switcher",
-        "Name[ca@valencia]": "Commutador pels escriptoris virtuals",
+        "Name[ca@valencia]": "Commutador per als escriptoris virtuals",
         "Name[ca]": "Commutador pels escriptoris virtuals",
         "Name[cs]": "Přepínač virtuálních ploch",
         "Name[da]": "Skift mellem virtuelle skriveborde",
