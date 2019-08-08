@@ -82,7 +82,7 @@ void RunApplicationPlugin::currentActivityChanged(const QString &activity)
     }
 
     if (!m_currentActivity.isEmpty()) {
-        executeIn(activityDirectory(activity) + QStringLiteral("deactivated"));
+        executeIn(activityDirectory(m_currentActivity) + QStringLiteral("deactivated"));
     }
 
     m_currentActivity = activity;
