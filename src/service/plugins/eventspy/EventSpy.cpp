@@ -31,7 +31,7 @@ KAMD_EXPORT_PLUGIN(eventspyplugin, EventSpyPlugin, "kactivitymanagerd-plugin-eve
 EventSpyPlugin::EventSpyPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
     , m_resources(nullptr)
-    , m_dirWatcher(new KDirWatch())
+    , m_dirWatcher(new KDirWatch(this))
     , m_lastUpdate(QDateTime::currentDateTime())
 {
     Q_UNUSED(args);
