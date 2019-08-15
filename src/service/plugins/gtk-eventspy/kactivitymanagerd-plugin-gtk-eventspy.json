@@ -1,0 +1,58 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "meven.car(at)kdemail.net",
+                "Name": "Méven Car",
+                "Name[ca@valencia]": "Méven Car",
+                "Name[ca]": "Méven Car",
+                "Name[cs]": "Méven Car",
+                "Name[da]": "Méven Car",
+                "Name[de]": "Méven Car",
+                "Name[el]": "Méven Car",
+                "Name[en_GB]": "Méven Car",
+                "Name[es]": "Méven Car",
+                "Name[et]": "Méven Car",
+                "Name[eu]": "Méven Car",
+                "Name[fi]": "Méven Car",
+                "Name[fr]": "Méven Car",
+                "Name[gl]": "Méven Car",
+                "Name[hu]": "Méven Car",
+                "Name[ia]": "Méven Car",
+                "Name[id]": "Méven Car",
+                "Name[it]": "Méven Car",
+                "Name[ko]": "Méven Car",
+                "Name[lt]": "Méven Car",
+                "Name[nl]": "Méven Car",
+                "Name[nn]": "Méven Car",
+                "Name[pl]": "Méven Car",
+                "Name[pt]": "Méven Car",
+                "Name[pt_BR]": "Méven Car",
+                "Name[ru]": "Méven Car",
+                "Name[sk]": "Méven Car",
+                "Name[sl]": "Méven Car",
+                "Name[sr@ijekavianlatin]": "Méven Car",
+                "Name[sr@latin]": "Méven Car",
+                "Name[sv]": "Méven Car",
+                "Name[tr]": "Méven Car",
+                "Name[uk]": "Méven Car",
+                "Name[x-test]": "xxMéven Carxx",
+                "Name[zh_CN]": "Méven Car",
+                "Name[zh_TW]": "Méven Car"
+            }
+        ],
+        "Category": "",
+        "Dependencies": [],
+        "Description": "Collects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "EnabledByDefault": true,
+        "Icon": "preferences-system",
+        "Id": "org.kde.ActivityManager.GtkEventSpy",
+        "License": "GPL",
+        "Name": "Gtk Event Spy",
+        "ServiceTypes": [
+            "ActivityManager/Plugin"
+        ],
+        "Version": "1.0",
+        "Website": "http://plasma.kde.org/"
+    }
+}
