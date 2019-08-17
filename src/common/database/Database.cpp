@@ -247,6 +247,7 @@ QString Database::lastQuery() const
 
 QSqlQuery Database::execQuery(const QString &query, bool ignoreErrors) const
 {
+    Q_UNUSED(ignoreErrors);
 #ifdef QT_NO_DEBUG
     return d->query(query);
 #else
