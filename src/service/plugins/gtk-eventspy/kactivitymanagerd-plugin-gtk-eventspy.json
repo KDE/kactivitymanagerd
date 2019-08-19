@@ -3,17 +3,26 @@
         "Authors": [
             {
                 "Email": "meven.car(at)kdemail.net",
-                "Name": "Méven Car"
+                "Name": "Méven Car",
+                "Name[nl]": "Méven Car",
+                "Name[pt]": "Méven Car",
+                "Name[x-test]": "xxMéven Carxx"
             }
         ],
         "Category": "",
         "Dependencies": [],
         "Description": "Collects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[nl]": "Verzamelt gebeurtenissen uit toepassingen die GtkFileChooser en GtkRecentManager gebruiken zoals gespecificeerd door https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[pt]": "Recolhe eventos das aplicações que usam o GtkFileChooser e o GtkRecentManager, de acordo com o definido em https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[x-test]": "xxCollects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/xx",
         "EnabledByDefault": true,
         "Icon": "preferences-system",
         "Id": "org.kde.ActivityManager.GtkEventSpy",
         "License": "GPL",
         "Name": "Gtk Event Spy",
+        "Name[nl]": "Gtk gebeurtenisspion",
+        "Name[pt]": "Espião de Eventos do Gtk",
+        "Name[x-test]": "xxGtk Event Spyxx",
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ],
