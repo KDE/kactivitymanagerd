@@ -21,6 +21,7 @@
         "Dependencies": [],
         "Description": "Collects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[ca]": "Recull els esdeveniments de les aplicacions que usen «GtkFileChooser» i «GtkRecentManager» segons l'especificat per https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[de]": "Sammelt Ereignisse von Anwendungen, die GtkFileChooser and GtkRecentManager nach der Spezifikation von https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ verwenden.",
         "Description[eu]": "GtkFileChooser eta GtkRecentManager erabiltzen duten aplikazioen gertaerak biltzen ditu  https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec  zehaztu bezala",
         "Description[gl]": "Recolle eventos de aplicacións que usan GtkFileChooser e GtkRecentManager como se indica en https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[nl]": "Verzamelt gebeurtenissen uit toepassingen die GtkFileChooser en GtkRecentManager gebruiken zoals gespecificeerd door https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
