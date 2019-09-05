@@ -38,7 +38,7 @@ public:
 
 private Q_SLOTS:
     void fileUpdated(const QString &file);
-    void addDocument(const QUrl &url, const QString &application);
+    void addDocument(const QUrl &url, const QString &application, const QString &mimetype);
 
 private:
     QObject *m_resources;

@@ -65,6 +65,7 @@ public:
     QDateTime added;
     QDateTime modified;
     QDateTime visited;
+    QString mimetype;
     QList<Application> applications;
 
     QString latestApplication() const;
@@ -149,6 +150,8 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
         app.modified = QDateTime::fromString(attributes.value("modified"), Qt::ISODate);
 
         current.applications.append(app);
+    } else if (qName == QStringLiteral("mime:mime-type")) {
+        current.mimetype = attributes.value("type");
     }
     return true;
 }
@@ -194,14 +197,14 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     for (const Bookmark &mark : bookmarks) {
         if (mark.added > m_lastUpdate || mark.modified > m_lastUpdate
             || mark.visited > m_lastUpdate) {
-            addDocument(mark.href, mark.latestApplication());
+            addDocument(mark.href, mark.latestApplication(), mark.mimetype);
         }
     }
 
     m_lastUpdate = QDateTime::currentDateTime();
 }
 
-void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application)
+void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application, const QString &mimetype)
 {
     const QString name = url.fileName();
 
@@ -211,6 +214,12 @@ void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application)
         Q_ARG(uint, 0),                          // Window ID
         Q_ARG(QString, url.toString()),          // URI
         Q_ARG(uint, 0)                           // Event Activities::Accessed
+        );
+
+    Plugin::invoke<Qt::QueuedConnection>(
+        m_resources, "RegisteredResourceMimetype",
+        Q_ARG(QString, url.toString()),          // uri
+        Q_ARG(QString, mimetype)                 // mimetype
         );
 }
 
