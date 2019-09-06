@@ -107,6 +107,7 @@
         "Name[sv]": "Händelseövervakare",
         "Name[uk]": "Журнал подій",
         "Name[x-test]": "xxEvent Spyxx",
+        "Name[zh_CN]": "事件间谍",
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ],
