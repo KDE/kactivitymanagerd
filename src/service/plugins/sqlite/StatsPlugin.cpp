@@ -175,8 +175,8 @@ void StatsPlugin::openResourceEvent(const QString &usedActivity,
         ":usedActivity"      , usedActivity      ,
         ":initiatingAgent"   , initiatingAgent   ,
         ":targettedResource" , targettedResource ,
-        ":start"             , start.toTime_t()  ,
-        ":end"               , (end.isNull()) ? QVariant() : end.toTime_t()
+        ":start"             , start.toSecsSinceEpoch()  ,
+        ":end"               , (end.isNull()) ? QVariant() : end.toSecsSinceEpoch()
     );
 }
 
@@ -209,7 +209,7 @@ void StatsPlugin::closeResourceEvent(const QString &usedActivity,
         ":usedActivity"      , usedActivity      ,
         ":initiatingAgent"   , initiatingAgent   ,
         ":targettedResource" , targettedResource ,
-        ":end"               , end.toTime_t()
+        ":end"               , end.toSecsSinceEpoch()
     );
 }
 
@@ -495,12 +495,12 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count,
 
         Utils::exec(Utils::FailOnError, removeEventsQuery,
                 ":usedActivity", usedActivity,
-                ":since", since.toTime_t()
+                ":since", since.toSecsSinceEpoch()
             );
 
         Utils::exec(Utils::FailOnError, removeScoreCachesQuery,
                 ":usedActivity", usedActivity,
-                ":since", since.toTime_t()
+                ":since", since.toSecsSinceEpoch()
             );
     }
 
@@ -536,12 +536,12 @@ void StatsPlugin::DeleteEarlierStats(const QString &activity, int months)
 
     Utils::exec(Utils::FailOnError, removeEventsQuery,
             ":usedActivity", usedActivity,
-            ":time", time.toTime_t()
+            ":time", time.toSecsSinceEpoch()
         );
 
     Utils::exec(Utils::FailOnError, removeScoreCachesQuery,
             ":usedActivity", usedActivity,
-            ":time", time.toTime_t()
+            ":time", time.toSecsSinceEpoch()
         );
 
     emit EarlierStatsDeleted(activity, months);

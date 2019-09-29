@@ -20,8 +20,6 @@
 #define PLUGINS_GLOBAL_SHORTCUTS_PLUGIN_H
 
 #include <Plugin.h>
-
-class QSignalMapper;
 class KActionCollection;
 class QAction;
 
@@ -40,12 +38,14 @@ private Q_SLOTS:
     void activityRemoved(const QString &activity);
     void activityChanged(const QString &activity);
 
+Q_SIGNALS:
+    void currentActivityChanged(const QString &activity);
+
 private:
     inline QString activityName(const QString &activity) const;
     inline QString activityForAction(QAction *action) const;
 
     QObject *m_activitiesService;
-    QSignalMapper *m_signalMapper;
     QStringList m_activitiesList;
     KActionCollection *m_actionCollection;
 };

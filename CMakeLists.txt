@@ -52,11 +52,13 @@ set (
    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
    ${CMAKE_MODULE_PATH}
    )
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
 
 add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_NO_SIGNALS_SLOTS_KEYWORDS
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050700
 )
 add_definitions (-DTRANSLATION_DOMAIN=\"kactivities5\")
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")

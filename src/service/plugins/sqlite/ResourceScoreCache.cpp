@@ -163,7 +163,7 @@ void ResourceScoreCache::update()
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
         ":targettedResource", d->resource,
-        ":firstUpdate", currentTime.toTime_t()
+        ":firstUpdate", currentTime.toSecsSinceEpoch()
     );
 
     // Getting the old score
@@ -177,8 +177,8 @@ void ResourceScoreCache::update()
     // Only and always one result
     for (const auto &result: Queries::self().getResourceScoreCacheQuery) {
 
-        lastUpdate.setTime_t(result["lastUpdate"].toUInt());
-        firstUpdate.setTime_t(result["firstUpdate"].toUInt());
+        lastUpdate.setSecsSinceEpoch(result["lastUpdate"].toUInt());
+        firstUpdate.setSecsSinceEpoch(result["firstUpdate"].toUInt());
 
         qCDebug(KAMD_LOG_RESOURCES) << "Already in database? " << (!isCacheNew);
         qCDebug(KAMD_LOG_RESOURCES) << "      First update : " << firstUpdate;
@@ -209,10 +209,10 @@ void ResourceScoreCache::update()
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
         ":targettedResource", d->resource,
-        ":start", lastUpdate.toTime_t()
+        ":start", lastUpdate.toSecsSinceEpoch()
     );
 
-    uint lastEventStart = currentTime.toTime_t();
+    uint lastEventStart = currentTime.toSecsSinceEpoch();
 
     for (const auto &result: Queries::self().getScoreAdditionQuery) {
         lastEventStart = result["start"].toUInt();
@@ -224,10 +224,10 @@ void ResourceScoreCache::update()
 
         if (intervalLength == 0) {
             // We have an Accessed event - otherwise, this wouldn't be 0
-            score += d->timeFactor(QDateTime::fromTime_t(end), currentTime); // like it is open for 1 minute
+            score += d->timeFactor(QDateTime::fromSecsSinceEpoch(end), currentTime); // like it is open for 1 minute
 
         } else {
-            score += d->timeFactor(QDateTime::fromTime_t(end), currentTime) * intervalLength / 60.0;
+            score += d->timeFactor(QDateTime::fromSecsSinceEpoch(end), currentTime) * intervalLength / 60.0;
 
         }
     }
@@ -258,6 +258,6 @@ void ResourceScoreCache::update()
                                    Q_ARG(QString, d->resource),
                                    Q_ARG(double, score),
                                    Q_ARG(uint, lastEventStart),
-                                   Q_ARG(uint, firstUpdate.toTime_t())
+                                   Q_ARG(uint, firstUpdate.toSecsSinceEpoch())
                                    );
 }

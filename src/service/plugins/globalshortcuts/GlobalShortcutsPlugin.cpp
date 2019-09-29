@@ -20,7 +20,6 @@
 
 #include <QStringList>
 #include <QString>
-#include <QSignalMapper>
 #include <QAction>
 
 #include <KActionCollection>
@@ -35,7 +34,6 @@ const auto objectNamePatternLength = objectNamePattern.length() - 2;
 GlobalShortcutsPlugin::GlobalShortcutsPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
     , m_activitiesService(nullptr)
-    , m_signalMapper(new QSignalMapper(this))
     , m_actionCollection(new KActionCollection(this))
 {
     Q_UNUSED(args);
@@ -61,10 +59,10 @@ bool GlobalShortcutsPlugin::init(QHash<QString, QObject *> &modules)
     for (const auto &activity: m_activitiesList) {
         activityAdded(activity);
     }
-
-    connect(m_signalMapper, SIGNAL(mapped(QString)),
+    connect(this, SIGNAL(currentActivityChanged(QString)),
             m_activitiesService, SLOT(SetCurrentActivity(QString)),
             Qt::QueuedConnection);
+
     connect(m_activitiesService, SIGNAL(ActivityAdded(QString)),
             this, SLOT(activityAdded(QString)));
     connect(m_activitiesService, SIGNAL(ActivityRemoved(QString)),
@@ -91,8 +89,7 @@ void GlobalShortcutsPlugin::activityAdded(const QString &activity)
     action->setText(i18nc("@action", "Switch to activity \"%1\"", activityName(activity)));
     KGlobalAccel::self()->setDefaultShortcut(action, QList<QKeySequence>{});
 
-    connect(action, SIGNAL(triggered()), m_signalMapper, SLOT(map()));
-    m_signalMapper->setMapping(action, activity);
+    connect(action, &QAction::triggered, [this, activity]() { Q_EMIT currentActivityChanged(activity);});
 
     // m_actionCollection->writeSettings();
 }
