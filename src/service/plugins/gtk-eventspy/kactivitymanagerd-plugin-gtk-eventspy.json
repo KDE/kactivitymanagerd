@@ -54,6 +54,7 @@
         "Description[uk]": "Збирає повідомлення про події від програм, у яких використовується GtkFileChooser та GtkRecentManager, відповідно до https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[x-test]": "xxCollects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/xx",
         "Description[zh_CN]": "从使用 GtkFileChooser 和 GtkRecentManager 的应用程序收集事件，规范遵循 https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[zh_TW]": "收集如 https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ 定義之使用 GtkFileChooser 及 GtkRecentManager 應用程式的事件",
         "EnabledByDefault": true,
         "Icon": "preferences-system",
         "Id": "org.kde.ActivityManager.GtkEventSpy",
