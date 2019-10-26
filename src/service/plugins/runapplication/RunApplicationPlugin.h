@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGINS_RUN_APPLICATION_H
-#define PLUGINS_RUN_APPLICATION_H
+#ifndef PLUGINS_RUN_APPLICATION_PLUGIN_H
+#define PLUGINS_RUN_APPLICATION_PLUGIN_H
 
 #include <Plugin.h>
 
@@ -43,4 +43,4 @@ private:
     QObject *m_activitiesService;
 };
 
-#endif // PLUGINS_RUN_APPLICATION_H
+#endif // PLUGINS_RUN_APPLICATION_PLUGIN_H

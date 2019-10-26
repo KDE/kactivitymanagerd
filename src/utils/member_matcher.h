@@ -87,7 +87,7 @@ namespace member_matcher {
             inline bool operator()(const T &collItem, const V &value) const
             {
                 // TODO: Make this work if the arguments are reversed,
-                //       or even if both arhuments need to be checked
+                //       or even if both arguments need to be checked
                 //       for the specified member
                 return compare((collItem.*m_member)(), value);
             }

@@ -105,7 +105,7 @@ void RunApplicationPlugin::activityStateChanged(const QString &activity, int sta
                    : (state == Stopped) ? QStringLiteral("stopped")
                    : QString();
 
-    if (directory == "") {
+    if (directory.isEmpty()) {
         return;
     }
 

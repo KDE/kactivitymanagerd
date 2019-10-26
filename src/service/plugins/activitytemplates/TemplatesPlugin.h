@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGINS_GLOBAL_TEMPLATES_H
-#define PLUGINS_GLOBAL_TEMPLATES_H
+#ifndef PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H
+#define PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H
 
 #include <Plugin.h>
 
@@ -45,4 +45,4 @@ private:
 
 };
 
-#endif // PLUGINS_GLOBAL_TEMPLATES_
+#endif // PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H

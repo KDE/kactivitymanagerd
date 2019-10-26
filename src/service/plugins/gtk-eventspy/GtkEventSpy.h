@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGINS_EVENT_SPY_PLUGIN_H
-#define PLUGINS_EVENT_SPY_PLUGIN_H
+#ifndef PLUGINS_GTK_EVENT_SPY_PLUGIN_H
+#define PLUGINS_GTK_EVENT_SPY_PLUGIN_H
 
 #include <memory>
 #include <Plugin.h>
@@ -46,4 +46,4 @@ private:
     QDateTime m_lastUpdate;
 };
 
-#endif // PLUGINS_EVENT_SPY_PLUGIN_H
+#endif // PLUGINS_GTK_EVENT_SPY_PLUGIN_H

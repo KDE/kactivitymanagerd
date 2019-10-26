@@ -123,7 +123,7 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
         QString exec = attributes.value("exec");
 
         if (exec.startsWith(QLatin1Char('\'')) && exec.endsWith(QLatin1Char('\''))) {
-            // remove "'" caracters wrapping the command
+            // remove "'" characters wrapping the command
             exec = exec.mid(1, exec.size() -2);
         }
 
@@ -139,7 +139,7 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
             app.name = service->desktopEntryName();
         } else {
             // when no services are found, sanitize a little the exec
-            // remove space and any caracter after
+            // remove space and any character after
             const int spaceIndex = exec.indexOf(" ");
             if (spaceIndex != -1) {
                 exec = exec.mid(0, spaceIndex);

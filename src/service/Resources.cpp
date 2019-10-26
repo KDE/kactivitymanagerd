@@ -309,7 +309,7 @@ void Resources::RegisterResourceMimetype(const QString &uri, const QString &mime
 
 void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
 {
-    // A dirty saninty check for the title
+    // A dirty sanity check for the title
     if (title.length() < 3) {
         return;
     }
