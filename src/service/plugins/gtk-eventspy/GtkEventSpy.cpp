@@ -135,7 +135,7 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
 
         if (!services.isEmpty()) {
             // use the first item matching
-            const auto service = services.first();
+            const auto &service = services.first();
             app.name = service->desktopEntryName();
         } else {
             // when no services are found, sanitize a little the exec
