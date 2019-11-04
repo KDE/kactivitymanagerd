@@ -34,6 +34,7 @@ include (GenerateExportHeader)
 include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
 include (ECMSetupQtPluginMacroNames)
+include(KDEClangFormat)
 
 # Qt
 find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
@@ -70,6 +71,10 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 endif ()
 
 add_subdirectory (src)
+
+# add clang-format target for all our real source files
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 install(FILES kactivitymanagerd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 # Write out the features
