@@ -42,52 +42,10 @@
 #define KWIN_SERVICE QStringLiteral("org.kde.KWin")
 
 KSMServer::Private::Private(KSMServer *parent)
-    : serviceWatcher(new QDBusServiceWatcher(this))
-    , kwin(nullptr)
+    : kwin(new QDBusInterface(KWIN_SERVICE, QStringLiteral("/KWin"), QStringLiteral("org.kde.KWin"), QDBusConnection::sessionBus(), this))
     , processing(false)
     , q(parent)
 {
-    serviceWatcher->setConnection(KDBusConnectionPool::threadConnection());
-    serviceWatcher->addWatchedService(KWIN_SERVICE);
-
-    connect(serviceWatcher.get(), &QDBusServiceWatcher::serviceOwnerChanged,
-            this, &Private::serviceOwnerChanged);
-
-    serviceOwnerChanged(KWIN_SERVICE, QString(), QString());
-}
-
-void KSMServer::Private::serviceOwnerChanged(const QString &service,
-                                             const QString &oldOwner,
-                                             const QString &newOwner)
-{
-    Q_UNUSED(oldOwner);
-    Q_UNUSED(newOwner);
-
-    if (service == KWIN_SERVICE) {
-        // Delete the old object, just in case
-        delete kwin;
-        kwin = nullptr;
-
-        if (KDBusConnectionPool::threadConnection().interface()->isServiceRegistered(KWIN_SERVICE)) {
-            // Creating the new dbus interface
-            // TODO: in multi-head environment there are multiple kwin instances
-            //       running and they will export different dbus name on different
-            //       root window. We have no support for that currently.
-            //       In future, the session management for Wayland may also need to be
-            //       reimplemented in some way.
-            kwin = new QDBusInterface(KWIN_SERVICE, QStringLiteral("/KWin"), QStringLiteral("org.kde.KWin"));
-
-            // If the service is valid, initialize it
-            // otherwise delete the object
-            if (kwin->isValid()) {
-                kwin->setParent(this);
-
-            } else {
-                delete kwin;
-                kwin = nullptr;
-            }
-        }
-    }
 }
 
 KSMServer::KSMServer(QObject *parent)
@@ -112,7 +70,7 @@ void KSMServer::stopActivitySession(const QString &activity)
 
 void KSMServer::Private::processLater(const QString &activity, bool start)
 {
-    if (kwin) {
+    if (kwin->isValid()) {
         for (const auto &item: queue) {
             if (item.first == activity) {
                 return;
@@ -151,7 +109,7 @@ void KSMServer::Private::process()
 
 void KSMServer::Private::makeRunning(bool value)
 {
-    if (!kwin) {
+    if (!kwin->isValid()) {
         qCDebug(KAMD_LOG_ACTIVITIES) << "Activities KSM: No kwin, marking activity as: " << value;
         subSessionSendEvent(value ? KSMServer::Started : KSMServer::Stopped);
         return;

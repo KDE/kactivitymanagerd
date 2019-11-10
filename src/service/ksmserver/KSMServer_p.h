@@ -43,8 +43,6 @@ public:
     void processLater(const QString &activity, bool start);
 
 private Q_SLOTS:
-    void serviceOwnerChanged(const QString &service, const QString &oldOwner, const QString &newOwner);
-
     void process();
     void makeRunning(bool value);
 
@@ -54,7 +52,6 @@ private Q_SLOTS:
     void subSessionSendEvent(int event);
 
 private:
-    std::unique_ptr<QDBusServiceWatcher> serviceWatcher;
     QDBusInterface *kwin;
 
     bool processing;
