@@ -7,7 +7,7 @@ project (KActivityManagerd)
 option (KACTIVITIES_ENABLE_EXCEPTIONS "If you have Boost 1.53, you need to build KActivities with exceptions enabled. This is UNTESTED and EXPERIMENTAL!" OFF)
 
 set(QT_MIN_VERSION "5.12.0")
-set(KF5_MIN_VERSION "5.62.0")
+set(KF5_MIN_VERSION "5.66.0")
 
 # We don't build in-source
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
