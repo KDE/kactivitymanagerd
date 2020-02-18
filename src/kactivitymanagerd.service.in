@@ -1,0 +1,7 @@
+[Unit]
+Description=KActivityManager
+
+[Service]
+ExecStart=@KDE_INSTALL_FULL_LIBEXECDIR@/kactivitymanagerd
+KillMode=process
+BusName=org.kde.ActivityManager

@@ -68,6 +68,11 @@ configure_file(org.kde.activitymanager.service.in
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service
         DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 
+configure_file(kactivitymanagerd.service.in
+               ${CMAKE_CURRENT_BINARY_DIR}/kactivitymanagerd.service @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kactivitymanagerd.service
+        DESTINATION ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+
 ecm_qt_declare_logging_category(debug_SRCS
    HEADER DebugActivities.h
    IDENTIFIER KAMD_LOG_ACTIVITIES
