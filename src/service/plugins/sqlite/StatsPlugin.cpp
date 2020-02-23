@@ -22,13 +22,13 @@
 #include "StatsPlugin.h"
 
 // Qt
+#include <QDBusConnection>
 #include <QFileSystemWatcher>
 #include <QSqlQuery>
 #include <QStringList>
 
 // KDE
 #include <kconfig.h>
-#include <kdbusconnectionpool.h>
 #include <kfileitem.h>
 
 // Boost
@@ -58,7 +58,7 @@ StatsPlugin::StatsPlugin(QObject *parent, const QVariantList &args)
     s_instance = this;
 
     new ResourcesScoringAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(
+    QDBusConnection::sessionBus().registerObject(
         QStringLiteral("/ActivityManager/Resources/Scoring"), this);
 
     setName(QStringLiteral("org.kde.ActivityManager.Resources.Scoring"));

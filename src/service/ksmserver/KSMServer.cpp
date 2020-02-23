@@ -30,9 +30,6 @@
 #include <QDBusPendingReply>
 #include <QDBusPendingCallWatcher>
 
-// KDE
-#include <kdbusconnectionpool.h>
-
 // Utils
 #include <utils/d_ptr_implementation.h>
 

@@ -32,7 +32,6 @@
 #include <QUuid>
 
 // KDE
-#include <kdbusconnectionpool.h>
 #include <klocalizedstring.h>
 #include <kauthorized.h>
 #include <kdelibs4migration.h>
@@ -495,7 +494,7 @@ Activities::Activities(QObject *parent)
     // Initializing D-Bus service
 
     new ActivitiesAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(
+    QDBusConnection::sessionBus().registerObject(
         KAMD_DBUS_OBJECT_PATH(Activities), this);
 
     // Initializing config

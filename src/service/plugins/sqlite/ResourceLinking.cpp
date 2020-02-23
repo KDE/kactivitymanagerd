@@ -22,12 +22,12 @@
 #include "ResourceLinking.h"
 
 // Qt
+#include <QDBusConnection>
 #include <QFileSystemWatcher>
 #include <QSqlQuery>
 
 // KDE
 #include <kconfig.h>
-#include <kdbusconnectionpool.h>
 #include <kdirnotify.h>
 
 // Boost
@@ -45,7 +45,7 @@ ResourceLinking::ResourceLinking(QObject *parent)
     : QObject(parent)
 {
     new ResourcesLinkingAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(
+    QDBusConnection::sessionBus().registerObject(
         QStringLiteral("/ActivityManager/Resources/Linking"), this);
 }
 

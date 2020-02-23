@@ -30,7 +30,6 @@
 
 // KDE
 #include <kwindowsystem.h>
-#include <kdbusconnectionpool.h>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
@@ -271,7 +270,7 @@ Resources::Resources(QObject *parent)
     qRegisterMetaType<WId>("WId");
 
     new ResourcesAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(
+    QDBusConnection::sessionBus().registerObject(
         KAMD_DBUS_OBJECT_PATH(Resources), this);
 
     connect(KWindowSystem::self(), &KWindowSystem::windowRemoved,

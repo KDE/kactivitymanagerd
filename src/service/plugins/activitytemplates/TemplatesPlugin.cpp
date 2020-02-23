@@ -19,11 +19,9 @@
 #include "TemplatesPlugin.h"
 
 // Qt
+#include <QDBusConnection>
 #include <QStringList>
 #include <QString>
-
-// KDE
-#include <KDBusConnectionPool>
 
 // Utils
 #include <utils/for_each_assoc.h>
@@ -42,7 +40,7 @@ TemplatesPlugin::TemplatesPlugin(QObject *parent, const QVariantList &args)
     setName(QStringLiteral("org.kde.ActivityManager.ActivityTemplates"));
 
     new TemplatesAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(QStringLiteral("/Templates"), this);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/Templates"), this);
 }
 
 TemplatesPlugin::~TemplatesPlugin()

@@ -26,6 +26,7 @@
 #include <QThread>
 #include <QDir>
 #include <QProcess>
+#include <QDBusConnection>
 #include <QDBusServiceWatcher>
 #include <QDBusConnectionInterface>
 #include <QDBusReply>
@@ -35,7 +36,6 @@
 #include <KPluginMetaData>
 #include <KPluginLoader>
 #include <ksharedconfig.h>
-#include <kdbusconnectionpool.h>
 #include <kdbusservice.h>
 
 // Boost and utils
@@ -138,7 +138,7 @@ Application::Application(int &argc, char **argv)
 
 void Application::init()
 {
-    if (!KDBusConnectionPool::threadConnection().registerService(
+    if (!QDBusConnection::sessionBus().registerService(
             KAMD_DBUS_SERVICE)) {
         QCoreApplication::exit(EXIT_SUCCESS);
     }

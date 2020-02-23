@@ -21,8 +21,8 @@
 // Self
 #include "Features.h"
 
-// KDE
-#include <kdbusconnectionpool.h>
+// Qt
+#include <QDBusConnection>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
@@ -40,7 +40,7 @@ Features::Features(QObject *parent)
     , d()
 {
     new FeaturesAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(
+    QDBusConnection::sessionBus().registerObject(
         KAMD_DBUS_OBJECT_PATH(Features), this);
 }
 
