@@ -117,10 +117,14 @@ void RunApplicationPlugin::executeIn(const QString &path) const
     QDir directory(path);
     for (const auto& item: directory.entryList(QDir::Files)) {
         QString filePath = directory.filePath(item);
-        KService service(filePath);
-        if (service.isValid() && service.isApplication()) {
-            qCDebug(KAMD_LOG_APPLICATION) << "Starting: " << service.exec();
+        if (QFileInfo fileInfo(filePath); fileInfo.suffix() == "sh" && fileInfo.isExecutable()) {
+            qCDebug(KAMD_LOG_APPLICATION) << "Starting a shell script: " << filePath;
+            QProcess::startDetached(filePath, QStringList());
+
+        } else if (KService service(filePath); service.isValid() && service.isApplication()) {
+            qCDebug(KAMD_LOG_APPLICATION) << "Starting application: " << service.exec();
             QProcess::startDetached(service.exec(), QStringList());
+
         } else {
             qCDebug(KAMD_LOG_APPLICATION) << "Openning file: " << QUrl::fromLocalFile(filePath);
             QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
