@@ -106,9 +106,9 @@ Activities::Private::Private(Activities *parent)
                                                       Activities::Running;
 
     const auto runningActivities
-        = mainConfig().readEntry("runningActivities", QStringList()).toSet();
+        = mainConfig().readEntry("runningActivities", QStringList());
     const auto stoppedActivities
-        = mainConfig().readEntry("stoppedActivities", QStringList()).toSet();
+        = mainConfig().readEntry("stoppedActivities", QStringList());
 
     // Do we have a running activity?
     bool atLeastOneRunning = false;
