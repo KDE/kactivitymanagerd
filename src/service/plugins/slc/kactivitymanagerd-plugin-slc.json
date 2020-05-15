@@ -4,7 +4,6 @@
             {
                 "Email": "ivan.cukic@kde.org",
                 "Name": "Ivan Cukic",
-                "Name[az]": "Ivan Cukic",
                 "Name[ca@valencia]": "Ivan Cukic",
                 "Name[ca]": "Ivan Cukic",
                 "Name[cs]": "Ivan Cukic",
@@ -47,7 +46,6 @@
         "Category": "",
         "Dependencies": [],
         "Description": "Provides data to Share-Like-Connect applet",
-        "Description[az]": "Share-Like-Connect əlavəsinin məlumatlarını təqdim edir",
         "Description[ca@valencia]": "Proporciona dades a la miniaplicació «Share-Like-Connect»",
         "Description[ca]": "Proporciona dades a la miniaplicació «Share-Like-Connect»",
         "Description[da]": "Leverer data til Share-Like-Connect-applet",
@@ -89,7 +87,6 @@
         "Id": "org.kde.ActivityManager.SLC",
         "License": "GPL",
         "Name": "Share-Like-Connect",
-        "Name[az]": "Share-Like-Connect",
         "Name[ca@valencia]": "«Share-Like-Connect»",
         "Name[ca]": "«Share-Like-Connect»",
         "Name[da]": "Share·Like·Connect",
