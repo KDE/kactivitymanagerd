@@ -8,6 +8,7 @@ Exec=kactivitymanagerd
 
 Name=Activity Manager
 Name[ar]=مدير الأنشطة
+Name[az]=Fəaliyyət menegeri
 Name[bs]=Menadžer aktivnosti
 Name[ca]=Gestor d'activitats
 Name[ca@valencia]=Gestor d'activitats
@@ -64,6 +65,7 @@ Name[zh_TW]=活動管理員
 
 Comment=The activity management backend
 Comment[ar]=سند إدارة الأنشطة
+Comment[az]=Fəaliyyətlərin İdarə Mexanizmi
 Comment[bs]=Pozadina za upravljanje aktivnostima
 Comment[ca]=El dorsal pel gestor d'activitats
 Comment[ca@valencia]=El dorsal per al gestor d'activitats
