@@ -158,7 +158,7 @@ void ResourceScoreCache::update()
     qCDebug(KAMD_LOG_RESOURCES) << "Creating the cache for: " << d->resource;
 
     // This can fail if we have the cache already made
-    auto isCacheNew = Utils::exec(
+    auto isCacheNew = Utils::exec(*resourcesDatabase(),
         Utils::IgnoreError, Queries::self().createResourceScoreCacheQuery,
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
@@ -167,7 +167,7 @@ void ResourceScoreCache::update()
     );
 
     // Getting the old score
-    Utils::exec(
+    Utils::exec(*resourcesDatabase(),
         Utils::FailOnError, Queries::self().getResourceScoreCacheQuery,
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
@@ -205,7 +205,7 @@ void ResourceScoreCache::update()
     qCDebug(KAMD_LOG_RESOURCES) << "      First update : " << firstUpdate;
     qCDebug(KAMD_LOG_RESOURCES) << "       Last update : " << lastUpdate;
 
-    Utils::exec(Utils::FailOnError, Queries::self().getScoreAdditionQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, Queries::self().getScoreAdditionQuery,
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
         ":targettedResource", d->resource,
@@ -236,7 +236,7 @@ void ResourceScoreCache::update()
 
     // Updating the score
 
-    Utils::exec(Utils::FailOnError, Queries::self().updateResourceScoreCacheQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, Queries::self().updateResourceScoreCacheQuery,
         ":usedActivity", d->activity,
         ":initiatingAgent", d->application,
         ":targettedResource", d->resource,

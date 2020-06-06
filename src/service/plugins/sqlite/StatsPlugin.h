@@ -21,6 +21,7 @@
 // Qt
 #include <QObject>
 #include <QTimer>
+#include <QSqlQuery>
 
 // Boost and STL
 #include <memory>
@@ -29,7 +30,6 @@
 // Local
 #include <Plugin.h>
 
-class QSqlQuery;
 class ResourceLinking;
 
 /**

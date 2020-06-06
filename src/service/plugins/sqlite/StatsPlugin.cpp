@@ -171,7 +171,7 @@ void StatsPlugin::openResourceEvent(const QString &usedActivity,
         "VALUES (:usedActivity, :initiatingAgent, :targettedResource, :start, :end)"
     ));
 
-    Utils::exec(Utils::FailOnError, *openResourceEventQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *openResourceEventQuery,
         ":usedActivity"      , usedActivity      ,
         ":initiatingAgent"   , initiatingAgent   ,
         ":targettedResource" , targettedResource ,
@@ -205,7 +205,7 @@ void StatsPlugin::closeResourceEvent(const QString &usedActivity,
             "end IS NULL"
     ));
 
-    Utils::exec(Utils::FailOnError, *closeResourceEventQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *closeResourceEventQuery,
         ":usedActivity"      , usedActivity      ,
         ":initiatingAgent"   , initiatingAgent   ,
         ":targettedResource" , targettedResource ,
@@ -242,7 +242,7 @@ bool StatsPlugin::insertResourceInfo(const QString &uri)
     ));
 
     getResourceInfoQuery->bindValue(":targettedResource", uri);
-    Utils::exec(Utils::FailOnError, *getResourceInfoQuery);
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *getResourceInfoQuery);
 
     if (getResourceInfoQuery->next()) {
         return false;
@@ -264,7 +264,7 @@ bool StatsPlugin::insertResourceInfo(const QString &uri)
         ")"
     ));
 
-    Utils::exec(Utils::FailOnError, *insertResourceInfoQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *insertResourceInfoQuery,
         ":targettedResource", uri
     );
 
@@ -286,7 +286,7 @@ void StatsPlugin::saveResourceTitle(const QString &uri, const QString &title,
             "targettedResource = :targettedResource "
     ));
 
-    Utils::exec(Utils::FailOnError, *saveResourceTitleQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *saveResourceTitleQuery,
         ":targettedResource" , uri                     ,
         ":title"             , title                   ,
         ":autoTitle"         , (autoTitle ? "1" : "0")
@@ -309,7 +309,7 @@ void StatsPlugin::saveResourceMimetype(const QString &uri,
             "targettedResource = :targettedResource "
     ));
 
-    Utils::exec(Utils::FailOnError, *saveResourceMimetypeQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *saveResourceMimetypeQuery,
         ":targettedResource" , uri                        ,
         ":mimetype"          , mimetype                   ,
         ":autoMimetype"      , (autoMimetype ? "1" : "0")
@@ -461,8 +461,8 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count,
                 "DELETE FROM ResourceScoreCache "
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity)");
 
-        Utils::exec(Utils::FailOnError, removeEventsQuery, ":usedActivity", usedActivity);
-        Utils::exec(Utils::FailOnError, removeScoreCachesQuery, ":usedActivity", usedActivity);
+        Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery, ":usedActivity", usedActivity);
+        Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery, ":usedActivity", usedActivity);
 
     } else {
 
@@ -493,12 +493,12 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count,
                 "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
                 "AND firstUpdate > :since");
 
-        Utils::exec(Utils::FailOnError, removeEventsQuery,
+        Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery,
                 ":usedActivity", usedActivity,
                 ":since", since.toSecsSinceEpoch()
             );
 
-        Utils::exec(Utils::FailOnError, removeScoreCachesQuery,
+        Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery,
                 ":usedActivity", usedActivity,
                 ":since", since.toSecsSinceEpoch()
             );
@@ -534,12 +534,12 @@ void StatsPlugin::DeleteEarlierStats(const QString &activity, int months)
             "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
             "AND lastUpdate < :time");
 
-    Utils::exec(Utils::FailOnError, removeEventsQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery,
             ":usedActivity", usedActivity,
             ":time", time.toSecsSinceEpoch()
         );
 
-    Utils::exec(Utils::FailOnError, removeScoreCachesQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery,
             ":usedActivity", usedActivity,
             ":time", time.toSecsSinceEpoch()
         );
@@ -600,10 +600,10 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity,
 
     const auto pattern = Common::starPatternToLike(resource);
 
-    Utils::exec(Utils::FailOnError, removeEventsQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery,
                 ":targettedResource", pattern);
 
-    Utils::exec(Utils::FailOnError, removeScoreCachesQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery,
                 ":targettedResource", pattern);
 
     emit ResourceScoreDeleted(activity, client, resource);

@@ -100,7 +100,7 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent,
 
     DATABASE_TRANSACTION(*resourcesDatabase());
 
-    Utils::exec(Utils::FailOnError, *linkResourceToActivityQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *linkResourceToActivityQuery,
         ":usedActivity"      , usedActivity,
         ":initiatingAgent"   , initiatingAgent,
         ":targettedResource" , targettedResource
@@ -169,7 +169,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
 
     DATABASE_TRANSACTION(*resourcesDatabase());
 
-    Utils::exec(Utils::FailOnError, *query,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *query,
         ":usedActivity"      , usedActivity,
         ":initiatingAgent"   , initiatingAgent,
         ":targettedResource" , targettedResource
@@ -222,7 +222,7 @@ bool ResourceLinking::IsResourceLinkedToActivity(QString initiatingAgent,
             "targettedResource = COALESCE(:targettedResource, '') "
         ));
 
-    Utils::exec(Utils::FailOnError, *isResourceLinkedToActivityQuery,
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, *isResourceLinkedToActivityQuery,
         ":usedActivity"      , usedActivity,
         ":initiatingAgent"   , initiatingAgent,
         ":targettedResource" , targettedResource

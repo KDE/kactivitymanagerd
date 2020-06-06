@@ -21,6 +21,7 @@
 #define PLUGINS_SQLITE_DATABASE_UTILS_H
 
 #include <QSqlQuery>
+#include <QSqlError>
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 #include <memory>
 
@@ -57,7 +58,7 @@ namespace Utils {
         FailOnError
     };
 
-    inline bool exec(ErrorHandling eh, QSqlQuery &query)
+    inline bool exec(Common::Database &database, ErrorHandling eh, QSqlQuery &query)
     {
         bool success = query.exec();
 
@@ -67,18 +68,22 @@ namespace Utils {
                 qCWarning(KAMD_LOG_RESOURCES) << query.lastError();
             }
             Q_ASSERT_X(success, "Uils::exec", qPrintable(QStringLiteral("Query failed:") + query.lastError().text()));
+
+            if (!success) {
+                database.reportError(query.lastError());
+            }
         }
 
         return success;
     }
 
     template <typename T1, typename T2, typename... Ts>
-    inline bool exec(ErrorHandling eh, QSqlQuery &query,
+    inline bool exec(Common::Database &database, ErrorHandling eh, QSqlQuery &query,
                      const T1 &variable, const T2 &value, Ts... ts)
     {
         query.bindValue(variable, value);
 
-        return exec(eh, query, ts...);
+        return exec(database, eh, query, ts...);
     }
 
 } // namespace Utils

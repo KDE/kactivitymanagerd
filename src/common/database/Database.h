@@ -25,10 +25,13 @@
 #include <memory>
 #include <QSqlQuery>
 #include <QRegExp>
+#include <QObject>
 
 namespace Common {
 
-class Database {
+class Database: public QObject {
+    Q_OBJECT
+
 public:
     typedef std::shared_ptr<Database> Ptr;
 
@@ -67,9 +70,14 @@ public:
         QSqlDatabase &m_database;
     };
 
+    void reportError(const QSqlError &error);
+
     #define DATABASE_TRANSACTION(A) \
         /* enable this for debugging only: qCDebug(KAMD_LOG_RESOURCES) << "Location:" << __FILE__ << __LINE__; */ \
         Common::Database::Locker lock(A)
+
+Q_SIGNALS:
+    void error(const QSqlError &error) const;
 
 private:
     D_PTR;

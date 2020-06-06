@@ -41,17 +41,15 @@ namespace Common {
     class Database;
 } // namespace Common
 
-class ResourcesDatabaseMigrator : public QObject {
-    Q_OBJECT
-
+class ResourcesDatabaseInitializer {
 public:
     // static Database *self();
 
 private:
-    ResourcesDatabaseMigrator();
-    ~ResourcesDatabaseMigrator() override;
+    ResourcesDatabaseInitializer();
+    ~ResourcesDatabaseInitializer();
 
-    void migrateDatabase(const QString &newDatabaseFile) const;
+    void initDatabase(bool retryOnFail = true);
 
     D_PTR;
 

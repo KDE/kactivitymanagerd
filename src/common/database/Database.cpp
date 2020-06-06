@@ -110,6 +110,11 @@ public:
         qCDebug(KAMD_LOG_RESOURCES) << "Closing SQL connection: " << m_connectionName;
     }
 
+    void close()
+    {
+        m_database.close();
+    }
+
     QSqlDatabase &get()
     {
         return m_database;
@@ -207,6 +212,9 @@ Database::Ptr Database::instance(Source source, OpenMode openMode)
         qCWarning(KAMD_LOG_RESOURCES) << "KActivities: Database can not be opened in WAL mode. Check the "
                                          "SQLite version (required >3.7.0). And whether your filesystem "
                                          "supports shared memory";
+
+        ptr->d->database->close();
+
         return nullptr;
     }
 
@@ -237,6 +245,11 @@ QSqlQuery Database::createQuery() const
     return d->query();
 }
 
+void Database::reportError(const QSqlError &error_)
+{
+    Q_EMIT error(error_);
+}
+
 QString Database::lastQuery() const
 {
 #ifdef QT_DEBUG
@@ -249,7 +262,13 @@ QSqlQuery Database::execQuery(const QString &query, bool ignoreErrors) const
 {
     Q_UNUSED(ignoreErrors);
 #ifdef QT_NO_DEBUG
-    return d->query(query);
+    auto result = d->query(query);
+
+    if (!ignoreErrors && result.lastError().isValid()) {
+        Q_EMIT error(result.lastError());
+    }
+
+    return result;
 #else
     auto result = d->query(query);
 

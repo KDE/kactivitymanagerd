@@ -170,6 +170,18 @@ void initSchema(Database &database)
 
     database.execQueries(ResourcesDatabaseSchema::schema());
 
+    // We are asking for trouble. If the database is corrupt,
+    // some of these should fail.
+    // WARNING: Sqlite specific!
+    database.execQueries(QStringList{
+            ".tables",
+            "SELECT count(*) FROM SchemaInfo",
+            "SELECT count(*) FROM ResourceEvent",
+            "SELECT count(*) FROM ResourceScoreCache",
+            "SELECT count(*) FROM ResourceLink",
+            "SELECT count(*) FROM ResourceInfo"
+        });
+
     // We can not allow empty fields for activity and agent, they need to
     // be at least magic values. These do not change the structure
     // of the database, but the old data.
