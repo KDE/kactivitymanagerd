@@ -66,7 +66,7 @@ namespace Utils {
                 qCWarning(KAMD_LOG_RESOURCES) << query.lastQuery();
                 qCWarning(KAMD_LOG_RESOURCES) << query.lastError();
             }
-            Q_ASSERT_X(success, "Uils::exec", "Query failed");
+            Q_ASSERT_X(success, "Uils::exec", qPrintable(QStringLiteral("Query failed:") + query.lastError().text()));
         }
 
         return success;
