@@ -152,7 +152,9 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                 "DELETE FROM ResourceLink "
                 "WHERE "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
-                "targettedResource = COALESCE(:targettedResource, '') "
+                "(targettedResource = COALESCE(:targettedResource, '') OR "
+                "(initiatingAgent = 'org.kde.plasma.favorites.applications' "
+                "AND targettedResource = 'applications:' || COALESCE(:targettedResource, '')))"
             ));
         query = unlinkResourceFromAllActivitiesQuery.get();
     } else {
@@ -162,13 +164,20 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                 "WHERE "
                 "usedActivity      = COALESCE(:usedActivity     , '') AND "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
-                "targettedResource = COALESCE(:targettedResource, '') "
+                "(targettedResource = COALESCE(:targettedResource, '') OR "
+                "(initiatingAgent = 'org.kde.plasma.favorites.applications'"
+                "AND targettedResource =  'applications:' || COALESCE(:targettedResource, '')))"
             ));
         query = unlinkResourceFromActivityQuery.get();
     }
 
     DATABASE_TRANSACTION(*resourcesDatabase());
-
+    // BUG 385814, some existings entries don't have the applications:
+    // prefix, so we remove it and check in the sql it they match
+    // TODO Remove when we can expect all users have a fresher install that 5.18
+    if (initiatingAgent == QLatin1String("org.kde.plasma.favorites.applications")) {
+        targettedResource = targettedResource.remove(QLatin1String("applications:"));
+    }
     Utils::exec(Utils::FailOnError, *query,
         ":usedActivity"      , usedActivity,
         ":initiatingAgent"   , initiatingAgent,
