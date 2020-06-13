@@ -152,7 +152,9 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                 "DELETE FROM ResourceLink "
                 "WHERE "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
-                "targettedResource = COALESCE(:targettedResource, '') "
+                "(targettedResource = COALESCE(:targettedResource, '') OR "
+                "(initiatingAgent = 'org.kde.plasma.favorites.applications' "
+                "AND targettedResource = 'applications:' || COALESCE(:targettedResource, '')))"
             ));
         query = unlinkResourceFromAllActivitiesQuery.get();
     } else {
@@ -162,7 +164,9 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent,
                 "WHERE "
                 "usedActivity      = COALESCE(:usedActivity     , '') AND "
                 "initiatingAgent   = COALESCE(:initiatingAgent  , '') AND "
-                "targettedResource = COALESCE(:targettedResource, '') "
+                "(targettedResource = COALESCE(:targettedResource, '') OR "
+                "(initiatingAgent = 'org.kde.plasma.favorites.applications'"
+                "AND targettedResource =  'applications:' || COALESCE(:targettedResource, '')))"
             ));
         query = unlinkResourceFromActivityQuery.get();
     }
