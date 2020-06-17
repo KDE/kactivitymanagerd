@@ -39,7 +39,6 @@
                 "Name[sv]": "Ivan Cukic",
                 "Name[tr]": "Ivan Cukic",
                 "Name[uk]": "Ivan Cukic",
-                "Name[x-test]": "xxIvan Cukicxx",
                 "Name[zh_CN]": "Ivan Cukic",
                 "Name[zh_TW]": "Ivan Cukic"
             }
@@ -81,7 +80,6 @@
         "Description[sv]": "Insticksprogram för att lagra och betygsätta händelser i SQLite",
         "Description[tr]": "SQLite'da olayları saklamak ve puanlamak için eklenti",
         "Description[uk]": "Додаток для зберігання і оцінки подій у SQLite",
-        "Description[x-test]": "xxPlugin to store and score events in SQLitexx",
         "Description[zh_CN]": "使用 SQLite 存储事件和为事件打分的插件",
         "Description[zh_TW]": "在 SQLite 中儲存並評分事件",
         "EnabledByDefault": true,
@@ -123,7 +121,6 @@
         "Name[sv]": "SQLite-inmatning",
         "Name[tr]": "SQLite Besleyici",
         "Name[uk]": "Передавання даних SQLite",
-        "Name[x-test]": "xxSQLite Feederxx",
         "Name[zh_CN]": "SQLite 送料机",
         "Name[zh_TW]": "SQLite Feeder",
         "ServiceTypes": [

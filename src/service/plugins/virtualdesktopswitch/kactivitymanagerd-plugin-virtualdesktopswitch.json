@@ -39,7 +39,6 @@
                 "Name[sv]": "Ivan Cukic",
                 "Name[tr]": "Ivan Cukic",
                 "Name[uk]": "Ivan Cukic",
-                "Name[x-test]": "xxIvan Cukicxx",
                 "Name[zh_CN]": "Ivan Cukic",
                 "Name[zh_TW]": "Ivan Cukic"
             }
@@ -81,7 +80,6 @@
         "Description[sv]": "Vid byte till en aktivitet, öppnar det virtuella skrivbord som senast användes med den aktiviteten",
         "Description[tr]": "Bir etkinliğe geçiş yaparken, bu etkinlikle son kullanılan sanal masaüstünü açar",
         "Description[uk]": "Під час перемикання на простір дій відкриває віртуальну стільницю, яку було використано у цьому просторі останньою",
-        "Description[x-test]": "xxWhen switching to an activity, opens the virtual desktop last used with that activityxx",
         "Description[zh_CN]": "切换活动时打开最后使用的虚拟桌面",
         "Description[zh_TW]": "切換到某個活動時，開啟上次使用的虛擬桌面",
         "EnabledByDefault": false,
@@ -124,7 +122,6 @@
         "Name[sv]": "Byte av virtuellt skrivbord",
         "Name[tr]": "Sanal masaüstü geçişi",
         "Name[uk]": "Перемикач віртуальних стільниць",
-        "Name[x-test]": "xxVirtual desktop switcherxx",
         "Name[zh_CN]": "虚拟桌面切换器",
         "Name[zh_TW]": "虛擬桌面切換器",
         "ServiceTypes": [
