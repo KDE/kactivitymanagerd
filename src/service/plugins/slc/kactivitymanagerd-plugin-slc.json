@@ -38,7 +38,6 @@
                 "Name[sv]": "Ivan Cukic",
                 "Name[tr]": "Ivan Cukic",
                 "Name[uk]": "Ivan Cukic",
-                "Name[x-test]": "xxIvan Cukicxx",
                 "Name[zh_CN]": "Ivan Cukic",
                 "Name[zh_TW]": "Ivan Cukic"
             }
@@ -79,7 +78,6 @@
         "Description[sv]": "Tillhandahåller data för Share-Like-Connect miniprogram",
         "Description[tr]": "Paylaş-Beğen-Bağlan uygulamasına veri sağlar",
         "Description[uk]": "Надає дані аплетові Оприлюднити-Уподобати-З’єднати",
-        "Description[x-test]": "xxProvides data to Share-Like-Connect appletxx",
         "Description[zh_CN]": "向分享-喜爱-连接部件提供数据",
         "Description[zh_TW]": "將資料提供給 Share-Like-Connect 小程式",
         "EnabledByDefault": true,
@@ -120,7 +118,6 @@
         "Name[sv]": "Share-Like-Connect",
         "Name[tr]": "Paylaş-Beğen-Bağlan",
         "Name[uk]": "Оприлюднити-Уподобати-З’єднати",
-        "Name[x-test]": "xxShare-Like-Connectxx",
         "Name[zh_CN]": "分享-点赞-连接",
         "Name[zh_TW]": "Share-Like-Connect",
         "ServiceTypes": [
