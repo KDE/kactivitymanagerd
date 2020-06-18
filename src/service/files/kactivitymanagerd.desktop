@@ -59,6 +59,7 @@ Name[tg]=Мудири фаъолият
 Name[tr]=Etkinlik Yöneticisi
 Name[ug]=پائالىيەت باشقۇرغۇچ
 Name[uk]=Керування просторами дій
+Name[x-test]=xxActivity Managerxx
 Name[zh_CN]=活动管理器
 Name[zh_TW]=活動管理員
 
@@ -115,5 +116,6 @@ Comment[tg]=Коркардкунандаи мудири фаъолият
 Comment[tr]=Etkinlik yönetimi arka ucu
 Comment[ug]=پائالىيەت باشقۇرغۇچ ئارقا ئۇچى
 Comment[uk]=Сервер керування просторами дій
+Comment[x-test]=xxThe activity management backendxx
 Comment[zh_CN]=活动管理器后端
 Comment[zh_TW]=活動管理後端介面
