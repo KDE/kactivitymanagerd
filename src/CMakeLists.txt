@@ -53,10 +53,18 @@ else ()
       )
 endif ()
 
-configure_file(org.kde.activitymanager.service.in
-               ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.activitymanager.service
-        DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
+
+# D-Bus activation service file, and associated systemd service
+ecm_generate_dbus_service_file(
+   NAME org.kde.ActivityManager
+   EXECUTABLE "${KDE_INSTALL_FULL_LIBEXECDIR}/kactivitymanagerd"
+   SYSTEMD_SERVICE plasma-kactivitymanagerd.service
+   DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
+)
+ecm_install_configured_files(
+   INPUT plasma-kactivitymanagerd.service.in
+   DESTINATION ${KDE_INSTALL_SYSTEMDUNITDIR}
+)
 
 ecm_qt_declare_logging_category(debug_SRCS
    HEADER DebugActivities.h

@@ -1,0 +1,7 @@
+[Unit]
+Description=KActivityManager Activity manager Service
+
+[Service]
+ExecStart=@KDE_INSTALL_FULL_LIBEXECDIR@/kactivitymanagerd
+BusName=org.kde.ActivityManager
+Slice=background.slice
