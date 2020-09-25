@@ -87,7 +87,7 @@ void GlobalShortcutsPlugin::activityAdded(const QString &activity)
         objectNamePattern.arg(activity));
 
     action->setText(i18nc("@action", "Switch to activity \"%1\"", activityName(activity)));
-    KGlobalAccel::self()->setDefaultShortcut(action, QList<QKeySequence>{});
+    KGlobalAccel::setGlobalShortcut(action, QList<QKeySequence>{});
 
     connect(action, &QAction::triggered, [this, activity]() { Q_EMIT currentActivityChanged(activity);});
 
