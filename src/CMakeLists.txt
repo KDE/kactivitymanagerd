@@ -63,7 +63,7 @@ ecm_generate_dbus_service_file(
 )
 ecm_install_configured_files(
    INPUT plasma-kactivitymanagerd.service.in
-   DESTINATION ${KDE_INSTALL_SYSTEMDUNITDIR}
+   DESTINATION ${KDE_INSTALL_SYSTEMDUSERUNITDIR}
 )
 
 ecm_qt_declare_logging_category(debug_SRCS
