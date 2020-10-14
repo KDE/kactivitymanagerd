@@ -39,6 +39,7 @@
 // System
 #include <cmath>
 #include <memory>
+#include <array>
 
 // Local
 #include "DebugResources.h"
@@ -104,7 +105,7 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
         = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
           + QStringLiteral("/kactivitymanagerd/resources/working-backup/");
 
-    const QStringList databaseFiles{"database", "database-wal", "database-shm"};
+    static const std::array<QString, 3> databaseFiles{"database", "database-wal", "database-shm"};
 
     {
         QDir dir;
