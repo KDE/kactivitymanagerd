@@ -125,28 +125,28 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
     const QDir databaseTestBackupDirectory(databaseTestBackupDirectoryPath);
     const QDir databaseWorkingBackupDirectory(databaseWorkingBackupDirectoryPath);
 
-    auto removeDatabaseFiles = [&] (const QDir &dir) {
+    auto removeDatabaseFiles = [] (const QDir &dir) {
         return std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&] (const QString &fileName) {
+                           [&dir] (const QString &fileName) {
                                const auto filePath = dir.filePath(fileName);
                                return !QFile::exists(filePath) || QFile::remove(filePath);
                             });
     };
 
-    auto copyDatabaseFiles = [&] (const QDir &fromDir, const QDir& toDir) {
+    auto copyDatabaseFiles = [removeDatabaseFiles] (const QDir &fromDir, const QDir& toDir) {
         return removeDatabaseFiles(toDir) &&
                std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&] (const QString &fileName) {
+                           [&fromDir, &toDir] (const QString &fileName) {
                                const auto fromFilePath = fromDir.filePath(fileName);
                                const auto toFilePath = toDir.filePath(fileName);
                                return QFile::copy(fromFilePath, toFilePath);
                             });
     };
 
-    auto databaseFilesExistIn = [&] (const QDir &dir) {
+    auto databaseFilesExistIn = [] (const QDir &dir) {
         return dir.exists() &&
                std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&] (const QString &fileName) {
+                           [&dir] (const QString &fileName) {
                                const auto filePath = dir.filePath(fileName);
                                return QFile::exists(filePath);
                            });
@@ -181,7 +181,7 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
     if (d->database) {
         qCDebug(KAMD_LOG_RESOURCES) << "Database opened successfully";
         QObject::connect(d->database.get(), &Common::Database::error,
-                         [=] (const QSqlError &error) {
+                         [databaseTestBackupDirectory, removeDatabaseFiles] (const QSqlError &error) {
                              const QString errorLog =
                                  QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
                                      + QStringLiteral("/kactivitymanagerd/resources/errors.log");
