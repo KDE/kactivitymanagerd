@@ -11,7 +11,6 @@
 // Qt
 #include <QDBusConnection>
 #include <QFileSystemWatcher>
-#include <QSqlQuery>
 #include <QStringList>
 
 // KDE

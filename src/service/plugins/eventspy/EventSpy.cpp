@@ -6,7 +6,6 @@
 
 #include "EventSpy.h"
 
-#include <QStringList>
 #include <QString>
 #include <QFileInfo>
 

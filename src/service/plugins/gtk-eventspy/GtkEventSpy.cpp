@@ -6,7 +6,6 @@
 
 #include "GtkEventSpy.h"
 
-#include <QStringList>
 #include <QString>
 #include <QUrl>
 #include <QFileInfo>

@@ -11,8 +11,6 @@
 // Qt
 #include <QDir>
 #include <QSqlDatabase>
-#include <QSqlError>
-#include <QSqlQuery>
 #include <QStandardPaths>
 #include <QVariant>
 
@@ -32,7 +30,6 @@
 #include "DebugResources.h"
 #include "Utils.h"
 
-#include <common/database/Database.h>
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 
 class ResourcesDatabaseInitializer::Private {

@@ -9,8 +9,6 @@
 
 // Qt
 #include <QHash>
-#include <QString>
-#include <QObject>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
