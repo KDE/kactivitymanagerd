@@ -2,24 +2,13 @@
 
 # Boosting us a bit
 
-find_package (Boost 1.49 REQUIRED)
-include_directories (${Boost_INCLUDE_DIR})
-
-string (REGEX MATCH "1053.." BOOST_VERSION_BLACKLISTED ${Boost_VERSION})
-
-if (BOOST_VERSION_BLACKLISTED AND NOT KACTIVITIES_ENABLE_EXCEPTIONS)
-   message (
-      WARNING
-      "Boost.Container 1.53 has issues when exceptions are disabled. "
-      "We will set the KACTIVITIES_ENABLE_EXCEPTIONS option."
-      )
-   set (KACTIVITIES_ENABLE_EXCEPTIONS ON)
-endif ()
-
-if (KACTIVITIES_ENABLE_EXCEPTIONS)
-   string (REPLACE "-fno-exceptions" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-   add_definitions (-fexceptions)
-endif ()
+find_package(Boost ${Boost_MINIMUM_VERSION} MODULE REQUIRED)
+set_package_properties(Boost PROPERTIES
+    DESCRIPTION "Boost C++ Libraries"
+    URL "https://www.boost.org"
+    TYPE REQUIRED
+)
+include_directories (${Boost_INCLUDE_DIRS})
 
 # =======================================================
 # Starting the actual project definition
@@ -34,25 +23,6 @@ include_directories (
    ${CMAKE_CURRENT_BINARY_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}
    )
-
-# Is the compiler modern enough to build the ActivityManager service
-# and accompanying workspace addons?
-
-string (COMPARE EQUAL "${CXX_FEATURES_UNSUPPORTED}" "" CXX_COMPILER_IS_MODERN)
-
-# The compiler is good enough
-if (CXX_COMPILER_IS_MODERN)
-   message (STATUS
-      "C++11 enabled compiler: Your compiler is state-of-the-art"
-      )
-else ()
-   message (STATUS
-      "C++11 enabled compiler:"
-      "Your compiler doesn't support the following features: ${CXX_FEATURES_UNSUPPORTED} but
-      the list of the supported ones is sufficient for the build: ${CXX_FEATURES_SUPPORTED}"
-      )
-endif ()
-
 
 # D-Bus activation service file, and associated systemd service
 ecm_generate_dbus_service_file(
@@ -85,4 +55,3 @@ ecm_qt_declare_logging_category(debug_SRCS
 ecm_setup_qtplugin_macro_names(JSON_ARG3 "KAMD_EXPORT_PLUGIN")
 
 add_subdirectory (service)
-

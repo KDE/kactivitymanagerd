@@ -1,13 +1,12 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
 
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.5)
 
 project (KActivityManagerd)
 
-option (KACTIVITIES_ENABLE_EXCEPTIONS "If you have Boost 1.53, you need to build KActivities with exceptions enabled. This is UNTESTED and EXPERIMENTAL!" OFF)
-
-set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.74")
+set (QT_MIN_VERSION "5.15.0")
+set (KF5_MIN_VERSION "5.74")
+set (Boost_MINIMUM_VERSION "1.58")
 
 # We don't build in-source
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
@@ -20,9 +19,13 @@ endif ()
 set (KACTIVITIES_CURRENT_ROOT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Extra CMake stuff
-include(FeatureSummary)
+include (FeatureSummary)
 find_package(ECM ${KF5_MIN_VERSION} NO_MODULE)
-set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules")
+set_package_properties(ECM PROPERTIES
+    DESCRIPTION "Extra CMake Modules."
+    URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
+    TYPE REQUIRED
+)
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -36,7 +39,7 @@ include (ECMGenerateDBusServiceFile)
 include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
 include (ECMSetupQtPluginMacroNames)
-include(KDEClangFormat)
+include (KDEClangFormat)
 
 # C++17
 set (CMAKE_CXX_STANDARD 17)
@@ -69,17 +72,16 @@ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
 endif ()
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-   set(CMAKE_CXX_VISIBILITY_PRESET default)
-   set(CMAKE_VISIBILITY_INLINES_HIDDEN 0)
+   set (CMAKE_CXX_VISIBILITY_PRESET default)
+   set (CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 endif ()
 
 add_subdirectory (src)
 
 # add clang-format target for all our real source files
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+file (GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
-install(FILES kactivitymanagerd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+install (FILES kactivitymanagerd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 # Write out the features
 feature_summary (WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
