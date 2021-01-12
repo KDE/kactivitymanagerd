@@ -5,6 +5,7 @@ X-KDE-ServiceType=ActivityManager/Plugin
 Comment=Activity manager plugin
 Comment[ar]=ملحقة مدير الأنشطة
 Comment[az]=Fəaliyyət Menecerinin Əlavəsi
+Comment[bg]=Приставка за управление на дейностите
 Comment[bs]=Priključak za praćenje aktivnosti
 Comment[ca]=Connector pel gestor d'activitats
 Comment[ca@valencia]=Connector per al gestor d'activitats
