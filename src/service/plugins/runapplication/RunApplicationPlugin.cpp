@@ -20,7 +20,7 @@
 namespace {
     enum ActivityState {
         Running = 2,
-        Stopped = 4
+        Stopped = 4,
     };
 }
 

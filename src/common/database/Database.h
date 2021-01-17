@@ -22,12 +22,12 @@ public:
     typedef std::shared_ptr<Database> Ptr;
 
     enum Source {
-        ResourcesDatabase
+        ResourcesDatabase,
     };
 
     enum OpenMode {
         ReadWrite,
-        ReadOnly
+        ReadOnly,
     };
 
     static Ptr instance(Source source, OpenMode openMode);

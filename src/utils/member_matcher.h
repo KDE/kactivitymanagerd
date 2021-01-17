@@ -19,7 +19,7 @@ namespace member_matcher {
             LessOrEqual,
             Equal,
             GreaterOrEqual,
-            Greater
+            Greater,
         };
 
         // Member comparison object

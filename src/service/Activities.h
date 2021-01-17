@@ -38,7 +38,7 @@ public:
         Running = 2,
         Starting = 3,
         Stopped = 4,
-        Stopping = 5
+        Stopping = 5,
     };
 
     /**

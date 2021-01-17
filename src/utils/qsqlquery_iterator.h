@@ -15,7 +15,7 @@ class NextValueIterator {
 public:
     enum Type {
         NormalIterator,
-        EndIterator
+        EndIterator,
     };
 
     NextValueIterator(ResultSet &query, Type type = NormalIterator)

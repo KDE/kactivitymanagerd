@@ -31,14 +31,14 @@ public:
         FocussedOut = 5, ///< resource lost the focus
 
         LastEventType = 5,
-        UserEventType = 32
+        UserEventType = 32,
     };
 
     // These events can't come outside of the activity manager daemon,
     // they are intended to provide some additional functionality
     // to the daemon plugins
     enum UserType {
-        UpdateScore = UserEventType + 1
+        UpdateScore = UserEventType + 1,
     };
 
     Event();

@@ -23,7 +23,7 @@ public:
     enum ReturnStatus {
         Started = 0,
         Stopped = 1,
-        FailedToStop = 2
+        FailedToStop = 2,
     };
 
     explicit KSMServer(QObject *parent = nullptr);

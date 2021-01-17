@@ -42,7 +42,7 @@ namespace Utils {
 
     enum ErrorHandling {
         IgnoreError,
-        FailOnError
+        FailOnError,
     };
 
     inline bool exec(Common::Database &database, ErrorHandling eh, QSqlQuery &query)
