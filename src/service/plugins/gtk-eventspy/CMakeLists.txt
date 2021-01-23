@@ -13,7 +13,8 @@ ecm_qt_declare_logging_category(gtkevenyspy_SRCS
    HEADER DebugPluginGtkEventSpy.h
    IDENTIFIER KAMD_LOG_PLUGIN_GTK_EVENTSPY
    CATEGORY_NAME org.kde.kactivities.plugin.gtk-eventspy
-   DEFAULT_SEVERITY Warning)
+   DEFAULT_SEVERITY Warning
+   DESCRIPTION "KActivities Gtk Event Spy Resources" EXPORT KACTIVITYMANAGERD)
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_gtk_eventspy

@@ -40,17 +40,20 @@ ecm_qt_declare_logging_category(debug_SRCS
    HEADER DebugActivities.h
    IDENTIFIER KAMD_LOG_ACTIVITIES
    CATEGORY_NAME org.kde.kactivities.activities
-   DEFAULT_SEVERITY Warning)
+   DEFAULT_SEVERITY Warning
+   DESCRIPTION "KActivities Activities" EXPORT KACTIVITYMANAGERD)
 ecm_qt_declare_logging_category(debug_SRCS
    HEADER DebugResources.h
    IDENTIFIER KAMD_LOG_RESOURCES
    CATEGORY_NAME org.kde.kactivities.resources
-   DEFAULT_SEVERITY Warning)
+   DEFAULT_SEVERITY Warning
+   DESCRIPTION "KActivities Resources" EXPORT KACTIVITYMANAGERD)
 ecm_qt_declare_logging_category(debug_SRCS
    HEADER DebugApplication.h
    IDENTIFIER KAMD_LOG_APPLICATION
    CATEGORY_NAME org.kde.kactivities.application
-   DEFAULT_SEVERITY Warning)
+   DEFAULT_SEVERITY Warning
+   DESCRIPTION "KActivities Application" EXPORT KACTIVITYMANAGERD)
 
 ecm_setup_qtplugin_macro_names(JSON_ARG3 "KAMD_EXPORT_PLUGIN")
 
