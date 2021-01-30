@@ -21,8 +21,8 @@ kcoreaddons_add_plugin(
 
 target_link_libraries (
    kactivitymanagerd_plugin_activitytemplates
-   Qt5::Core
-   Qt5::DBus
+   Qt::Core
+   Qt::DBus
    KF5::ConfigCore
    KF5::DBusAddons
    KF5::CoreAddons

@@ -18,9 +18,9 @@ kcoreaddons_add_plugin (
 
 target_link_libraries (
    kactivitymanagerd_plugin_runapplication
-   Qt5::Core
-   Qt5::DBus
-   Qt5::Gui
+   Qt::Core
+   Qt::DBus
+   Qt::Gui
    KF5::CoreAddons
    KF5::ConfigCore
    KF5::Service

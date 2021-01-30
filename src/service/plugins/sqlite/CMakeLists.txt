@@ -40,8 +40,8 @@ kcoreaddons_add_plugin(
 
 target_link_libraries (
    kactivitymanagerd_plugin_sqlite
-   Qt5::Core
-   Qt5::Sql
+   Qt::Core
+   Qt::Sql
    KF5::ConfigCore
    KF5::KIOCore
    KF5::DBusAddons

@@ -25,8 +25,8 @@ kcoreaddons_add_plugin(
 
 target_link_libraries (
    kactivitymanagerd_plugin_gtk_eventspy
-   Qt5::Core
-   Qt5::Xml
+   Qt::Core
+   Qt::Xml
    KF5::CoreAddons
    KF5::Service
    kactivitymanagerd_plugin

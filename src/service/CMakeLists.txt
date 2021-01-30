@@ -22,7 +22,7 @@ find_package (KF5Crash ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
 add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp ${debug_SRCS})
 generate_export_header(kactivitymanagerd_plugin)
-target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt5::Core Qt5::DBus KF5::CoreAddons KF5::ConfigCore)
+target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt::Core Qt::DBus KF5::CoreAddons KF5::ConfigCore)
 
 add_subdirectory (plugins)
 
@@ -60,10 +60,10 @@ qt5_add_dbus_adaptor (
 add_executable (kactivitymanagerd ${kactivitymanager_SRCS})
 
 target_link_libraries (kactivitymanagerd
-   Qt5::Core
-   Qt5::DBus
-   Qt5::Gui
-   Qt5::Widgets
+   Qt::Core
+   Qt::DBus
+   Qt::Gui
+   Qt::Widgets
    KF5::DBusAddons
    KF5::CoreAddons
    KF5::ConfigCore
