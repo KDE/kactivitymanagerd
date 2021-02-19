@@ -1,0 +1,23 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "alexander.lohnau@gmx.de",
+                "Name": "Alexander Lohnau"
+            }
+        ],
+        "Category": "",
+        "Dependencies": [],
+        "Description": "KRunner plugin to list and switch activities",
+        "EnabledByDefault": true,
+        "Icon": "preferences-system-windows",
+        "Id": "org.kde.ActivityManager.ActivityRunner",
+        "License": "GPL",
+        "Name": "Activity Runner",
+        "ServiceTypes": [
+            "ActivityManager/Plugin"
+        ],
+        "Version": "1.0",
+        "Website": "https://invent.kde.org/plasma/kactivitymanagerd"
+    }
+}
