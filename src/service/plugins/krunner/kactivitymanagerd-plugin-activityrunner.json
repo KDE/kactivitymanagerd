@@ -3,17 +3,35 @@
         "Authors": [
             {
                 "Email": "alexander.lohnau@gmx.de",
-                "Name": "Alexander Lohnau"
+                "Name": "Alexander Lohnau",
+                "Name[ca]": "Alexander Lohnau",
+                "Name[es]": "Alexander Lohnau",
+                "Name[nl]": "Alexander Lohnau",
+                "Name[sv]": "Alexander Lohnau",
+                "Name[uk]": "Alexander Lohnau",
+                "Name[x-test]": "xxAlexander Lohnauxx"
             }
         ],
         "Category": "",
         "Dependencies": [],
         "Description": "KRunner plugin to list and switch activities",
+        "Description[ca]": "Connector del KRunner per a llistar i canviar les activitats",
+        "Description[es]": "Complemento de KRunner para listar y cambiar actividades",
+        "Description[nl]": "Plug-in voor KRunner om een lijst van activiteiten te maken en naar om te schakelen",
+        "Description[sv]": "Insticksprogram för Kör program för att lista och byta aktiviteter",
+        "Description[uk]": "Додаток KRunner для показу списку просторів дій та перемикання між ними",
+        "Description[x-test]": "xxKRunner plugin to list and switch activitiesxx",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
         "Id": "org.kde.ActivityManager.ActivityRunner",
         "License": "GPL",
         "Name": "Activity Runner",
+        "Name[ca]": "Executor d'activitats",
+        "Name[es]": "Lanzador de actividades",
+        "Name[nl]": "Starter van activiteit",
+        "Name[sv]": "Aktivitetskörning",
+        "Name[uk]": "Засіб запуску просторів дій",
+        "Name[x-test]": "xxActivity Runnerxx",
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ],
