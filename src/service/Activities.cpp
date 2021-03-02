@@ -481,7 +481,7 @@ Activities::Activities(QObject *parent)
 
     new ActivitiesAdaptor(this);
     QDBusConnection::sessionBus().registerObject(
-        KAMD_DBUS_OBJECT_PATH(Activities), this);
+        KAMD_DBUS_OBJECT_PATH("Activities"), this);
 
     // Initializing config
 

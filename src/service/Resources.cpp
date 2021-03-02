@@ -257,7 +257,7 @@ Resources::Resources(QObject *parent)
 
     new ResourcesAdaptor(this);
     QDBusConnection::sessionBus().registerObject(
-        KAMD_DBUS_OBJECT_PATH(Resources), this);
+        KAMD_DBUS_OBJECT_PATH("Resources"), this);
 
     connect(KWindowSystem::self(), &KWindowSystem::windowRemoved,
             d.operator->(),        &Resources::Private::windowClosed);

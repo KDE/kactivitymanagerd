@@ -27,7 +27,7 @@ Features::Features(QObject *parent)
 {
     new FeaturesAdaptor(this);
     QDBusConnection::sessionBus().registerObject(
-        KAMD_DBUS_OBJECT_PATH(Features), this);
+        KAMD_DBUS_OBJECT_PATH("Features"), this);
 }
 
 Features::~Features()
