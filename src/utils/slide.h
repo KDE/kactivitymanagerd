@@ -11,10 +11,11 @@
 
 // Inspired by C++ Seasoning talk by Sean Parent
 
-namespace kamd {
-namespace utils {
-
-template <typename Iterator>
+namespace kamd
+{
+namespace utils
+{
+template<typename Iterator>
 void slide(Iterator f, Iterator l, Iterator p)
 {
     if (p < f) {
@@ -24,7 +25,7 @@ void slide(Iterator f, Iterator l, Iterator p)
     }
 }
 
-template <typename Iterator>
+template<typename Iterator>
 void slide_one(Iterator f, Iterator p)
 {
     slide(f, f + 1, p);
@@ -33,6 +34,4 @@ void slide_one(Iterator f, Iterator p)
 } // namespace utils
 } // namespace kamd
 
-
 #endif // UTILS_SLIDE_H
-

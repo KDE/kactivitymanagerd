@@ -46,37 +46,37 @@ QString SlcPlugin::focussedResourceTitle() const
 void SlcPlugin::registeredResourceEvent(const Event &event)
 {
     switch (event.type) {
-        case Event::FocussedIn:
+    case Event::FocussedIn:
 
-            if (!event.uri.startsWith(QLatin1String("about"))) {
-                if (m_focussedResource != event.uri) {
-                    m_focussedResource = event.uri;
-                    const auto &info = m_resources[m_focussedResource];
-                    emit focusChanged(event.uri, info.mimetype, info.title);
-                }
-            } else {
-                m_focussedResource.clear();
-                emit focusChanged(QString(), QString(), QString());
+        if (!event.uri.startsWith(QLatin1String("about"))) {
+            if (m_focussedResource != event.uri) {
+                m_focussedResource = event.uri;
+                const auto &info = m_resources[m_focussedResource];
+                emit focusChanged(event.uri, info.mimetype, info.title);
             }
+        } else {
+            m_focussedResource.clear();
+            emit focusChanged(QString(), QString(), QString());
+        }
 
-            break;
+        break;
 
-        case Event::FocussedOut:
+    case Event::FocussedOut:
 
-            if (m_focussedResource == event.uri) {
-                m_focussedResource.clear();
-                emit focusChanged(QString(), QString(), QString());
-            }
+        if (m_focussedResource == event.uri) {
+            m_focussedResource.clear();
+            emit focusChanged(QString(), QString(), QString());
+        }
 
-            break;
+        break;
 
-        case Event::Closed:
-            m_resources.remove(event.uri);
+    case Event::Closed:
+        m_resources.remove(event.uri);
 
-            break;
+        break;
 
-        default:
-            break;
+    default:
+        break;
     }
 }
 
@@ -94,18 +94,19 @@ bool SlcPlugin::init(QHash<QString, QObject *> &modules)
 {
     Plugin::init(modules);
 
-    connect(modules[QStringLiteral("resources")], SIGNAL(RegisteredResourceEvent(Event)),
-            this, SLOT(registeredResourceEvent(Event)),
+    connect(modules[QStringLiteral("resources")], SIGNAL(RegisteredResourceEvent(Event)), this, SLOT(registeredResourceEvent(Event)), Qt::QueuedConnection);
+    connect(modules[QStringLiteral("resources")],
+            SIGNAL(RegisteredResourceMimetype(QString, QString)),
+            this,
+            SLOT(registeredResourceMimetype(QString, QString)),
             Qt::QueuedConnection);
-    connect(modules[QStringLiteral("resources")], SIGNAL(RegisteredResourceMimetype(QString, QString)),
-            this, SLOT(registeredResourceMimetype(QString, QString)),
-            Qt::QueuedConnection);
-    connect(modules[QStringLiteral("resources")], SIGNAL(RegisteredResourceTitle(QString, QString)),
-            this, SLOT(registeredResourceTitle(QString, QString)),
+    connect(modules[QStringLiteral("resources")],
+            SIGNAL(RegisteredResourceTitle(QString, QString)),
+            this,
+            SLOT(registeredResourceTitle(QString, QString)),
             Qt::QueuedConnection);
 
     return true;
 }
 
 #include "SlcPlugin.moc"
-

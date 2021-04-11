@@ -9,12 +9,12 @@
 
 // Qt
 #include <QObject>
-#include <QTimer>
 #include <QSqlQuery>
+#include <QTimer>
 
 // Boost and STL
-#include <memory>
 #include <boost/container/flat_set.hpp>
+#include <memory>
 
 // Local
 #include <Plugin.h>
@@ -27,14 +27,14 @@ class ResourceLinking;
  * - Handles configuration
  * - Filters the events based on the user's configuration.
  */
-class StatsPlugin : public Plugin {
+class StatsPlugin : public Plugin
+{
     Q_OBJECT
     // Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Resources.Scoring")
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.sqlite")
 
 public:
-    explicit StatsPlugin(QObject *parent = nullptr,
-                         const QVariantList &args = QVariantList());
+    explicit StatsPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
 
     static StatsPlugin *self();
 
@@ -43,8 +43,10 @@ public:
     QString currentActivity() const;
     QStringList listActivities() const;
 
-    inline
-    QObject *activitiesInterface() const { return m_activities; }
+    inline QObject *activitiesInterface() const
+    {
+        return m_activities;
+    }
 
     bool isFeatureOperational(const QStringList &feature) const override;
     QStringList listFeatures(const QStringList &feature) const override;
@@ -52,36 +54,28 @@ public:
     QDBusVariant featureValue(const QStringList &property) const override;
     void setFeatureValue(const QStringList &property, const QDBusVariant &value) override;
 
-//
-// D-BUS Interface methods
-//
+    //
+    // D-BUS Interface methods
+    //
 
 public Q_SLOTS:
-    void DeleteRecentStats(const QString &activity, int count,
-                           const QString &what);
+    void DeleteRecentStats(const QString &activity, int count, const QString &what);
 
     void DeleteEarlierStats(const QString &activity, int months);
 
-    void DeleteStatsForResource(const QString &activity,
-                                const QString &client,
-                                const QString &resource);
+    void DeleteStatsForResource(const QString &activity, const QString &client, const QString &resource);
 
 Q_SIGNALS:
-    void ResourceScoreUpdated(const QString &activity, const QString &client,
-                              const QString &resource, double score,
-                              uint lastUpdate, uint firstUpdate);
-    void ResourceScoreDeleted(const QString &activity, const QString &client,
-                              const QString &resource);
+    void ResourceScoreUpdated(const QString &activity, const QString &client, const QString &resource, double score, uint lastUpdate, uint firstUpdate);
+    void ResourceScoreDeleted(const QString &activity, const QString &client, const QString &resource);
 
-    void RecentStatsDeleted(const QString &activity, int count,
-                            const QString &what);
+    void RecentStatsDeleted(const QString &activity, int count, const QString &what);
 
     void EarlierStatsDeleted(const QString &activity, int months);
 
-//
-// End D-BUS Interface methods
-//
-
+    //
+    // End D-BUS Interface methods
+    //
 
 private Q_SLOTS:
     void addEvents(const EventList &events);
@@ -93,15 +87,10 @@ private Q_SLOTS:
                            const QDateTime &start,
                            const QDateTime &end = QDateTime());
 
-    void closeResourceEvent(const QString &usedActivity,
-                            const QString &initiatingAgent,
-                            const QString &targettedResource,
-                            const QDateTime &end);
+    void closeResourceEvent(const QString &usedActivity, const QString &initiatingAgent, const QString &targettedResource, const QDateTime &end);
 
-    void saveResourceTitle(const QString &uri, const QString &title,
-                           bool autoTitle = false);
-    void saveResourceMimetype(const QString &uri, const QString &mimetype,
-                              bool autoMimetype = false);
+    void saveResourceTitle(const QString &uri, const QString &title, bool autoTitle = false);
+    void saveResourceMimetype(const QString &uri, const QString &mimetype, bool autoMimetype = false);
     bool insertResourceInfo(const QString &uri);
     void detectResourceInfo(const QString &uri);
 
@@ -110,7 +99,6 @@ private Q_SLOTS:
 private:
     inline bool acceptedEvent(const Event &event);
     inline Event validateEvent(Event event);
-
 
     enum WhatToRemember {
         AllApplications = 0,

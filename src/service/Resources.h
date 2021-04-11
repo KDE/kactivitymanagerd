@@ -15,14 +15,14 @@
 #include <utils/d_ptr.h>
 
 // Local
-#include "Module.h"
 #include "Event.h"
-
+#include "Module.h"
 
 /**
  * Resources
  */
-class Resources : public Module {
+class Resources : public Module
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Resources")
 
@@ -40,8 +40,7 @@ public Q_SLOTS:
      * @param uri URI of the resource on which the event happened
      * @param event type of the event
      */
-    void RegisterResourceEvent(const QString &application, uint windowId,
-                               const QString &uri, uint event);
+    void RegisterResourceEvent(const QString &application, uint windowId, const QString &uri, uint event);
 
     /**
      * Registers resource's mimetype.

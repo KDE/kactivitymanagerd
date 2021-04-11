@@ -16,8 +16,8 @@
 // Local
 #include "DebugApplication.h"
 
-
-class Module::Private {
+class Module::Private
+{
 public:
     static QHash<QString, QObject *> s_modules;
 };
@@ -91,4 +91,3 @@ void Module::setFeatureValue(const QStringList &property, const QDBusVariant &va
     Q_UNUSED(property);
     Q_UNUSED(value);
 }
-

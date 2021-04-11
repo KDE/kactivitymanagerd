@@ -13,14 +13,16 @@
  *  Associative container's for_each (for hash, map, and similar )  *
  ********************************************************************/
 
-namespace kamd {
-namespace utils {
-
-namespace details { //_
+namespace kamd
+{
+namespace utils
+{
+namespace details
+{ //_
 
 // Iterator Functions
 
-template <typename Iterator, typename Function>
+template<typename Iterator, typename Function>
 Function qt_for_each_assoc(Iterator start, Iterator end, Function f)
 {
     for (; start != end; ++start)
@@ -29,7 +31,7 @@ Function qt_for_each_assoc(Iterator start, Iterator end, Function f)
     return f;
 }
 
-template <typename Iterator, typename Function>
+template<typename Iterator, typename Function>
 Function stl_for_each_assoc(Iterator start, Iterator end, Function f)
 {
     for (; start != end; ++start)
@@ -40,28 +42,25 @@ Function stl_for_each_assoc(Iterator start, Iterator end, Function f)
 
 // Container functions
 
-template <typename Container, typename Function>
-Function _for_each_assoc_helper_container(const Container &c, Function f,
-                                          decltype(&Container::constBegin) *)
+template<typename Container, typename Function>
+Function _for_each_assoc_helper_container(const Container &c, Function f, decltype(&Container::constBegin) *)
 {
     // STL will never have methods with camelCase :)
     return qt_for_each_assoc(c.constBegin(), c.constEnd(), f);
 }
 
-template <typename Container, typename Function, typename Default>
-Function _for_each_assoc_helper_container(const Container &c, Function f,
-                                          Default *)
+template<typename Container, typename Function, typename Default>
+Function _for_each_assoc_helper_container(const Container &c, Function f, Default *)
 {
     return stl_for_each_assoc(c.cbegin(), c.cend(), f);
 }
 
 } //^ namespace details
 
-template <typename Container, typename Function>
+template<typename Container, typename Function>
 Function for_each_assoc(const Container &c, Function f)
 {
-    return details::_for_each_assoc_helper_container
-        <Container, Function>(c, f, nullptr);
+    return details::_for_each_assoc_helper_container<Container, Function>(c, f, nullptr);
 }
 
 } // namespace utils

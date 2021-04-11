@@ -10,19 +10,19 @@
 #include "kactivitymanagerd_plugin_export.h"
 
 // Qt
+#include <QDBusVariant>
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QDBusVariant>
 
 // Utils
 #include <utils/d_ptr.h>
 
-
 /**
  * Module
  */
-class KACTIVITYMANAGERD_PLUGIN_EXPORT Module : public QObject {
+class KACTIVITYMANAGERD_PLUGIN_EXPORT Module : public QObject
+{
     Q_OBJECT
 
 public:

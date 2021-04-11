@@ -18,12 +18,12 @@
 #include "Module.h"
 #include <common/dbus/org.kde.ActivityManager.Activities.h>
 
-
 /**
  * Service for tracking the user actions and managing the
  * activities
  */
-class Activities : public Module {
+class Activities : public Module
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Activities")
     Q_PROPERTY(QString CurrentActivity READ CurrentActivity WRITE SetCurrentActivity NOTIFY CurrentActivityChanged)
@@ -210,8 +210,7 @@ Q_SIGNALS:
      * @param activity id of the changed activity
      * @param description description of the changed activity
      */
-    void ActivityDescriptionChanged(const QString &activity,
-                                    const QString &description);
+    void ActivityDescriptionChanged(const QString &activity, const QString &description);
 
     /**
      * Emitted when an activity icon is changed

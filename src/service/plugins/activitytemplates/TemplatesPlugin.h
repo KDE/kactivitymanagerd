@@ -9,29 +9,26 @@
 
 #include <Plugin.h>
 
-
-class TemplatesPlugin : public Plugin {
+class TemplatesPlugin : public Plugin
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Templates")
 
 public:
-    explicit TemplatesPlugin(QObject *parent = nullptr,
-                             const QVariantList &args = QVariantList());
+    explicit TemplatesPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
     ~TemplatesPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;
 
     QDBusVariant featureValue(const QStringList &property) const override;
 
-    void setFeatureValue(const QStringList &property,
-                         const QDBusVariant &value) override;
+    void setFeatureValue(const QStringList &property, const QDBusVariant &value) override;
 
 public Q_SLOTS:
     void createActivity(const QDBusVariant &values);
 
 private:
     QObject *m_activities;
-
 };
 
 #endif // PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H

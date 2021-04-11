@@ -8,33 +8,28 @@
 
 #include <functional>
 
-#include <QStandardPaths>
 #include <QDebug>
+#include <QStandardPaths>
 
 #include <KDirWatch>
 
 #include <utils/d_ptr_implementation.h>
 
-class Config::Private {
+class Config::Private
+{
 public:
     Private(Config *parent)
         : q(parent)
-        , mainConfigFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
-              + QStringLiteral("/kactivitymanagerdrc"))
-        , pluginConfigFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
-              + QStringLiteral("/kactivitymanagerd-pluginsrc"))
+        , mainConfigFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral("/kactivitymanagerdrc"))
+        , pluginConfigFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral("/kactivitymanagerd-pluginsrc"))
     {
         using namespace std::placeholders;
 
         watcher.addFile(mainConfigFile);
         watcher.addFile(pluginConfigFile);
 
-        QObject::connect(
-            &watcher, &KDirWatch::created,
-            q, std::bind(&Private::configFileChanged, this, _1));
-        QObject::connect(
-            &watcher, &KDirWatch::dirty,
-            q, std::bind(&Private::configFileChanged, this, _1));
+        QObject::connect(&watcher, &KDirWatch::created, q, std::bind(&Private::configFileChanged, this, _1));
+        QObject::connect(&watcher, &KDirWatch::dirty, q, std::bind(&Private::configFileChanged, this, _1));
     }
 
     void configFileChanged(const QString &file)
@@ -49,7 +44,7 @@ public:
     KDirWatch watcher;
 
 private:
-    Config * const q;
+    Config *const q;
 
     const QString mainConfigFile;
     const QString pluginConfigFile;
@@ -64,5 +59,3 @@ Config::Config(QObject *parent)
 Config::~Config()
 {
 }
-
-

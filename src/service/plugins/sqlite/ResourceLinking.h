@@ -11,8 +11,8 @@
 #include <QObject>
 
 // Boost and STL
-#include <memory>
 #include <boost/container/flat_set.hpp>
+#include <memory>
 
 // Local
 #include <Plugin.h>
@@ -25,7 +25,8 @@ class QSqlQuery;
  * - Handles configuration
  * - Filters the events based on the user's configuration.
  */
-class ResourceLinking : public QObject {
+class ResourceLinking : public QObject
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Resources.Linking")
 
@@ -46,24 +47,13 @@ public Q_SLOTS:
      * @param usedActivity Activity to link to. Leave empty to link to all
      *     activities.
      */
-    void LinkResourceToActivity(QString initiatingAgent,
-                                QString targettedResource,
-                                QString usedActivity = QString());
-    void UnlinkResourceFromActivity(QString initiatingAgent,
-                                    QString targettedResource,
-                                    QString usedActivity = QString());
-    bool IsResourceLinkedToActivity(QString initiatingAgent,
-                                    QString targettedResource,
-                                    QString usedActivity = QString());
-
+    void LinkResourceToActivity(QString initiatingAgent, QString targettedResource, QString usedActivity = QString());
+    void UnlinkResourceFromActivity(QString initiatingAgent, QString targettedResource, QString usedActivity = QString());
+    bool IsResourceLinkedToActivity(QString initiatingAgent, QString targettedResource, QString usedActivity = QString());
 
 Q_SIGNALS:
-    void ResourceLinkedToActivity(const QString &initiatingAgent,
-                                  const QString &targettedResource,
-                                  const QString &usedActivity);
-    void ResourceUnlinkedFromActivity(const QString &initiatingAgent,
-                                      const QString &targettedResource,
-                                      const QString &usedActivity);
+    void ResourceLinkedToActivity(const QString &initiatingAgent, const QString &targettedResource, const QString &usedActivity);
+    void ResourceUnlinkedFromActivity(const QString &initiatingAgent, const QString &targettedResource, const QString &usedActivity);
 
 private Q_SLOTS:
     void onActivityAdded(const QString &activity);
@@ -71,8 +61,7 @@ private Q_SLOTS:
     void onCurrentActivityChanged(const QString &activity);
 
 private:
-    bool validateArguments(QString &initiatingAgent, QString &targettedResource,
-                           QString &usedActivity);
+    bool validateArguments(QString &initiatingAgent, QString &targettedResource, QString &usedActivity);
 
     QString currentActivity() const;
 

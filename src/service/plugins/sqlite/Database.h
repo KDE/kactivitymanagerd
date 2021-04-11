@@ -8,10 +8,10 @@
 #define PLUGINS_SQLITE_RESOURCESDATABASE_H
 
 // Qt
-#include <QObject>
 #include <QDateTime>
-#include <QSqlQuery>
+#include <QObject>
 #include <QSqlError>
+#include <QSqlQuery>
 #include <QString>
 #include <QStringList>
 
@@ -24,11 +24,13 @@
 class QDateTime;
 class QSqlError;
 
-namespace Common {
-    class Database;
+namespace Common
+{
+class Database;
 } // namespace Common
 
-class ResourcesDatabaseInitializer {
+class ResourcesDatabaseInitializer
+{
 public:
     // static Database *self();
 

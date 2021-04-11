@@ -6,22 +6,23 @@
 
 #include "RunApplicationPlugin.h"
 
-#include <QString>
-#include <QStandardPaths>
-#include <QDir>
-#include <QUrl>
-#include <QProcess>
 #include <QDesktopServices>
+#include <QDir>
+#include <QProcess>
+#include <QStandardPaths>
+#include <QString>
+#include <QUrl>
 
 #include "DebugApplication.h"
 
 #include <KService>
 
-namespace {
-    enum ActivityState {
-        Running = 2,
-        Stopped = 4,
-    };
+namespace
+{
+enum ActivityState {
+    Running = 2,
+    Stopped = 4,
+};
 }
 
 KAMD_EXPORT_PLUGIN(runapplicationplugin, RunApplicationPlugin, "kactivitymanagerd-plugin-runapplication.json")
@@ -45,13 +46,10 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
 
     m_activitiesService = modules[QStringLiteral("activities")];
 
-    connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)),
-            this, SLOT(currentActivityChanged(QString)));
-    connect(m_activitiesService, SIGNAL(ActivityStateChanged(QString, int)),
-            this, SLOT(activityStateChanged(QString, int)));
+    connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)), this, SLOT(currentActivityChanged(QString)));
+    connect(m_activitiesService, SIGNAL(ActivityStateChanged(QString, int)), this, SLOT(activityStateChanged(QString, int)));
 
-    const auto currentActivity = Plugin::retrieve<QString>(
-            m_activitiesService, "CurrentActivity", "QString");
+    const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity", "QString");
 
     currentActivityChanged(currentActivity);
 
@@ -60,8 +58,8 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
 
 QString RunApplicationPlugin::activityDirectory(const QString &activity) const
 {
-    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-           + QStringLiteral("/kactivitymanagerd/activities/") + activity + QLatin1Char('/');
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/activities/") + activity
+        + QLatin1Char('/');
 }
 
 void RunApplicationPlugin::currentActivityChanged(const QString &activity)
@@ -90,9 +88,7 @@ void RunApplicationPlugin::currentActivityChanged(const QString &activity)
 
 void RunApplicationPlugin::activityStateChanged(const QString &activity, int state)
 {
-    auto directory = (state == Running) ? QStringLiteral("started")
-                   : (state == Stopped) ? QStringLiteral("stopped")
-                   : QString();
+    auto directory = (state == Running) ? QStringLiteral("started") : (state == Stopped) ? QStringLiteral("stopped") : QString();
 
     if (directory.isEmpty()) {
         return;
@@ -104,7 +100,7 @@ void RunApplicationPlugin::activityStateChanged(const QString &activity, int sta
 void RunApplicationPlugin::executeIn(const QString &path) const
 {
     QDir directory(path);
-    for (const auto& item: directory.entryList(QDir::Files)) {
+    for (const auto &item : directory.entryList(QDir::Files)) {
         QString filePath = directory.filePath(item);
         if (QFileInfo fileInfo(filePath); fileInfo.suffix() == "sh" && fileInfo.isExecutable()) {
             qCDebug(KAMD_LOG_APPLICATION) << "Starting a shell script: " << filePath;
@@ -127,4 +123,3 @@ void RunApplicationPlugin::executeIn(const QString &path) const
 // }
 
 #include "RunApplicationPlugin.moc"
-

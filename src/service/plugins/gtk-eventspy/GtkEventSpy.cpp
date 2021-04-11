@@ -6,20 +6,19 @@
 
 #include "GtkEventSpy.h"
 
+#include <QFileInfo>
+#include <QStandardPaths>
 #include <QString>
 #include <QUrl>
-#include <QFileInfo>
-#include <QXmlSimpleReader>
 #include <QXmlInputSource>
-#include <QStandardPaths>
+#include <QXmlSimpleReader>
 
 #include <KCoreAddons/KDirWatch>
 #include <KServiceTypeTrader>
 
 #include "DebugPluginGtkEventSpy.h"
 
-KAMD_EXPORT_PLUGIN(GtkEventSpyPlugin, GtkEventSpyPlugin,
-                   "kactivitymanagerd-plugin-gtk-eventspy.json")
+KAMD_EXPORT_PLUGIN(GtkEventSpyPlugin, GtkEventSpyPlugin, "kactivitymanagerd-plugin-gtk-eventspy.json")
 
 GtkEventSpyPlugin::GtkEventSpyPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
@@ -31,14 +30,11 @@ GtkEventSpyPlugin::GtkEventSpyPlugin(QObject *parent, const QVariantList &args)
 
     // gtk xml history file
     // usually $HOME/.local/share/recently-used.xbel
-    QString filename = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-                       + QLatin1String("/recently-used.xbel");
+    QString filename = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/recently-used.xbel");
 
     m_dirWatcher->addFile(filename);
-    connect(m_dirWatcher.get(), &KDirWatch::dirty,
-            this, &GtkEventSpyPlugin::fileUpdated);
-    connect(m_dirWatcher.get(), &KDirWatch::created,
-            this, &GtkEventSpyPlugin::fileUpdated);
+    connect(m_dirWatcher.get(), &KDirWatch::dirty, this, &GtkEventSpyPlugin::fileUpdated);
+    connect(m_dirWatcher.get(), &KDirWatch::created, this, &GtkEventSpyPlugin::fileUpdated);
 }
 
 struct Application {
@@ -73,13 +69,11 @@ QString Bookmark::latestApplication() const
 class BookmarkHandler : public QXmlDefaultHandler
 {
 public:
-
-    bool startElement(const QString &namespaceURI, const QString &localName, const QString &qName,
-                      const QXmlAttributes &attributes) override;
-    bool endElement(const QString &namespaceURI, const QString &localName,
-                    const QString &qName) override;
+    bool startElement(const QString &namespaceURI, const QString &localName, const QString &qName, const QXmlAttributes &attributes) override;
+    bool endElement(const QString &namespaceURI, const QString &localName, const QString &qName) override;
 
     QList<Bookmark> bookmarks() const;
+
 private:
     QList<Bookmark> marks;
     Bookmark current;
@@ -90,8 +84,7 @@ QList<Bookmark> BookmarkHandler::bookmarks() const
     return marks;
 }
 
-bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QString & /*localName*/,
-                                   const QString &qName, const QXmlAttributes &attributes)
+bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QString & /*localName*/, const QString &qName, const QXmlAttributes &attributes)
 {
     // new bookmark
     if (qName == QStringLiteral("bookmark")) {
@@ -112,14 +105,13 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
 
         if (exec.startsWith(QLatin1Char('\'')) && exec.endsWith(QLatin1Char('\''))) {
             // remove "'" characters wrapping the command
-            exec = exec.mid(1, exec.size() -2);
+            exec = exec.mid(1, exec.size() - 2);
         }
 
         // Search for applications which are executable and case-insensitively match the search term
         // See https://techbase.kde.org/Development/Tutorials/Services/Traders#The_KTrader_Query_Language
         const auto query = QString("exist Exec and Exec ~~ '%1'").arg(exec);
-        const KService::List services
-            = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
+        const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
 
         if (!services.isEmpty()) {
             // use the first item matching
@@ -144,8 +136,7 @@ bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QStri
     return true;
 }
 
-bool BookmarkHandler::endElement(const QString &namespaceURI, const QString &localName,
-                                 const QString &qName)
+bool BookmarkHandler::endElement(const QString &namespaceURI, const QString &localName, const QString &qName)
 {
     Q_UNUSED(namespaceURI);
     Q_UNUSED(localName);
@@ -175,16 +166,14 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     QXmlInputSource source(&file);
 
     if (!reader.parse(source)) {
-        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "could not parse" << file << "error was "
-                                            << bookmarkHandler.errorString();
+        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "could not parse" << file << "error was " << bookmarkHandler.errorString();
         return;
     }
 
     // then find the files that were accessed since last run
     const QList<Bookmark> bookmarks = bookmarkHandler.bookmarks();
     for (const Bookmark &mark : bookmarks) {
-        if (mark.added > m_lastUpdate || mark.modified > m_lastUpdate
-            || mark.visited > m_lastUpdate) {
+        if (mark.added > m_lastUpdate || mark.modified > m_lastUpdate || mark.visited > m_lastUpdate) {
             addDocument(mark.href, mark.latestApplication(), mark.mimetype);
         }
     }
@@ -196,19 +185,19 @@ void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application,
 {
     const QString name = url.fileName();
 
-    Plugin::invoke<Qt::QueuedConnection>(
-        m_resources, "RegisterResourceEvent",
-        Q_ARG(QString, application),             // Application
-        Q_ARG(uint, 0),                          // Window ID
-        Q_ARG(QString, url.toString()),          // URI
-        Q_ARG(uint, 0)                           // Event Activities::Accessed
-        );
+    Plugin::invoke<Qt::QueuedConnection>(m_resources,
+                                         "RegisterResourceEvent",
+                                         Q_ARG(QString, application), // Application
+                                         Q_ARG(uint, 0), // Window ID
+                                         Q_ARG(QString, url.toString()), // URI
+                                         Q_ARG(uint, 0) // Event Activities::Accessed
+    );
 
-    Plugin::invoke<Qt::QueuedConnection>(
-        m_resources, "RegisteredResourceMimetype",
-        Q_ARG(QString, url.toString()),          // uri
-        Q_ARG(QString, mimetype)                 // mimetype
-        );
+    Plugin::invoke<Qt::QueuedConnection>(m_resources,
+                                         "RegisteredResourceMimetype",
+                                         Q_ARG(QString, url.toString()), // uri
+                                         Q_ARG(QString, mimetype) // mimetype
+    );
 }
 
 GtkEventSpyPlugin::~GtkEventSpyPlugin()

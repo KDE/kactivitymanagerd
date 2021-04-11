@@ -11,19 +11,18 @@
 #include "Activities.h"
 
 // Qt
+#include <QReadWriteLock>
 #include <QString>
 #include <QTimer>
-#include <QReadWriteLock>
 
 // KDE
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-
 class KSMServer;
 
-
-class Activities::Private : public QObject {
+class Activities::Private : public QObject
+{
     Q_OBJECT
 
 public:
@@ -48,7 +47,8 @@ public:
     void setActivityState(const QString &activity, Activities::State state);
 
     // Configuration
-    class KDE4ConfigurationTransitionChecker {
+    class KDE4ConfigurationTransitionChecker
+    {
     public:
         KDE4ConfigurationTransitionChecker();
     } kde4ConfigurationTransitionChecker;

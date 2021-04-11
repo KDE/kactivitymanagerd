@@ -13,7 +13,6 @@
 // Utils
 #include <utils/d_ptr.h>
 
-
 class Resources;
 class Activities;
 class Features;
@@ -23,7 +22,8 @@ class Features;
  * This can *not* be a QGuiApplication because
  * we need KWindowSystem widgets.
  */
-class Application : public QApplication {
+class Application : public QApplication
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Application")
 
@@ -53,7 +53,7 @@ private Q_SLOTS:
 private:
     D_PTR;
 
-    friend int main(int, char**);
+    friend int main(int, char **);
 };
 
 #endif // APPLICATION_H

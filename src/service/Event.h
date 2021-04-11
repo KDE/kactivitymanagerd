@@ -10,15 +10,15 @@
 #include "kactivitymanagerd_plugin_export.h"
 
 // Qt
-#include <QString>
 #include <QDateTime>
 #include <QMetaType>
-
+#include <QString>
 
 /**
  *
  */
-class KACTIVITYMANAGERD_PLUGIN_EXPORT Event {
+class KACTIVITYMANAGERD_PLUGIN_EXPORT Event
+{
 public:
     enum Type {
         Accessed = 0, ///< resource was accessed, but we don't know for how long it will be open/used
@@ -43,8 +43,7 @@ public:
 
     Event();
 
-    explicit Event(const QString &application, quintptr wid, const QString &uri,
-                   int type = Accessed);
+    explicit Event(const QString &application, quintptr wid, const QString &uri, int type = Accessed);
 
     Event deriveWithType(Type type) const;
 

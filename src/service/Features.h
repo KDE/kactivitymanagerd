@@ -8,9 +8,9 @@
 #define FEATURES_H
 
 // Qt
+#include <QDBusVariant>
 #include <QObject>
 #include <QString>
-#include <QDBusVariant>
 
 // Utils
 #include <utils/d_ptr.h>
@@ -18,12 +18,12 @@
 // Local
 #include "Module.h"
 
-
 /**
  * Features object provides one interface for clients
  * to access other objects' features
  */
-class Features : public Module {
+class Features : public Module
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Features")
 

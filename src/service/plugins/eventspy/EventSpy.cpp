@@ -6,13 +6,13 @@
 
 #include "EventSpy.h"
 
-#include <QString>
 #include <QFileInfo>
+#include <QString>
 
-#include <KIOCore/KRecentDocument>
-#include <KCoreAddons/KDirWatch>
-#include <KConfigCore/KDesktopFile>
 #include <KConfigCore/KConfigGroup>
+#include <KConfigCore/KDesktopFile>
+#include <KCoreAddons/KDirWatch>
+#include <KIOCore/KRecentDocument>
 
 KAMD_EXPORT_PLUGIN(eventspyplugin, EventSpyPlugin, "kactivitymanagerd-plugin-eventspy.json")
 
@@ -26,8 +26,7 @@ EventSpyPlugin::EventSpyPlugin(QObject *parent, const QVariantList &args)
 
     m_dirWatcher->addDir(KRecentDocument::recentDocumentDirectory());
 
-    connect(m_dirWatcher.get(), &KDirWatch::dirty,
-            this, &EventSpyPlugin::directoryUpdated);
+    connect(m_dirWatcher.get(), &KDirWatch::dirty, this, &EventSpyPlugin::directoryUpdated);
 }
 
 void EventSpyPlugin::directoryUpdated(const QString &dir)
@@ -36,7 +35,7 @@ void EventSpyPlugin::directoryUpdated(const QString &dir)
     const auto newDocuments = KRecentDocument::recentDocuments();
 
     // Processing the new arrivals
-    for (const auto& document: newDocuments) {
+    for (const auto &document : newDocuments) {
         QFileInfo fileInfo(document);
         if (fileInfo.lastModified() > m_lastUpdate) {
             addDocument(document);
@@ -53,16 +52,15 @@ void EventSpyPlugin::addDocument(const QString &document)
 
     const QString url = QUrl(desktopFile.readUrl()).toLocalFile();
     const QString name = desktopFile.readName();
-    const QString application
-        = desktopGroup.readEntry("X-KDE-LastOpenedWith", QString());
+    const QString application = desktopGroup.readEntry("X-KDE-LastOpenedWith", QString());
 
-    Plugin::invoke<Qt::QueuedConnection>(
-        m_resources, "RegisterResourceEvent",
-                Q_ARG(QString, application), // Application
-                Q_ARG(uint, 0),              // Window ID
-                Q_ARG(QString, url),         // URI
-                Q_ARG(uint, 0)               // Event Activities::Accessed
-        );
+    Plugin::invoke<Qt::QueuedConnection>(m_resources,
+                                         "RegisterResourceEvent",
+                                         Q_ARG(QString, application), // Application
+                                         Q_ARG(uint, 0), // Window ID
+                                         Q_ARG(QString, url), // URI
+                                         Q_ARG(uint, 0) // Event Activities::Accessed
+    );
 }
 
 EventSpyPlugin::~EventSpyPlugin()
@@ -79,4 +77,3 @@ bool EventSpyPlugin::init(QHash<QString, QObject *> &modules)
 }
 
 #include "EventSpy.moc"
-

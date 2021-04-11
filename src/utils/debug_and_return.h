@@ -11,25 +11,28 @@
 #include <QDebug>
 #endif
 
-namespace kamd {
-namespace utils {
-
+namespace kamd
+{
+namespace utils
+{
 template<typename T>
-T debug_and_return(const char * message, T && value) {
-    #ifdef QT_DEBUG
+T debug_and_return(const char *message, T &&value)
+{
+#ifdef QT_DEBUG
     qCDebug(KAMD_LOG_RESOURCES) << message << " " << value;
-    #endif
+#endif
 
     return std::forward<T>(value);
 }
 
 template<typename T>
-T debug_and_return(bool debug, const char * message, T && value) {
-    #ifdef QT_DEBUG
+T debug_and_return(bool debug, const char *message, T &&value)
+{
+#ifdef QT_DEBUG
     if (debug) {
         qCDebug(KAMD_LOG_RESOURCES) << message << " " << value;
     }
-    #endif
+#endif
 
     return std::forward<T>(value);
 }
@@ -38,4 +41,3 @@ T debug_and_return(bool debug, const char * message, T && value) {
 } // namespace kamd
 
 #endif // DEBUG_AND_RETURN_H
-

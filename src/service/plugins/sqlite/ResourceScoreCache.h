@@ -19,10 +19,10 @@
  *
  * It contains the logic to update the score of a single resource.
  */
-class ResourceScoreCache {
+class ResourceScoreCache
+{
 public:
-    ResourceScoreCache(const QString &activity, const QString &application,
-                       const QString &resource);
+    ResourceScoreCache(const QString &activity, const QString &application, const QString &resource);
     virtual ~ResourceScoreCache();
 
     void update();

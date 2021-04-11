@@ -7,10 +7,10 @@
 #ifndef KAMD_ACTIVITIES_DBUS_H
 #define KAMD_ACTIVITIES_DBUS_H
 
-#include <QString>
-#include <QList>
 #include <QDBusArgument>
 #include <QDebug>
+#include <QList>
+#include <QString>
 
 struct ActivityInfo {
     QString id;
@@ -38,7 +38,7 @@ typedef QList<ActivityInfo> ActivityInfoList;
 Q_DECLARE_METATYPE(ActivityInfo)
 Q_DECLARE_METATYPE(ActivityInfoList)
 
-QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo&);
+QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo &);
 const QDBusArgument &operator>>(const QDBusArgument &arg, ActivityInfo &rec);
 
 QDebug operator<<(QDebug dbg, const ActivityInfo &r);

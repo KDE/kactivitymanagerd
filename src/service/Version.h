@@ -13,4 +13,3 @@
 #define KACTIVITIES_VERSION_STRING QStringLiteral("7.0.0")
 
 #endif // VERSION_H
-

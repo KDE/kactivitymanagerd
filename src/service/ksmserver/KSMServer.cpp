@@ -10,11 +10,11 @@
 
 // Qt
 #include <QDBusConnection>
-#include <QDBusServiceWatcher>
-#include <QDBusInterface>
 #include <QDBusConnectionInterface>
-#include <QDBusPendingReply>
+#include <QDBusInterface>
 #include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QDBusServiceWatcher>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
@@ -54,7 +54,7 @@ void KSMServer::stopActivitySession(const QString &activity)
 void KSMServer::Private::processLater(const QString &activity, bool start)
 {
     if (kwin->isValid()) {
-        for (const auto &item: queue) {
+        for (const auto &item : queue) {
             if (item.first == activity) {
                 return;
             }
@@ -68,8 +68,7 @@ void KSMServer::Private::processLater(const QString &activity, bool start)
         }
     } else {
         // We don't have kwin. No way to invoke the session stuff
-        subSessionSendEvent(start ? KSMServer::Started
-                                  : KSMServer::Stopped);
+        subSessionSendEvent(start ? KSMServer::Started : KSMServer::Stopped);
     }
 }
 
@@ -98,19 +97,15 @@ void KSMServer::Private::makeRunning(bool value)
         return;
     }
 
-    const auto call = kwin->asyncCall(
-        value ? QLatin1String("startActivity") : QLatin1String("stopActivity"),
-        processingActivity);
+    const auto call = kwin->asyncCall(value ? QLatin1String("startActivity") : QLatin1String("stopActivity"), processingActivity);
 
     const auto watcher = new QDBusPendingCallWatcher(call, this);
 
     qCDebug(KAMD_LOG_ACTIVITIES) << "Activities KSM: Telling kwin to start/stop activity : " << processingActivity << value;
-    QObject::connect(
-        watcher, SIGNAL(finished(QDBusPendingCallWatcher *)),
-        this,
-        value
-            ? SLOT(startCallFinished(QDBusPendingCallWatcher *))
-            : SLOT(stopCallFinished(QDBusPendingCallWatcher *)));
+    QObject::connect(watcher,
+                     SIGNAL(finished(QDBusPendingCallWatcher *)),
+                     this,
+                     value ? SLOT(startCallFinished(QDBusPendingCallWatcher *)) : SLOT(stopCallFinished(QDBusPendingCallWatcher *)));
 }
 
 void KSMServer::Private::startCallFinished(QDBusPendingCallWatcher *call)

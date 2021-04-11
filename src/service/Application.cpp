@@ -5,24 +5,24 @@
  */
 
 // Self
-#include <kactivities-features.h>
 #include "Application.h"
+#include <kactivities-features.h>
 
 // Qt
-#include <QThread>
-#include <QDir>
-#include <QProcess>
 #include <QDBusConnection>
-#include <QDBusServiceWatcher>
 #include <QDBusConnectionInterface>
 #include <QDBusReply>
+#include <QDBusServiceWatcher>
+#include <QDir>
+#include <QProcess>
+#include <QThread>
 
 // KDE
 #include <KCrash>
-#include <KPluginMetaData>
 #include <KPluginLoader>
-#include <ksharedconfig.h>
+#include <KPluginMetaData>
 #include <kdbusservice.h>
+#include <ksharedconfig.h>
 
 // Boost and utils
 #include <boost/range/adaptor/filtered.hpp>
@@ -30,33 +30,34 @@
 #include <utils/d_ptr_implementation.h>
 
 // System
+#include <functional>
+#include <memory>
 #include <signal.h>
 #include <stdlib.h>
-#include <memory>
-#include <functional>
 
 // Local
 #include "Activities.h"
-#include "Resources.h"
-#include "Features.h"
 #include "Config.h"
-#include "Plugin.h"
 #include "DebugApplication.h"
+#include "Features.h"
+#include "Plugin.h"
+#include "Resources.h"
 #include "common/dbus/common.h"
 
-
-namespace {
-    QList<QThread *> s_moduleThreads;
+namespace
+{
+QList<QThread *> s_moduleThreads;
 }
 
 // Runs a QObject inside a QThread
 
-template <typename T>
+template<typename T>
 T *runInQThread()
 {
     T *object = new T();
 
-    class Thread : public QThread {
+    class Thread : public QThread
+    {
     public:
         Thread(T *ptr = nullptr)
             : QThread()
@@ -83,14 +84,14 @@ T *runInQThread()
     return object;
 }
 
-class Application::Private {
+class Application::Private
+{
 public:
     Private()
     {
     }
 
-    static inline bool isPluginEnabled(const KConfigGroup &config,
-                                const KPluginMetaData& plugin)
+    static inline bool isPluginEnabled(const KConfigGroup &config, const KPluginMetaData &plugin)
     {
         const auto pluginName = plugin.pluginId();
         qCDebug(KAMD_LOG_APPLICATION) << "Plugin Name is " << pluginName << plugin.fileName();
@@ -103,7 +104,7 @@ public:
         }
     }
 
-    bool loadPlugin(const KPluginMetaData& plugin);
+    bool loadPlugin(const KPluginMetaData &plugin);
 
     Resources *resources;
     Activities *activities;
@@ -124,8 +125,7 @@ Application::Application(int &argc, char **argv)
 
 void Application::init()
 {
-    if (!QDBusConnection::sessionBus().registerService(
-            KAMD_DBUS_SERVICE)) {
+    if (!QDBusConnection::sessionBus().registerService(KAMD_DBUS_SERVICE)) {
         QCoreApplication::exit(EXIT_SUCCESS);
     }
 
@@ -133,18 +133,17 @@ void Application::init()
     // long as it restarts properly
     // TODO: Restart on crash
     //       KCrash::setFlags(KCrash::AutoRestart);
-    d->resources  = runInQThread<Resources>();
+    d->resources = runInQThread<Resources>();
     d->activities = runInQThread<Activities>();
-    d->features   = runInQThread<Features>();
+    d->features = runInQThread<Features>();
     /* d->config */ new Config(this); // this does not need a separate thread
 
     QMetaObject::invokeMethod(this, "loadPlugins", Qt::QueuedConnection);
 
-    QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager"), this,
-            QDBusConnection::ExportAllSlots);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager"), this, QDBusConnection::ExportAllSlots);
 }
 
-bool Application::Private::loadPlugin(const KPluginMetaData& plugin)
+bool Application::Private::loadPlugin(const KPluginMetaData &plugin)
 {
     if (!plugin.isValid()) {
         qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] plugin offer not valid";
@@ -152,15 +151,14 @@ bool Application::Private::loadPlugin(const KPluginMetaData& plugin)
     }
 
     if (pluginIds.contains(plugin.pluginId())) {
-        qCDebug(KAMD_LOG_APPLICATION)   << "[   OK   ] already loaded:  " << plugin.pluginId();
+        qCDebug(KAMD_LOG_APPLICATION) << "[   OK   ] already loaded:  " << plugin.pluginId();
         return true;
     }
 
     KPluginLoader loader(plugin.fileName());
-    KPluginFactory* factory = loader.factory();
+    KPluginFactory *factory = loader.factory();
     if (!factory) {
-        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] Could not load KPluginFactory for:"
-                << plugin.pluginId() << loader.errorString();
+        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] Could not load KPluginFactory for:" << plugin.pluginId() << loader.errorString();
         return false;
     }
 
@@ -175,7 +173,7 @@ bool Application::Private::loadPlugin(const KPluginMetaData& plugin)
             pluginIds << plugin.pluginId();
             plugins << pluginInstance;
 
-            qCDebug(KAMD_LOG_APPLICATION)   << "[   OK   ] loaded:  " << plugin.pluginId();
+            qCDebug(KAMD_LOG_APPLICATION) << "[   OK   ] loaded:  " << plugin.pluginId();
             return true;
         } else {
             qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] init: " << plugin.pluginId() << loader.errorString();
@@ -195,11 +193,8 @@ void Application::loadPlugins()
 {
     using namespace std::placeholders;
 
-    const auto config
-        = KSharedConfig::openConfig(QStringLiteral("kactivitymanagerdrc"))
-              ->group("Plugins");
-    const auto offers = KPluginLoader::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR),
-        std::bind(Private::isPluginEnabled, config, _1));
+    const auto config = KSharedConfig::openConfig(QStringLiteral("kactivitymanagerdrc"))->group("Plugins");
+    const auto offers = KPluginLoader::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), std::bind(Private::isPluginEnabled, config, _1));
     qCDebug(KAMD_LOG_APPLICATION) << "Found" << offers.size() << "enabled plugins:";
 
     for (const auto &offer : offers) {
@@ -241,7 +236,7 @@ Application::~Application()
 
 int Application::newInstance()
 {
-    //We don't want to show the mainWindow()
+    // We don't want to show the mainWindow()
     return 0;
 }
 
@@ -297,4 +292,3 @@ QStringList Application::loadedPlugins() const
 {
     return d->pluginIds;
 }
-

@@ -7,14 +7,15 @@
 #ifndef PLUGINS_EVENT_SPY_PLUGIN_H
 #define PLUGINS_EVENT_SPY_PLUGIN_H
 
-#include <memory>
 #include <Plugin.h>
+#include <memory>
 
 #include <QStringList>
 
 class KDirWatch;
 
-class EventSpyPlugin : public Plugin {
+class EventSpyPlugin : public Plugin
+{
     Q_OBJECT
 
 public:

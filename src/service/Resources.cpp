@@ -10,9 +10,9 @@
 
 // Qt
 #include <QDBusConnection>
-#include <QThread>
 #include <QMutex>
 #include <QMutexLocker>
+#include <QThread>
 
 // KDE
 #include <kwindowsystem.h>
@@ -25,11 +25,10 @@
 #include <time.h>
 
 // Local
-#include "Application.h"
 #include "Activities.h"
-#include "resourcesadaptor.h"
+#include "Application.h"
 #include "common/dbus/common.h"
-
+#include "resourcesadaptor.h"
 
 Resources::Private::Private(Resources *parent)
     : QThread(parent)
@@ -44,7 +43,8 @@ Resources::Private::~Private()
     wait(1500); // Enough time for the sleep(1) + processing in run()
 }
 
-namespace {
+namespace
+{
 EventList events;
 QMutex events_mutex;
 }
@@ -87,8 +87,7 @@ void Resources::Private::insertEvent(const Event &newEvent)
     emit q->RegisteredResourceEvent(newEvent);
 }
 
-void Resources::Private::addEvent(const QString &application, WId wid,
-                                  const QString &uri, int type)
+void Resources::Private::addEvent(const QString &application, WId wid, const QString &uri, int type)
 {
     Event newEvent(application, wid, uri, type);
     addEvent(newEvent);
@@ -103,11 +102,8 @@ void Resources::Private::addEvent(const Event &newEvent)
         // Deleting previously registered Accessed events if
         // the current one has the same application and uri
         if (newEvent.type != Event::Accessed) {
-            kamd::utils::remove_if(events, [&newEvent](const Event &event)->bool {
-                return
-                    event.application == newEvent.application &&
-                    event.uri         == newEvent.uri
-                ;
+            kamd::utils::remove_if(events, [&newEvent](const Event &event) -> bool {
+                return event.application == newEvent.application && event.uri == newEvent.uri;
             });
         }
     }
@@ -126,67 +122,66 @@ void Resources::Private::addEvent(const Event &newEvent)
         window.application = newEvent.application;
 
         switch (newEvent.type) {
-            case Event::Opened:
-                insertEvent(newEvent);
+        case Event::Opened:
+            insertEvent(newEvent);
 
-                if (window.focussedResource.isEmpty()) {
-                    // This window haven't had anything focused,
-                    // assuming the new document is focused
-
-                    window.focussedResource = newEvent.uri;
-                    insertEvent(newEvent.deriveWithType(Event::FocussedIn));
-                }
-
-                break;
-
-            case Event::FocussedIn:
-
-                if (!window.resources.contains(uri)) {
-                    // This window did not contain this resource before,
-                    // sending Opened event
-
-                    insertEvent(newEvent.deriveWithType(Event::Opened));
-                }
+            if (window.focussedResource.isEmpty()) {
+                // This window haven't had anything focused,
+                // assuming the new document is focused
 
                 window.focussedResource = newEvent.uri;
-                insertEvent(newEvent);
+                insertEvent(newEvent.deriveWithType(Event::FocussedIn));
+            }
 
-                break;
+            break;
 
-            case Event::Closed:
+        case Event::FocussedIn:
 
-                if (window.focussedResource == uri) {
-                    // If we are closing a document that is in focus,
-                    // release focus first
+            if (!window.resources.contains(uri)) {
+                // This window did not contain this resource before,
+                // sending Opened event
 
-                    insertEvent(newEvent.deriveWithType(Event::FocussedOut));
-                    window.focussedResource.clear();
-                }
+                insertEvent(newEvent.deriveWithType(Event::Opened));
+            }
 
-                insertEvent(newEvent);
+            window.focussedResource = newEvent.uri;
+            insertEvent(newEvent);
 
-                break;
+            break;
 
-            case Event::FocussedOut:
+        case Event::Closed:
 
-                if (window.focussedResource == uri) {
-                    window.focussedResource.clear();
-                }
+            if (window.focussedResource == uri) {
+                // If we are closing a document that is in focus,
+                // release focus first
 
-                insertEvent(newEvent);
+                insertEvent(newEvent.deriveWithType(Event::FocussedOut));
+                window.focussedResource.clear();
+            }
 
-                break;
+            insertEvent(newEvent);
 
-            default:
-                insertEvent(newEvent);
-                break;
+            break;
+
+        case Event::FocussedOut:
+
+            if (window.focussedResource == uri) {
+                window.focussedResource.clear();
+            }
+
+            insertEvent(newEvent);
+
+            break;
+
+        default:
+            insertEvent(newEvent);
+            break;
         }
 
     } else {
         // If we haven't got a window, just pass the event on,
         // but only if it is not a focus event
-        if (newEvent.type != Event::FocussedIn
-            && newEvent.type != Event::FocussedOut) {
+        if (newEvent.type != Event::FocussedIn && newEvent.type != Event::FocussedOut) {
             insertEvent(newEvent);
         }
     }
@@ -208,9 +203,8 @@ void Resources::Private::windowClosed(WId windowId)
 
     // Closing all the resources that the window registered
 
-    for (const QString &uri: windows[windowId].resources) {
-        q->RegisterResourceEvent(windows[windowId].application,
-                                 windowId, uri, Event::Closed);
+    for (const QString &uri : windows[windowId].resources) {
+        q->RegisterResourceEvent(windows[windowId].application, windowId, uri, Event::Closed);
     }
 
     windows.remove(windowId);
@@ -256,25 +250,19 @@ Resources::Resources(QObject *parent)
     qRegisterMetaType<WId>("WId");
 
     new ResourcesAdaptor(this);
-    QDBusConnection::sessionBus().registerObject(
-        KAMD_DBUS_OBJECT_PATH("Resources"), this);
+    QDBusConnection::sessionBus().registerObject(KAMD_DBUS_OBJECT_PATH("Resources"), this);
 
-    connect(KWindowSystem::self(), &KWindowSystem::windowRemoved,
-            d.operator->(),        &Resources::Private::windowClosed);
-    connect(KWindowSystem::self(), &KWindowSystem::activeWindowChanged,
-            d.operator->(),        &Resources::Private::activeWindowChanged);
+    connect(KWindowSystem::self(), &KWindowSystem::windowRemoved, d.operator->(), &Resources::Private::windowClosed);
+    connect(KWindowSystem::self(), &KWindowSystem::activeWindowChanged, d.operator->(), &Resources::Private::activeWindowChanged);
 }
 
 Resources::~Resources()
 {
 }
 
-void Resources::RegisterResourceEvent(const QString &application, uint _windowId,
-                                      const QString &uri, uint event)
+void Resources::RegisterResourceEvent(const QString &application, uint _windowId, const QString &uri, uint event)
 {
-    if (event > Event::LastEventType
-        || uri.isEmpty()
-        || application.isEmpty()) {
+    if (event > Event::LastEventType || uri.isEmpty() || application.isEmpty()) {
         return;
     }
 
@@ -301,4 +289,3 @@ void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
 
     emit RegisteredResourceTitle(uri, title);
 }
-

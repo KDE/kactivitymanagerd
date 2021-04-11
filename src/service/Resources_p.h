@@ -11,15 +11,15 @@
 #include "Resources.h"
 
 // Qt
-#include <QString>
 #include <QList>
+#include <QString>
 #include <QWindow> // for WId
 
 // Local
 #include "resourcesadaptor.h"
 
-
-class Resources::Private : public QThread {
+class Resources::Private : public QThread
+{
     Q_OBJECT
 
 public:
@@ -32,8 +32,7 @@ public:
     void insertEvent(const Event &newEvent);
 
     // Processes the event and inserts it into the queue
-    void addEvent(const QString &application, WId wid, const QString &uri,
-                  int type);
+    void addEvent(const QString &application, WId wid, const QString &uri, int type);
 
     // Processes the event and inserts it into the queue
     void addEvent(const Event &newEvent);

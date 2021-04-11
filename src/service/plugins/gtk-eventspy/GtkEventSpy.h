@@ -7,8 +7,8 @@
 #ifndef PLUGINS_GTK_EVENT_SPY_PLUGIN_H
 #define PLUGINS_GTK_EVENT_SPY_PLUGIN_H
 
-#include <memory>
 #include <Plugin.h>
+#include <memory>
 
 #include <QStringList>
 
@@ -19,8 +19,7 @@ class GtkEventSpyPlugin : public Plugin
     Q_OBJECT
 
 public:
-    explicit GtkEventSpyPlugin(QObject *parent = nullptr,
-                               const QVariantList &args = QVariantList());
+    explicit GtkEventSpyPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
     ~GtkEventSpyPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;

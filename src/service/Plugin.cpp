@@ -16,8 +16,8 @@
 // Local
 #include "DebugApplication.h"
 
-
-class Plugin::Private {
+class Plugin::Private
+{
 public:
     Private()
         : config(nullptr)
@@ -57,7 +57,7 @@ void Plugin::setName(const QString &name)
     Q_ASSERT_X(d->name.isEmpty(), "Plugin::setName", "The name can not be set twice");
     Q_ASSERT_X(!name.isEmpty(), "Plugin::setName", "The name can not be empty");
 
-    qCDebug(KAMD_LOG_APPLICATION) << "Setting the name of " << (void*)this << " to " << name;
+    qCDebug(KAMD_LOG_APPLICATION) << "Setting the name of " << (void *)this << " to " << name;
     d->name = name;
 }
 
@@ -74,4 +74,3 @@ bool Plugin::init(QHash<QString, QObject *> &modules)
 
     return true;
 }
-

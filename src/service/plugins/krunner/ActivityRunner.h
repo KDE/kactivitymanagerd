@@ -7,10 +7,11 @@
 #ifndef PLUGINS_RUN_APPLICATION_PLUGIN_H
 #define PLUGINS_RUN_APPLICATION_PLUGIN_H
 
-#include <Plugin.h>
 #include "dbusutils.h"
+#include <Plugin.h>
 
-class ActivityRunner : public Plugin {
+class ActivityRunner : public Plugin
+{
     Q_OBJECT
 
 public:

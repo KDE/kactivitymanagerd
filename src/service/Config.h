@@ -9,7 +9,8 @@
 
 #include <Module.h>
 
-class Config : public Module {
+class Config : public Module
+{
     Q_OBJECT
 
 public:
@@ -25,4 +26,3 @@ private:
 };
 
 #endif // CONFIG_H
-

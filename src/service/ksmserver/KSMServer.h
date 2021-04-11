@@ -16,10 +16,10 @@
 /**
  * KSMServer
  */
-class KSMServer : public QObject {
+class KSMServer : public QObject
+{
     Q_OBJECT
 public:
-
     enum ReturnStatus {
         Started = 0,
         Stopped = 1,

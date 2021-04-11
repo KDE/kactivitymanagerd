@@ -10,7 +10,6 @@
 // Local
 #include <QDebug>
 
-
 Event::Event()
     : wid(0)
     , type(Accessed)
@@ -44,20 +43,20 @@ bool Event::operator==(const Event &other) const
 QString Event::typeName() const
 {
     switch (type) {
-        case Accessed:
-            return QStringLiteral("Accessed");
-        case Opened:
-            return QStringLiteral("Opened");
-        case Modified:
-            return QStringLiteral("Modified");
-        case Closed:
-            return QStringLiteral("Closed");
-        case FocussedIn:
-            return QStringLiteral("FocussedIn");
-        case FocussedOut:
-            return QStringLiteral("FocussedOut");
-        default:
-            return QStringLiteral("Other");
+    case Accessed:
+        return QStringLiteral("Accessed");
+    case Opened:
+        return QStringLiteral("Opened");
+    case Modified:
+        return QStringLiteral("Modified");
+    case Closed:
+        return QStringLiteral("Closed");
+    case FocussedIn:
+        return QStringLiteral("FocussedIn");
+    case FocussedOut:
+        return QStringLiteral("FocussedOut");
+    default:
+        return QStringLiteral("Other");
     }
 }
 

@@ -12,7 +12,8 @@
 class KActionCollection;
 class QAction;
 
-class GlobalShortcutsPlugin : public Plugin {
+class GlobalShortcutsPlugin : public Plugin
+{
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.globalshortcutsplugin")
 

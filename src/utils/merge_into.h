@@ -7,10 +7,11 @@
 #ifndef UTILS_MERGE_INTO_H
 #define UTILS_MERGE_INTO_H
 
-namespace kamd {
-namespace utils {
-
-template <typename Container>
+namespace kamd
+{
+namespace utils
+{
+template<typename Container>
 inline void merge_into(Container &into, const Container &from)
 {
     typename Container::iterator into_begin = into.begin();

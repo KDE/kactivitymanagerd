@@ -11,20 +11,19 @@
 #include <QList>
 #include <QMutex>
 
-
 // System
 #include <time.h>
 
 // Utils
-#include <utils/for_each_assoc.h>
 #include <utils/d_ptr_implementation.h>
+#include <utils/for_each_assoc.h>
 
 // Local
-#include "StatsPlugin.h"
 #include "ResourceScoreCache.h"
+#include "StatsPlugin.h"
 
-
-class ResourceScoreMaintainer::Private {
+class ResourceScoreMaintainer::Private
+{
 public:
     Private()
     {
@@ -41,8 +40,7 @@ public:
 
     ResourceTree scheduledResources;
 
-    void processActivity(const ActivityID &activity,
-                         const Applications &applications);
+    void processActivity(const ActivityID &activity, const Applications &applications);
 
     void processResources();
 
@@ -74,27 +72,20 @@ void ResourceScoreMaintainer::Private::processResources()
         resources.remove(activity);
     }
 
-    for_each_assoc(resources,
-        [this](const ActivityID & activity, const Applications & applications) {
-            processActivity(activity, applications);
-        }
-    );
+    for_each_assoc(resources, [this](const ActivityID &activity, const Applications &applications) {
+        processActivity(activity, applications);
+    });
 }
 
-void ResourceScoreMaintainer::Private::processActivity(const ActivityID
-                                                       &activity,
-                                                       const Applications
-                                                       &applications)
+void ResourceScoreMaintainer::Private::processActivity(const ActivityID &activity, const Applications &applications)
 {
     using namespace kamd::utils;
 
-    for_each_assoc(applications,
-        [&](const ApplicationName &application, const ResourceList &resources) {
-            for (const auto &resource : resources) {
-                ResourceScoreCache(activity, application, resource).update();
-            }
+    for_each_assoc(applications, [&](const ApplicationName &application, const ResourceList &resources) {
+        for (const auto &resource : resources) {
+            ResourceScoreCache(activity, application, resource).update();
         }
-    );
+    });
 }
 
 ResourceScoreMaintainer *ResourceScoreMaintainer::self()
@@ -107,33 +98,27 @@ ResourceScoreMaintainer::ResourceScoreMaintainer()
 {
     d->processResourcesTimer.setInterval(1000);
     d->processResourcesTimer.setSingleShot(true);
-    connect(&d->processResourcesTimer, &QTimer::timeout,
-            this, [=] { d->processResources(); });
+    connect(&d->processResourcesTimer, &QTimer::timeout, this, [=] {
+        d->processResources();
+    });
 }
 
 ResourceScoreMaintainer::~ResourceScoreMaintainer()
 {
 }
 
-void ResourceScoreMaintainer::processResource(const QString &resource,
-                                              const QString &application)
+void ResourceScoreMaintainer::processResource(const QString &resource, const QString &application)
 {
     // Checking whether the item is already scheduled for
     // processing
 
     const auto activity = StatsPlugin::self()->currentActivity();
 
-    Q_ASSERT_X(!application.isEmpty(),
-               "ResourceScoreMaintainer::processResource",
-               "Agent should not be empty");
-    Q_ASSERT_X(!resource.isEmpty(),
-               "ResourceScoreMaintainer::processResource",
-               "Resource should not be empty");
+    Q_ASSERT_X(!application.isEmpty(), "ResourceScoreMaintainer::processResource", "Agent should not be empty");
+    Q_ASSERT_X(!resource.isEmpty(), "ResourceScoreMaintainer::processResource", "Resource should not be empty");
 
-    if (d->scheduledResources.contains(activity)
-        && d->scheduledResources[activity].contains(application)
+    if (d->scheduledResources.contains(activity) && d->scheduledResources[activity].contains(application)
         && d->scheduledResources[activity][application].contains(resource)) {
-
         // Nothing
 
     } else {

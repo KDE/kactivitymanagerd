@@ -18,7 +18,8 @@ class QString;
 /**
  * ResourceScoreMaintainer represents a queue of resource processing requests.
  */
-class ResourceScoreMaintainer: public QObject {
+class ResourceScoreMaintainer : public QObject
+{
 public:
     static ResourceScoreMaintainer *self();
 

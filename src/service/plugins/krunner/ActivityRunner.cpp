@@ -91,4 +91,3 @@ void ActivityRunner::Run(const QString &matchId, const QString &actionId)
 }
 
 #include "ActivityRunner.moc"
-

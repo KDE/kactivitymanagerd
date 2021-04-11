@@ -9,7 +9,8 @@
 
 #include <Plugin.h>
 
-class SlcPlugin : public Plugin {
+class SlcPlugin : public Plugin
+{
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.SLC")
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.slc")

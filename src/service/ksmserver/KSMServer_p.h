@@ -20,7 +20,8 @@ class QDBusServiceWatcher;
 class QDBusInterface;
 class QDBusPendingCallWatcher;
 
-class KSMServer::Private : public QObject {
+class KSMServer::Private : public QObject
+{
     Q_OBJECT
 
 public:

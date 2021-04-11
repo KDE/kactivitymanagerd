@@ -5,8 +5,8 @@
  */
 
 // Self
-#include <kactivities-features.h>
 #include "Database.h"
+#include <kactivities-features.h>
 
 // Qt
 #include <QDir>
@@ -22,9 +22,9 @@
 #include <utils/qsqlquery_iterator.h>
 
 // System
+#include <array>
 #include <cmath>
 #include <memory>
-#include <array>
 
 // Local
 #include "DebugResources.h"
@@ -32,10 +32,10 @@
 
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 
-class ResourcesDatabaseInitializer::Private {
+class ResourcesDatabaseInitializer::Private
+{
 public:
     Common::Database::Ptr database;
-
 };
 
 Common::Database::Ptr resourcesDatabase()
@@ -76,18 +76,14 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
     // no errors at runtime.
     //
 
+    const QString databaseDirectoryPath =
+        QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/resources/");
 
-    const QString databaseDirectoryPath
-        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-          + QStringLiteral("/kactivitymanagerd/resources/");
+    const QString databaseTestBackupDirectoryPath =
+        QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/resources/test-backup/");
 
-    const QString databaseTestBackupDirectoryPath
-        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-          + QStringLiteral("/kactivitymanagerd/resources/test-backup/");
-
-    const QString databaseWorkingBackupDirectoryPath
-        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-          + QStringLiteral("/kactivitymanagerd/resources/working-backup/");
+    const QString databaseWorkingBackupDirectoryPath =
+        QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/resources/working-backup/");
 
     static const std::array<QString, 3> databaseFiles{"database", "database-wal", "database-shm"};
 
@@ -97,9 +93,7 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
         dir.mkpath(databaseTestBackupDirectoryPath);
         dir.mkpath(databaseWorkingBackupDirectoryPath);
 
-        if (!dir.exists(databaseDirectoryPath) ||
-            !dir.exists(databaseTestBackupDirectoryPath) ||
-            !dir.exists(databaseWorkingBackupDirectoryPath)) {
+        if (!dir.exists(databaseDirectoryPath) || !dir.exists(databaseTestBackupDirectoryPath) || !dir.exists(databaseWorkingBackupDirectoryPath)) {
             qCWarning(KAMD_LOG_RESOURCES) << "Database directory can not be created!";
             return;
         }
@@ -109,31 +103,26 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
     const QDir databaseTestBackupDirectory(databaseTestBackupDirectoryPath);
     const QDir databaseWorkingBackupDirectory(databaseWorkingBackupDirectoryPath);
 
-    auto removeDatabaseFiles = [] (const QDir &dir) {
-        return std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&dir] (const QString &fileName) {
-                               const auto filePath = dir.filePath(fileName);
-                               return !QFile::exists(filePath) || QFile::remove(filePath);
-                            });
+    auto removeDatabaseFiles = [](const QDir &dir) {
+        return std::all_of(databaseFiles.begin(), databaseFiles.cend(), [&dir](const QString &fileName) {
+            const auto filePath = dir.filePath(fileName);
+            return !QFile::exists(filePath) || QFile::remove(filePath);
+        });
     };
 
-    auto copyDatabaseFiles = [removeDatabaseFiles] (const QDir &fromDir, const QDir& toDir) {
-        return removeDatabaseFiles(toDir) &&
-               std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&fromDir, &toDir] (const QString &fileName) {
-                               const auto fromFilePath = fromDir.filePath(fileName);
-                               const auto toFilePath = toDir.filePath(fileName);
-                               return QFile::copy(fromFilePath, toFilePath);
-                            });
+    auto copyDatabaseFiles = [removeDatabaseFiles](const QDir &fromDir, const QDir &toDir) {
+        return removeDatabaseFiles(toDir) && std::all_of(databaseFiles.begin(), databaseFiles.cend(), [&fromDir, &toDir](const QString &fileName) {
+                   const auto fromFilePath = fromDir.filePath(fileName);
+                   const auto toFilePath = toDir.filePath(fileName);
+                   return QFile::copy(fromFilePath, toFilePath);
+               });
     };
 
-    auto databaseFilesExistIn = [] (const QDir &dir) {
-        return dir.exists() &&
-               std::all_of(databaseFiles.begin(), databaseFiles.cend(),
-                           [&dir] (const QString &fileName) {
-                               const auto filePath = dir.filePath(fileName);
-                               return QFile::exists(filePath);
-                           });
+    auto databaseFilesExistIn = [](const QDir &dir) {
+        return dir.exists() && std::all_of(databaseFiles.begin(), databaseFiles.cend(), [&dir](const QString &fileName) {
+                   const auto filePath = dir.filePath(fileName);
+                   return QFile::exists(filePath);
+               });
     };
 
     // First, let's move the files from `resources-test-backup` to
@@ -158,27 +147,23 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
     }
 
     // Now we can try to open the database
-    d->database = Common::Database::instance(
-            Common::Database::ResourcesDatabase,
-            Common::Database::ReadWrite);
+    d->database = Common::Database::instance(Common::Database::ResourcesDatabase, Common::Database::ReadWrite);
 
     if (d->database) {
         qCDebug(KAMD_LOG_RESOURCES) << "Database opened successfully";
-        QObject::connect(d->database.get(), &Common::Database::error,
-                         [databaseTestBackupDirectory, removeDatabaseFiles] (const QSqlError &error) {
-                             const QString errorLog =
-                                 QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-                                     + QStringLiteral("/kactivitymanagerd/resources/errors.log");
-                             QFile file(errorLog);
-                             if (file.open(QIODevice::Append)) {
-                                 QTextStream out(&file);
-                                 out << QDateTime::currentDateTime().toString(Qt::ISODate) << " error: " << error.text() << "\n";
-                             } else {
-                                 qCWarning(KAMD_LOG_RESOURCES) << QDateTime::currentDateTime().toString(Qt::ISODate) << " error: " << error.text();
-                             }
+        QObject::connect(d->database.get(), &Common::Database::error, [databaseTestBackupDirectory, removeDatabaseFiles](const QSqlError &error) {
+            const QString errorLog =
+                QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/resources/errors.log");
+            QFile file(errorLog);
+            if (file.open(QIODevice::Append)) {
+                QTextStream out(&file);
+                out << QDateTime::currentDateTime().toString(Qt::ISODate) << " error: " << error.text() << "\n";
+            } else {
+                qCWarning(KAMD_LOG_RESOURCES) << QDateTime::currentDateTime().toString(Qt::ISODate) << " error: " << error.text();
+            }
 
-                             removeDatabaseFiles(databaseTestBackupDirectory);
-                         });
+            removeDatabaseFiles(databaseTestBackupDirectory);
+        });
         Common::ResourcesDatabaseSchema::initSchema(*d->database);
 
     } else {
@@ -198,7 +183,6 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
 
         } else {
             qCWarning(KAMD_LOG_RESOURCES) << "The database might be corrupted and there is no working backup";
-
         }
     }
 }
@@ -211,4 +195,3 @@ ResourcesDatabaseInitializer::ResourcesDatabaseInitializer()
 ResourcesDatabaseInitializer::~ResourcesDatabaseInitializer()
 {
 }
-

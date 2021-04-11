@@ -6,12 +6,13 @@
 
 #include "org.kde.ActivityManager.Activities.h"
 
-#include <QMetaType>
 #include <QDBusMetaType>
+#include <QMetaType>
 
-namespace details {
-
-class ActivityInfoStaticInit {
+namespace details
+{
+class ActivityInfoStaticInit
+{
 public:
     ActivityInfoStaticInit()
     {

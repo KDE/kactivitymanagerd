@@ -10,12 +10,12 @@
 #include "kactivitymanagerd_plugin_export.h"
 
 // Qt
-#include <QObject>
 #include <QMetaObject>
+#include <QObject>
 
 // KDE
-#include <kpluginfactory.h>
 #include <kconfiggroup.h>
+#include <kpluginfactory.h>
 
 // Utils
 #include <utils/d_ptr.h>
@@ -24,13 +24,13 @@
 #include "Event.h"
 #include "Module.h"
 
-#define KAMD_EXPORT_PLUGIN(libname, classname, jsonFile) \
-        K_PLUGIN_FACTORY_WITH_JSON(factory, jsonFile, registerPlugin<classname>();)
+#define KAMD_EXPORT_PLUGIN(libname, classname, jsonFile) K_PLUGIN_FACTORY_WITH_JSON(factory, jsonFile, registerPlugin<classname>();)
 
 /**
  *
  */
-class KACTIVITYMANAGERD_PLUGIN_EXPORT Plugin : public Module {
+class KACTIVITYMANAGERD_PLUGIN_EXPORT Plugin : public Module
+{
     Q_OBJECT
 
 public:
@@ -68,17 +68,12 @@ public:
     //     return result;
     // }
 
-    template <typename ReturnType, typename... Args>
-    inline static ReturnType retrieve(QObject *object, const char *method,
-                                      const char *returnTypeName,
-                                      Args... args)
+    template<typename ReturnType, typename... Args>
+    inline static ReturnType retrieve(QObject *object, const char *method, const char *returnTypeName, Args... args)
     {
         ReturnType result;
 
-        QMetaObject::invokeMethod(
-            object, method, Qt::DirectConnection,
-            QReturnArgument<ReturnType>(returnTypeName, result),
-            args...);
+        QMetaObject::invokeMethod(object, method, Qt::DirectConnection, QReturnArgument<ReturnType>(returnTypeName, result), args...);
 
         return result;
     }
@@ -94,13 +89,10 @@ public:
     //     QMetaObject::invokeMethod(object, method, connection);
     // }
 
-    template <Qt::ConnectionType connection, typename... Args>
-    inline static void invoke(QObject *object, const char *method,
-                              Args... args)
+    template<Qt::ConnectionType connection, typename... Args>
+    inline static void invoke(QObject *object, const char *method, Args... args)
     {
-        QMetaObject::invokeMethod(
-            object, method, connection,
-            args...);
+        QMetaObject::invokeMethod(object, method, connection, args...);
     }
 
 protected:

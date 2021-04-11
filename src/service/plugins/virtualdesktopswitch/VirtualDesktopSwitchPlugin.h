@@ -9,7 +9,8 @@
 
 #include <Plugin.h>
 
-class VirtualDesktopSwitchPlugin : public Plugin {
+class VirtualDesktopSwitchPlugin : public Plugin
+{
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.virtualdesktopswitch")
 

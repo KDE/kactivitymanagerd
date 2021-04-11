@@ -33,13 +33,10 @@ bool VirtualDesktopSwitchPlugin::init(QHash<QString, QObject *> &modules)
 
     m_activitiesService = modules["activities"];
 
-    m_currentActivity = Plugin::retrieve<QString>(
-        m_activitiesService, "CurrentActivity", "QString");
+    m_currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity", "QString");
 
-    connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)),
-            this, SLOT(currentActivityChanged(QString)));
-    connect(m_activitiesService, SIGNAL(ActivityRemoved(QString)),
-            this, SLOT(activityRemoved(QString)));
+    connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)), this, SLOT(currentActivityChanged(QString)));
+    connect(m_activitiesService, SIGNAL(ActivityRemoved(QString)), this, SLOT(activityRemoved(QString)));
 
     return true;
 }
@@ -50,9 +47,7 @@ void VirtualDesktopSwitchPlugin::currentActivityChanged(const QString &activity)
         return;
     }
 
-    config().writeEntry(
-        configPattern.arg(m_currentActivity),
-        QString::number(KWindowSystem::currentDesktop()));
+    config().writeEntry(configPattern.arg(m_currentActivity), QString::number(KWindowSystem::currentDesktop()));
 
     m_currentActivity = activity;
 
@@ -70,4 +65,3 @@ void VirtualDesktopSwitchPlugin::activityRemoved(const QString &activity)
 }
 
 #include "VirtualDesktopSwitchPlugin.moc"
-

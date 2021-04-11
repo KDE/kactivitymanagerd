@@ -14,11 +14,11 @@
 #include <utils/d_ptr_implementation.h>
 
 // Local
-#include "featuresadaptor.h"
 #include "common/dbus/common.h"
+#include "featuresadaptor.h"
 
-
-class Features::Private {
+class Features::Private
+{
 };
 
 Features::Features(QObject *parent)
@@ -26,8 +26,7 @@ Features::Features(QObject *parent)
     , d()
 {
     new FeaturesAdaptor(this);
-    QDBusConnection::sessionBus().registerObject(
-        KAMD_DBUS_OBJECT_PATH("Features"), this);
+    QDBusConnection::sessionBus().registerObject(KAMD_DBUS_OBJECT_PATH("Features"), this);
 }
 
 Features::~Features()
@@ -37,7 +36,7 @@ Features::~Features()
 // Features object is just a gateway to the other KAMD modules.
 // This is a convenience method to pass the request down to the module
 
-template <typename RetType, typename Function>
+template<typename RetType, typename Function>
 static RetType passToModule(const QString &key, RetType defaultResult, Function f)
 {
     if (key.isEmpty()) {
@@ -51,20 +50,17 @@ static RetType passToModule(const QString &key, RetType defaultResult, Function 
         return defaultResult;
     }
 
-    return f(static_cast<Module *>(module),
-            params.mid(1));
+    return f(static_cast<Module *>(module), params.mid(1));
 }
 
-#define FEATURES_PASS_TO_MODULE(RetType, DefaultResult, What)                  \
-    passToModule(key, DefaultResult,                                           \
-                 [=](Module *module, const QStringList &params)->RetType{      \
-                     What                                                      \
-                 });
+#define FEATURES_PASS_TO_MODULE(RetType, DefaultResult, What)                                                                                                  \
+    passToModule(key, DefaultResult, [=](Module *module, const QStringList &params) -> RetType {                                                               \
+        What                                                                                                                                                   \
+    });
 
 bool Features::IsFeatureOperational(const QString &key) const
 {
-    return FEATURES_PASS_TO_MODULE(bool, false,
-                                   return module->isFeatureOperational(params););
+    return FEATURES_PASS_TO_MODULE(bool, false, return module->isFeatureOperational(params););
 }
 
 QStringList Features::ListFeatures(const QString &key) const
@@ -73,22 +69,17 @@ QStringList Features::ListFeatures(const QString &key) const
         return Module::get().keys();
     }
 
-    return FEATURES_PASS_TO_MODULE(QStringList, QStringList(),
-                                   return module->listFeatures(params););
+    return FEATURES_PASS_TO_MODULE(QStringList, QStringList(), return module->listFeatures(params););
 }
 
 QDBusVariant Features::GetValue(const QString &key) const
 {
-    return FEATURES_PASS_TO_MODULE(QDBusVariant, QDBusVariant(),
-                                   return module->featureValue(params););
+    return FEATURES_PASS_TO_MODULE(QDBusVariant, QDBusVariant(), return module->featureValue(params););
 }
 
 void Features::SetValue(const QString &key, const QDBusVariant &value)
 {
-    FEATURES_PASS_TO_MODULE(bool, true,
-                            module->setFeatureValue(params, value);
-                            return true;
-                            );
+    FEATURES_PASS_TO_MODULE(bool, true, module->setFeatureValue(params, value); return true;);
 }
 
 #undef FEATURES_PASS_TO_MODULE
