@@ -40,6 +40,7 @@ include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
 include (ECMSetupQtPluginMacroNames)
 include (KDEClangFormat)
+include (KDEGitCommitHooks)
 
 # C++17
 set (CMAKE_CXX_STANDARD 17)
@@ -81,6 +82,7 @@ add_subdirectory (src)
 # add clang-format target for all our real source files
 file (GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 ecm_qt_install_logging_categories(
         EXPORT KACTIVITYMANAGERD
