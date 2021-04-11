@@ -80,7 +80,7 @@ void TemplatesPlugin::setFeatureValue(const QStringList &property,
             { "activity.wallpaper", "stripes.png" },
             { "activity.icon", "kate" },
             { "activity.cloneFrom", "id" },
-            { "activity.linkedResources", QStringList { "a", "b", "c" } }
+            { "activity.linkedResources", QStringList { "a", "b", "c" } },
         };
         createActivity(QDBusVariant(info));
 

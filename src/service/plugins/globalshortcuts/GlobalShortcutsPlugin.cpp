@@ -95,7 +95,7 @@ void GlobalShortcutsPlugin::activityRemoved(const QString &deletedActivity)
     // Removing all shortcuts that refer to an unknown activity
     for (const auto &action: m_actionCollection->actions()) {
         const auto actionActivity = activityForAction(action);
-        if ((deletedActivity.isEmpty() && !m_activitiesList.contains(actionActivity))
+        if ((deletedActivity.isEmpty() && !m_activitiesList.contains(actionActivity)) //
                 || deletedActivity == actionActivity) {
             KGlobalAccel::self()->removeAllShortcuts(action);
             m_actionCollection->removeAction(action);

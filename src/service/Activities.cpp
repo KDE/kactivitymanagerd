@@ -649,9 +649,9 @@ void Activities::StopActivity(const QString &activity)
 {
     {
         QReadLocker lock(&d->activitiesLock);
-        if (!d->activities.contains(activity)
-                || d->activities[activity] == Stopped
-                || d->activities.size() == 1
+        if (!d->activities.contains(activity) //
+                || d->activities[activity] == Stopped //
+                || d->activities.size() == 1 //
                 || d->activities.keys(Activities::Running).size() <= 1
                 ) {
             return;

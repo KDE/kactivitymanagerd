@@ -165,7 +165,7 @@ void initSchema(Database &database)
             "SELECT count(*) FROM ResourceEvent",
             "SELECT count(*) FROM ResourceScoreCache",
             "SELECT count(*) FROM ResourceLink",
-            "SELECT count(*) FROM ResourceInfo"
+            "SELECT count(*) FROM ResourceInfo",
         });
 
     // We can not allow empty fields for activity and agent, they need to

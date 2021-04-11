@@ -602,8 +602,8 @@ bool StatsPlugin::isFeatureOperational(const QStringList &feature) const
 
         const auto activity = feature[1];
 
-        return activity == "activity"
-            || activity == "current"
+        return activity == "activity" //
+            || activity == "current" //
             || listActivities().contains(activity);
 
         return true;
