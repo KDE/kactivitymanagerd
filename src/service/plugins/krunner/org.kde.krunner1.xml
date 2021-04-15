@@ -1,6 +1,13 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
     <interface name="org.kde.krunner1">
+        <method name="Prepare"/>
+        <method name="Teardown"/>
+        <method name="ReloadConfiguration">
+          <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantMap" />
+          <arg name="config" type="{sv}" direction="out">
+          </arg>
+        </method>
 
         <!--
             Returns a list of actions supported by this runner.
