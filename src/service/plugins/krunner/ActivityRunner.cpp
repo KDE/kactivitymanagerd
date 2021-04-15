@@ -50,14 +50,12 @@ RemoteMatches ActivityRunner::Match(const QString &query)
     bool list = false;
     QString name;
 
-    if (term == m_keyword || term == m_keywordi18n) {
-        list = true;
-    } else if (term.startsWith(m_keyword, Qt::CaseInsensitive)) {
+    if (term.startsWith(m_keyword, Qt::CaseInsensitive)) {
         name = term.right(term.size() - m_keyword.size()).trimmed();
     } else if (term.startsWith(m_keywordi18n, Qt::CaseInsensitive)) {
         name = term.right(term.size() - m_keywordi18n.size()).trimmed();
     } else {
-        return {};
+        list = true;
     }
 
     QList<RemoteMatch> matches;
@@ -77,6 +75,14 @@ RemoteMatches ActivityRunner::Match(const QString &query)
     }
 
     return matches;
+}
+
+QVariantMap ActivityRunner::Config()
+{
+    return {
+        {"MinLetterCount", qMin(m_keyword.count(), m_keywordi18n.count())},
+        {"MatchRegex", '^' + m_keyword + '|' + m_keywordi18n},
+    };
 }
 
 RemoteActions ActivityRunner::Actions()

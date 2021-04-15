@@ -22,6 +22,7 @@ public:
     void Run(const QString &matchId, const QString &actionId);
     RemoteMatches Match(const QString &query);
     RemoteActions Actions();
+    QVariantMap Config();
 
 private:
     QObject *m_activitiesService;
