@@ -52,6 +52,7 @@ find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets
 # KDE Frameworks
 find_package (KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF5Crash ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
 # Basic includes
 include (CPack)

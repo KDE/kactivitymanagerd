@@ -7,6 +7,7 @@
 #ifndef PLUGINS_SQLITE_DATABASE_UTILS_H
 #define PLUGINS_SQLITE_DATABASE_UTILS_H
 
+#include <KCrash>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <common/database/schema/ResourcesDatabaseSchema.h>
@@ -49,6 +50,7 @@ inline bool exec(Common::Database &database, ErrorHandling eh, QSqlQuery &query)
         if ((!success) && (errorCount++ < 2)) {
             qCWarning(KAMD_LOG_RESOURCES) << query.lastQuery();
             qCWarning(KAMD_LOG_RESOURCES) << query.lastError();
+            KCrash::setErrorMessage(query.lastError().text());
         }
         Q_ASSERT_X(success, "Uils::exec", qPrintable(QStringLiteral("Query failed:") + query.lastError().text()));
 
