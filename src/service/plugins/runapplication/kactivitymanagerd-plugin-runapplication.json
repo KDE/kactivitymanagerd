@@ -128,9 +128,6 @@
         "Name[x-test]": "xxRun applications on activity state changexx",
         "Name[zh_CN]": "活动状态变化时执行程序",
         "Name[zh_TW]": "在活動狀態變更時執行應用程式",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }

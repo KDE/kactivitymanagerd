@@ -128,9 +128,6 @@
         "Name[x-test]": "xxShare-Like-Connectxx",
         "Name[zh_CN]": "分享-点赞-连接",
         "Name[zh_TW]": "Share-Like-Connect",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }

@@ -76,9 +76,6 @@
         "Name[sv]": "Aktivitetskörning",
         "Name[uk]": "Засіб запуску просторів дій",
         "Name[x-test]": "xxActivity Runnerxx",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://invent.kde.org/plasma/kactivitymanagerd"
     }

@@ -130,9 +130,6 @@
         "Name[x-test]": "xxActivity Templatesxx",
         "Name[zh_CN]": "活动模板",
         "Name[zh_TW]": "活動樣本",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }

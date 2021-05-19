@@ -128,9 +128,6 @@
         "Name[x-test]": "xxSQLite Feederxx",
         "Name[zh_CN]": "SQLite 送料机",
         "Name[zh_TW]": "SQLite Feeder",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     },

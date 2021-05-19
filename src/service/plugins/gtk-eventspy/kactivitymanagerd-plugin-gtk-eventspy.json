@@ -111,9 +111,6 @@
         "Name[x-test]": "xxGtk Event Spyxx",
         "Name[zh_CN]": "Gtk 时间监听",
         "Name[zh_TW]": "Gtk 事件探測",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }

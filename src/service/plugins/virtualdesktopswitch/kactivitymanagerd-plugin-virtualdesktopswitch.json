@@ -129,9 +129,6 @@
         "Name[x-test]": "xxVirtual desktop switcherxx",
         "Name[zh_CN]": "虚拟桌面切换器",
         "Name[zh_TW]": "虛擬桌面切換器",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }

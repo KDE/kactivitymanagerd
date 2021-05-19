@@ -130,9 +130,6 @@
         "Name[x-test]": "xxEvent Spyxx",
         "Name[zh_CN]": "事件间谍",
         "Name[zh_TW]": "事件探測",
-        "ServiceTypes": [
-            "ActivityManager/Plugin"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     }
