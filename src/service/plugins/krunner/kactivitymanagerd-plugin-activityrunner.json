@@ -28,7 +28,6 @@
             }
         ],
         "Category": "",
-        "Dependencies": [],
         "Description": "KRunner plugin to list and switch activities",
         "Description[az]": "İş otaqlarının siyahısını göstərmək və onları dəyişmək üçün KRunner qoşması",
         "Description[ca]": "Connector del KRunner per a llistar i canviar les activitats",

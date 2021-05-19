@@ -46,7 +46,6 @@
             }
         ],
         "Category": "",
-        "Dependencies": [],
         "Description": "Plugin to store and score events in SQLite",
         "Description[az]": "SQLite-da hadisələri qiymətləndirmək və saxlamaq üçün modul",
         "Description[ca@valencia]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",

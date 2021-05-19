@@ -46,7 +46,6 @@
             }
         ],
         "Category": "",
-        "Dependencies": [],
         "Description": "Collects events from applications that support recent documents specification",
         "Description[az]": "Son istifadə olunan sənədlərin xüsusiyyətlərini dəstəkləyən tətbiqlərdən hadisələri toplayır",
         "Description[ca@valencia]": "Recull els esdeveniments de les aplicacions que admeten l'especificació dels documents recents",

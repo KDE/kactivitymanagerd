@@ -46,7 +46,6 @@
             }
         ],
         "Category": "",
-        "Dependencies": [],
         "Description": "Adds global keyboard shortcuts for activity switching",
         "Description[az]": "Fəaliyyətlər arası keçid üçün qlobal qısayolları təyin edir",
         "Description[ca@valencia]": "Afig dreceres de teclat globals per a canviar d'activitat",

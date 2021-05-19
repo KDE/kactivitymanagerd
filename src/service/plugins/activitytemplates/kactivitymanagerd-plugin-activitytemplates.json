@@ -46,7 +46,6 @@
             }
         ],
         "Category": "",
-        "Dependencies": [],
         "Description": "Support for creating templated activities",
         "Description[az]": "Fəaliyyət nümunələrinin yaradılmasının dəstəklənməsi",
         "Description[ca@valencia]": "Suport per a la creació d'activitats amb plantilles",
