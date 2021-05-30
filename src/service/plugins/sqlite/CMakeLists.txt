@@ -17,14 +17,14 @@ set (
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/utils/qsqlquery_iterator.cpp
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    sqliteplugin_SRCS
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/dbus/org.kde.ActivityManager.ResourcesLinking.xml
    ResourceLinking.h ResourceLinking
    resourcelinkingadaptor
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    sqliteplugin_SRCS
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/dbus/org.kde.ActivityManager.ResourcesScoring.xml
    StatsPlugin.h StatsPlugin

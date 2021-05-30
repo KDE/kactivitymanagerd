@@ -8,7 +8,7 @@ set (
    ${debug_SRCS}
    ${plugin_implementation_SRCS}
    )
-qt5_add_dbus_adaptor(activityrunner_SRCS "org.kde.krunner1.xml" ActivityRunner.h ActivityRunner)
+qt_add_dbus_adaptor(activityrunner_SRCS "org.kde.krunner1.xml" ActivityRunner.h ActivityRunner)
 
 kcoreaddons_add_plugin (
    kactivitymanagerd_plugin_activityrunner

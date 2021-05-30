@@ -39,19 +39,19 @@ set (kactivitymanager_SRCS
    ksmserver/KSMServer.cpp
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    kactivitymanager_SRCS
    ../common/dbus/org.kde.ActivityManager.Activities.xml
    Activities.h Activities
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    kactivitymanager_SRCS
    ../common/dbus/org.kde.ActivityManager.Resources.xml
    Resources.h Resources
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    kactivitymanager_SRCS
    ../common/dbus/org.kde.ActivityManager.Features.xml
    Features.h Features

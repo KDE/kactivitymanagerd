@@ -7,7 +7,7 @@ set (
    TemplatesPlugin.cpp
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    activitytemplates_SRCS org.kde.ActivityManager.Templates.xml
    TemplatesPlugin.h TemplatesPlugin
    )

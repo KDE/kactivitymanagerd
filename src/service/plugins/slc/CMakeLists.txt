@@ -9,7 +9,7 @@ set (
    SlcPlugin.cpp
    )
 
-qt5_add_dbus_adaptor (
+qt_add_dbus_adaptor (
    slc_SRCS org.kde.ActivityManager.SLC.xml
    SlcPlugin.h SlcPlugin
    )
