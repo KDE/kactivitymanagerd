@@ -24,7 +24,8 @@
                 "Name[sl]": "Alexander Lohnau",
                 "Name[sv]": "Alexander Lohnau",
                 "Name[uk]": "Alexander Lohnau",
-                "Name[x-test]": "xxAlexander Lohnauxx"
+                "Name[x-test]": "xxAlexander Lohnauxx",
+                "Name[zh_CN]": "Alexander Lohnau"
             }
         ],
         "Category": "",
@@ -51,6 +52,7 @@
         "Description[sv]": "Insticksprogram för Kör program för att lista och byta aktiviteter",
         "Description[uk]": "Додаток KRunner для показу списку просторів дій та перемикання між ними",
         "Description[x-test]": "xxKRunner plugin to list and switch activitiesxx",
+        "Description[zh_CN]": "用于列出和切换活动的 KRunner 插件",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
         "Id": "org.kde.ActivityManager.ActivityRunner",
@@ -77,6 +79,7 @@
         "Name[sv]": "Aktivitetskörning",
         "Name[uk]": "Засіб запуску просторів дій",
         "Name[x-test]": "xxActivity Runnerxx",
+        "Name[zh_CN]": "活动 Runner 程序",
         "ServiceTypes": [
             "ActivityManager/Plugin"
         ],
