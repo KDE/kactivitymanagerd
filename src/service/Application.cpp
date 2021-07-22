@@ -204,14 +204,14 @@ void Application::loadPlugins()
 
 bool Application::loadPlugin(const QString &pluginId)
 {
-    auto offers = KPluginLoader::findPluginsById(QStringLiteral(KAMD_PLUGIN_DIR), pluginId);
+    auto offer = KPluginMetaData::findPluginById(QStringLiteral(KAMD_PLUGIN_DIR), pluginId);
 
-    if (offers.isEmpty()) {
+    if (!offer.isValid()) {
         qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] not found: " << pluginId;
         return false;
     }
 
-    return d->loadPlugin(offers.first());
+    return d->loadPlugin(offer);
 }
 
 Application::~Application()
