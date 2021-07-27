@@ -84,7 +84,7 @@
         "Description[tr]": "Etkinlikleri değiştirirken veya başlatırken ve durdururken, belirtilen uygulamaları çalıştır",
         "Description[uk]": "Запускати вказані програми під час перемикання просторів дій або їхнього запуску чи завершення роботи",
         "Description[x-test]": "xxWhen switching activities, or when starting and stopping them, execute specified applicationsxx",
-        "Description[zh_CN]": "切换活动或者启动停止他们时，执行指定程序",
+        "Description[zh_CN]": "切换/启动/停止活动时，执行指定程序",
         "Description[zh_TW]": "切換活動時，或是啟動、停止活動時，執行特定應用程式",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
