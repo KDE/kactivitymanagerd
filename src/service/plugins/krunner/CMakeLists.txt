@@ -12,7 +12,6 @@ qt_add_dbus_adaptor(activityrunner_SRCS "org.kde.krunner1.xml" ActivityRunner.h 
 
 kcoreaddons_add_plugin (
    kactivitymanagerd_plugin_activityrunner
-   JSON kactivitymanagerd-plugin-activityrunner.json
    SOURCES ${activityrunner_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

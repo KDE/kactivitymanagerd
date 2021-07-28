@@ -14,7 +14,6 @@ qt_add_dbus_adaptor (
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_activitytemplates
-   JSON kactivitymanagerd-plugin-activitytemplates.json
    SOURCES ${activitytemplates_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

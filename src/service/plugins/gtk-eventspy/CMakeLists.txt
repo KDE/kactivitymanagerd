@@ -18,7 +18,6 @@ ecm_qt_declare_logging_category(gtkevenyspy_SRCS
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_gtk_eventspy
-   JSON kactivitymanagerd-plugin-gtk-eventspy.json
    SOURCES ${gtkevenyspy_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

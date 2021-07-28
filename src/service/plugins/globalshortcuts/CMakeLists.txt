@@ -9,7 +9,6 @@ set (
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_globalshortcuts
-   JSON kactivitymanagerd-plugin-globalshortcuts.json
    SOURCES ${globalshortcuts_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

@@ -11,7 +11,6 @@ set (
 
 kcoreaddons_add_plugin (
    kactivitymanagerd_plugin_runapplication
-   JSON kactivitymanagerd-plugin-runapplication.json
    SOURCES ${runapplication_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

@@ -10,7 +10,6 @@ set (
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_virtualdesktopswitch
-   JSON kactivitymanagerd-plugin-virtualdesktopswitch.json
    SOURCES ${virtualdesktopswitch_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

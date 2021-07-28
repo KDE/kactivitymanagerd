@@ -33,7 +33,6 @@ qt_add_dbus_adaptor (
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_sqlite
-   JSON kactivitymanagerd-plugin-sqlite.json
    SOURCES ${sqliteplugin_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )

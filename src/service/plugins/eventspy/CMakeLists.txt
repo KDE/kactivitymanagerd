@@ -11,7 +11,6 @@ set (
 
 kcoreaddons_add_plugin(
    kactivitymanagerd_plugin_eventspy
-   JSON kactivitymanagerd-plugin-eventspy.json
    SOURCES ${evenyspy_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
