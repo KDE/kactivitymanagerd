@@ -51,6 +51,7 @@
         "Description[az]": "Bu fəaliyyətə keçid zamanı onda ən son aktiv olan iş masasını açır",
         "Description[ca@valencia]": "En canviar a una activitat, obri el darrer escriptori virtual utilitzat amb aquesta activitat",
         "Description[ca]": "En canviar a una activitat, obre el darrer escriptori virtual utilitzat amb aquesta activitat",
+        "Description[cs]": "Při přepínání na aktivitu otevře virtuální pracovní plochu naposledy s touto aktivitou použitou",
         "Description[da]": "Åbner det senest brugte virtuelle skrivebord for aktiviteten ved skift til en aktivitet",
         "Description[de]": "Beim Wechseln zu einer Aktivität wird die virtuelle Arbeitsfläche geöffnet, auf der zuletzt diese Aktivität benutzt wurde",
         "Description[el]": "Όταν γίνεται εναλλαγή δραστηριότητας, ανοίγει την εικονική επιφάνεια εργασίας που χρησιμοποιήθηκε τελευταία με τη δραστηριότητα αυτή",
