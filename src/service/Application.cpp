@@ -19,7 +19,6 @@
 
 // KDE
 #include <KCrash>
-#include <KPluginLoader>
 #include <KPluginMetaData>
 #include <kdbusservice.h>
 #include <ksharedconfig.h>
@@ -155,36 +154,29 @@ bool Application::Private::loadPlugin(const KPluginMetaData &plugin)
         return true;
     }
 
-    KPluginLoader loader(plugin.fileName());
-    KPluginFactory *factory = loader.factory();
-    if (!factory) {
-        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] Could not load KPluginFactory for:" << plugin.pluginId() << loader.errorString();
+    const auto result = KPluginFactory::instantiatePlugin<Plugin>(plugin);
+
+    if (!result) {
+        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] Could not load plugin:" << plugin.pluginId() << result.errorText;
         return false;
     }
 
-    auto pluginInstance = factory->create<Plugin>();
+    auto pluginInstance = result.plugin;
 
     auto &modules = Module::get();
 
-    if (pluginInstance) {
-        bool success = pluginInstance->init(modules);
+    bool success = pluginInstance->init(modules);
 
-        if (success) {
-            pluginIds << plugin.pluginId();
-            plugins << pluginInstance;
+    if (success) {
+        pluginIds << plugin.pluginId();
+        plugins << pluginInstance;
 
-            qCDebug(KAMD_LOG_APPLICATION) << "[   OK   ] loaded:  " << plugin.pluginId();
-            return true;
-        } else {
-            qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] init: " << plugin.pluginId() << loader.errorString();
-            // TODO: Show a notification for a plugin that failed to load
-            delete pluginInstance;
-            return false;
-        }
-
+        qCDebug(KAMD_LOG_APPLICATION) << "[   OK   ] loaded:  " << plugin.pluginId();
+        return true;
     } else {
-        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] loading: " << plugin.pluginId() << loader.errorString();
+        qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] init: " << plugin.pluginId();
         // TODO: Show a notification for a plugin that failed to load
+        delete pluginInstance;
         return false;
     }
 }
@@ -194,7 +186,7 @@ void Application::loadPlugins()
     using namespace std::placeholders;
 
     const auto config = KSharedConfig::openConfig(QStringLiteral("kactivitymanagerdrc"))->group("Plugins");
-    const auto offers = KPluginLoader::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), std::bind(Private::isPluginEnabled, config, _1));
+    const auto offers = KPluginMetaData::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), std::bind(Private::isPluginEnabled, config, _1));
     qCDebug(KAMD_LOG_APPLICATION) << "Found" << offers.size() << "enabled plugins:";
 
     for (const auto &offer : offers) {
