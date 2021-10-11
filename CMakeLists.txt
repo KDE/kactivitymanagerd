@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16)
 project (KActivityManagerd)
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.82")
+set (KF5_MIN_VERSION "5.86")
 set (Boost_MINIMUM_VERSION "1.58")
 
 # We don't build in-source
