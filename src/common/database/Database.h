@@ -44,7 +44,7 @@ public:
     // For debugging purposes only
     QString lastQuery() const;
 
-    ~Database();
+    ~Database() override;
     Database();
 
     friend class Locker;
