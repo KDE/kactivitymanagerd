@@ -19,7 +19,9 @@
 
 // KDE
 #include <kauthorized.h>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <kdelibs4migration.h>
+#endif
 #include <klocalizedstring.h>
 #include <ksharedconfig.h>
 
@@ -47,6 +49,7 @@ inline bool nameBasedOrdering(const ActivityInfo &info, const ActivityInfo &othe
 
 Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransitionChecker()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     // Checking whether we need to transfer the KActivities/KDE4
     // configuration file to the new location.
     const QString newConfigLocation = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QLatin1Char('/') + ACTIVITY_MANAGER_CONFIG_FILE_NAME;
@@ -54,7 +57,6 @@ Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransi
     if (QFile(newConfigLocation).exists()) {
         return;
     }
-
     // Testing for kdehome
     Kdelibs4Migration migration;
     if (!migration.kdeHomeFound()) {
@@ -65,6 +67,7 @@ Activities::Private::KDE4ConfigurationTransitionChecker::KDE4ConfigurationTransi
     if (!oldConfigFile.isEmpty()) {
         QFile(oldConfigFile).copy(newConfigLocation);
     }
+#endif
 }
 
 Activities::Private::Private(Activities *parent)

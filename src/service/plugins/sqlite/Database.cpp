@@ -14,9 +14,6 @@
 #include <QStandardPaths>
 #include <QVariant>
 
-// KDE
-#include <kdelibs4migration.h>
-
 // Utils
 #include <utils/d_ptr_implementation.h>
 #include <utils/qsqlquery_iterator.h>
