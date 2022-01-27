@@ -124,9 +124,6 @@ Application::Application(int &argc, char **argv)
 
 void Application::init()
 {
-    if (!QDBusConnection::sessionBus().registerService(KAMD_DBUS_SERVICE)) {
-        QCoreApplication::exit(EXIT_SUCCESS);
-    }
 
     // KAMD is a daemon, if it crashes it is not a problem as
     // long as it restarts properly
@@ -140,6 +137,10 @@ void Application::init()
     QMetaObject::invokeMethod(this, "loadPlugins", Qt::QueuedConnection);
 
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager"), this, QDBusConnection::ExportAllSlots);
+
+    if (!QDBusConnection::sessionBus().registerService(KAMD_DBUS_SERVICE)) {
+        QCoreApplication::exit(EXIT_SUCCESS);
+    }
 }
 
 bool Application::Private::loadPlugin(const KPluginMetaData &plugin)
@@ -273,7 +274,6 @@ int main(int argc, char **argv)
     application.setOrganizationDomain(QStringLiteral("kde.org"));
 
     KCrash::initialize();
-    KDBusService service(KDBusService::Unique);
 
     application.init();
 
