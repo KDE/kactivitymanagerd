@@ -6,6 +6,7 @@
 
 #include "GtkEventSpy.h"
 
+#include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QString>
@@ -13,7 +14,7 @@
 #include <QXmlInputSource>
 #include <QXmlSimpleReader>
 
-#include <KCoreAddons/KDirWatch>
+#include <KDirWatch>
 #include <KServiceTypeTrader>
 
 #include "DebugPluginGtkEventSpy.h"

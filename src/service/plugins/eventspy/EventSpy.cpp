@@ -9,10 +9,10 @@
 #include <QFileInfo>
 #include <QString>
 
-#include <KConfigCore/KConfigGroup>
-#include <KConfigCore/KDesktopFile>
-#include <KCoreAddons/KDirWatch>
-#include <KIOCore/KRecentDocument>
+#include <KConfigGroup>
+#include <KDesktopFile>
+#include <KDirWatch>
+#include <KRecentDocument>
 
 KAMD_EXPORT_PLUGIN(eventspyplugin, EventSpyPlugin, "kactivitymanagerd-plugin-eventspy.json")
 

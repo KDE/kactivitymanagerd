@@ -9,9 +9,9 @@
 
 // Qt
 #include <QObject>
+#include <QRegExp>
 #include <QSqlQuery>
 #include <QTimer>
-
 // Boost and STL
 #include <boost/container/flat_set.hpp>
 #include <memory>
