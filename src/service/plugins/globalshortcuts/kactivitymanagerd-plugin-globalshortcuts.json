@@ -4,6 +4,7 @@
             {
                 "Email": "makhsm@gmail.com",
                 "Name": "Makis Marimpis",
+                "Name[ar]": "Makis Marimpis",
                 "Name[az]": "Makis Marimpis",
                 "Name[ca@valencia]": "Makis Marimpis",
                 "Name[ca]": "Makis Marimpis",
@@ -48,6 +49,7 @@
         ],
         "Category": "",
         "Description": "Adds global keyboard shortcuts for activity switching",
+        "Description[ar]": "تضيف اختصار لوحة مفاتيح عام لتبديل النشاط",
         "Description[az]": "Fəaliyyətlər arası keçid üçün qlobal qısayolları təyin edir",
         "Description[ca@valencia]": "Afig dreceres de teclat globals per a canviar d'activitat",
         "Description[ca]": "Afegeix dreceres de teclat globals per a canviar d'activitat",
@@ -93,6 +95,7 @@
         "Id": "org.kde.ActivityManager.GlobalShortcuts",
         "License": "GPL",
         "Name": "Global Shortcuts",
+        "Name[ar]": "اختصارات عامة",
         "Name[az]": "Qlobal Qısayollar Birləşmələri",
         "Name[ca@valencia]": "Dreceres globals",
         "Name[ca]": "Dreceres globals",

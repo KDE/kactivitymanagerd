@@ -4,6 +4,7 @@
             {
                 "Email": "ivan.cukic@kde.org",
                 "Name": "Ivan Cukic",
+                "Name[ar]": "Ivan Cukic",
                 "Name[az]": "Ivan Cukic",
                 "Name[ca@valencia]": "Ivan Cukic",
                 "Name[ca]": "Ivan Cukic",
@@ -48,6 +49,7 @@
         ],
         "Category": "",
         "Description": "When switching to an activity, opens the virtual desktop last used with that activity",
+        "Description[ar]": "عند التبديل إلى نشاط ما، يفتح سطح المكتب الافتراضي المستخدم آخر مرة مع هذا النشاط",
         "Description[az]": "Bu fəaliyyətə keçid zamanı onda ən son aktiv olan iş masasını açır",
         "Description[ca@valencia]": "En canviar a una activitat, obri el darrer escriptori virtual utilitzat amb aquesta activitat",
         "Description[ca]": "En canviar a una activitat, obre el darrer escriptori virtual utilitzat amb aquesta activitat",
@@ -93,6 +95,7 @@
         "Id": "org.kde.ActivityManager.VirtualDesktopSwitch",
         "License": "GPL",
         "Name": "Virtual desktop switcher",
+        "Name[ar]": "مبدل سطح المكتب الافتراضي",
         "Name[az]": "Virtual İş Masası çeviricisi",
         "Name[ca@valencia]": "Commutador pels escriptoris virtuals",
         "Name[ca]": "Commutador pels escriptoris virtuals",

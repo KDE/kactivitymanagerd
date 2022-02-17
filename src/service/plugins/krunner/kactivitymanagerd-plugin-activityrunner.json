@@ -4,6 +4,7 @@
             {
                 "Email": "alexander.lohnau@gmx.de",
                 "Name": "Alexander Lohnau",
+                "Name[ar]": "Alexander Lohnau",
                 "Name[az]": "Alexander Lohnau",
                 "Name[ca@valencia]": "Alexander Lohnau",
                 "Name[ca]": "Alexander Lohnau",
@@ -39,6 +40,7 @@
         ],
         "Category": "",
         "Description": "KRunner plugin to list and switch activities",
+        "Description[ar]": "ملحقة مشغلك تسرد وتبدل الأنشطة",
         "Description[az]": "İş otaqlarının siyahısını göstərmək və onları dəyişmək üçün KRunner qoşması",
         "Description[ca@valencia]": "Connector del KRunner per a llistar i canviar les activitats",
         "Description[ca]": "Connector del KRunner per a llistar i canviar les activitats",
@@ -75,6 +77,7 @@
         "Id": "org.kde.ActivityManager.ActivityRunner",
         "License": "GPL",
         "Name": "Activity Runner",
+        "Name[ar]": "مشغل النشاط",
         "Name[az]": "İş otağı başladıcısı",
         "Name[ca@valencia]": "Executor d'activitats",
         "Name[ca]": "Executor d'activitats",

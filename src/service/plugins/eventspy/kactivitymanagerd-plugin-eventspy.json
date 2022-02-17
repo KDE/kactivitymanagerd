@@ -4,6 +4,7 @@
             {
                 "Email": "ivan.cukic(at)kde.org",
                 "Name": "Ivan Čukić",
+                "Name[ar]": "Ivan Čukić",
                 "Name[az]": "Ivan Čukić",
                 "Name[ca@valencia]": "Ivan Čukić",
                 "Name[ca]": "Ivan Čukić",
@@ -48,6 +49,7 @@
         ],
         "Category": "",
         "Description": "Collects events from applications that support recent documents specification",
+        "Description[ar]": "يجمع الأحداث من التطبيقات التي تدعم مواصفة المستندات الحديثة",
         "Description[az]": "Son istifadə olunan sənədlərin xüsusiyyətlərini dəstəkləyən tətbiqlərdən hadisələri toplayır",
         "Description[ca@valencia]": "Recull els esdeveniments de les aplicacions que admeten l'especificació dels documents recents",
         "Description[ca]": "Recull els esdeveniments de les aplicacions que admeten l'especificació dels documents recents",
@@ -93,6 +95,7 @@
         "Id": "org.kde.ActivityManager.EventSpy",
         "License": "GPL",
         "Name": "Event Spy",
+        "Name[ar]": "جاسوس الأحداث",
         "Name[az]": "Hadisələrin izlənməsi",
         "Name[ca@valencia]": "Espia l'esdeveniment",
         "Name[ca]": "Espia l'esdeveniment",

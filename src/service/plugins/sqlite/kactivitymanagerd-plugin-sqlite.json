@@ -4,6 +4,7 @@
             {
                 "Email": "ivan.cukic@kde.org",
                 "Name": "Ivan Cukic",
+                "Name[ar]": "Ivan Cukic",
                 "Name[az]": "Ivan Cukic",
                 "Name[ca@valencia]": "Ivan Cukic",
                 "Name[ca]": "Ivan Cukic",
@@ -48,6 +49,7 @@
         ],
         "Category": "",
         "Description": "Plugin to store and score events in SQLite",
+        "Description[ar]": "ملحقة لتخزين وتسجيل الأحداث في SQLite",
         "Description[az]": "SQLite-da hadisələri qiymətləndirmək və saxlamaq üçün modul",
         "Description[ca@valencia]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",
         "Description[ca]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",
@@ -93,6 +95,7 @@
         "Id": "org.kde.ActivityManager.ResourceScoring",
         "License": "GPL",
         "Name": "SQLite Feeder",
+        "Name[ar]": "مغذي SQLite",
         "Name[az]": "SQLite üçün məlumat təhcizatçısı",
         "Name[ca@valencia]": "Alimentador del SQLite",
         "Name[ca]": "Alimentador del SQLite",

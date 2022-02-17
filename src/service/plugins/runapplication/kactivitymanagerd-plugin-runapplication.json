@@ -4,6 +4,7 @@
             {
                 "Email": "ivan.cukic@kde.org",
                 "Name": "Ivan Cukic",
+                "Name[ar]": "Ivan Cukic",
                 "Name[az]": "Ivan Cukic",
                 "Name[ca@valencia]": "Ivan Cukic",
                 "Name[ca]": "Ivan Cukic",
@@ -48,6 +49,7 @@
         ],
         "Category": "",
         "Description": "When switching activities, or when starting and stopping them, execute specified applications",
+        "Description[ar]": "تشغل  تطبيقات معينة عند تبديل الأنشطة أو عند البدء فيها وإيقافها",
         "Description[az]": "Bir fəaliyyətdən başqasına keçərkən və ya onları dayandırarkən göstərilən proqramın başladılması",
         "Description[ca@valencia]": "En commutar d'activitat, o en iniciar o aturar-les, executar les aplicacions especificades",
         "Description[ca]": "En commutar d'activitat, o en iniciar o aturar-les, executar les aplicacions especificades",
@@ -93,6 +95,7 @@
         "Id": "org.kde.ActivityManager.RunApplication",
         "License": "GPL",
         "Name": "Run applications on activity state change",
+        "Name[ar]": "شغل تطبيقات عند تغيير حالة النشاط",
         "Name[az]": "Fəaliyyət vəziyyətinin dəyişməsi zamanı tətbiqin başladılması",
         "Name[ca@valencia]": "Executa aplicacions en canviar l'estat de l'activitat",
         "Name[ca]": "Executa aplicacions en canviar l'estat de l'activitat",

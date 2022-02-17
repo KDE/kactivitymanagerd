@@ -4,6 +4,7 @@
             {
                 "Email": "meven.car(at)kdemail.net",
                 "Name": "Méven Car",
+                "Name[ar]": "Méven Car",
                 "Name[az]": "Méven Car",
                 "Name[ca@valencia]": "Méven Car",
                 "Name[ca]": "Méven Car",
@@ -43,6 +44,7 @@
         ],
         "Category": "",
         "Description": "Collects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[ar]": "يجمع الأحداث من التطبيقات التي تستخدم GtkFileChooser و GtkRecentManager كما هو محدد بواسطة https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ ",
         "Description[az]": "GtkFileChooser və GtkRecentManager istifadə edən tətbiqlərdən hadisələri https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ tərəfindən xüsusiyyətlərinə görə toplayır",
         "Description[ca@valencia]": "Recull els esdeveniments de les aplicacions que usen «GtkFileChooser» i «GtkRecentManager» segons l'especificat pel https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[ca]": "Recull els esdeveniments de les aplicacions que usen «GtkFileChooser» i «GtkRecentManager» segons l'especificat pel https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
@@ -83,6 +85,7 @@
         "Id": "org.kde.ActivityManager.GtkEventSpy",
         "License": "GPL",
         "Name": "Gtk Event Spy",
+        "Name[ar]": "جاسوس أحداث جي تي كي",
         "Name[az]": "GTK hadisələrinin izlənməsi",
         "Name[ca@valencia]": "Espia els esdeveniments Gtk",
         "Name[ca]": "Espia els esdeveniments Gtk",
