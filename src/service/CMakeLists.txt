@@ -6,7 +6,7 @@ project (ActivityManager)
 find_package (ECM 0.0.8 REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
-find_package (Qt5 REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
+find_package (Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
 
 find_package (KF5Config ${KF5_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF5CoreAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
@@ -77,7 +77,7 @@ target_link_libraries (kactivitymanagerd
 
 install (FILES
    files/kactivitymanagerd.desktop
-   DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
+   DESTINATION ${KDE_INSTALL_KSERVICESDIR}
    )
 
 install (TARGETS
@@ -91,6 +91,6 @@ install (TARGETS
 
 install (FILES
    files/kactivitymanagerd-plugin.desktop
-   DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR}
+   DESTINATION ${KDE_INSTALL_KSERVICETYPESDIR}
    )
 

@@ -48,7 +48,9 @@ target_link_libraries (
    KF5::Crash
    kactivitymanagerd_plugin
    )
-
+if(TARGET Qt6::Core5Compat)
+    target_link_libraries(kactivitymanagerd_plugin_sqlite Qt6::Core5Compat)
+endif()
 set_target_properties (
    kactivitymanagerd_plugin_sqlite
    PROPERTIES PREFIX ""

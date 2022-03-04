@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16)
 project (KActivityManagerd)
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.86")
+set (KF5_MIN_VERSION "5.90")
 set (KDE_COMPILERSETTINGS_LEVEL "5.82")
 set (Boost_MINIMUM_VERSION "1.58")
 
@@ -48,7 +48,12 @@ set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Qt
-find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
+find_package (Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
+
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6Core5Compat ${REQUIRED_QT_VERSION} REQUIRED) # QTextCodec
+endif()
+
 
 # KDE Frameworks
 find_package (KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
