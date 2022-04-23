@@ -13,8 +13,8 @@
 #include <QUrl>
 #include <QXmlStreamReader>
 
+#include <KApplicationTrader>
 #include <KDirWatch>
-#include <KServiceTypeTrader>
 
 #include "DebugPluginGtkEventSpy.h"
 
@@ -103,9 +103,9 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
                 }
 
                 // Search for applications which are executable and case-insensitively match the search term
-                // See https://techbase.kde.org/Development/Tutorials/Services/Traders#The_KTrader_Query_Language
-                const auto query = QString("exist Exec and Exec ~~ '%1'").arg(exec);
-                const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
+                const KService::List services = KApplicationTrader::query([exec](const KService::Ptr &app) {
+                    return app->exec().compare(exec, Qt::CaseInsensitive) == 0;
+                });
 
                 if (!services.isEmpty()) {
                     // use the first item matching
