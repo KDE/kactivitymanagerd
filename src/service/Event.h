@@ -59,8 +59,6 @@ public:
     QString typeName() const;
 };
 
-QDebug operator<<(QDebug dbg, const Event &e);
-
 typedef QList<Event> EventList;
 
 Q_DECLARE_METATYPE(Event)
