@@ -11,8 +11,7 @@
 #include <QStandardPaths>
 #include <QString>
 #include <QUrl>
-#include <QXmlInputSource>
-#include <QXmlSimpleReader>
+#include <QXmlStreamReader>
 
 #include <KDirWatch>
 #include <KServiceTypeTrader>
@@ -67,89 +66,6 @@ QString Bookmark::latestApplication() const
     return current.name;
 }
 
-class BookmarkHandler : public QXmlDefaultHandler
-{
-public:
-    bool startElement(const QString &namespaceURI, const QString &localName, const QString &qName, const QXmlAttributes &attributes) override;
-    bool endElement(const QString &namespaceURI, const QString &localName, const QString &qName) override;
-
-    QList<Bookmark> bookmarks() const;
-
-private:
-    QList<Bookmark> marks;
-    Bookmark current;
-};
-
-QList<Bookmark> BookmarkHandler::bookmarks() const
-{
-    return marks;
-}
-
-bool BookmarkHandler::startElement(const QString & /*namespaceURI*/, const QString & /*localName*/, const QString &qName, const QXmlAttributes &attributes)
-{
-    // new bookmark
-    if (qName == QStringLiteral("bookmark")) {
-        current = Bookmark();
-        current.href = QUrl(attributes.value("href"));
-        QString added = attributes.value("added");
-        QString modified = attributes.value("modified");
-        QString visited = attributes.value("visited");
-        current.added = QDateTime::fromString(added, Qt::ISODate);
-        current.modified = QDateTime::fromString(modified, Qt::ISODate);
-        current.visited = QDateTime::fromString(visited, Qt::ISODate);
-
-        // application for the current bookmark
-    } else if (qName == QStringLiteral("bookmark:application")) {
-        Application app;
-
-        QString exec = attributes.value("exec");
-
-        if (exec.startsWith(QLatin1Char('\'')) && exec.endsWith(QLatin1Char('\''))) {
-            // remove "'" characters wrapping the command
-            exec = exec.mid(1, exec.size() - 2);
-        }
-
-        // Search for applications which are executable and case-insensitively match the search term
-        // See https://techbase.kde.org/Development/Tutorials/Services/Traders#The_KTrader_Query_Language
-        const auto query = QString("exist Exec and Exec ~~ '%1'").arg(exec);
-        const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
-
-        if (!services.isEmpty()) {
-            // use the first item matching
-            const auto &service = services.first();
-            app.name = service->desktopEntryName();
-        } else {
-            // when no services are found, sanitize a little the exec
-            // remove space and any character after
-            const int spaceIndex = exec.indexOf(" ");
-            if (spaceIndex != -1) {
-                exec = exec.mid(0, spaceIndex);
-            }
-            app.name = exec;
-        }
-
-        app.modified = QDateTime::fromString(attributes.value("modified"), Qt::ISODate);
-
-        current.applications.append(app);
-    } else if (qName == QStringLiteral("mime:mime-type")) {
-        current.mimetype = attributes.value("type");
-    }
-    return true;
-}
-
-bool BookmarkHandler::endElement(const QString &namespaceURI, const QString &localName, const QString &qName)
-{
-    Q_UNUSED(namespaceURI);
-    Q_UNUSED(localName);
-
-    if (qName == QStringLiteral("bookmark")) {
-        // keep track of the finished parsed bookmark
-        marks << current;
-    }
-
-    return true;
-}
-
 void GtkEventSpyPlugin::fileUpdated(const QString &filename)
 {
     QFile file(filename);
@@ -159,20 +75,72 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     }
 
     // must parse the xbel xml file
-    BookmarkHandler bookmarkHandler;
+    QXmlStreamReader reader(&file);
+    QList<Bookmark> bookmarks;
+    Bookmark current;
+    while (!reader.atEnd()) {
+        const auto token = reader.readNext();
+        if (token == QXmlStreamReader::StartElement) {
+            if (reader.name() == QLatin1String("bookmark")) {
+                current = Bookmark();
+                current.href = QUrl(reader.attributes().value("href").toString());
+                QString added = reader.attributes().value("added").toString();
+                QString modified = reader.attributes().value("modified").toString();
+                QString visited = reader.attributes().value("visited").toString();
+                current.added = QDateTime::fromString(added, Qt::ISODate);
+                current.modified = QDateTime::fromString(modified, Qt::ISODate);
+                current.visited = QDateTime::fromString(visited, Qt::ISODate);
 
-    QXmlSimpleReader reader;
-    reader.setContentHandler(&bookmarkHandler);
-    reader.setErrorHandler(&bookmarkHandler);
-    QXmlInputSource source(&file);
+                // application for the current bookmark
+            } else if (reader.name() == QLatin1String("bookmark:application")) {
+                Application app;
 
-    if (!reader.parse(source)) {
-        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "could not parse" << file << "error was " << bookmarkHandler.errorString();
+                QString exec = reader.attributes().value("exec").toString();
+
+                if (exec.startsWith(QLatin1Char('\'')) && exec.endsWith(QLatin1Char('\''))) {
+                    // remove "'" characters wrapping the command
+                    exec = exec.mid(1, exec.size() - 2);
+                }
+
+                // Search for applications which are executable and case-insensitively match the search term
+                // See https://techbase.kde.org/Development/Tutorials/Services/Traders#The_KTrader_Query_Language
+                const auto query = QString("exist Exec and Exec ~~ '%1'").arg(exec);
+                const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
+
+                if (!services.isEmpty()) {
+                    // use the first item matching
+                    const auto &service = services.first();
+                    app.name = service->desktopEntryName();
+                } else {
+                    // when no services are found, sanitize a little the exec
+                    // remove space and any character after
+                    const int spaceIndex = exec.indexOf(" ");
+                    if (spaceIndex != -1) {
+                        exec = exec.mid(0, spaceIndex);
+                    }
+                    app.name = exec;
+                }
+
+                app.modified = QDateTime::fromString(reader.attributes().value("modified").toString(), Qt::ISODate);
+
+                current.applications.append(app);
+            } else if (reader.name() == QLatin1String("mime:mime-type")) {
+                current.mimetype = reader.attributes().value("type").toString();
+            }
+        } else if (token == QXmlStreamReader::EndElement) {
+            if (reader.name() == QLatin1String("bookmark")) {
+                // keep track of the finished parsed bookmark
+                bookmarks << current;
+            }
+        }
+    }
+
+    if (reader.hasError()) {
+        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "could not parse" << file.fileName() << "error was " << reader.errorString();
         return;
     }
 
     // then find the files that were accessed since last run
-    const QList<Bookmark> bookmarks = bookmarkHandler.bookmarks();
     for (const Bookmark &mark : bookmarks) {
         if (mark.added > m_lastUpdate || mark.modified > m_lastUpdate || mark.visited > m_lastUpdate) {
             addDocument(mark.href, mark.latestApplication(), mark.mimetype);
