@@ -81,7 +81,7 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     while (!reader.atEnd()) {
         const auto token = reader.readNext();
         if (token == QXmlStreamReader::StartElement) {
-            if (reader.name() == QLatin1String("bookmark")) {
+            if (reader.qualifiedName() == QLatin1String("bookmark")) {
                 current = Bookmark();
                 current.href = QUrl(reader.attributes().value("href").toString());
                 QString added = reader.attributes().value("added").toString();
@@ -92,7 +92,7 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
                 current.visited = QDateTime::fromString(visited, Qt::ISODate);
 
                 // application for the current bookmark
-            } else if (reader.name() == QLatin1String("bookmark:application")) {
+            } else if (reader.qualifiedName() == QLatin1String("bookmark:application")) {
                 Application app;
 
                 QString exec = reader.attributes().value("exec").toString();
@@ -124,11 +124,11 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
                 app.modified = QDateTime::fromString(reader.attributes().value("modified").toString(), Qt::ISODate);
 
                 current.applications.append(app);
-            } else if (reader.name() == QLatin1String("mime:mime-type")) {
+            } else if (reader.qualifiedName() == QLatin1String("mime:mime-type")) {
                 current.mimetype = reader.attributes().value("type").toString();
             }
         } else if (token == QXmlStreamReader::EndElement) {
-            if (reader.name() == QLatin1String("bookmark")) {
+            if (reader.qualifiedName() == QLatin1String("bookmark")) {
                 // keep track of the finished parsed bookmark
                 bookmarks << current;
             }
