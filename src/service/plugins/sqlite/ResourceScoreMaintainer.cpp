@@ -12,7 +12,7 @@
 #include <QMutex>
 
 // System
-#include <time.h>
+#include <unistd.h>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
