@@ -12,8 +12,7 @@
 #include <QRegExp>
 #include <QSqlQuery>
 #include <QTimer>
-// Boost and STL
-#include <boost/container/flat_set.hpp>
+// STL
 #include <memory>
 
 // Local
@@ -109,7 +108,7 @@ private:
     QObject *m_activities;
     QObject *m_resources;
 
-    boost::container::flat_set<QString> m_apps;
+    QSet<QString> m_apps;
     QList<QRegExp> m_urlFilters;
     QStringList m_otrActivities;
 

@@ -89,7 +89,7 @@ void StatsPlugin::loadConfiguration()
     if (m_whatToRemember == SpecificApplications) {
         auto apps = conf.readEntry(m_blockedByDefault ? "allowed-applications" : "blocked-applications", QStringList());
 
-        m_apps.insert(apps.cbegin(), apps.cend());
+        m_apps.unite({apps.begin(), apps.end()});
     }
 
     // Delete old events, as per configuration.

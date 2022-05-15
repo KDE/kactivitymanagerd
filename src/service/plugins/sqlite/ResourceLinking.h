@@ -10,8 +10,7 @@
 // Qt
 #include <QObject>
 
-// Boost and STL
-#include <boost/container/flat_set.hpp>
+// STL
 #include <memory>
 
 // Local
