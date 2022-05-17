@@ -38,6 +38,7 @@
                 "Name[sv]": "Méven Car",
                 "Name[tr]": "Méven Car",
                 "Name[uk]": "Méven Car",
+                "Name[vi]": "Méven Car",
                 "Name[x-test]": "xxMéven Carxx",
                 "Name[zh_CN]": "Méven Car",
                 "Name[zh_TW]": "Méven Car"
@@ -79,6 +80,7 @@
         "Description[sv]": "Samlar in händelser från program som använder GtkFileChooser och GtkRecentManager som anges av https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[tr]": "https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ konumunda belirtildiği üzeri GtkFileChooser ve GtkRecentManager kullanan uygulamalardan etkinlikleri toplar",
         "Description[uk]": "Збирає повідомлення про події від програм, у яких використовується GtkFileChooser та GtkRecentManager, відповідно до https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[vi]": "Thu thập sự kiện từ các ứng dụng dùng GtkFileChooser và GtkRecentManager theo đặc tả ở https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[x-test]": "xxCollects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/xx",
         "Description[zh_CN]": "从使用 GtkFileChooser 和 GtkRecentManager 的应用程序收集事件，遵循 FreeDesktop 相关规范 https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[zh_TW]": "收集如 https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ 定義之使用 GtkFileChooser 及 GtkRecentManager 應用程式的事件",
@@ -121,6 +123,7 @@
         "Name[sv]": "GTK-händelseövervakare",
         "Name[tr]": "Gtk Etkinlik Casusu",
         "Name[uk]": "Журнал подій Gtk",
+        "Name[vi]": "Theo dõi sự kiện GTK",
         "Name[x-test]": "xxGtk Event Spyxx",
         "Name[zh_CN]": "Gtk 事件监视",
         "Name[zh_TW]": "Gtk 事件探測",

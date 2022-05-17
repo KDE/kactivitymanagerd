@@ -42,6 +42,7 @@
                 "Name[sv]": "Ivan Cukic",
                 "Name[tr]": "Ivan Cukic",
                 "Name[uk]": "Ivan Cukic",
+                "Name[vi]": "Ivan Cukic",
                 "Name[x-test]": "xxIvan Cukicxx",
                 "Name[zh_CN]": "Ivan Cukic",
                 "Name[zh_TW]": "Ivan Cukic"
@@ -87,6 +88,7 @@
         "Description[sv]": "När aktiviteter byts, eller när de stoppas och startas, kör angivna program",
         "Description[tr]": "Etkinlikleri değiştirirken veya başlatırken ve durdururken, belirtilen uygulamaları çalıştır",
         "Description[uk]": "Запускати вказані програми під час перемикання просторів дій або їхнього запуску чи завершення роботи",
+        "Description[vi]": "Khi chuyển hoặc khi khởi động và dừng Hoạt động, thực thi các ứng dụng được chỉ định",
         "Description[x-test]": "xxWhen switching activities, or when starting and stopping them, execute specified applicationsxx",
         "Description[zh_CN]": "切换/启动/停止活动时，执行指定程序",
         "Description[zh_TW]": "切換活動時，或是啟動、停止活動時，執行特定應用程式",
@@ -133,6 +135,7 @@
         "Name[sv]": "Kör program vid ändring av aktivitetstillstånd",
         "Name[tr]": "Etkinlik durum değişiminde uygulamaları çalıştır",
         "Name[uk]": "Запуск програм під час зміни стану простору дій",
+        "Name[vi]": "Chạy ứng dụng khi có thay đổi trạng thái Hoạt động",
         "Name[x-test]": "xxRun applications on activity state changexx",
         "Name[zh_CN]": "活动状态变化时执行程序",
         "Name[zh_TW]": "在活動狀態變更時執行應用程式",

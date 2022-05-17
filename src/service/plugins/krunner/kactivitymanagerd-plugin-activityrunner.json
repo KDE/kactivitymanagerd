@@ -35,6 +35,7 @@
                 "Name[sv]": "Alexander Lohnau",
                 "Name[tr]": "Alexander Lohnau",
                 "Name[uk]": "Alexander Lohnau",
+                "Name[vi]": "Alexander Lohnau",
                 "Name[x-test]": "xxAlexander Lohnauxx",
                 "Name[zh_CN]": "Alexander Lohnau"
             }
@@ -72,6 +73,7 @@
         "Description[sv]": "Insticksprogram för Kör program för att lista och byta aktiviteter",
         "Description[tr]": "Etkinlikleri listelemek ve aralarında geçiş yapmak için KRunner eklentisi",
         "Description[uk]": "Додаток KRunner для показу списку просторів дій та перемикання між ними",
+        "Description[vi]": "Phần cài cắm KRunner để liệt kê và chuyển Hoạt động",
         "Description[x-test]": "xxKRunner plugin to list and switch activitiesxx",
         "Description[zh_CN]": "用于列出和切换活动的 KRunner 插件",
         "EnabledByDefault": true,
@@ -109,6 +111,7 @@
         "Name[sv]": "Aktivitetskörning",
         "Name[tr]": "Etkinlik Koşucusu",
         "Name[uk]": "Засіб запуску просторів дій",
+        "Name[vi]": "Trình chạy Hoạt động",
         "Name[x-test]": "xxActivity Runnerxx",
         "Name[zh_CN]": "活动 Runner 程序",
         "Version": "1.0",

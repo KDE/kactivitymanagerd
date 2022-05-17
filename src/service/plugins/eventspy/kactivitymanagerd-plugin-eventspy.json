@@ -42,6 +42,7 @@
                 "Name[sv]": "Ivan Čukić",
                 "Name[tr]": "Ivan Čukić",
                 "Name[uk]": "Ivan Čukić",
+                "Name[vi]": "Ivan Čukić",
                 "Name[x-test]": "xxIvan Čukićxx",
                 "Name[zh_CN]": "Ivan Čukić",
                 "Name[zh_TW]": "Ivan Čukić"
@@ -87,6 +88,7 @@
         "Description[sv]": "Samlar in händelser från program som stöder senare dokumentspecifikationer",
         "Description[tr]": "Son belgelerin özelliklerini destekleyen uygulamalardan etkinlikler toplar",
         "Description[uk]": "Збирає записи подій від програм, у яких реалізовано специфікацію нещодавніх документів",
+        "Description[vi]": "Thu thập sự kiện từ các ứng dụng hỗ trợ đặc tả \"tài liệu gần đây\"",
         "Description[x-test]": "xxCollects events from applications that support recent documents specificationxx",
         "Description[zh_CN]": "从支持最近文档标准的应用程序收集事件",
         "Description[zh_TW]": "從支援最新的文件規格的應用程式中收集事件",
@@ -133,6 +135,7 @@
         "Name[sv]": "Händelseövervakare",
         "Name[tr]": "Etkinlik Casusu",
         "Name[uk]": "Журнал подій",
+        "Name[vi]": "Theo dõi sự kiện",
         "Name[x-test]": "xxEvent Spyxx",
         "Name[zh_CN]": "事件间谍",
         "Name[zh_TW]": "事件探測",
