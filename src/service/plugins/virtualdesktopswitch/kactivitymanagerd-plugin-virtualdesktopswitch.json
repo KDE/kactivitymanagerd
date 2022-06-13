@@ -53,7 +53,7 @@
         "Description": "When switching to an activity, opens the virtual desktop last used with that activity",
         "Description[ar]": "عند التبديل إلى نشاط ما، يفتح سطح المكتب الافتراضي المستخدم آخر مرة مع هذا النشاط",
         "Description[az]": "Bu fəaliyyətə keçid zamanı onda ən son aktiv olan iş masasını açır",
-        "Description[ca@valencia]": "En canviar a una activitat, obri l'últim escriptori virtual utilisat amb esta activitat",
+        "Description[ca@valencia]": "En canviar a una activitat, obri l'últim escriptori virtual utilitzat amb esta activitat",
         "Description[ca]": "En canviar a una activitat, obre el darrer escriptori virtual utilitzat amb aquesta activitat",
         "Description[cs]": "Při přepínání na aktivitu otevře virtuální pracovní plochu naposledy s touto aktivitou použitou",
         "Description[da]": "Åbner det senest brugte virtuelle skrivebord for aktiviteten ved skift til en aktivitet",
