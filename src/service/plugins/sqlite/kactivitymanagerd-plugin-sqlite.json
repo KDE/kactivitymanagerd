@@ -52,7 +52,7 @@
         "Description": "Plugin to store and score events in SQLite",
         "Description[ar]": "ملحقة لتخزين وتسجيل الأحداث في SQLite",
         "Description[az]": "SQLite-da hadisələri qiymətləndirmək və saxlamaq üçün modul",
-        "Description[ca@valencia]": "Conector per a almagasenar i classificar successos en el SQLite",
+        "Description[ca@valencia]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",
         "Description[ca]": "Connector per a emmagatzemar i classificar esdeveniments en el SQLite",
         "Description[cs]": "Modul pro ukládání událostí v SQLite",
         "Description[da]": "Plugin til at gemme og score hændelser i SQLite",
