@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16)
 project (KActivityManagerd)
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.90")
+set (KF5_MIN_VERSION "5.94")
 set (KDE_COMPILERSETTINGS_LEVEL "5.82")
 set (Boost_MINIMUM_VERSION "1.58")
 
