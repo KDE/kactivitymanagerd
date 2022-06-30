@@ -30,7 +30,7 @@
 #include "common/specialvalues.h"
 #include "resourcescoringadaptor.h"
 
-KAMD_EXPORT_PLUGIN(sqliteplugin, StatsPlugin, "kactivitymanagerd-plugin-sqlite.json")
+K_PLUGIN_CLASS_WITH_JSON(StatsPlugin, "kactivitymanagerd-plugin-sqlite.json")
 
 StatsPlugin *StatsPlugin::s_instance = nullptr;
 

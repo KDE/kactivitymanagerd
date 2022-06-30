@@ -39,7 +39,6 @@ include (ECMConfiguredInstall)
 include (ECMGenerateDBusServiceFile)
 include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
-include (ECMSetupQtPluginMacroNames)
 include (KDEClangFormat)
 include (KDEGitCommitHooks)
 

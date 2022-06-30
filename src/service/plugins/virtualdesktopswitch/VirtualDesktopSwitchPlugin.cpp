@@ -15,7 +15,7 @@
 
 #include <kwindowsystem.h>
 
-KAMD_EXPORT_PLUGIN(virtualdesktopswitchplugin, VirtualDesktopSwitchPlugin, "kactivitymanagerd-plugin-virtualdesktopswitch.json")
+K_PLUGIN_CLASS_WITH_JSON(VirtualDesktopSwitchPlugin, "kactivitymanagerd-plugin-virtualdesktopswitch.json")
 
 const auto configPattern = QStringLiteral("desktop-for-%1");
 const auto kwinName = QStringLiteral("org.kde.KWin");

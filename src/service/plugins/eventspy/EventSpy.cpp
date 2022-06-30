@@ -14,7 +14,7 @@
 #include <KDirWatch>
 #include <KRecentDocument>
 
-KAMD_EXPORT_PLUGIN(eventspyplugin, EventSpyPlugin, "kactivitymanagerd-plugin-eventspy.json")
+K_PLUGIN_CLASS_WITH_JSON(EventSpyPlugin, "kactivitymanagerd-plugin-eventspy.json")
 
 EventSpyPlugin::EventSpyPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)

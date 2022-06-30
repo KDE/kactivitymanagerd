@@ -24,8 +24,6 @@
 #include "Event.h"
 #include "Module.h"
 
-#define KAMD_EXPORT_PLUGIN(libname, classname, jsonFile) K_PLUGIN_FACTORY_WITH_JSON(factory, jsonFile, registerPlugin<classname>();)
-
 /**
  *
  */

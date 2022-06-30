@@ -18,7 +18,7 @@
 
 #include "DebugPluginGtkEventSpy.h"
 
-KAMD_EXPORT_PLUGIN(GtkEventSpyPlugin, GtkEventSpyPlugin, "kactivitymanagerd-plugin-gtk-eventspy.json")
+K_PLUGIN_CLASS_WITH_JSON(GtkEventSpyPlugin, "kactivitymanagerd-plugin-gtk-eventspy.json")
 
 GtkEventSpyPlugin::GtkEventSpyPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)

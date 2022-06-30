@@ -55,6 +55,4 @@ ecm_qt_declare_logging_category(debug_SRCS
    DEFAULT_SEVERITY Warning
    DESCRIPTION "KActivities Application" EXPORT KACTIVITYMANAGERD)
 
-ecm_setup_qtplugin_macro_names(JSON_ARG3 "KAMD_EXPORT_PLUGIN")
-
 add_subdirectory (service)

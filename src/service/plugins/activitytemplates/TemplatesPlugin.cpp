@@ -18,7 +18,7 @@
 // Local
 #include "templatesadaptor.h"
 
-KAMD_EXPORT_PLUGIN(templatesplugin, TemplatesPlugin, "kactivitymanagerd-plugin-activitytemplates.json")
+K_PLUGIN_CLASS_WITH_JSON(TemplatesPlugin, "kactivitymanagerd-plugin-activitytemplates.json")
 
 TemplatesPlugin::TemplatesPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)

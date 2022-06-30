@@ -15,7 +15,7 @@
 #include <KGlobalAccel>
 #include <KLocalizedString>
 
-KAMD_EXPORT_PLUGIN(globalshortcutsplugin, GlobalShortcutsPlugin, "kactivitymanagerd-plugin-globalshortcuts.json")
+K_PLUGIN_CLASS_WITH_JSON(GlobalShortcutsPlugin, "kactivitymanagerd-plugin-globalshortcuts.json")
 
 const auto objectNamePattern = QStringLiteral("switch-to-activity-%1");
 const auto objectNamePatternLength = objectNamePattern.length() - 2;

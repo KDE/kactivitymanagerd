@@ -25,7 +25,7 @@ enum ActivityState {
 };
 }
 
-KAMD_EXPORT_PLUGIN(runapplicationplugin, RunApplicationPlugin, "kactivitymanagerd-plugin-runapplication.json")
+K_PLUGIN_CLASS_WITH_JSON(RunApplicationPlugin, "kactivitymanagerd-plugin-runapplication.json")
 
 RunApplicationPlugin::RunApplicationPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
