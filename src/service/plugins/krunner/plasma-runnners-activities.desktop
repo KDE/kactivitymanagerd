@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Activities
 Name[ar]=الأنشطة
-Name[az]=İş Otaqları
+Name[az]=İş otaqları
 Name[bg]=Дейности
 Name[bs]=Aktivnosti
 Name[ca]=Activitats
@@ -50,7 +50,7 @@ Name[x-test]=xxActivitiesxx
 Name[zh_CN]=活动
 Comment=List and switch between desktop activities
 Comment[ar]=يسرد و يبدل بين أنشطة سطح المكتب
-Comment[az]=İş Masasına aid İş Otaqlarının siyahısı və onlar arasında keçid
+Comment[az]=İş masasına aid İş otaqlarının siyahısı və onlar arasında keçid
 Comment[bg]=Показване и превключване между дейностите на работните плотове
 Comment[ca]=Llista i commuta entre les activitats d'escriptori
 Comment[ca@valencia]=Llista i canvia entre les activitats d'escriptori
