@@ -54,7 +54,7 @@ void VirtualDesktopSwitchPlugin::currentActivityChanged(const QString &activity)
         return;
     }
 
-    const auto desktopId = config().readEntry(configPattern.arg(activity), -1);
+    const int desktopId = config().readEntry(configPattern.arg(activity), -1);
 
     if (KWindowSystem::isPlatformX11()) {
         config().writeEntry(configPattern.arg(m_currentActivity), QString::number(KWindowSystem::currentDesktop()));
