@@ -88,9 +88,3 @@ install (TARGETS
 install (TARGETS
    kactivitymanagerd_plugin ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
    )
-
-install (FILES
-   files/kactivitymanagerd-plugin.desktop
-   DESTINATION ${KDE_INSTALL_KSERVICETYPESDIR}
-   )
-
