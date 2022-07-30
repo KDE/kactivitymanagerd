@@ -75,11 +75,6 @@ target_link_libraries (kactivitymanagerd
 
 ########### install application ###############
 
-install (FILES
-   files/kactivitymanagerd.desktop
-   DESTINATION ${KDE_INSTALL_KSERVICESDIR}
-   )
-
 install (TARGETS
     kactivitymanagerd
     DESTINATION ${KDE_INSTALL_LIBEXECDIR}
