@@ -94,7 +94,7 @@
         "Description[uk]": "Надає дані аплетові Оприлюднити-Уподобати-З’єднати",
         "Description[vi]": "Cung cấp dữ liệu cho tiểu ứng dụng Chia sẻ-Thích-Kết nối",
         "Description[x-test]": "xxProvides data to Share-Like-Connect appletxx",
-        "Description[zh_CN]": "提供数据给分享-喜爱-连接小部件",
+        "Description[zh_CN]": "提供数据给分享-喜爱-连接小程序",
         "Description[zh_TW]": "將資料提供給 Share-Like-Connect 小程式",
         "EnabledByDefault": true,
         "Icon": "mail-forward",
