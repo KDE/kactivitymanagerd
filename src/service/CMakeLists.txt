@@ -57,9 +57,13 @@ qt_add_dbus_adaptor (
    Features.h Features
    )
 
-add_executable (kactivitymanagerd ${kactivitymanager_SRCS})
+add_library (kactivitymanagerdlib SHARED)
 
-target_link_libraries (kactivitymanagerd
+target_sources (kactivitymanagerdlib INTERFACE
+   ${kactivitymanager_SRCS}
+   )
+
+target_link_libraries (kactivitymanagerdlib PUBLIC
    Qt::Core
    Qt::DBus
    Qt::Gui
@@ -72,6 +76,10 @@ target_link_libraries (kactivitymanagerd
    KF5::Crash
    kactivitymanagerd_plugin
    )
+
+add_executable (kactivitymanagerd main.cpp)
+
+target_link_libraries (kactivitymanagerd kactivitymanagerdlib)
 
 ########### install application ###############
 

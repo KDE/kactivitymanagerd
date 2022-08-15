@@ -21,7 +21,7 @@ set (KACTIVITIES_CURRENT_ROOT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Extra CMake stuff
 include (FeatureSummary)
-find_package(ECM ${KF5_MIN_VERSION} NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set_package_properties(ECM PROPERTIES
     DESCRIPTION "Extra CMake Modules."
     URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
@@ -98,3 +98,9 @@ ecm_qt_install_logging_categories(
 
 # Write out the features
 feature_summary (WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+# Auto testing
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
+endif()
+

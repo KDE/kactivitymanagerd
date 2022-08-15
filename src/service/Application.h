@@ -46,7 +46,7 @@ public Q_SLOTS:
     bool loadPlugin(const QString &plugin);
     QStringList loadedPlugins() const;
 
-private Q_SLOTS:
+protected Q_SLOTS:
     void init();
     void loadPlugins();
 
