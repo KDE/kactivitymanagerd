@@ -10,9 +10,7 @@
 
 // Qt
 #include <QDir>
-#include <QSqlDatabase>
 #include <QStandardPaths>
-#include <QVariant>
 
 // Utils
 #include <utils/d_ptr_implementation.h>

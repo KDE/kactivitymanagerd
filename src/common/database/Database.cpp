@@ -9,11 +9,8 @@
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 #include <utils/d_ptr_implementation.h>
 
-#include <QDebug>
 #include <QSqlDatabase>
-#include <QSqlDriver>
 #include <QSqlError>
-#include <QSqlField>
 #include <QThread>
 
 #include <map>

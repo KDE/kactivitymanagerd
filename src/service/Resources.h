@@ -9,7 +9,6 @@
 
 // Qt
 #include <QString>
-#include <QStringList>
 
 // Utils
 #include <utils/d_ptr.h>

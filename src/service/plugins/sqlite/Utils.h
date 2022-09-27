@@ -8,7 +8,6 @@
 #define PLUGINS_SQLITE_DATABASE_UTILS_H
 
 #include <KCrash>
-#include <QSqlError>
 #include <QSqlQuery>
 #include <common/database/schema/ResourcesDatabaseSchema.h>
 #include <memory>

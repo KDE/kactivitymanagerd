@@ -7,7 +7,6 @@
 #include "org.kde.ActivityManager.Activities.h"
 
 #include <QDBusMetaType>
-#include <QMetaType>
 
 namespace details
 {

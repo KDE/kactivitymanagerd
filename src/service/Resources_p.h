@@ -11,7 +11,6 @@
 #include "Resources.h"
 
 // Qt
-#include <QList>
 #include <QString>
 #include <QWindow> // for WId
 

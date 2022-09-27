@@ -9,7 +9,6 @@
 
 // Qt
 #include <QList>
-#include <QMutex>
 
 // System
 #include <unistd.h>

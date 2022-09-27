@@ -11,10 +11,7 @@
 // Qt
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
-#include <QDBusReply>
 #include <QDBusServiceWatcher>
-#include <QDir>
-#include <QProcess>
 #include <QThread>
 
 // KDE

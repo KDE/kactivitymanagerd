@@ -7,7 +7,6 @@
 #ifndef UTILS_CONTINUE_WITH_H
 #define UTILS_CONTINUE_WITH_H
 
-#include <QDebug>
 #include <QFuture>
 #include <QFutureWatcher>
 

@@ -10,8 +10,6 @@
 #include <Plugin.h>
 #include <memory>
 
-#include <QStringList>
-
 class KDirWatch;
 
 class GtkEventSpyPlugin : public Plugin

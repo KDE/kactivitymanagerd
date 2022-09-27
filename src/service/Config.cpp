@@ -8,7 +8,6 @@
 
 #include <functional>
 
-#include <QDebug>
 #include <QStandardPaths>
 
 #include <KDirWatch>

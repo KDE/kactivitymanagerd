@@ -15,7 +15,6 @@
 #include <QMetaObject>
 #include <QStandardPaths>
 #include <QUuid>
-#include <QtGlobal>
 
 // KDE
 #include <kauthorized.h>
