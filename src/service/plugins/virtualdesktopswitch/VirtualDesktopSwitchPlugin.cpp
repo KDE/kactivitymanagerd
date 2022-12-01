@@ -13,7 +13,8 @@
 #include <QDBusReply>
 #include <QString>
 
-#include <kwindowsystem.h>
+#include <KWindowSystem>
+#include <KX11Extras>
 
 K_PLUGIN_CLASS_WITH_JSON(VirtualDesktopSwitchPlugin, "kactivitymanagerd-plugin-virtualdesktopswitch.json")
 
@@ -57,9 +58,9 @@ void VirtualDesktopSwitchPlugin::currentActivityChanged(const QString &activity)
     const int desktopId = config().readEntry(configPattern.arg(activity), -1);
 
     if (KWindowSystem::isPlatformX11()) {
-        config().writeEntry(configPattern.arg(m_currentActivity), QString::number(KWindowSystem::currentDesktop()));
-        if (desktopId <= KWindowSystem::numberOfDesktops() && desktopId >= 0) {
-            KWindowSystem::setCurrentDesktop(desktopId);
+        config().writeEntry(configPattern.arg(m_currentActivity), QString::number(KX11Extras::currentDesktop()));
+        if (desktopId <= KX11Extras::numberOfDesktops() && desktopId >= 0) {
+            KX11Extras::setCurrentDesktop(desktopId);
         }
     } else {
         auto currentMessage = QDBusMessage::createMethodCall(kwinName, kwinPath, kwinName, QStringLiteral("currentDesktop"));

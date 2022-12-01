@@ -15,7 +15,7 @@
 #include <QThread>
 
 // KDE
-#include <kwindowsystem.h>
+#include <KX11Extras>
 
 // Utils
 #include <utils/d_ptr_implementation.h>
@@ -252,8 +252,8 @@ Resources::Resources(QObject *parent)
     new ResourcesAdaptor(this);
     QDBusConnection::sessionBus().registerObject(KAMD_DBUS_OBJECT_PATH("Resources"), this);
 
-    connect(KWindowSystem::self(), &KWindowSystem::windowRemoved, d.operator->(), &Resources::Private::windowClosed);
-    connect(KWindowSystem::self(), &KWindowSystem::activeWindowChanged, d.operator->(), &Resources::Private::activeWindowChanged);
+    connect(KX11Extras::self(), &KX11Extras::windowRemoved, d.operator->(), &Resources::Private::windowClosed);
+    connect(KX11Extras::self(), &KX11Extras::activeWindowChanged, d.operator->(), &Resources::Private::activeWindowChanged);
 }
 
 Resources::~Resources()
