@@ -41,6 +41,7 @@ include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
 include (KDEClangFormat)
 include (KDEGitCommitHooks)
+include(ECMDeprecationSettings)
 
 # C++17
 set (CMAKE_CXX_STANDARD 17)
@@ -82,6 +83,10 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
    set (CMAKE_CXX_VISIBILITY_PRESET default)
    set (CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 endif ()
+
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.101
+)
 
 add_subdirectory (src)
 
