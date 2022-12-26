@@ -18,9 +18,6 @@
 // Local
 #include <common/database/Database.h>
 
-class QDateTime;
-class QSqlError;
-
 namespace Common
 {
 class Database;
