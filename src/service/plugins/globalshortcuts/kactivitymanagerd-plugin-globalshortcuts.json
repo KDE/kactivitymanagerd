@@ -95,7 +95,7 @@
         "Description[vi]": "Thêm các phím tắt toàn cục cho việc chuyển Hoạt động",
         "Description[x-test]": "xxAdds global keyboard shortcuts for activity switchingxx",
         "Description[zh_CN]": "添加活动切换的全局键盘快捷方式",
-        "Description[zh_TW]": "新增活動切換的全域快速鍵",
+        "Description[zh_TW]": "新增活動切換用的全域快捷鍵",
         "EnabledByDefault": true,
         "Icon": "configure-shortcuts",
         "Id": "org.kde.ActivityManager.GlobalShortcuts",
