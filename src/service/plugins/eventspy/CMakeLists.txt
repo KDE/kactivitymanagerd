@@ -2,7 +2,7 @@
 
 project (activitymanager-eventspy)
 
-find_package (KF5KIO ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 set (
    evenyspy_SRCS
@@ -19,9 +19,9 @@ target_link_libraries (
    kactivitymanagerd_plugin_eventspy
    Qt::Core
    Qt::DBus
-   KF5::ConfigCore
-   KF5::CoreAddons
-   KF5::KIOCore
+   KF6::ConfigCore
+   KF6::CoreAddons
+   KF6::KIOCore
    kactivitymanagerd_plugin
    )
 

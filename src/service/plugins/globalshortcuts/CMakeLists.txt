@@ -18,11 +18,11 @@ target_link_libraries (
    Qt::Core
    Qt::DBus
    Qt::Widgets
-   KF5::ConfigCore
-   KF5::GlobalAccel
-   KF5::I18n
-   KF5::XmlGui
-   KF5::CoreAddons
+   KF6::ConfigCore
+   KF6::GlobalAccel
+   KF6::I18n
+   KF6::XmlGui
+   KF6::CoreAddons
    kactivitymanagerd_plugin
    )
 

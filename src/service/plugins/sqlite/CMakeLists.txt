@@ -41,11 +41,11 @@ target_link_libraries (
    kactivitymanagerd_plugin_sqlite
    Qt::Core
    Qt::Sql
-   KF5::ConfigCore
-   KF5::KIOCore
-   KF5::DBusAddons
-   KF5::CoreAddons
-   KF5::Crash
+   KF6::ConfigCore
+   KF6::KIOCore
+   KF6::DBusAddons
+   KF6::CoreAddons
+   KF6::Crash
    kactivitymanagerd_plugin
    )
 if(TARGET Qt6::Core5Compat)

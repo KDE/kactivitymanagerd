@@ -20,9 +20,9 @@ target_link_libraries (
    Qt::Core
    Qt::DBus
    Qt::Gui
-   KF5::CoreAddons
-   KF5::ConfigCore
-   KF5::Service
+   KF6::CoreAddons
+   KF6::ConfigCore
+   KF6::Service
    kactivitymanagerd_plugin
    )
 

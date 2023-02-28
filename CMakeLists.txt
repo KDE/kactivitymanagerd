@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16)
 project (KActivityManagerd)
 
 set (QT_MIN_VERSION "6.4.0")
-set (KF5_MIN_VERSION "5.240.0")
+set (KF6_MIN_VERSION "5.240.0")
 set (KDE_COMPILERSETTINGS_LEVEL "5.82")
 set (Boost_MINIMUM_VERSION "1.58")
 
@@ -21,7 +21,7 @@ set (KACTIVITIES_CURRENT_ROOT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Extra CMake stuff
 include (FeatureSummary)
-find_package(ECM ${KF5_MIN_VERSION} NO_MODULE)
+find_package(ECM ${KF6_MIN_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     DESCRIPTION "Extra CMake Modules."
     URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
@@ -56,9 +56,9 @@ endif()
 
 
 # KDE Frameworks
-find_package (KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5Crash ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6DBusAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6Crash ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 # Basic includes
 include (CPack)

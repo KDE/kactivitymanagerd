@@ -2,7 +2,7 @@
 
 project (activitymanager-gtk-eventspy)
 
-find_package (KF5KIO ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 set (
    gtkevenyspy_SRCS
@@ -26,8 +26,8 @@ target_link_libraries (
    kactivitymanagerd_plugin_gtk_eventspy
    Qt::Core
    Qt::Xml
-   KF5::CoreAddons
-   KF5::Service
+   KF6::CoreAddons
+   KF6::Service
    kactivitymanagerd_plugin
    )
 

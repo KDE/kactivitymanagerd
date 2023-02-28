@@ -8,21 +8,21 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
 find_package (Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
 
-find_package (KF5Config ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5CoreAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5WindowSystem ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5GlobalAccel ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5XmlGui ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5KIO ${KF5_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF5Crash ${KF5_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6Config ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6CoreAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6WindowSystem ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6GlobalAccel ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6XmlGui ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6Crash ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 
 # Standard stuff
 
 add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp ${debug_SRCS})
 generate_export_header(kactivitymanagerd_plugin)
-target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt::Core Qt::DBus KF5::CoreAddons KF5::ConfigCore)
+target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt::Core Qt::DBus KF6::CoreAddons KF6::ConfigCore)
 
 add_subdirectory (plugins)
 
@@ -64,12 +64,12 @@ target_link_libraries (kactivitymanagerd
    Qt::DBus
    Qt::Gui
    Qt::Widgets
-   KF5::DBusAddons
-   KF5::CoreAddons
-   KF5::ConfigCore
-   KF5::I18n
-   KF5::WindowSystem
-   KF5::Crash
+   KF6::DBusAddons
+   KF6::CoreAddons
+   KF6::ConfigCore
+   KF6::I18n
+   KF6::WindowSystem
+   KF6::Crash
    kactivitymanagerd_plugin
    )
 

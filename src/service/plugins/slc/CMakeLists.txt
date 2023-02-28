@@ -24,9 +24,9 @@ target_link_libraries (
    kactivitymanagerd_plugin_slc
    Qt::Core
    Qt::DBus
-   KF5::ConfigCore
-   KF5::DBusAddons
-   KF5::CoreAddons
+   KF6::ConfigCore
+   KF6::DBusAddons
+   KF6::CoreAddons
    kactivitymanagerd_plugin
    )
 

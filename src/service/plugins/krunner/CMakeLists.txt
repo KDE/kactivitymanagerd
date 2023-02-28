@@ -20,8 +20,8 @@ target_link_libraries (
    kactivitymanagerd_plugin_activityrunner
    Qt::Core
    Qt::DBus
-   KF5::CoreAddons
-   KF5::I18n
+   KF6::CoreAddons
+   KF6::I18n
    kactivitymanagerd_plugin
    )
 

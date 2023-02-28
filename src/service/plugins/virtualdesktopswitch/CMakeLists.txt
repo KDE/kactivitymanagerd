@@ -18,9 +18,9 @@ target_link_libraries (
    kactivitymanagerd_plugin_virtualdesktopswitch
    Qt::Core
    Qt::DBus
-   KF5::ConfigCore
-   KF5::WindowSystem
-   KF5::CoreAddons
+   KF6::ConfigCore
+   KF6::WindowSystem
+   KF6::CoreAddons
    kactivitymanagerd_plugin
    )
 
