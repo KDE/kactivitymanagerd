@@ -15,7 +15,7 @@ include_directories (${Boost_INCLUDE_DIRS})
 
 # Config file
 set (KAMD_PLUGIN_VERSION 1)
-set (KAMD_PLUGIN_DIR "kactivitymanagerd/${KAMD_PLUGIN_VERSION}")
+set (KAMD_PLUGIN_DIR "kactivitymanagerd${KAMD_PLUGIN_VERSION}")
 set (KAMD_FULL_PLUGIN_DIR "${KDE_INSTALL_FULL_PLUGINDIR}/${KAMD_PLUGIN_DIR}/")
 configure_file (kactivities-features.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/kactivities-features.h)
 
