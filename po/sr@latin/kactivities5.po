@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivities5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-02-24 03:39+0100\n"
+"POT-Creation-Date: 2022-09-28 00:51+0000\n"
 "PO-Revision-Date: 2016-01-01 15:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -19,19 +19,32 @@ msgstr ""
 "X-Environment: kde\n"
 
 # >> @item activity name
-#: service/Activities.cpp:134
+#: service/Activities.cpp:113
 #, kde-format
 msgid "Default"
 msgstr "Podrazumevana"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:42
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
 #, kde-format
 msgid "Activity Manager"
 msgstr ""
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:89
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:123
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
+msgstr "Prebaci na aktivnost „%1“"
+
+#: service/plugins/krunner/ActivityRunner.cpp:19
+#, kde-format
+msgctxt "KRunner keyword"
+msgid "activity"
+msgstr ""
+
+#: service/plugins/krunner/ActivityRunner.cpp:68
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Switch to activity \"%1\""
+msgid "Switch to \"%1\""
 msgstr "Prebaci na aktivnost „%1“"
