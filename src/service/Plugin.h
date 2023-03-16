@@ -67,11 +67,11 @@ public:
     // }
 
     template<typename ReturnType, typename... Args>
-    inline static ReturnType retrieve(QObject *object, const char *method, const char *returnTypeName, Args... args)
+    inline static ReturnType retrieve(QObject *object, const char *method, Args... args)
     {
         ReturnType result;
 
-        QMetaObject::invokeMethod(object, method, Qt::DirectConnection, QReturnArgument<ReturnType>(returnTypeName, result), args...);
+        QMetaObject::invokeMethod(object, method, Qt::DirectConnection, Q_RETURN_ARG(ReturnType, result), args...);
 
         return result;
     }

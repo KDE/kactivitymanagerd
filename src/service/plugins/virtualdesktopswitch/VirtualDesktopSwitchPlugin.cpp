@@ -41,7 +41,7 @@ bool VirtualDesktopSwitchPlugin::init(QHash<QString, QObject *> &modules)
 
     m_activitiesService = modules["activities"];
 
-    m_currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity", "QString");
+    m_currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity");
 
     connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)), this, SLOT(currentActivityChanged(QString)));
     connect(m_activitiesService, SIGNAL(ActivityRemoved(QString)), this, SLOT(activityRemoved(QString)));

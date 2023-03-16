@@ -336,12 +336,12 @@ Event StatsPlugin::validateEvent(Event event)
 
 QStringList StatsPlugin::listActivities() const
 {
-    return Plugin::retrieve<QStringList>(m_activities, "ListActivities", "QStringList");
+    return Plugin::retrieve<QStringList>(m_activities, "ListActivities");
 }
 
 QString StatsPlugin::currentActivity() const
 {
-    return Plugin::retrieve<QString>(m_activities, "CurrentActivity", "QString");
+    return Plugin::retrieve<QString>(m_activities, "CurrentActivity");
 }
 
 void StatsPlugin::addEvents(const EventList &events)

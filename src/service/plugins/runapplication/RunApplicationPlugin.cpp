@@ -49,7 +49,7 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
     connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)), this, SLOT(currentActivityChanged(QString)));
     connect(m_activitiesService, SIGNAL(ActivityStateChanged(QString, int)), this, SLOT(activityStateChanged(QString, int)));
 
-    const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity", "QString");
+    const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity");
 
     currentActivityChanged(currentActivity);
 

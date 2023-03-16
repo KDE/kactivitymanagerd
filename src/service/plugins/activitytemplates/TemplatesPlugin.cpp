@@ -100,7 +100,7 @@ void TemplatesPlugin::createActivity(const QDBusVariant &_values)
     const QString icon = takeStringValue("activity.icon");
 
     // Creating the activity, and getting the id
-    const QString id = Plugin::retrieve<QString>(m_activities, "AddActivity", "QString", Q_ARG(QString, name));
+    const QString id = Plugin::retrieve<QString>(m_activities, "AddActivity", Q_ARG(QString, name));
 
     // Saving the provided data to the configuration file
     KConfigGroup pluginConfig(config());

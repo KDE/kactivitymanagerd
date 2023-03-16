@@ -43,8 +43,8 @@ bool ActivityRunner::init(QHash<QString, QObject *> &modules)
 RemoteMatches ActivityRunner::Match(const QString &query)
 {
     Q_ASSERT(m_activitiesService);
-    const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity", "QString");
-    auto activities = Plugin::retrieve<ActivityInfoList>(m_activitiesService, "ListActivitiesWithInformation", "ActivityInfoList");
+    const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity");
+    auto activities = Plugin::retrieve<ActivityInfoList>(m_activitiesService, "ListActivitiesWithInformation");
 
     const QString term = query.trimmed();
     bool list = false;
@@ -61,7 +61,7 @@ RemoteMatches ActivityRunner::Match(const QString &query)
     QList<RemoteMatch> matches;
     for (const ActivityInfo &activityInfo : qAsConst(activities)) {
         if (currentActivity != activityInfo.id) {
-            auto info = Plugin::retrieve<ActivityInfo>(m_activitiesService, "ActivityInformation", "ActivityInfo", Q_ARG(QString, activityInfo.id));
+            auto info = Plugin::retrieve<ActivityInfo>(m_activitiesService, "ActivityInformation", Q_ARG(QString, activityInfo.id));
             if (list || info.name.startsWith(name, Qt::CaseInsensitive)) {
                 RemoteMatch m;
                 m.id = activityInfo.id;
