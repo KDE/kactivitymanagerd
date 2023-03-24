@@ -71,7 +71,7 @@ public:
     {
         ReturnType result;
 
-        QMetaObject::invokeMethod(object, method, Qt::DirectConnection, Q_RETURN_ARG(ReturnType, result), args...);
+        QMetaObject::invokeMethod(object, method, Qt::DirectConnection, qReturnArg(result), args...);
 
         return result;
     }
