@@ -90,7 +90,7 @@
         "Description[sr@latin]": "Priključak za skladištenje i ocenjivanje događaja u SQLiteu",
         "Description[sr]": "Прикључак за складиштење и оцењивање догађаја у СКуЛајту",
         "Description[sv]": "Insticksprogram för att lagra och betygsätta händelser i SQLite",
-        "Description[tr]": "SQLite'da olayları saklamak ve puanlamak için eklenti",
+        "Description[tr]": "SQLite'da olayları depolamak ve puanlamak için eklenti",
         "Description[uk]": "Додаток для зберігання і оцінки подій у SQLite",
         "Description[vi]": "Phần cài cắm để lưu trữ và ghi lại các sự kiện vào SQLite",
         "Description[x-test]": "xxPlugin to store and score events in SQLitexx",
