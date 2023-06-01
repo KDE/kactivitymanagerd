@@ -6,7 +6,7 @@ project (ActivityManager)
 find_package (ECM 0.0.8 REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
-find_package (Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
+find_package (Qt6 REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
 
 find_package (KF6Config ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6CoreAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
