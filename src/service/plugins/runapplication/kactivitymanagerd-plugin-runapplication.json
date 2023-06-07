@@ -95,7 +95,7 @@
         "Description[sr]": "При пребацивању активности, или њиховом покретању и заустављању, извршавају се задати програми",
         "Description[sv]": "När aktiviteter byts, eller när de stoppas och startas, kör angivna program",
         "Description[ta]": "செயல்பாடுகளுக்கிடையே தாவும்போதும் அவற்றை துவக்கும்போதும் நிறுத்தும்போதும் குறிப்பிட்ட செயலிகளை துவக்கும்",
-        "Description[tr]": "Etkinlikleri değiştirirken veya başlatırken ve durdururken, belirtilen uygulamaları çalıştır",
+        "Description[tr]": "Etkinlikleri değiştirirken veya başlatırken ve durdururken, belirtilen uygulamaları yürüt",
         "Description[uk]": "Запускати вказані програми під час перемикання просторів дій або їхнього запуску чи завершення роботи",
         "Description[vi]": "Khi chuyển hoặc khi khởi động và dừng Hoạt động, thực thi các ứng dụng được chỉ định",
         "Description[x-test]": "xxWhen switching activities, or when starting and stopping them, execute specified applicationsxx",
