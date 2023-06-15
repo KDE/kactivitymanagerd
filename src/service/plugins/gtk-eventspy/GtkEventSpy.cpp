@@ -151,8 +151,6 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
 
 void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application, const QString &mimetype)
 {
-    const QString name = url.fileName();
-
     Plugin::invoke<Qt::QueuedConnection>(m_resources,
                                          "RegisterResourceEvent",
                                          Q_ARG(QString, application), // Application
