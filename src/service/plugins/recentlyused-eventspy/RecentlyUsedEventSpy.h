@@ -4,21 +4,21 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_GTK_EVENT_SPY_PLUGIN_H
-#define PLUGINS_GTK_EVENT_SPY_PLUGIN_H
+#ifndef PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H
+#define PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H
 
 #include <Plugin.h>
 #include <memory>
 
 class KDirWatch;
 
-class GtkEventSpyPlugin : public Plugin
+class RecentlyUsedEventSpyPlugin : public Plugin
 {
     Q_OBJECT
 
 public:
-    explicit GtkEventSpyPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
-    ~GtkEventSpyPlugin() override;
+    explicit RecentlyUsedEventSpyPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    ~RecentlyUsedEventSpyPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;
 
@@ -32,4 +32,4 @@ private:
     QDateTime m_lastUpdate;
 };
 
-#endif // PLUGINS_GTK_EVENT_SPY_PLUGIN_H
+#endif // PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H

@@ -2,7 +2,7 @@
     "KPlugin": {
         "Authors": [
             {
-                "Email": "meven.car(at)kdemail.net",
+                "Email": "meven(at)kde.org",
                 "Name": "Méven Car",
                 "Name[ar]": "Méven Car",
                 "Name[az]": "Méven Car",
@@ -49,7 +49,7 @@
             }
         ],
         "Category": "",
-        "Description": "Collects events from applications that use GtkFileChooser and GtkRecentManager as specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description": "Collects events from applications that use KRecentDocument, GtkFileChooser GtkRecentManager or directly file recently-used.xbel specified by https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[ar]": "يجمع الأحداث من التطبيقات التي تستخدم GtkFileChooser و GtkRecentManager كما هو محدد بواسطة https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ ",
         "Description[az]": "GtkFileChooser və GtkRecentManager istifadə edən tətbiqlərdən hadisələri https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ tərəfindən xüsusiyyətlərinə görə toplayır",
         "Description[bg]": "Събира събития от приложения, които използват GtkFileChooser и GtkRecentManager както е посочено в https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",

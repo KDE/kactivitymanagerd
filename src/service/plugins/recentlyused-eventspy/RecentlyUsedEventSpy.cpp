@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include "GtkEventSpy.h"
+#include "RecentlyUsedEventSpy.h"
 
 #include <QFile>
 #include <QStandardPaths>
@@ -15,11 +15,11 @@
 #include <KApplicationTrader>
 #include <KDirWatch>
 
-#include "DebugPluginGtkEventSpy.h"
+#include "DebugPluginRecentlyUsedEventSpy.h"
 
-K_PLUGIN_CLASS_WITH_JSON(GtkEventSpyPlugin, "kactivitymanagerd-plugin-gtk-eventspy.json")
+K_PLUGIN_CLASS_WITH_JSON(RecentlyUsedEventSpyPlugin, "kactivitymanagerd-plugin-recentlyused-eventspy.json")
 
-GtkEventSpyPlugin::GtkEventSpyPlugin(QObject *parent, const QVariantList &args)
+RecentlyUsedEventSpyPlugin::RecentlyUsedEventSpyPlugin(QObject *parent, const QVariantList &args)
     : Plugin(parent)
     , m_resources(nullptr)
     , m_dirWatcher(new KDirWatch(this))
@@ -27,13 +27,13 @@ GtkEventSpyPlugin::GtkEventSpyPlugin(QObject *parent, const QVariantList &args)
 {
     Q_UNUSED(args);
 
-    // gtk xml history file
+    // recently-used xml history file
     // usually $HOME/.local/share/recently-used.xbel
     QString filename = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/recently-used.xbel");
 
     m_dirWatcher->addFile(filename);
-    connect(m_dirWatcher.get(), &KDirWatch::dirty, this, &GtkEventSpyPlugin::fileUpdated);
-    connect(m_dirWatcher.get(), &KDirWatch::created, this, &GtkEventSpyPlugin::fileUpdated);
+    connect(m_dirWatcher.get(), &KDirWatch::dirty, this, &RecentlyUsedEventSpyPlugin::fileUpdated);
+    connect(m_dirWatcher.get(), &KDirWatch::created, this, &RecentlyUsedEventSpyPlugin::fileUpdated);
 }
 
 struct Application {
@@ -65,11 +65,11 @@ QString Bookmark::latestApplication() const
     return current.name;
 }
 
-void GtkEventSpyPlugin::fileUpdated(const QString &filename)
+void RecentlyUsedEventSpyPlugin::fileUpdated(const QString &filename)
 {
     QFile file(filename);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "Could not read" << filename;
+        qCWarning(KAMD_LOG_PLUGIN_RECENTLYUSED_EVENTSPY) << "Could not read" << filename;
         return;
     }
 
@@ -135,7 +135,7 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     }
 
     if (reader.hasError()) {
-        qCWarning(KAMD_LOG_PLUGIN_GTK_EVENTSPY) << "could not parse" << file.fileName() << "error was " << reader.errorString();
+        qCWarning(KAMD_LOG_PLUGIN_RECENTLYUSED_EVENTSPY) << "could not parse" << file.fileName() << "error was " << reader.errorString();
         return;
     }
 
@@ -149,7 +149,7 @@ void GtkEventSpyPlugin::fileUpdated(const QString &filename)
     m_lastUpdate = QDateTime::currentDateTime();
 }
 
-void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application, const QString &mimetype)
+void RecentlyUsedEventSpyPlugin::addDocument(const QUrl &url, const QString &application, const QString &mimetype)
 {
     Plugin::invoke<Qt::QueuedConnection>(m_resources,
                                          "RegisterResourceEvent",
@@ -166,11 +166,11 @@ void GtkEventSpyPlugin::addDocument(const QUrl &url, const QString &application,
     );
 }
 
-GtkEventSpyPlugin::~GtkEventSpyPlugin()
+RecentlyUsedEventSpyPlugin::~RecentlyUsedEventSpyPlugin()
 {
 }
 
-bool GtkEventSpyPlugin::init(QHash<QString, QObject *> &modules)
+bool RecentlyUsedEventSpyPlugin::init(QHash<QString, QObject *> &modules)
 {
     Plugin::init(modules);
 
@@ -179,4 +179,4 @@ bool GtkEventSpyPlugin::init(QHash<QString, QObject *> &modules)
     return true;
 }
 
-#include "GtkEventSpy.moc"
+#include "RecentlyUsedEventSpy.moc"
