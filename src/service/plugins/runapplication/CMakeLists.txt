@@ -1,7 +1,4 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
-
-project (kactivitymanagerd-runapplication)
-
 set (
    runapplication_SRCS
    RunApplicationPlugin.cpp

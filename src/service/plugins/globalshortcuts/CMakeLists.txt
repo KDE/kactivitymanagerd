@@ -1,7 +1,4 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
-
-project (activitymanager-globalshortcuts)
-
 kamd_add_plugin(org.kde.ActivityManager.GlobalShortcuts SOURCES GlobalShortcutsPlugin.cpp)
 
 target_link_libraries (

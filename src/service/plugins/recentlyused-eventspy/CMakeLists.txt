@@ -1,9 +1,4 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
-
-project (activitymanager-recentlyused-eventspy)
-
-find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
-
 set (
    recentlyusedeventspy_SRCS
    RecentlyUsedEventSpy.cpp

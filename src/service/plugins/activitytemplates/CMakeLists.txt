@@ -1,7 +1,5 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
 
-project (kactivitymanagerd-plugin-activitytemplates)
-
 set(activitytemplates_SRCS TemplatesPlugin.cpp)
 qt_add_dbus_adaptor (
    activitytemplates_SRCS org.kde.ActivityManager.Templates.xml

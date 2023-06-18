@@ -56,6 +56,7 @@ find_package(Qt6Core5Compat ${REQUIRED_QT_VERSION} REQUIRED) # QTextCodec
 find_package (KF6DBusAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6Crash ${KF6_MIN_VERSION} CONFIG REQUIRED)
+find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 # Basic includes
 include (CPack)
