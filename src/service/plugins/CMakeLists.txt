@@ -1,7 +1,8 @@
 # vim:set softtabstop=3 shiftwidth=3 tabstop=3 expandtab:
 
-function(kamd_add_plugin)
-   kcoreaddons_add_plugin(${ARGN} INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR})
+function(kamd_add_plugin plugin_name)
+   kcoreaddons_add_plugin(${plugin_name} ${ARGN} INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR})
+   target_link_libraries(${plugin_name} kactivitymanagerd_plugin)
 endfunction()
 add_subdirectory (slc)
 add_subdirectory (sqlite)

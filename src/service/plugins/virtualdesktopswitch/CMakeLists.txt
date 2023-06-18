@@ -3,11 +3,6 @@
 kamd_add_plugin(org.kde.ActivityManager.VirtualDesktopSwitch SOURCES VirtualDesktopSwitchPlugin.cpp)
 
 target_link_libraries(org.kde.ActivityManager.VirtualDesktopSwitch
-   Qt::Core
-   Qt::DBus
-   KF6::ConfigCore
    KF6::WindowSystem
-   KF6::CoreAddons
-   kactivitymanagerd_plugin
 )
 

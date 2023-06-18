@@ -30,14 +30,10 @@ qt_add_dbus_adaptor (
 kamd_add_plugin(org.kde.ActivityManager.ResourceScoring SOURCES ${sqliteplugin_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.ResourceScoring 
-   Qt::Core
    Qt::Sql
    Qt::Core5Compat
-   KF6::ConfigCore
    KF6::KIOCore
    KF6::DBusAddons
-   KF6::CoreAddons
    KF6::Crash
-   kactivitymanagerd_plugin
    debug_STATIC
 )

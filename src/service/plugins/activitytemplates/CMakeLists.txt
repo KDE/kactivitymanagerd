@@ -8,11 +8,6 @@ qt_add_dbus_adaptor(activitytemplates_DBUS_SRCS
 kamd_add_plugin(org.kde.ActivityManager.ActivityTemplates SOURCES TemplatesPlugin.cpp ${activitytemplates_DBUS_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.ActivityTemplates
-   Qt::Core
-   Qt::DBus
-   KF6::ConfigCore
    KF6::DBusAddons
-   KF6::CoreAddons
-   kactivitymanagerd_plugin
 )
 

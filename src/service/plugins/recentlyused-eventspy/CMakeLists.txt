@@ -9,10 +9,7 @@ ecm_qt_declare_logging_category(org.kde.ActivityManager.GtkEventSpy
    DESCRIPTION "KActivities RecentlyUsed Event Spy Resources" EXPORT KACTIVITYMANAGERD)
 
 target_link_libraries(org.kde.ActivityManager.GtkEventSpy
-   Qt::Core
    Qt::Xml
-   KF6::CoreAddons
    KF6::Service
-   kactivitymanagerd_plugin
 )
 
