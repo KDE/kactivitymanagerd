@@ -12,5 +12,5 @@ target_link_libraries (
    KF6::XmlGui
    KF6::CoreAddons
    kactivitymanagerd_plugin
-   )
+)
 

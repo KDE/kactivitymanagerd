@@ -36,19 +36,22 @@ ecm_install_configured_files(
    DESTINATION ${KDE_INSTALL_SYSTEMDUSERUNITDIR}
 )
 
-ecm_qt_declare_logging_category(debug_SRCS
+add_library(debug_STATIC STATIC)
+set_target_properties(debug_STATIC PROPERTIES POSITION_INDEPENDENT_CODE ON)
+target_link_libraries(debug_STATIC Qt::Core)
+ecm_qt_declare_logging_category(debug_STATIC
    HEADER DebugActivities.h
    IDENTIFIER KAMD_LOG_ACTIVITIES
    CATEGORY_NAME org.kde.kactivities.activities
    DEFAULT_SEVERITY Warning
    DESCRIPTION "KActivities Activities" EXPORT KACTIVITYMANAGERD)
-ecm_qt_declare_logging_category(debug_SRCS
+ecm_qt_declare_logging_category(debug_STATIC
    HEADER DebugResources.h
    IDENTIFIER KAMD_LOG_RESOURCES
    CATEGORY_NAME org.kde.kactivities.resources
    DEFAULT_SEVERITY Warning
    DESCRIPTION "KActivities Resources" EXPORT KACTIVITYMANAGERD)
-ecm_qt_declare_logging_category(debug_SRCS
+ecm_qt_declare_logging_category(debug_STATIC
    HEADER DebugApplication.h
    IDENTIFIER KAMD_LOG_APPLICATION
    CATEGORY_NAME org.kde.kactivities.application

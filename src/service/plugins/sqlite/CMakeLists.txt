@@ -7,7 +7,6 @@ set (
    ResourceScoreMaintainer.cpp
    ResourceLinking.cpp
 
-   ${debug_SRCS}
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/database/Database.cpp
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/database/schema/ResourcesDatabaseSchema.cpp
 
@@ -40,4 +39,5 @@ target_link_libraries(org.kde.ActivityManager.ResourceScoring
    KF6::CoreAddons
    KF6::Crash
    kactivitymanagerd_plugin
-   )
+   debug_STATIC
+)

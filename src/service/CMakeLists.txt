@@ -20,9 +20,12 @@ find_package (KF6Crash ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
 # Standard stuff
 
-add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp ${debug_SRCS})
+add_library(kactivitymanagerd_plugin SHARED Plugin.cpp Module.cpp Event.cpp)
 generate_export_header(kactivitymanagerd_plugin)
-target_link_libraries(kactivitymanagerd_plugin PUBLIC Qt::Core Qt::DBus KF6::CoreAddons KF6::ConfigCore)
+target_link_libraries(kactivitymanagerd_plugin
+    PUBLIC Qt::Core Qt::DBus KF6::CoreAddons KF6::ConfigCore
+    PRIVATE debug_STATIC
+)
 
 add_subdirectory (plugins)
 
@@ -30,7 +33,6 @@ set (kactivitymanager_SRCS
    Application.cpp
    ${KACTIVITIES_CURRENT_ROOT_SOURCE_DIR}/src/common/dbus/org.kde.ActivityManager.Activities.cpp
 
-   ${debug_SRCS}
    Activities.cpp
    Resources.cpp
    Features.cpp
@@ -71,6 +73,7 @@ target_link_libraries (kactivitymanagerd
    KF6::WindowSystem
    KF6::Crash
    kactivitymanagerd_plugin
+   debug_STATIC
    )
 
 ########### install application ###############
