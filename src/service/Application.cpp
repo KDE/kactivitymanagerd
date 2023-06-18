@@ -88,16 +88,9 @@ public:
     }
 
     static inline bool isPluginEnabled(const KConfigGroup &config, const KPluginMetaData &plugin)
-    {
-        const auto pluginName = plugin.pluginId();
-        qCDebug(KAMD_LOG_APPLICATION) << "Plugin Name is " << pluginName << plugin.fileName();
-
-        if (pluginName == QLatin1String("org.kde.ActivityManager.ResourceScoring")) {
-            // SQLite plugin is necessary for the proper workspace behaviour
-            return true;
-        } else {
-            return config.readEntry(pluginName + QStringLiteral("Enabled"), plugin.isEnabledByDefault());
-        }
+    { // SQLite plugin is necessary for the proper workspace behaviour
+        const bool isSqlitePlugin = plugin.pluginId() == QLatin1String("org.kde.ActivityManager.ResourceScoring");
+        return isSqlitePlugin || plugin.isEnabled(config);
     }
 
     bool loadPlugin(const KPluginMetaData &plugin);
@@ -121,7 +114,6 @@ Application::Application(int &argc, char **argv)
 
 void Application::init()
 {
-
     // KAMD is a daemon, if it crashes it is not a problem as
     // long as it restarts properly
     // TODO: Restart on crash
