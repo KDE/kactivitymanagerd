@@ -12,11 +12,7 @@ qt_add_dbus_adaptor (
    SlcPlugin.h SlcPlugin
    )
 
-kcoreaddons_add_plugin(
-   org.kde.ActivityManager.SLC
-   SOURCES ${slc_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.SLC SOURCES ${slc_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.SLC
    Qt::Core

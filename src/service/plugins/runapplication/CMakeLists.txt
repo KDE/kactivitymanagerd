@@ -9,11 +9,7 @@ set (
    ${plugin_implementation_SRCS}
    )
 
-kcoreaddons_add_plugin (
-   org.kde.ActivityManager.RunApplication
-   SOURCES ${runapplication_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.RunApplication SOURCES ${runapplication_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.RunApplication
    Qt::Core

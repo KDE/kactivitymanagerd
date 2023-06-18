@@ -2,11 +2,7 @@
 
 project (activitymanager-globalshortcuts)
 
-kcoreaddons_add_plugin(
-   org.kde.ActivityManager.GlobalShortcuts
-   SOURCES GlobalShortcutsPlugin.cpp
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.GlobalShortcuts SOURCES GlobalShortcutsPlugin.cpp)
 
 target_link_libraries (
    org.kde.ActivityManager.GlobalShortcuts

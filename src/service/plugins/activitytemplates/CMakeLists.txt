@@ -8,10 +8,7 @@ qt_add_dbus_adaptor (
    TemplatesPlugin.h TemplatesPlugin
    )
 
-kcoreaddons_add_plugin(org.kde.ActivityManager.ActivityTemplates
-   SOURCES ${activitytemplates_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.ActivityTemplates SOURCES ${activitytemplates_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.ActivityTemplates
    Qt::Core

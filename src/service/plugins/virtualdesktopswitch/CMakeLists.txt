@@ -8,11 +8,7 @@ set (
    ${plugin_implementation_SRCS}
    )
 
-kcoreaddons_add_plugin(
-   org.kde.ActivityManager.VirtualDesktopSwitch
-   SOURCES ${virtualdesktopswitch_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.VirtualDesktopSwitch SOURCES ${virtualdesktopswitch_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.VirtualDesktopSwitch
    Qt::Core

@@ -10,11 +10,7 @@ set (
    )
 qt_add_dbus_adaptor(activityrunner_SRCS "org.kde.krunner1.xml" ActivityRunner.h ActivityRunner)
 
-kcoreaddons_add_plugin (
-   org.kde.ActivityManager.ActivityRunner
-   SOURCES ${activityrunner_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.ActivityRunner SOURCES ${activityrunner_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.ActivityRunner
    Qt::Core

@@ -16,11 +16,7 @@ ecm_qt_declare_logging_category(recentlyusedeventspy_SRCS
    DEFAULT_SEVERITY Warning
    DESCRIPTION "KActivities RecentlyUsed Event Spy Resources" EXPORT KACTIVITYMANAGERD)
 
-kcoreaddons_add_plugin(
-   org.kde.ActivityManager.GtkEventSpy
-   SOURCES ${recentlyusedeventspy_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.GtkEventSpy SOURCES ${recentlyusedeventspy_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.GtkEventSpy
    Qt::Core

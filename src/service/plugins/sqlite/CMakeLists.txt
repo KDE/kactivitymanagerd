@@ -31,11 +31,7 @@ qt_add_dbus_adaptor (
    resourcescoringadaptor
    )
 
-kcoreaddons_add_plugin(
-   org.kde.ActivityManager.ResourceScoring 
-   SOURCES ${sqliteplugin_SRCS}
-   INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
-   )
+kamd_add_plugin(org.kde.ActivityManager.ResourceScoring SOURCES ${sqliteplugin_SRCS})
 
 target_link_libraries(org.kde.ActivityManager.ResourceScoring 
    Qt::Core
