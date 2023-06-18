@@ -22,12 +22,10 @@ const auto configPattern = QStringLiteral("desktop-for-%1");
 const auto kwinName = QStringLiteral("org.kde.KWin");
 const auto kwinPath = QStringLiteral("/KWin");
 
-VirtualDesktopSwitchPlugin::VirtualDesktopSwitchPlugin(QObject *parent, const QVariantList &args)
+VirtualDesktopSwitchPlugin::VirtualDesktopSwitchPlugin(QObject *parent)
     : Plugin(parent)
     , m_activitiesService(nullptr)
 {
-    Q_UNUSED(args);
-
     setName("org.kde.ActivityManager.VirtualDesktopSwitch");
 }
 

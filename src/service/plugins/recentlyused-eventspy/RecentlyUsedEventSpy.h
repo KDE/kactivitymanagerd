@@ -17,7 +17,7 @@ class RecentlyUsedEventSpyPlugin : public Plugin
     Q_OBJECT
 
 public:
-    explicit RecentlyUsedEventSpyPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    explicit RecentlyUsedEventSpyPlugin(QObject *parent);
     ~RecentlyUsedEventSpyPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;

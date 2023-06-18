@@ -12,10 +12,9 @@
 class VirtualDesktopSwitchPlugin : public Plugin
 {
     Q_OBJECT
-    // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.virtualdesktopswitch")
 
 public:
-    explicit VirtualDesktopSwitchPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    explicit VirtualDesktopSwitchPlugin(QObject *parent);
     ~VirtualDesktopSwitchPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;

@@ -15,7 +15,7 @@ class TemplatesPlugin : public Plugin
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Templates")
 
 public:
-    explicit TemplatesPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    explicit TemplatesPlugin(QObject *parent);
     ~TemplatesPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;

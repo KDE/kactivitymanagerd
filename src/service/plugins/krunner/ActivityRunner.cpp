@@ -13,13 +13,12 @@
 
 K_PLUGIN_CLASS_WITH_JSON(ActivityRunner, "kactivitymanagerd-plugin-activityrunner.json")
 
-ActivityRunner::ActivityRunner(QObject *parent, const QVariantList &args)
+ActivityRunner::ActivityRunner(QObject *parent)
     : Plugin(parent)
     , m_activitiesService(nullptr)
     , m_keywordi18n(i18nc("KRunner keyword", "activity"))
     , m_keyword(QStringLiteral("activity"))
 {
-    Q_UNUSED(args)
     setName(QStringLiteral("org.kde.ActivityManager.ActivityRunner"));
     new Krunner1Adaptor(this);
     qDBusRegisterMetaType<RemoteMatch>();
@@ -90,9 +89,8 @@ RemoteActions ActivityRunner::Actions()
     return {};
 }
 
-void ActivityRunner::Run(const QString &matchId, const QString &actionId)
+void ActivityRunner::Run(const QString &matchId, const QString & /*actionId*/)
 {
-    Q_UNUSED(actionId)
     QMetaObject::invokeMethod(m_activitiesService, "SetCurrentActivity", Q_ARG(QString, matchId));
 }
 

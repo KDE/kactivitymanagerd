@@ -15,11 +15,9 @@
 
 K_PLUGIN_CLASS_WITH_JSON(SlcPlugin, "kactivitymanagerd-plugin-slc.json")
 
-SlcPlugin::SlcPlugin(QObject *parent, const QVariantList &args)
+SlcPlugin::SlcPlugin(QObject *parent)
     : Plugin(parent)
 {
-    Q_UNUSED(args);
-
     new SLCAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/SLC"), this);
 }

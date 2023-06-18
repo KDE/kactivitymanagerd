@@ -20,11 +20,9 @@
 
 K_PLUGIN_CLASS_WITH_JSON(TemplatesPlugin, "kactivitymanagerd-plugin-activitytemplates.json")
 
-TemplatesPlugin::TemplatesPlugin(QObject *parent, const QVariantList &args)
+TemplatesPlugin::TemplatesPlugin(QObject *parent)
     : Plugin(parent)
 {
-    Q_UNUSED(args);
-
     setName(QStringLiteral("org.kde.ActivityManager.ActivityTemplates"));
 
     new TemplatesAdaptor(this);

@@ -20,13 +20,11 @@ K_PLUGIN_CLASS_WITH_JSON(GlobalShortcutsPlugin, "kactivitymanagerd-plugin-global
 const auto objectNamePattern = QStringLiteral("switch-to-activity-%1");
 const auto objectNamePatternLength = objectNamePattern.length() - 2;
 
-GlobalShortcutsPlugin::GlobalShortcutsPlugin(QObject *parent, const QVariantList &args)
+GlobalShortcutsPlugin::GlobalShortcutsPlugin(QObject *parent)
     : Plugin(parent)
     , m_activitiesService(nullptr)
     , m_actionCollection(new KActionCollection(this))
 {
-    Q_UNUSED(args);
-
     m_actionCollection->setComponentName("ActivityManager");
     m_actionCollection->setComponentDisplayName(i18n("Activity Manager"));
 }

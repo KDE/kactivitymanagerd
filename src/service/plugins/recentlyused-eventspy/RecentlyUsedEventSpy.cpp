@@ -19,14 +19,12 @@
 
 K_PLUGIN_CLASS_WITH_JSON(RecentlyUsedEventSpyPlugin, "kactivitymanagerd-plugin-recentlyused-eventspy.json")
 
-RecentlyUsedEventSpyPlugin::RecentlyUsedEventSpyPlugin(QObject *parent, const QVariantList &args)
+RecentlyUsedEventSpyPlugin::RecentlyUsedEventSpyPlugin(QObject *parent)
     : Plugin(parent)
     , m_resources(nullptr)
     , m_dirWatcher(new KDirWatch(this))
     , m_lastUpdate(QDateTime::currentDateTime())
 {
-    Q_UNUSED(args);
-
     // recently-used xml history file
     // usually $HOME/.local/share/recently-used.xbel
     QString filename = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/recently-used.xbel");

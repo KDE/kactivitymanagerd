@@ -34,13 +34,12 @@ K_PLUGIN_CLASS_WITH_JSON(StatsPlugin, "kactivitymanagerd-plugin-sqlite.json")
 
 StatsPlugin *StatsPlugin::s_instance = nullptr;
 
-StatsPlugin::StatsPlugin(QObject *parent, const QVariantList &args)
+StatsPlugin::StatsPlugin(QObject *parent)
     : Plugin(parent)
     , m_activities(nullptr)
     , m_resources(nullptr)
     , m_resourceLinking(new ResourceLinking(this))
 {
-    Q_UNUSED(args);
     s_instance = this;
 
     new ResourcesScoringAdaptor(this);

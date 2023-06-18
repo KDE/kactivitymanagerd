@@ -15,7 +15,7 @@ class ActivityRunner : public Plugin
     Q_OBJECT
 
 public:
-    explicit ActivityRunner(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    explicit ActivityRunner(QObject *parent);
     ~ActivityRunner() override;
     bool init(QHash<QString, QObject *> &modules) override;
 

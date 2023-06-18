@@ -13,10 +13,9 @@ class SlcPlugin : public Plugin
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.SLC")
-    // Q_PLUGIN_METADATA(IID "org.kde.ActivityManager.plugins.slc")
 
 public:
-    explicit SlcPlugin(QObject *parent = nullptr, const QVariantList &args = QVariantList());
+    explicit SlcPlugin(QObject *parent);
     ~SlcPlugin() override;
 
     bool init(QHash<QString, QObject *> &modules) override;

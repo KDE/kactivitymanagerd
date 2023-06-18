@@ -27,12 +27,10 @@ enum ActivityState {
 
 K_PLUGIN_CLASS_WITH_JSON(RunApplicationPlugin, "kactivitymanagerd-plugin-runapplication.json")
 
-RunApplicationPlugin::RunApplicationPlugin(QObject *parent, const QVariantList &args)
+RunApplicationPlugin::RunApplicationPlugin(QObject *parent)
     : Plugin(parent)
     , m_activitiesService(nullptr)
 {
-    Q_UNUSED(args);
-
     setName(QStringLiteral("org.kde.ActivityManager.RunApplication"));
 }
 
