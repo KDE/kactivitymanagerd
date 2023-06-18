@@ -176,7 +176,9 @@ void Application::loadPlugins()
     using namespace std::placeholders;
 
     const auto config = KSharedConfig::openConfig(QStringLiteral("kactivitymanagerdrc"))->group("Plugins");
-    const auto offers = KPluginMetaData::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), std::bind(Private::isPluginEnabled, config, _1));
+    const auto offers = KPluginMetaData::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), [&config](const KPluginMetaData &data) {
+        return Private::isPluginEnabled(config, data);
+    });
     qCDebug(KAMD_LOG_APPLICATION) << "Found" << offers.size() << "enabled plugins:";
 
     for (const auto &offer : offers) {
