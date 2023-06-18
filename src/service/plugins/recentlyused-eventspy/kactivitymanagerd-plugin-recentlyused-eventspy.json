@@ -72,7 +72,6 @@
         "Description[zh_CN]": "收集那些使用 KRecentDocument、GtkFileChooser、GtkRecentManager 的应用程序所产生的事件，或者直接收集那些按照 freedesktop 规范 https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ 产生的 recently-used.xbel 文件",
         "EnabledByDefault": true,
         "Icon": "preferences-system",
-        "Id": "org.kde.ActivityManager.GtkEventSpy",
         "License": "GPL",
         "Name": "Gtk Event Spy",
         "Name[ar]": "جاسوس أحداث جي تي كي",

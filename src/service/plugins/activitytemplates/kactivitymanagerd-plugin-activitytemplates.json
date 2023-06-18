@@ -103,7 +103,6 @@
         "Description[zh_TW]": "支援以樣本建立活動",
         "EnabledByDefault": true,
         "Icon": "edit-copy",
-        "Id": "org.kde.ActivityManager.ActivityTemplates",
         "License": "GPL",
         "Name": "Activity Templates",
         "Name[ar]": "قوالب الأنشطة",

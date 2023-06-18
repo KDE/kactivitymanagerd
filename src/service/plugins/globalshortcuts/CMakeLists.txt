@@ -2,19 +2,14 @@
 
 project (activitymanager-globalshortcuts)
 
-set (
-   globalshortcuts_SRCS
-   GlobalShortcutsPlugin.cpp
-   )
-
 kcoreaddons_add_plugin(
-   kactivitymanagerd_plugin_globalshortcuts
-   SOURCES ${globalshortcuts_SRCS}
+   org.kde.ActivityManager.GlobalShortcuts
+   SOURCES GlobalShortcutsPlugin.cpp
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
 target_link_libraries (
-   kactivitymanagerd_plugin_globalshortcuts
+   org.kde.ActivityManager.GlobalShortcuts
    Qt::Core
    Qt::DBus
    Qt::Widgets
@@ -26,7 +21,3 @@ target_link_libraries (
    kactivitymanagerd_plugin
    )
 
-set_target_properties (
-   kactivitymanagerd_plugin_globalshortcuts
-   PROPERTIES PREFIX ""
-   )

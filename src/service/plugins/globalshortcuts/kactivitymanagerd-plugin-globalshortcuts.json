@@ -102,7 +102,6 @@
         "Description[zh_TW]": "新增活動切換用的全域快捷鍵",
         "EnabledByDefault": true,
         "Icon": "configure-shortcuts",
-        "Id": "org.kde.ActivityManager.GlobalShortcuts",
         "License": "GPL",
         "Name": "Global Shortcuts",
         "Name[ar]": "اختصارات عامة",

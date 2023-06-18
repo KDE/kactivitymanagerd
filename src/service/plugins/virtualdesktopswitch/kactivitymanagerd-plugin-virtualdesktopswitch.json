@@ -103,7 +103,6 @@
         "Description[zh_TW]": "切換到某個活動時，開啟上次使用的虛擬桌面",
         "EnabledByDefault": false,
         "Icon": "preferences-system-windows",
-        "Id": "org.kde.ActivityManager.VirtualDesktopSwitch",
         "License": "GPL",
         "Name": "Virtual desktop switcher",
         "Name[ar]": "مبدل سطح المكتب الافتراضي",

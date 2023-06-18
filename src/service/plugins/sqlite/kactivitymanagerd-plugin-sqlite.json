@@ -103,7 +103,6 @@
         "Description[zh_TW]": "在 SQLite 中儲存並評分事件",
         "EnabledByDefault": true,
         "Icon": "server-database",
-        "Id": "org.kde.ActivityManager.ResourceScoring",
         "License": "GPL",
         "Name": "SQLite Feeder",
         "Name[ar]": "مغذي SQLite",

@@ -102,7 +102,6 @@
         "Description[zh_TW]": "將資料提供給 Share-Like-Connect 小程式",
         "EnabledByDefault": true,
         "Icon": "mail-forward",
-        "Id": "org.kde.ActivityManager.SLC",
         "License": "GPL",
         "Name": "Share-Like-Connect",
         "Name[ar]": "شارك-أعجب-تواصل",

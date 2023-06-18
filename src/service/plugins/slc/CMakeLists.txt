@@ -2,8 +2,6 @@
 
 project (activitymanager-plugin-slc)
 
-# kservice_desktop_to_json (activitymanager-plugin-slc.desktop)
-
 set (
    slc_SRCS
    SlcPlugin.cpp
@@ -15,13 +13,12 @@ qt_add_dbus_adaptor (
    )
 
 kcoreaddons_add_plugin(
-   kactivitymanagerd_plugin_slc
+   org.kde.ActivityManager.SLC
    SOURCES ${slc_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_slc
+target_link_libraries(org.kde.ActivityManager.SLC
    Qt::Core
    Qt::DBus
    KF6::ConfigCore
@@ -30,7 +27,3 @@ target_link_libraries (
    kactivitymanagerd_plugin
    )
 
-set_target_properties (
-   kactivitymanagerd_plugin_slc
-   PROPERTIES PREFIX ""
-   )

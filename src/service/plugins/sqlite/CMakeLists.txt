@@ -32,26 +32,19 @@ qt_add_dbus_adaptor (
    )
 
 kcoreaddons_add_plugin(
-   kactivitymanagerd_plugin_sqlite
+   org.kde.ActivityManager.ResourceScoring 
    SOURCES ${sqliteplugin_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_sqlite
+target_link_libraries(org.kde.ActivityManager.ResourceScoring 
    Qt::Core
    Qt::Sql
+   Qt::Core5Compat
    KF6::ConfigCore
    KF6::KIOCore
    KF6::DBusAddons
    KF6::CoreAddons
    KF6::Crash
    kactivitymanagerd_plugin
-   )
-if(TARGET Qt6::Core5Compat)
-    target_link_libraries(kactivitymanagerd_plugin_sqlite Qt6::Core5Compat)
-endif()
-set_target_properties (
-   kactivitymanagerd_plugin_sqlite
-   PROPERTIES PREFIX ""
    )

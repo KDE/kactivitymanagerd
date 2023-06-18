@@ -103,7 +103,6 @@
         "Description[zh_TW]": "切換活動時，或是啟動、停止活動時，執行特定應用程式",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
-        "Id": "org.kde.ActivityManager.RunApplication",
         "License": "GPL",
         "Name": "Run applications on activity state change",
         "Name[ar]": "شغل تطبيقات عند تغيير حالة النشاط",

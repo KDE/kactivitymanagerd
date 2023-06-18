@@ -90,7 +90,6 @@
         "Description[zh_TW]": "列出並切換活動用的 KRunner 外掛程式",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
-        "Id": "org.kde.ActivityManager.ActivityRunner",
         "License": "GPL",
         "Name": "Activity Runner",
         "Name[ar]": "مشغل النشاط",

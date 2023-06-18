@@ -11,13 +11,12 @@ set (
 qt_add_dbus_adaptor(activityrunner_SRCS "org.kde.krunner1.xml" ActivityRunner.h ActivityRunner)
 
 kcoreaddons_add_plugin (
-   kactivitymanagerd_plugin_activityrunner
+   org.kde.ActivityManager.ActivityRunner
    SOURCES ${activityrunner_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_activityrunner
+target_link_libraries(org.kde.ActivityManager.ActivityRunner
    Qt::Core
    Qt::DBus
    KF6::CoreAddons
@@ -25,10 +24,6 @@ target_link_libraries (
    kactivitymanagerd_plugin
    )
 
-set_target_properties (
-   kactivitymanagerd_plugin_activityrunner
-   PROPERTIES PREFIX ""
-   )
 install(
         FILES plasma-runnners-activities.desktop
         DESTINATION "${KDE_INSTALL_DATAROOTDIR}/krunner/dbusplugins"

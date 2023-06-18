@@ -10,13 +10,12 @@ set (
    )
 
 kcoreaddons_add_plugin (
-   kactivitymanagerd_plugin_runapplication
+   org.kde.ActivityManager.RunApplication
    SOURCES ${runapplication_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_runapplication
+target_link_libraries(org.kde.ActivityManager.RunApplication
    Qt::Core
    Qt::DBus
    Qt::Gui
@@ -24,10 +23,5 @@ target_link_libraries (
    KF6::ConfigCore
    KF6::Service
    kactivitymanagerd_plugin
-   )
-
-set_target_properties (
-   kactivitymanagerd_plugin_runapplication
-   PROPERTIES PREFIX ""
    )
 

@@ -17,13 +17,12 @@ ecm_qt_declare_logging_category(recentlyusedeventspy_SRCS
    DESCRIPTION "KActivities RecentlyUsed Event Spy Resources" EXPORT KACTIVITYMANAGERD)
 
 kcoreaddons_add_plugin(
-   kactivitymanagerd_plugin_recentlyused_eventspy
+   org.kde.ActivityManager.GtkEventSpy
    SOURCES ${recentlyusedeventspy_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_recentlyused_eventspy
+target_link_libraries(org.kde.ActivityManager.GtkEventSpy
    Qt::Core
    Qt::Xml
    KF6::CoreAddons
@@ -31,7 +30,3 @@ target_link_libraries (
    kactivitymanagerd_plugin
    )
 
-set_target_properties (
-   kactivitymanagerd_plugin_recentlyused_eventspy
-   PROPERTIES PREFIX ""
-   )

@@ -9,13 +9,12 @@ set (
    )
 
 kcoreaddons_add_plugin(
-   kactivitymanagerd_plugin_virtualdesktopswitch
+   org.kde.ActivityManager.VirtualDesktopSwitch
    SOURCES ${virtualdesktopswitch_SRCS}
    INSTALL_NAMESPACE ${KAMD_PLUGIN_DIR}
    )
 
-target_link_libraries (
-   kactivitymanagerd_plugin_virtualdesktopswitch
+target_link_libraries(org.kde.ActivityManager.VirtualDesktopSwitch
    Qt::Core
    Qt::DBus
    KF6::ConfigCore
@@ -24,7 +23,3 @@ target_link_libraries (
    kactivitymanagerd_plugin
    )
 
-set_target_properties (
-   kactivitymanagerd_plugin_virtualdesktopswitch
-   PROPERTIES PREFIX ""
-   )
