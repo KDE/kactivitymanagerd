@@ -13,7 +13,7 @@
 // Local
 #include "slcadaptor.h"
 
-K_PLUGIN_CLASS_WITH_JSON(SlcPlugin, "kactivitymanagerd-plugin-slc.json")
+K_PLUGIN_CLASS(SlcPlugin)
 
 SlcPlugin::SlcPlugin(QObject *parent)
     : Plugin(parent)

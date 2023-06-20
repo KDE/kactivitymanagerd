@@ -11,7 +11,7 @@
 #include <KLocalizedString>
 #include <krunner1adaptor.h>
 
-K_PLUGIN_CLASS_WITH_JSON(ActivityRunner, "kactivitymanagerd-plugin-activityrunner.json")
+K_PLUGIN_CLASS(ActivityRunner)
 
 ActivityRunner::ActivityRunner(QObject *parent)
     : Plugin(parent)

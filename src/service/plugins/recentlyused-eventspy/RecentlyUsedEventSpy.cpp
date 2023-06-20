@@ -17,7 +17,7 @@
 
 #include "DebugPluginRecentlyUsedEventSpy.h"
 
-K_PLUGIN_CLASS_WITH_JSON(RecentlyUsedEventSpyPlugin, "kactivitymanagerd-plugin-recentlyused-eventspy.json")
+K_PLUGIN_CLASS(RecentlyUsedEventSpyPlugin)
 
 RecentlyUsedEventSpyPlugin::RecentlyUsedEventSpyPlugin(QObject *parent)
     : Plugin(parent)

@@ -87,12 +87,6 @@ public:
     {
     }
 
-    static inline bool isPluginEnabled(const KConfigGroup &config, const KPluginMetaData &plugin)
-    { // SQLite plugin is necessary for the proper workspace behaviour
-        const bool isSqlitePlugin = plugin.pluginId() == QLatin1String("org.kde.ActivityManager.ResourceScoring");
-        return isSqlitePlugin || plugin.isEnabled(config);
-    }
-
     bool loadPlugin(const KPluginMetaData &plugin);
 
     Resources *resources;
@@ -175,10 +169,7 @@ void Application::loadPlugins()
 {
     using namespace std::placeholders;
 
-    const auto config = KSharedConfig::openConfig(QStringLiteral("kactivitymanagerdrc"))->group("Plugins");
-    const auto offers = KPluginMetaData::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), [&config](const KPluginMetaData &data) {
-        return Private::isPluginEnabled(config, data);
-    });
+    const auto offers = KPluginMetaData::findPlugins(QStringLiteral(KAMD_PLUGIN_DIR), {}, KPluginMetaData::AllowEmptyMetaData);
     qCDebug(KAMD_LOG_APPLICATION) << "Found" << offers.size() << "enabled plugins:";
 
     for (const auto &offer : offers) {
@@ -188,8 +179,7 @@ void Application::loadPlugins()
 
 bool Application::loadPlugin(const QString &pluginId)
 {
-    auto offer = KPluginMetaData::findPluginById(QStringLiteral(KAMD_PLUGIN_DIR), pluginId);
-
+    auto offer = KPluginMetaData::findPluginById(QStringLiteral(KAMD_PLUGIN_DIR), pluginId, KPluginMetaData::AllowEmptyMetaData);
     if (!offer.isValid()) {
         qCWarning(KAMD_LOG_APPLICATION) << "[ FAILED ] not found: " << pluginId;
         return false;

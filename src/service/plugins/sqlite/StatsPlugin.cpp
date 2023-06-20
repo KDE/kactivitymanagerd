@@ -30,7 +30,7 @@
 #include "common/specialvalues.h"
 #include "resourcescoringadaptor.h"
 
-K_PLUGIN_CLASS_WITH_JSON(StatsPlugin, "kactivitymanagerd-plugin-sqlite.json")
+K_PLUGIN_CLASS(StatsPlugin)
 
 StatsPlugin *StatsPlugin::s_instance = nullptr;
 
@@ -76,8 +76,6 @@ void StatsPlugin::loadConfiguration()
 {
     auto conf = config();
     conf.config()->reparseConfiguration();
-
-    const QString configFile = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral("kactivitymanagerd-pluginsrc");
 
     m_blockedByDefault = conf.readEntry("blocked-by-default", false);
     m_blockAll = false;

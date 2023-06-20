@@ -18,7 +18,7 @@
 // Local
 #include "templatesadaptor.h"
 
-K_PLUGIN_CLASS_WITH_JSON(TemplatesPlugin, "kactivitymanagerd-plugin-activitytemplates.json")
+K_PLUGIN_CLASS(TemplatesPlugin)
 
 TemplatesPlugin::TemplatesPlugin(QObject *parent)
     : Plugin(parent)
