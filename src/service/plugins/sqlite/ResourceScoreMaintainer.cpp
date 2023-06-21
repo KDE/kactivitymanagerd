@@ -97,7 +97,7 @@ ResourceScoreMaintainer::ResourceScoreMaintainer()
 {
     d->processResourcesTimer.setInterval(1000);
     d->processResourcesTimer.setSingleShot(true);
-    connect(&d->processResourcesTimer, &QTimer::timeout, this, [=] {
+    connect(&d->processResourcesTimer, &QTimer::timeout, this, [this] {
         d->processResources();
     });
 }
