@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:51+0000\n"
+"POT-Creation-Date: 2023-06-27 02:16+0000\n"
 "PO-Revision-Date: 2013-10-18 20:18+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian\n"
@@ -25,14 +25,14 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
 #, fuzzy, kde-format
 #| msgid "Activities..."
 msgid "Activity Manager"
 msgstr "Aktivnosti..."
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
@@ -45,7 +45,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "Aktivnosti..."
 
-#: service/plugins/krunner/ActivityRunner.cpp:68
+#: service/plugins/krunner/ActivityRunner.cpp:67
 #, fuzzy, kde-format
 #| msgctxt "@action"
 #| msgid "Switch to activity \"%1\""

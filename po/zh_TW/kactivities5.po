@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:51+0000\n"
+"POT-Creation-Date: 2023-06-27 02:16+0000\n"
 "PO-Revision-Date: 2023-01-22 00:03+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -24,13 +24,13 @@ msgstr ""
 msgid "Default"
 msgstr "預設"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
 #, kde-format
 msgid "Activity Manager"
 msgstr "活動管理器"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
@@ -42,7 +42,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "活動"
 
-#: service/plugins/krunner/ActivityRunner.cpp:68
+#: service/plugins/krunner/ActivityRunner.cpp:67
 #, kde-format
 msgid "Switch to \"%1\""
 msgstr "切換到「%1」"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:51+0000\n"
+"POT-Creation-Date: 2023-06-27 02:16+0000\n"
 "PO-Revision-Date: 2021-08-04 11:08+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Default"
 msgstr "Начальная комната"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
 #, kde-format
 msgid "Activity Manager"
 msgstr "Диспетчер комнат"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
@@ -44,7 +44,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "комната"
 
-#: service/plugins/krunner/ActivityRunner.cpp:68
+#: service/plugins/krunner/ActivityRunner.cpp:67
 #, kde-format
 msgid "Switch to \"%1\""
 msgstr "Переключиться на «%1»"

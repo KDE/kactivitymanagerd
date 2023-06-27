@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd_fileitem_linking_plugin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:51+0000\n"
+"POT-Creation-Date: 2023-06-27 02:16+0000\n"
 "PO-Revision-Date: 2012-11-29 14:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -22,14 +22,14 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
 #, fuzzy, kde-format
 #| msgid "Activities"
 msgid "Activity Manager"
 msgstr "Gníomhartha"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
@@ -42,7 +42,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "Gníomhartha"
 
-#: service/plugins/krunner/ActivityRunner.cpp:68
+#: service/plugins/krunner/ActivityRunner.cpp:67
 #, fuzzy, kde-format
 #| msgctxt "@action"
 #| msgid "Switch to activity \"%1\""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivities5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:51+0000\n"
+"POT-Creation-Date: 2023-06-27 02:16+0000\n"
 "PO-Revision-Date: 2015-11-04 15:11+0000\n"
 "Last-Translator: Michael Bauer <fios@akerbeltz.org>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -24,14 +24,14 @@ msgstr ""
 msgid "Default"
 msgstr "Thùsail"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:31
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
 #, fuzzy, kde-format
 #| msgid "Activity name"
 msgid "Activity Manager"
 msgstr "Ainm na gnìomhachd"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:72
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:108
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
@@ -44,7 +44,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "Gnìomhachd"
 
-#: service/plugins/krunner/ActivityRunner.cpp:68
+#: service/plugins/krunner/ActivityRunner.cpp:67
 #, fuzzy, kde-format
 #| msgctxt "@action"
 #| msgid "Switch to activity \"%1\""
