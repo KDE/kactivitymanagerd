@@ -46,12 +46,6 @@ public Q_SLOTS:
 public:
     void setActivityState(const QString &activity, Activities::State state);
 
-    // Configuration
-    class KDE4ConfigurationTransitionChecker
-    {
-    public:
-        KDE4ConfigurationTransitionChecker();
-    } kde4ConfigurationTransitionChecker;
     QTimer configSyncTimer;
     KConfig config;
 
