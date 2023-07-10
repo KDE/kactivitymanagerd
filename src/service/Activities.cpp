@@ -592,3 +592,7 @@ int Activities::ActivityState(const QString &activity) const
     QReadLocker lock(&d->activitiesLock);
     return d->activities.contains(activity) ? d->activities[activity] : Invalid;
 }
+
+#include "moc_Activities.cpp"
+
+#include "moc_Activities_p.cpp"

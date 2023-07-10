@@ -121,3 +121,5 @@ void RunApplicationPlugin::executeIn(const QString &path) const
 // }
 
 #include "RunApplicationPlugin.moc"
+
+#include "moc_RunApplicationPlugin.cpp"

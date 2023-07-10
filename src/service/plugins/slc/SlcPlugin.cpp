@@ -108,3 +108,5 @@ bool SlcPlugin::init(QHash<QString, QObject *> &modules)
 }
 
 #include "SlcPlugin.moc"
+
+#include "moc_SlcPlugin.cpp"

@@ -91,3 +91,5 @@ void Module::setFeatureValue(const QStringList &property, const QDBusVariant &va
     Q_UNUSED(property);
     Q_UNUSED(value);
 }
+
+#include "moc_Module.cpp"

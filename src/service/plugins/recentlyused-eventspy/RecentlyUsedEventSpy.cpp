@@ -178,3 +178,5 @@ bool RecentlyUsedEventSpyPlugin::init(QHash<QString, QObject *> &modules)
 }
 
 #include "RecentlyUsedEventSpy.moc"
+
+#include "moc_RecentlyUsedEventSpy.cpp"

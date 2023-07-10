@@ -58,3 +58,5 @@ Config::Config(QObject *parent)
 Config::~Config()
 {
 }
+
+#include "moc_Config.cpp"

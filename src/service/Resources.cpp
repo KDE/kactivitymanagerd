@@ -289,3 +289,7 @@ void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
 
     emit RegisteredResourceTitle(uri, title);
 }
+
+#include "moc_Resources_p.cpp"
+
+#include "moc_Resources.cpp"

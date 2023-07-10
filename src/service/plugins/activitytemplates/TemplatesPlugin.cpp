@@ -116,3 +116,5 @@ void TemplatesPlugin::createActivity(const QDBusVariant &_values)
 }
 
 #include "TemplatesPlugin.moc"
+
+#include "moc_TemplatesPlugin.cpp"

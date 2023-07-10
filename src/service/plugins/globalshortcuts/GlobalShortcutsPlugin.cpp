@@ -114,3 +114,5 @@ QString GlobalShortcutsPlugin::activityName(const QString &activity) const
 }
 
 #include "GlobalShortcutsPlugin.moc"
+
+#include "moc_GlobalShortcutsPlugin.cpp"

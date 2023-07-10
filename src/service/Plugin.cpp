@@ -74,3 +74,5 @@ bool Plugin::init(QHash<QString, QObject *> &modules)
 
     return true;
 }
+
+#include "moc_Plugin.cpp"

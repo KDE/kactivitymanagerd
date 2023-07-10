@@ -170,3 +170,7 @@ void KSMServer::Private::subSessionSendEvent(int event)
 
     processingActivity.clear();
 }
+
+#include "moc_KSMServer_p.cpp"
+
+#include "moc_KSMServer.cpp"

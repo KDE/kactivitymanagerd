@@ -83,3 +83,5 @@ void Features::SetValue(const QString &key, const QDBusVariant &value)
 }
 
 #undef FEATURES_PASS_TO_MODULE
+
+#include "moc_Features.cpp"

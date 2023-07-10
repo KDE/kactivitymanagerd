@@ -630,3 +630,5 @@ QStringList StatsPlugin::listFeatures(const QStringList &feature) const
 }
 
 #include "StatsPlugin.moc"
+
+#include "moc_StatsPlugin.cpp"

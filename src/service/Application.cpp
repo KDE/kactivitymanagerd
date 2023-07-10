@@ -265,3 +265,5 @@ QStringList Application::loadedPlugins() const
 {
     return d->pluginIds;
 }
+
+#include "moc_Application.cpp"

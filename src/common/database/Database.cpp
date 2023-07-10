@@ -286,3 +286,5 @@ QVariant Database::value(const QString &query) const
 }
 
 } // namespace Common
+
+#include "moc_Database.cpp"

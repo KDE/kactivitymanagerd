@@ -85,3 +85,5 @@ void VirtualDesktopSwitchPlugin::activityRemoved(const QString &activity)
 }
 
 #include "VirtualDesktopSwitchPlugin.moc"
+
+#include "moc_VirtualDesktopSwitchPlugin.cpp"

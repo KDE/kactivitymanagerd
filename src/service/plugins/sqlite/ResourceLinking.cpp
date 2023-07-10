@@ -274,3 +274,5 @@ void ResourceLinking::onCurrentActivityChanged(const QString &activity)
     // qCDebug(KAMD_LOG_RESOURCES) << "Changed: activities:/current -> " << activity;
     org::kde::KDirNotify::emitFilesAdded({QUrl(QStringLiteral("activities:/current"))});
 }
+
+#include "moc_ResourceLinking.cpp"
