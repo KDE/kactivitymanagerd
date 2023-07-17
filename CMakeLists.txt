@@ -72,7 +72,7 @@ add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_NO_SIGNALS_SLOTS_KEYWORDS
 )
-add_definitions (-DTRANSLATION_DOMAIN=\"kactivities5\")
+add_definitions (-DTRANSLATION_DOMAIN=\"kactivities6\")
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ki18n_install (po)
 endif ()
