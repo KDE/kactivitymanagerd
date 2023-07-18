@@ -1,4 +1,4 @@
-# Translation of kactivities5 to Norwegian Nynorsk
+# Translation of kactivities6 to Norwegian Nynorsk
 #
 # Karl Ove Hufthammer <karl@huftis.org>, 2014, 2015, 2018, 2019, 2021.
 msgid ""
