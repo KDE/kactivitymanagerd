@@ -1,4 +1,4 @@
-# Translation of kactivities5 to Norwegian Bokmål
+# Translation of kactivities6 to Norwegian Bokmål
 #
 # Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2012, 2014.
 msgid ""
