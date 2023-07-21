@@ -1,4 +1,4 @@
-# Translation of kactivities5 to Northern Sami
+# Translation of kactivities6 to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2011.
 msgid ""
