@@ -70,7 +70,7 @@
         "Description[id]": "Memungut peristiwa dari aplikasi yang menggunakan GtkFileChooser dan GtkRecentManager sebagaimana ditentukan oleh https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[it]": "Raccoglie gli eventi da applicazioni che usano GtkFileChooser e GtkRecentManager come indicato da https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[ka]": "აგროვებს მოვლენებს აპლიკაციებიდან, რომლებიც GtkFileChooser-ს და GtkRecentManager-ს იყენებენ, როგორც ეს ამ ბმულზეა აღწერილი: https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
-        "Description[ko]": "GtkFileChooser와 GtkRecentManager를 사용하는 프로그램의 이벤트를 수집합니다. 참조: https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[ko]": "GtkFileChooser와 GtkRecentManager를 사용하는 앱의 이벤트를 수집합니다. 참조: https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[lt]": "Surenka įvykius iš programų, kurios naudoja GtkFileChooser ir GtkRecentManager, kaip tai nurodyta https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[nl]": "Verzamelt gebeurtenissen uit toepassingen die GtkFileChooser en GtkRecentManager gebruiken zoals gespecificeerd door https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[nn]": "Samla hendingar frå program som brukar GtkFileChooser og GtkRecentManager som definert i https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
