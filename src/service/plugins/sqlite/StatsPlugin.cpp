@@ -243,6 +243,10 @@ bool StatsPlugin::insertResourceInfo(const QString &uri)
 
 void StatsPlugin::saveResourceTitle(const QString &uri, const QString &title, bool autoTitle)
 {
+    if (m_blockAll || m_whatToRemember == NoApplications) {
+        return;
+    }
+
     insertResourceInfo(uri);
 
     DATABASE_TRANSACTION(*resourcesDatabase());
@@ -268,6 +272,10 @@ void StatsPlugin::saveResourceTitle(const QString &uri, const QString &title, bo
 
 void StatsPlugin::saveResourceMimetype(const QString &uri, const QString &mimetype, bool autoMimetype)
 {
+    if (m_blockAll || m_whatToRemember == NoApplications) {
+        return;
+    }
+
     insertResourceInfo(uri);
 
     DATABASE_TRANSACTION(*resourcesDatabase());
