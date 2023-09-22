@@ -135,7 +135,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent, QStrin
     }
 
     DATABASE_TRANSACTION(*resourcesDatabase());
-    // BUG 385814, some existings entries don't have the applications:
+    // BUG 385814, some existing entries don't have the applications:
     // prefix, so we remove it and check in the sql if they match
     // TODO Remove when we can expect all users to have a fresher install than 5.18
     if (initiatingAgent == QLatin1String("org.kde.plasma.favorites.applications")) {
