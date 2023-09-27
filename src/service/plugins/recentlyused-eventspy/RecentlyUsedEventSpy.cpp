@@ -149,18 +149,25 @@ void RecentlyUsedEventSpyPlugin::fileUpdated(const QString &filename)
 
 void RecentlyUsedEventSpyPlugin::addDocument(const QUrl &url, const QString &application, const QString &mimetype)
 {
+    const auto urlString = url.toString(QUrl::PreferLocalFile);
     Plugin::invoke<Qt::QueuedConnection>(m_resources,
                                          "RegisterResourceEvent",
                                          Q_ARG(QString, application), // Application
                                          Q_ARG(uint, 0), // Window ID
-                                         Q_ARG(QString, url.toString()), // URI
+                                         Q_ARG(QString, urlString), // URI
                                          Q_ARG(uint, 0) // Event Activities::Accessed
     );
 
     Plugin::invoke<Qt::QueuedConnection>(m_resources,
                                          "RegisteredResourceMimetype",
-                                         Q_ARG(QString, url.toString()), // uri
+                                         Q_ARG(QString, urlString), // uri
                                          Q_ARG(QString, mimetype) // mimetype
+    );
+
+    Plugin::invoke<Qt::QueuedConnection>(m_resources,
+                                         "RegisterResourceTitle",
+                                         Q_ARG(QString, urlString), // uri
+                                         Q_ARG(QString, url.fileName()) // title
     );
 }
 
