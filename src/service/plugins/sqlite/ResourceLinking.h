@@ -60,7 +60,7 @@ private Q_SLOTS:
     void onCurrentActivityChanged(const QString &activity);
 
 private:
-    bool validateArguments(QString &initiatingAgent, QString &targettedResource, QString &usedActivity);
+    bool validateArguments(QString &initiatingAgent, QString &targettedResource, QString &usedActivity, bool checkFilesExist = true);
 
     QString currentActivity() const;
 

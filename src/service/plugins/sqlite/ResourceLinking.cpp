@@ -100,7 +100,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent, QStrin
 {
     // qCDebug(KAMD_LOG_RESOURCES) << "Unlinking " << targettedResource << " from " << usedActivity << " from " << initiatingAgent;
 
-    if (!validateArguments(initiatingAgent, targettedResource, usedActivity)) {
+    if (!validateArguments(initiatingAgent, targettedResource, usedActivity, false)) {
         qCWarning(KAMD_LOG_RESOURCES) << "Invalid arguments" << initiatingAgent << targettedResource << usedActivity;
         return;
     }
@@ -198,7 +198,7 @@ bool ResourceLinking::IsResourceLinkedToActivity(QString initiatingAgent, QStrin
     return isResourceLinkedToActivityQuery->next();
 }
 
-bool ResourceLinking::validateArguments(QString &initiatingAgent, QString &targettedResource, QString &usedActivity)
+bool ResourceLinking::validateArguments(QString &initiatingAgent, QString &targettedResource, QString &usedActivity, bool checkFilesExist)
 {
     // Validating targetted resource
     if (targettedResource.isEmpty()) {
@@ -210,7 +210,7 @@ bool ResourceLinking::validateArguments(QString &initiatingAgent, QString &targe
         targettedResource = QUrl(targettedResource).toLocalFile();
     }
 
-    if (targettedResource.startsWith(QStringLiteral("/"))) {
+    if (targettedResource.startsWith(QStringLiteral("/")) && checkFilesExist) {
         QFileInfo file(targettedResource);
 
         if (!file.exists()) {
