@@ -146,7 +146,7 @@ void ResourcesDatabaseInitializer::initDatabase(bool retryOnFail)
 
     if (d->database) {
         qCDebug(KAMD_LOG_RESOURCES) << "Database opened successfully";
-        QObject::connect(d->database.get(), &Common::Database::error, [databaseTestBackupDirectory, removeDatabaseFiles](const QSqlError &error) {
+        QObject::connect(d->database.get(), &Common::Database::error, d->database.get(), [databaseTestBackupDirectory, removeDatabaseFiles](const QSqlError &error) {
             const QString errorLog =
                 QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/kactivitymanagerd/resources/errors.log");
             QFile file(errorLog);

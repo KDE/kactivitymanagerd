@@ -364,7 +364,7 @@ void StatsPlugin::addEvents(const EventList &events)
 
     DATABASE_TRANSACTION(*resourcesDatabase());
 
-    for (auto event : eventsToProcess) {
+    for (const auto &event : eventsToProcess) {
         switch (event.type) {
         case Event::Accessed:
             openResourceEvent(currentActivity(), event.application, event.uri, event.timestamp, event.timestamp);
@@ -453,7 +453,7 @@ void StatsPlugin::DeleteRecentStats(const QString &activity, int count, const QS
         Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery, ":usedActivity", usedActivity, ":since", since.toSecsSinceEpoch());
     }
 
-    emit RecentStatsDeleted(activity, count, what);
+    Q_EMIT RecentStatsDeleted(activity, count, what);
 }
 
 void StatsPlugin::DeleteEarlierStats(const QString &activity, int months)
@@ -485,7 +485,7 @@ void StatsPlugin::DeleteEarlierStats(const QString &activity, int months)
 
     Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery, ":usedActivity", usedActivity, ":time", time.toSecsSinceEpoch());
 
-    emit EarlierStatsDeleted(activity, months);
+    Q_EMIT EarlierStatsDeleted(activity, months);
 }
 
 void StatsPlugin::DeleteStatsForResource(const QString &activity, const QString &client, const QString &resource)
@@ -524,7 +524,7 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity, const QString 
 
     Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery, ":targettedResource", pattern);
 
-    emit ResourceScoreDeleted(activity, client, resource);
+    Q_EMIT ResourceScoreDeleted(activity, client, resource);
 }
 
 bool StatsPlugin::isFeatureOperational(const QStringList &feature) const

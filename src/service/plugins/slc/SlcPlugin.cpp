@@ -50,11 +50,11 @@ void SlcPlugin::registeredResourceEvent(const Event &event)
             if (m_focussedResource != event.uri) {
                 m_focussedResource = event.uri;
                 const auto &info = m_resources[m_focussedResource];
-                emit focusChanged(event.uri, info.mimetype, info.title);
+                Q_EMIT focusChanged(event.uri, info.mimetype, info.title);
             }
         } else {
             m_focussedResource.clear();
-            emit focusChanged(QString(), QString(), QString());
+            Q_EMIT focusChanged(QString(), QString(), QString());
         }
 
         break;
@@ -63,7 +63,7 @@ void SlcPlugin::registeredResourceEvent(const Event &event)
 
         if (m_focussedResource == event.uri) {
             m_focussedResource.clear();
-            emit focusChanged(QString(), QString(), QString());
+            Q_EMIT focusChanged(QString(), QString(), QString());
         }
 
         break;

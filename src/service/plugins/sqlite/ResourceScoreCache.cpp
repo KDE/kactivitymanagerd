@@ -234,7 +234,7 @@ void ResourceScoreCache::update()
 
     // Notifying the world
     qCDebug(KAMD_LOG_RESOURCES) << "ResourceScoreUpdated:" << d->activity << d->application << d->resource;
-    emit QMetaObject::invokeMethod(StatsPlugin::self(),
+    Q_EMIT QMetaObject::invokeMethod(StatsPlugin::self(),
                                    "ResourceScoreUpdated",
                                    Qt::QueuedConnection,
                                    Q_ARG(QString, d->activity),

@@ -25,8 +25,6 @@
 #include <time.h>
 
 // Local
-#include "Activities.h"
-#include "Application.h"
 #include "common/dbus/common.h"
 #include "resourcesadaptor.h"
 
@@ -67,7 +65,7 @@ void Resources::Private::run()
             std::swap(currentEvents, events);
         }
 
-        emit q->ProcessedResourceEvents(currentEvents);
+        Q_EMIT q->ProcessedResourceEvents(currentEvents);
     }
 }
 
@@ -84,7 +82,7 @@ void Resources::Private::insertEvent(const Event &newEvent)
         events << newEvent;
     }
 
-    emit q->RegisteredResourceEvent(newEvent);
+    Q_EMIT q->RegisteredResourceEvent(newEvent);
 }
 
 void Resources::Private::addEvent(const QString &application, WId wid, const QString &uri, int type)
@@ -203,7 +201,7 @@ void Resources::Private::windowClosed(WId windowId)
 
     // Closing all the resources that the window registered
 
-    for (const QString &uri : windows[windowId].resources) {
+    for (const QString &uri : std::as_const(windows[windowId].resources)) {
         q->RegisterResourceEvent(windows[windowId].application, windowId, uri, Event::Closed);
     }
 
@@ -277,7 +275,7 @@ void Resources::RegisterResourceMimetype(const QString &uri, const QString &mime
         return;
     }
 
-    emit RegisteredResourceMimetype(uri, mimetype);
+    Q_EMIT RegisteredResourceMimetype(uri, mimetype);
 }
 
 void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
@@ -287,7 +285,7 @@ void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
         return;
     }
 
-    emit RegisteredResourceTitle(uri, title);
+    Q_EMIT RegisteredResourceTitle(uri, title);
 }
 
 #include "moc_Resources_p.cpp"

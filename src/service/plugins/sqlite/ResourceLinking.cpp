@@ -93,7 +93,7 @@ void ResourceLinking::LinkResourceToActivity(QString initiatingAgent, QString ta
         }
     }
 
-    emit ResourceLinkedToActivity(initiatingAgent, targettedResource, usedActivity);
+    Q_EMIT ResourceLinkedToActivity(initiatingAgent, targettedResource, usedActivity);
 }
 
 void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent, QString targettedResource, QString usedActivity)
@@ -164,7 +164,7 @@ void ResourceLinking::UnlinkResourceFromActivity(QString initiatingAgent, QStrin
         }
     }
 
-    emit ResourceUnlinkedFromActivity(initiatingAgent, targettedResource, usedActivity);
+    Q_EMIT ResourceUnlinkedFromActivity(initiatingAgent, targettedResource, usedActivity);
 }
 
 bool ResourceLinking::IsResourceLinkedToActivity(QString initiatingAgent, QString targettedResource, QString usedActivity)

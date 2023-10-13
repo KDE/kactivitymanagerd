@@ -96,8 +96,8 @@ Activities::Private::Private(Activities *parent)
         // are no running activities, and enlists all of them as stopped.
         // In that case, we will pretend all of them are running
         qCWarning(KAMD_LOG_ACTIVITIES) << "The config file enlisted all activities as stopped";
-        for (const auto &keys : activities.keys()) {
-            activities[keys] = Activities::Running;
+        for (auto activityKey = activities.keyBegin(); activityKey != activities.keyEnd(); ++activityKey) {
+            activities[*activityKey] = Activities::Running;
         }
     }
 }
@@ -105,8 +105,8 @@ Activities::Private::Private(Activities *parent)
 void Activities::Private::updateSortedActivityList()
 {
     QList<ActivityInfo> a;
-    for (const auto &activity : activities.keys()) {
-        a.append(q->ActivityInformation(activity));
+    for (auto activityKey = activities.keyBegin(); activityKey != activities.keyEnd(); ++activityKey) {
+        a.append(q->ActivityInformation(*activityKey));
     }
 
     std::sort(a.begin(), a.end(), &nameBasedOrdering);
@@ -144,7 +144,7 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
         // If the activity is empty, this means we are entering a limbo state
         if (activity.isEmpty()) {
             currentActivity.clear();
-            emit q->CurrentActivityChanged(currentActivity);
+            Q_EMIT q->CurrentActivityChanged(currentActivity);
             return true;
         }
 
@@ -165,7 +165,7 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
 
     scheduleConfigSync();
 
-    emit q->CurrentActivityChanged(activity);
+    Q_EMIT q->CurrentActivityChanged(activity);
 
     return true;
 }
@@ -228,7 +228,7 @@ QString Activities::Private::addActivity(const QString &name)
 
     updateSortedActivityList();
 
-    emit q->ActivityAdded(activity);
+    Q_EMIT q->ActivityAdded(activity);
 
     scheduleConfigSync();
 
@@ -289,7 +289,7 @@ void Activities::Private::removeActivity(const QString &activity)
         ensureCurrentActivityIsRunning();
     }
 
-    emit q->ActivityRemoved(activity);
+    Q_EMIT q->ActivityRemoved(activity);
 
     QMetaObject::invokeMethod(q, "ActivityRemoved", Qt::QueuedConnection, Q_ARG(QString, activity));
 
@@ -343,18 +343,18 @@ void Activities::Private::setActivityState(const QString &activity, Activities::
 
     switch (state) {
     case Activities::Running:
-        emit q->ActivityStarted(activity);
+        Q_EMIT q->ActivityStarted(activity);
         break;
 
     case Activities::Stopped:
-        emit q->ActivityStopped(activity);
+        Q_EMIT q->ActivityStopped(activity);
         break;
 
     default:
         break;
     }
 
-    emit q->ActivityStateChanged(activity, state);
+    Q_EMIT q->ActivityStateChanged(activity, state);
 
     if (configNeedsUpdating) {
         QReadLocker lock(&activitiesLock);
@@ -545,8 +545,8 @@ ActivityInfo Activities::ActivityInformation(const QString &activity) const
         d->activity##What##Config().writeEntry(activity, value);                                                                                               \
         d->scheduleConfigSync();                                                                                                                               \
                                                                                                                                                                \
-        emit Activity##What##Changed(activity, value);                                                                                                         \
-        emit ActivityChanged(activity);                                                                                                                        \
+        Q_EMIT Activity##What##Changed(activity, value);                                                                                                         \
+        Q_EMIT ActivityChanged(activity);                                                                                                                        \
     }
 
 CREATE_GETTER_AND_SETTER(Name)

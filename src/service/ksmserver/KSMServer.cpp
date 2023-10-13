@@ -166,7 +166,7 @@ void KSMServer::Private::subSessionSendEvent(int event)
         return;
     }
 
-    emit q->activitySessionStateChanged(processingActivity, event);
+    Q_EMIT q->activitySessionStateChanged(processingActivity, event);
 
     processingActivity.clear();
 }

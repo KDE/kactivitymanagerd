@@ -34,9 +34,9 @@ public:
     void configFileChanged(const QString &file)
     {
         if (file == pluginConfigFile) {
-            emit q->pluginConfigChanged();
+            Q_EMIT q->pluginConfigChanged();
         } else {
-            emit q->mainConfigChanged();
+            Q_EMIT q->mainConfigChanged();
         }
     }
 
