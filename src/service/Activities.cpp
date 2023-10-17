@@ -127,8 +127,6 @@ Activities::Private::Private(Activities *parent)
             activities[keys] = Activities::Running;
         }
     }
-
-    QMetaObject::invokeMethod(this, "updateSortedActivityList", Qt::QueuedConnection);
 }
 
 void Activities::Private::updateSortedActivityList()
@@ -463,6 +461,7 @@ Activities::Activities(QObject *parent)
     d->ksmserver = new KSMServer(this);
     d->connect(d->ksmserver, SIGNAL(activitySessionStateChanged(QString, int)), SLOT(activitySessionStateChanged(QString, int)));
 
+    d->updateSortedActivityList();
     // Loading the last used activity, if possible
     d->loadLastActivity();
 }
