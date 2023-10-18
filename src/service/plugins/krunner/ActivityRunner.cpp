@@ -58,7 +58,7 @@ RemoteMatches ActivityRunner::Match(const QString &query)
     }
 
     QList<RemoteMatch> matches;
-    for (const ActivityInfo &activityInfo : qAsConst(activities)) {
+    for (const ActivityInfo &activityInfo : std::as_const(activities)) {
         if (currentActivity != activityInfo.id) {
             auto info = Plugin::retrieve<ActivityInfo>(m_activitiesService, "ActivityInformation", Q_ARG(QString, activityInfo.id));
             if (list || info.name.startsWith(name, Qt::CaseInsensitive)) {
