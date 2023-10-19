@@ -53,7 +53,7 @@ public:
     KSMServer *ksmserver;
 
     QHash<QString, Activities::State> activities;
-    QVector<ActivityInfo> sortedActivities;
+    QList<ActivityInfo> sortedActivities;
     QReadWriteLock activitiesLock;
     QString currentActivity;
 

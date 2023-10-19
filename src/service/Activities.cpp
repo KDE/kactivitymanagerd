@@ -106,7 +106,7 @@ Activities::Private::Private(Activities *parent)
 
 void Activities::Private::updateSortedActivityList()
 {
-    QVector<ActivityInfo> a;
+    QList<ActivityInfo> a;
     for (const auto &activity : activities.keys()) {
         a.append(q->ActivityInformation(activity));
     }
