@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_RESOURCESDATABASE_H
-#define PLUGINS_SQLITE_RESOURCESDATABASE_H
+#pragma once
 
 // Qt
 #include <QDateTime>
@@ -40,5 +39,3 @@ private:
 };
 
 Common::Database::Ptr resourcesDatabase();
-
-#endif // PLUGINS_SQLITE_RESOURCESDATABASE_H

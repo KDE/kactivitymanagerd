@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_RUN_APPLICATION_PLUGIN_H
-#define PLUGINS_RUN_APPLICATION_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 
@@ -31,5 +30,3 @@ private:
     QStringList m_previousActivities;
     QObject *m_activitiesService;
 };
-
-#endif // PLUGINS_RUN_APPLICATION_PLUGIN_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ACTIVITIES_P_H
-#define ACTIVITIES_P_H
+#pragma once
 
 // Self
 #include "Activities.h"
@@ -108,5 +107,3 @@ public Q_SLOTS:
 private:
     Activities *const q;
 };
-
-#endif // ACTIVITIES_P_H

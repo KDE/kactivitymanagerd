@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ACTIVITIES_DBUSFUTURE_P_H
-#define ACTIVITIES_DBUSFUTURE_P_H
+#pragma once
 
 #include <QDBusAbstractInterface>
 #include <QDBusPendingCallWatcher>
@@ -158,5 +157,3 @@ QFuture<_Result> fromReply(const QDBusPendingReply<_Result> &reply)
 QFuture<void> fromVoid();
 
 } // namespace DBusFuture
-
-#endif /* DBUSFUTURE_P_H */

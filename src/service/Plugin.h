@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PLUGIN_H
-#define PLUGIN_H
+#pragma once
 
 #include "kactivitymanagerd_plugin_export.h"
 
@@ -99,5 +98,3 @@ protected:
 private:
     D_PTR;
 };
-
-#endif // PLUGIN_H

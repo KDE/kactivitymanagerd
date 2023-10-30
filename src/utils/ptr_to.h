@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PTR_TO_H
-#define PTR_TO_H
+#pragma once
 
 namespace kamd
 {
@@ -28,5 +27,3 @@ struct ptr_to<T, Mutable> {
 
 } // namespace utils
 } // namespace kamd
-
-#endif // PTR_TO_H

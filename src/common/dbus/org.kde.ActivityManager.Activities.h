@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
  */
 
-#ifndef KAMD_ACTIVITIES_DBUS_H
-#define KAMD_ACTIVITIES_DBUS_H
+#pragma once
 
 #include <QDBusArgument>
 #include <QDebug>
@@ -40,5 +39,3 @@ Q_DECLARE_METATYPE(ActivityInfoList)
 
 QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo &);
 const QDBusArgument &operator>>(const QDBusArgument &arg, ActivityInfo &rec);
-
-#endif // KAMD_ACTIVITIES_DBUS_H

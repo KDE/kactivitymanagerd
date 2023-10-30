@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DBUS_COMMON_H
-#define DBUS_COMMON_H
+#pragma once
 
 #include <QDBusConnection>
 #include <QDBusInterface>
@@ -43,5 +42,4 @@
                 QDBusConnection::sessionBus(),                                 \
                 PARENT)
 
-#endif // DBUS_COMMON_H
 

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_RESOURCE_SCORE_CACHE_H
-#define PLUGINS_SQLITE_RESOURCE_SCORE_CACHE_H
+#pragma once
 
 // Qt
 #include <QString>
@@ -31,5 +30,3 @@ private:
     D_PTR;
     class Queries;
 };
-
-#endif // PLUGINS_SQLITE_RESOURCE_SCORE_CACHE_H

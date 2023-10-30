@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef RESOURCES_P_H
-#define RESOURCES_P_H
+#pragma once
 
 // Self
 #include "Resources.h"
@@ -58,5 +57,3 @@ private:
 
     Resources *const q;
 };
-
-#endif // RESOURCES_P_H

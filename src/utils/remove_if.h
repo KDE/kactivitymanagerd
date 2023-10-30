@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_REMOVE_IF_H
-#define UTILS_REMOVE_IF_H
+#pragma once
 
 #include <algorithm>
 #include <kactivities-features.h>
@@ -26,5 +25,3 @@ __inline void remove_if(Collection &collection, Filter filter)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_REMOVE_IF_H

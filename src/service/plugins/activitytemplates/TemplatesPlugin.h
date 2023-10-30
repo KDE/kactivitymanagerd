@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H
-#define PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 
@@ -30,5 +29,3 @@ public Q_SLOTS:
 private:
     QObject *m_activities;
 };
-
-#endif // PLUGINS_GLOBAL_TEMPLATES_PLUGIN_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_MEMBER_MATCHER_H
-#define UTILS_MEMBER_MATCHER_H
+#pragma once
 
 namespace kamd
 {
@@ -165,5 +164,3 @@ detail::member_matcher<Member> member(Member m)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_MEMBER_MATCHER_H

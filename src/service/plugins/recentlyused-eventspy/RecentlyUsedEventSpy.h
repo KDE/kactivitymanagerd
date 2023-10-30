@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H
-#define PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 #include <memory>
@@ -31,5 +30,3 @@ private:
     std::unique_ptr<KDirWatch> m_dirWatcher;
     QDateTime m_lastUpdate;
 };
-
-#endif // PLUGINS_RECENTLYUSED_EVENT_SPY_PLUGIN_H

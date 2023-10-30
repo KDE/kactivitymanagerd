@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_RESOURCE_LINKING_H
-#define PLUGINS_SQLITE_RESOURCE_LINKING_H
+#pragma once
 
 // Qt
 #include <QObject>
@@ -69,5 +68,3 @@ private:
     std::unique_ptr<QSqlQuery> unlinkResourceFromActivityQuery;
     std::unique_ptr<QSqlQuery> isResourceLinkedToActivityQuery;
 };
-
-#endif // PLUGINS_SQLITE_RESOURCE_LINKING_H

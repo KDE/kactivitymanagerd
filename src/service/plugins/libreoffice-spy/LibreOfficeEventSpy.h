@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_LIBREOFFICE_EVENT_SPY_PLUGIN_H
-#define PLUGINS_LIBREOFFICE_EVENT_SPY_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 #include <memory>
@@ -32,5 +31,3 @@ private:
     QUrl m_lastUrl;
     bool m_init = false;
 };
-
-#endif // PLUGINS_LIBREOFFICE_EVENT_SPY_PLUGIN_H

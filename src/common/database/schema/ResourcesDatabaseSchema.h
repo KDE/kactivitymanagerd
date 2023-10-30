@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef RESOURCESDATABASESCHEMA_H
-#define RESOURCESDATABASESCHEMA_H
+#pragma once
 
 #include "../Database.h"
 #include <QStringList>
@@ -25,5 +24,3 @@ void initSchema(Database &database);
 
 } // namespace ResourcesDatabase
 } // namespace Common
-
-#endif // RESOURCESDATABASESCHEMA_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#pragma once
 
 // Qt
 #include <QApplication>
@@ -55,5 +54,3 @@ private:
 
     friend int main(int, char **);
 };
-
-#endif // APPLICATION_H

@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef COMMON_DATABASE_H
-#define COMMON_DATABASE_H
+#pragma once
 
 #include <QObject>
 #include <QRegExp>
@@ -137,5 +136,3 @@ inline QRegExp starPatternToRegex(const QString &pattern)
 }
 
 } // namespace Common
-
-#endif // COMMON_DATABASE_H

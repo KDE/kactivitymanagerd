@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_RESOURCE_SCORE_MAINTAINER_H
-#define PLUGINS_SQLITE_RESOURCE_SCORE_MAINTAINER_H
+#pragma once
 
 #include <QObject>
 
@@ -32,5 +31,3 @@ private:
 
     D_PTR;
 };
-
-#endif // PLUGINS_SQLITE_RESOURCE_SCORE_MAINTAINER_H

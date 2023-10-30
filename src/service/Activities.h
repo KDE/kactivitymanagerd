@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ACTIVITIES_H
-#define ACTIVITIES_H
+#pragma once
 
 // Qt
 #include <QString>
@@ -233,5 +232,3 @@ Q_SIGNALS:
 private:
     D_PTR;
 };
-
-#endif // ACTIVITIES_H

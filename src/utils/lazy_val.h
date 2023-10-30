@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_LAZY_VAL_H
-#define UTILS_LAZY_VAL_H
+#pragma once
 
 namespace kamd
 {
@@ -46,5 +45,3 @@ inline lazy_val<F> make_lazy_val(F &&f)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_LAZY_VAL_H

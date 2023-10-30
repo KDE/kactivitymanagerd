@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_MERGE_INTO_H
-#define UTILS_MERGE_INTO_H
+#pragma once
 
 namespace kamd
 {
@@ -31,5 +30,3 @@ inline void merge_into(Container &into, const Container &from)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_MERGE_INTO_H

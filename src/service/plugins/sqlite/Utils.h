@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_DATABASE_UTILS_H
-#define PLUGINS_SQLITE_DATABASE_UTILS_H
+#pragma once
 
 #include <KCrash>
 #include <QSqlQuery>
@@ -70,5 +69,3 @@ inline bool exec(Common::Database &database, ErrorHandling eh, QSqlQuery &query,
 }
 
 } // namespace Utils
-
-#endif /* !PLUGINS_SQLITE_DATABASE_UTILS_H */

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_RANGE_H
-#define UTILS_RANGE_H
+#pragma once
 
 #include <boost/range/adaptor/filtered.hpp>
 #include <boost/range/adaptor/transformed.hpp>
@@ -49,5 +48,3 @@ __inline auto filtered(Class *const self, Member member) -> decltype(boost::adap
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_RANGE_H

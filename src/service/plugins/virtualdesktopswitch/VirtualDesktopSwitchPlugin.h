@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_VIRTUAL_DESKTOP_SWITCH_PLUGIN_H
-#define PLUGINS_VIRTUAL_DESKTOP_SWITCH_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 
@@ -27,5 +26,3 @@ private:
     QString m_currentActivity;
     QObject *m_activitiesService;
 };
-
-#endif // PLUGINS_VIRTUAL_DESKTOP_SWITCH_PLUGIN_H

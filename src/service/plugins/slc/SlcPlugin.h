@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SLC_PLUGIN_H
-#define PLUGINS_SLC_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 
@@ -42,5 +41,3 @@ private:
     QHash<QString, ResourceInfo> m_resources;
     QString m_focussedResource;
 };
-
-#endif // PLUGINS_SLC_PLUGIN_H

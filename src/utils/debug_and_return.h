@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DEBUG_AND_RETURN_H
-#define DEBUG_AND_RETURN_H
+#pragma once
 
 #ifdef QT_DEBUG
 #include <QDebug>
@@ -39,5 +38,3 @@ T debug_and_return(bool debug, const char *message, T &&value)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // DEBUG_AND_RETURN_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_RUN_APPLICATION_PLUGIN_H
-#define PLUGINS_RUN_APPLICATION_PLUGIN_H
+#pragma once
 
 #include "dbusutils.h"
 #include <Plugin.h>
@@ -29,5 +28,3 @@ private:
     const QString m_keywordi18n;
     const QString m_keyword;
 };
-
-#endif // PLUGINS_RUN_APPLICATION_PLUGIN_H

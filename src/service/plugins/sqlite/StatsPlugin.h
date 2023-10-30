@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_SQLITE_STATS_PLUGIN_H
-#define PLUGINS_SQLITE_STATS_PLUGIN_H
+#pragma once
 
 // Qt
 #include <QObject>
@@ -129,5 +128,3 @@ private:
 
     static StatsPlugin *s_instance;
 };
-
-#endif // PLUGINS_SQLITE_STATS_PLUGIN_H

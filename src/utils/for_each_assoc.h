@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_FOR_EACH_ASSOC_H
-#define UTILS_FOR_EACH_ASSOC_H
+#pragma once
 
 #include <kactivities-features.h>
 
@@ -65,5 +64,3 @@ Function for_each_assoc(const Container &c, Function f)
 
 } // namespace utils
 } // namespace kamd
-
-#endif // UTILS_FOR_EACH_ASSOC_H

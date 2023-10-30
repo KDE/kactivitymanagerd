@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef PLUGINS_GLOBAL_SHORTCUTS_PLUGIN_H
-#define PLUGINS_GLOBAL_SHORTCUTS_PLUGIN_H
+#pragma once
 
 #include <Plugin.h>
 class KActionCollection;
@@ -38,5 +37,3 @@ private:
     QStringList m_activitiesList;
     KActionCollection *m_actionCollection;
 };
-
-#endif // PLUGINS_GLOBAL_SHORTCUTS_PLUGIN_H

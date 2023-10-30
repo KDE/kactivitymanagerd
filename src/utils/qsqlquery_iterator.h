@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_QSQLQUERYITERATOR_H
-#define UTILS_QSQLQUERYITERATOR_H
+#pragma once
 
 #include <QSqlQuery>
 #include <QVariant>
@@ -62,5 +61,3 @@ private:
 
 NextValueIterator<QSqlQuery> begin(QSqlQuery &query);
 NextValueIterator<QSqlQuery> end(QSqlQuery &query);
-
-#endif /* UTILS_QSQLQUERYITERATOR_H */

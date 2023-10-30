@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FEATURES_H
-#define FEATURES_H
+#pragma once
 
 // Qt
 #include <QDBusVariant>
@@ -46,5 +45,3 @@ public Q_SLOTS:
 private:
     D_PTR;
 };
-
-#endif // FEATURES_H
