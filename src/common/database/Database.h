@@ -7,7 +7,7 @@
 #pragma once
 
 #include <QObject>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QSqlQuery>
 #include <memory>
 #include <utils/d_ptr.h>
@@ -130,9 +130,9 @@ inline QString starPatternToLike(const QString &pattern)
     return parseStarPattern(pattern, QStringLiteral("%"), escapeSqliteLikePattern);
 }
 
-inline QRegExp starPatternToRegex(const QString &pattern)
+inline QRegularExpression starPatternToRegex(const QString &pattern)
 {
-    return QRegExp(parseStarPattern(pattern, QStringLiteral(".*"), QRegExp::escape));
+    return QRegularExpression(parseStarPattern(pattern, QStringLiteral(".*"), [](QString pattern) { return QRegularExpression::escape(pattern); }));
 }
 
 } // namespace Common

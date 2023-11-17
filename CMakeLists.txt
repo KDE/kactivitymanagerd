@@ -49,9 +49,6 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 # Qt
 find_package (Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus Widgets)
 
-find_package(Qt6Core5Compat ${QT_MIN_VERSION} REQUIRED) # QRegExp
-
-
 # KDE Frameworks
 find_package (KF6DBusAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)

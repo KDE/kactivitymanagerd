@@ -31,7 +31,6 @@ kamd_add_plugin(org.kde.ActivityManager.ResourceScoring SOURCES ${sqliteplugin_S
 
 target_link_libraries(org.kde.ActivityManager.ResourceScoring 
    Qt::Sql
-   Qt::Core5Compat
    KF6::KIOCore
    KF6::DBusAddons
    KF6::Crash

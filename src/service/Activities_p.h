@@ -59,22 +59,22 @@ public:
 public:
     inline KConfigGroup activityNameConfig()
     {
-        return KConfigGroup(&config, "activities");
+        return KConfigGroup(&config, QStringLiteral("activities"));
     }
 
     inline KConfigGroup activityDescriptionConfig()
     {
-        return KConfigGroup(&config, "activities-descriptions");
+        return KConfigGroup(&config, QStringLiteral("activities-descriptions"));
     }
 
     inline KConfigGroup activityIconConfig()
     {
-        return KConfigGroup(&config, "activities-icons");
+        return KConfigGroup(&config, QStringLiteral("activities-icons"));
     }
 
     inline KConfigGroup mainConfig()
     {
-        return KConfigGroup(&config, "main");
+        return KConfigGroup(&config, QStringLiteral("main"));
     }
 
     inline QString activityName(const QString &activity)

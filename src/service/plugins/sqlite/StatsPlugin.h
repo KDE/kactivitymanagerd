@@ -8,9 +8,9 @@
 
 // Qt
 #include <QObject>
-#include <QRegExp>
 #include <QSqlQuery>
 #include <QTimer>
+#include <QRegularExpression>
 // STL
 #include <memory>
 
@@ -107,7 +107,7 @@ private:
     QObject *m_resources;
 
     QSet<QString> m_apps;
-    QList<QRegExp> m_urlFilters;
+    QList<QRegularExpression> m_urlFilters;
     QStringList m_otrActivities;
 
     std::unique_ptr<QSqlQuery> openResourceEventQuery;

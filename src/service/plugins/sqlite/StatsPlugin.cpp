@@ -100,10 +100,10 @@ void StatsPlugin::loadConfiguration()
     m_urlFilters.clear();
 
     auto filters = conf.readEntry("url-filters",
-                                  QStringList() << "about:*" // Ignore about: stuff
-                                                << "*/.*" // Ignore hidden files
-                                                << "/" // Ignore root
-                                                << "/tmp/*" // Ignore everything in /tmp
+                                  QStringList{"about:*", // Ignore about: stuff
+                                              "*/.*", // Ignore hidden files
+                                              "/", // Ignore root
+                                              "/tmp/*"} // Ignore everything in /tmp
     );
 
     for (const auto &filter : filters) {
@@ -315,7 +315,7 @@ bool StatsPlugin::acceptedEvent(const Event &event)
         m_otrActivities.contains(currentActivity()) ||
 
         // Exclude URIs that match the ignored patterns
-        any_of(m_urlFilters.cbegin(), m_urlFilters.cend(), bind(&QRegExp::exactMatch, _1, event.uri)) ||
+        any_of(m_urlFilters.cbegin(), m_urlFilters.cend(), [event] (const QRegularExpression &regex){ return regex.match(event.uri).hasMatch(); }) ||
 
         // if blocked by default, the list contains allowed applications
         //     ignore event if the list doesn't contain the application
