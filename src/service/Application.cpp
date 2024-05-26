@@ -20,9 +20,7 @@
 #include <kdbusservice.h>
 #include <ksharedconfig.h>
 
-// Boost and utils
-#include <boost/range/adaptor/filtered.hpp>
-#include <boost/range/adaptor/transformed.hpp>
+// utils
 #include <utils/d_ptr_implementation.h>
 
 // System

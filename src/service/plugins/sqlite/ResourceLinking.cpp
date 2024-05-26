@@ -17,10 +17,6 @@
 #include <kconfig.h>
 #include <kdirnotify.h>
 
-// Boost
-#include <boost/range/algorithm/binary_search.hpp>
-#include <utils/range.h>
-
 // Local
 #include "Database.h"
 #include "DebugResources.h"
