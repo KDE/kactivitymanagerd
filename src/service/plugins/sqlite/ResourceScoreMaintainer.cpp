@@ -15,7 +15,6 @@
 
 // Utils
 #include <utils/d_ptr_implementation.h>
-#include <utils/for_each_assoc.h>
 
 // Local
 #include "ResourceScoreCache.h"
@@ -52,8 +51,6 @@ ResourceScoreMaintainer::Private::~Private()
 
 void ResourceScoreMaintainer::Private::processResources()
 {
-    using namespace kamd::utils;
-
     // initial delay before processing the resources
     sleep(1);
 
@@ -71,20 +68,18 @@ void ResourceScoreMaintainer::Private::processResources()
         resources.remove(activity);
     }
 
-    for_each_assoc(resources, [this](const ActivityID &activity, const Applications &applications) {
+    for (auto [activity, applications] : resources.asKeyValueRange()) {
         processActivity(activity, applications);
-    });
+    }
 }
 
 void ResourceScoreMaintainer::Private::processActivity(const ActivityID &activity, const Applications &applications)
 {
-    using namespace kamd::utils;
-
-    for_each_assoc(applications, [&](const ApplicationName &application, const ResourceList &resources) {
+    for (auto [application, resources] : applications.asKeyValueRange()) {
         for (const auto &resource : resources) {
             ResourceScoreCache(activity, application, resource).update();
         }
-    });
+    }
 }
 
 ResourceScoreMaintainer *ResourceScoreMaintainer::self()
