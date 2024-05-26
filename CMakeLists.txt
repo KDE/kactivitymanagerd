@@ -55,9 +55,6 @@ find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6Crash ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
 
-# Basic includes
-include (CPack)
-
 # Adding local CMake modules
 set (
    CMAKE_MODULE_PATH
