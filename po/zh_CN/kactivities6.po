@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kactivitymanagerd/kactivities6.pot\n"
-"X-Crowdin-File-ID: 44493\n"
+"X-Crowdin-File: /kf6-stable/messages/kactivitymanagerd/kactivities6.pot\n"
+"X-Crowdin-File-ID: 49768\n"
 
 #: service/Activities.cpp:86
 #, kde-format
