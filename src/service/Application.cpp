@@ -7,6 +7,7 @@
 // Self
 #include "Application.h"
 #include <kactivities-features.h>
+#include <version.h>
 
 // Qt
 #include <QDBusConnection>
@@ -15,6 +16,7 @@
 #include <QThread>
 
 // KDE
+#include <KAboutData>
 #include <KCrash>
 #include <KPluginMetaData>
 #include <kdbusservice.h>
@@ -249,8 +251,9 @@ int main(int argc, char **argv)
     QGuiApplication::setDesktopSettingsAware(false);
 
     Application application(argc, argv);
-    application.setApplicationName(QStringLiteral("ActivityManager"));
-    application.setOrganizationDomain(QStringLiteral("kde.org"));
+
+    KAboutData about(QStringLiteral("ActivityManager"), QString(), KACTIVITYMANAGERD_VERSION_STRING);
+    KAboutData::setApplicationData(about);
 
     KCrash::initialize();
 

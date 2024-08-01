@@ -61,6 +61,8 @@ qt_add_dbus_adaptor (
 
 add_executable (kactivitymanagerd ${kactivitymanager_SRCS})
 
+target_include_directories(kactivitymanagerd PRIVATE ${CMAKE_BINARY_DIR})
+
 target_link_libraries (kactivitymanagerd
    Qt::Core
    Qt::DBus

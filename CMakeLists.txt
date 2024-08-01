@@ -2,7 +2,11 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project (KActivityManagerd)
+set(PROJECT_VERSION "6.1.80")
+set(PROJECT_VERSION_MAJOR 6)
+set(PROJECT_DEP_VERSION "6.0.90")
+
+project (KActivityManagerd VERSION ${PROJECT_VERSION})
 
 set (QT_MIN_VERSION "6.7.0")
 set (KF6_MIN_VERSION "6.2.0")
@@ -41,7 +45,8 @@ include (ECMGenerateHeaders)
 include (ECMQtDeclareLoggingCategory)
 include (KDEClangFormat)
 include (KDEGitCommitHooks)
-include(ECMDeprecationSettings)
+include (ECMDeprecationSettings)
+include (ECMSetupVersion)
 
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -79,6 +84,10 @@ endif ()
 ecm_set_disabled_deprecation_versions(QT 6.7.0
     KF 6.4
 )
+
+ecm_setup_version(PROJECT VARIABLE_PREFIX KACTIVITYMANAGERD
+                  VERSION_HEADER ${CMAKE_BINARY_DIR}/version.h
+                  )
 
 add_subdirectory (src)
 
