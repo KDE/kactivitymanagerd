@@ -76,8 +76,8 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
    set (CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 endif ()
 
-ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.101
+ecm_set_disabled_deprecation_versions(QT 6.7.0
+    KF 6.4
 )
 
 add_subdirectory (src)
