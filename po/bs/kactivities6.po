@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2024-08-05 00:40+0000\n"
 "PO-Revision-Date: 2013-10-18 20:18+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian\n"
@@ -19,6 +19,16 @@ msgstr ""
 "X-Generator: Launchpad (build 16807)\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Samir Ribić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "samir.ribic@etf.unsa.ba"
 
 #: service/Activities.cpp:86
 #, kde-format
@@ -51,14 +61,6 @@ msgstr "Aktivnosti..."
 #| msgid "Switch to activity \"%1\""
 msgid "Switch to \"%1\""
 msgstr "Pređi na aktivnost \"%1\""
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Samir Ribić"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "samir.ribic@etf.unsa.ba"
 
 #, fuzzy
 #~| msgid "Activities..."

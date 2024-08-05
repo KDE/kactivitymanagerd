@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2024-08-05 00:40+0000\n"
 "PO-Revision-Date: 2018-09-22 22:43-0600\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 2.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "alam.yellow@gmail.com"
 
 #: service/Activities.cpp:86
 #, kde-format
@@ -47,14 +57,6 @@ msgstr "ਸਰਗਰਮੀ"
 #| msgid "Switch to activity \"%1\""
 msgid "Switch to \"%1\""
 msgstr "\"%1\" ਸਰਗਰਮੀ ਲਈ ਬਦਲੋ"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "alam.yellow@gmail.com"
 
 #~ msgctxt "Header title for activity data model"
 #~ msgid "Activity"
