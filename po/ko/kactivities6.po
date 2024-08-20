@@ -20,7 +20,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Shinjo Park"
+msgstr "박신조"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
