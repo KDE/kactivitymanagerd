@@ -82,7 +82,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 endif ()
 
 ecm_set_disabled_deprecation_versions(QT 6.8.0
-    KF 6.9.0
+    KF 6.12.0
 )
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KACTIVITYMANAGERD
