@@ -29,7 +29,6 @@
 #include "DebugActivities.h"
 #include "activitiesadaptor.h"
 #include "common/dbus/common.h"
-#include "ksmserver/KSMServer.h"
 
 // Private
 #define ACTIVITY_MANAGER_CONFIG_FILE_NAME QStringLiteral("kactivitymanagerdrc")
@@ -380,36 +379,6 @@ void Activities::Private::ensureCurrentActivityIsRunning()
     }
 }
 
-void Activities::Private::activitySessionStateChanged(const QString &activity, int status)
-{
-    QString currentActivity = this->currentActivity;
-
-    {
-        QReadLocker lock(&activitiesLock);
-        if (!activities.contains(activity)) {
-            return;
-        }
-    }
-
-    switch (status) {
-    case KSMServer::Started:
-    case KSMServer::FailedToStop:
-        setActivityState(activity, Activities::Running);
-        break;
-
-    case KSMServer::Stopped:
-        setActivityState(activity, Activities::Stopped);
-
-        if (currentActivity == activity) {
-            ensureCurrentActivityIsRunning();
-        }
-
-        break;
-    }
-
-    QMetaObject::invokeMethod(this, "configSync", Qt::QueuedConnection);
-}
-
 // Main
 
 Activities::Activities(QObject *parent)
@@ -431,9 +400,6 @@ Activities::Activities(QObject *parent)
     d->connect(&d->configSyncTimer, SIGNAL(timeout()), SLOT(configSync()), Qt::QueuedConnection);
 
     d->configSyncTimer.setSingleShot(true);
-
-    d->ksmserver = new KSMServer(this);
-    d->connect(d->ksmserver, SIGNAL(activitySessionStateChanged(QString, int)), SLOT(activitySessionStateChanged(QString, int)));
 
     d->updateSortedActivityList();
     // Loading the last used activity, if possible
@@ -567,8 +533,7 @@ void Activities::StartActivity(const QString &activity)
         }
     }
 
-    d->setActivityState(activity, Starting);
-    d->ksmserver->startActivitySession(activity);
+    d->setActivityState(activity, Running);
 }
 
 void Activities::StopActivity(const QString &activity)
@@ -583,8 +548,13 @@ void Activities::StopActivity(const QString &activity)
         }
     }
 
-    d->setActivityState(activity, Stopping);
-    d->ksmserver->stopActivitySession(activity);
+    d->setActivityState(activity, Stopped);
+
+    if (d->currentActivity == activity) {
+        d->ensureCurrentActivityIsRunning();
+    }
+
+    QMetaObject::invokeMethod(this, "configSync", Qt::QueuedConnection);
 }
 
 int Activities::ActivityState(const QString &activity) const

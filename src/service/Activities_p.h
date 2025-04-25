@@ -101,7 +101,6 @@ public Q_SLOTS:
 
     QString addActivity(const QString &name);
     void removeActivity(const QString &activity);
-    void activitySessionStateChanged(const QString &activity, int state);
 
 private:
     Activities *const q;
