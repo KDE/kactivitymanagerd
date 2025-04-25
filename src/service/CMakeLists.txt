@@ -38,7 +38,6 @@ set (kactivitymanager_SRCS
    Features.cpp
    Config.cpp
 
-   ksmserver/KSMServer.cpp
    )
 
 qt_add_dbus_adaptor (
