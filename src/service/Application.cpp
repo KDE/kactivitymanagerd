@@ -193,7 +193,7 @@ Application::~Application()
     qCDebug(KAMD_LOG_APPLICATION) << "Cleaning up...";
 
     // Waiting for the threads to finish
-    for (const auto thread : s_moduleThreads) {
+    for (const auto thread : std::as_const(s_moduleThreads)) {
         thread->quit();
         thread->wait();
 
@@ -201,7 +201,7 @@ Application::~Application()
     }
 
     // Deleting plugin objects
-    for (const auto plugin : d->plugins) {
+    for (const auto plugin : std::as_const(d->plugins)) {
         delete plugin;
     }
 

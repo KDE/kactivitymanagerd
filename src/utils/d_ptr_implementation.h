@@ -6,8 +6,6 @@
 
 #pragma once
 
-#include <utility>
-
 namespace kamd
 {
 namespace utils

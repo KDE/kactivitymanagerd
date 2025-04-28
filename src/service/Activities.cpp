@@ -68,7 +68,8 @@ Activities::Private::Private(Activities *parent)
     // Do we have a running activity?
     bool atLeastOneRunning = false;
 
-    for (const auto &activity : activityNameConfig().keyList()) {
+    const auto activtiesList = activityNameConfig().keyList();
+    for (const auto &activity : activtiesList) {
         auto state = runningActivities.contains(activity) ? Activities::Running : stoppedActivities.contains(activity) ? Activities::Stopped : defaultState;
 
         activities[activity] = state;
@@ -122,7 +123,7 @@ void Activities::Private::loadLastActivity()
     // If there are no public activities, try to load the last used activity
     const auto lastUsedActivity = mainConfig().readEntry("currentActivity", QString());
 
-    setCurrentActivity((lastUsedActivity.isEmpty() && activities.size() > 0) ? activities.keys().at(0) : lastUsedActivity);
+    setCurrentActivity((lastUsedActivity.isEmpty() && activities.size() > 0) ? activities.constBegin().key() : lastUsedActivity);
 }
 
 Activities::Private::~Private()
@@ -493,7 +494,7 @@ QStringList Activities::ListActivities() const
     QReadLocker lock(&d->activitiesLock);
 
     QStringList s;
-    for (const auto &a : d->sortedActivities) {
+    for (const auto &a : std::as_const(d->sortedActivities)) {
         s << a.id;
     }
     return s;
@@ -504,7 +505,7 @@ QStringList Activities::ListActivities(int state) const
     QReadLocker lock(&d->activitiesLock);
 
     QStringList s;
-    for (const auto &a : d->sortedActivities) {
+    for (const auto &a : std::as_const(d->sortedActivities)) {
         if (a.state == (State)state) {
             s << a.id;
         }

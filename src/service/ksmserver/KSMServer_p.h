@@ -12,9 +12,6 @@
 // Qt
 #include <QPair>
 
-// STD
-#include <memory>
-
 class QDBusServiceWatcher;
 class QDBusInterface;
 class QDBusPendingCallWatcher;

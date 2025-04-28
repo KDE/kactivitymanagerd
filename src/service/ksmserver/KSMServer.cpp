@@ -54,7 +54,7 @@ void KSMServer::stopActivitySession(const QString &activity)
 void KSMServer::Private::processLater(const QString &activity, bool start)
 {
     if (kwin->isValid()) {
-        for (const auto &item : queue) {
+        for (const auto &item : std::as_const(queue)) {
             if (item.first == activity) {
                 return;
             }
