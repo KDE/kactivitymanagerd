@@ -11,7 +11,6 @@
 // Qt
 #include <QDBusVariant>
 #include <QObject>
-#include <QString>
 #include <QStringList>
 
 // Utils

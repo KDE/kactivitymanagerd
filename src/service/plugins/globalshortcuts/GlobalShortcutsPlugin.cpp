@@ -8,7 +8,6 @@
 #include "GlobalShortcutsPlugin.h"
 
 #include <QAction>
-#include <QString>
 #include <QStringList>
 
 #include <KActionCollection>

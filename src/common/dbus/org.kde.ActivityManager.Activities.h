@@ -9,7 +9,6 @@
 #include <QDBusArgument>
 #include <QDebug>
 #include <QList>
-#include <QString>
 
 struct ActivityInfo {
     QString id;

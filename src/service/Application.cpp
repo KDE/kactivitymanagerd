@@ -102,7 +102,7 @@ public:
 Application *Application::Private::s_instance = nullptr;
 
 Application::Application(int &argc, char **argv)
-    : QApplication(argc, argv)
+    : QCoreApplication(argc, argv)
 {
 }
 

@@ -12,7 +12,6 @@
 #include <QFileInfo>
 #include <QMimeDatabase>
 #include <QStandardPaths>
-#include <QString>
 #include <QUrl>
 #include <QXmlStreamReader>
 

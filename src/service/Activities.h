@@ -7,7 +7,6 @@
 #pragma once
 
 // Qt
-#include <QString>
 #include <QStringList>
 
 // Utils

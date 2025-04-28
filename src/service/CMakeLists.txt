@@ -11,7 +11,6 @@ find_package (Qt6 REQUIRED NO_MODULE COMPONENTS Sql Gui Widgets)
 find_package (KF6Config ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6CoreAddons ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6I18n ${KF6_MIN_VERSION} CONFIG REQUIRED)
-find_package (KF6WindowSystem ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6GlobalAccel ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6XmlGui ${KF6_MIN_VERSION} CONFIG REQUIRED)
 find_package (KF6KIO ${KF6_MIN_VERSION} CONFIG REQUIRED)
@@ -72,7 +71,6 @@ target_link_libraries (kactivitymanagerd
    KF6::CoreAddons
    KF6::ConfigCore
    KF6::I18n
-   KF6::WindowSystem
    KF6::Crash
    kactivitymanagerd_plugin
    debug_STATIC

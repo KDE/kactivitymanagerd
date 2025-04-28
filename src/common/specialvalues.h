@@ -6,8 +6,6 @@
 
 #pragma once
 
-#include <QString>
-
 #define GLOBAL_ACTIVITY_TAG QStringLiteral(":global")
 #define ANY_ACTIVITY_TAG QStringLiteral(":any")
 #define CURRENT_ACTIVITY_TAG QStringLiteral(":current")

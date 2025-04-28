@@ -11,7 +11,6 @@
 
 // Qt
 #include <QReadWriteLock>
-#include <QString>
 #include <QTimer>
 
 // KDE

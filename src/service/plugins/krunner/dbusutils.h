@@ -8,7 +8,6 @@
 
 #include <QDBusArgument>
 #include <QList>
-#include <QString>
 #include <QVariantMap>
 
 enum Type {

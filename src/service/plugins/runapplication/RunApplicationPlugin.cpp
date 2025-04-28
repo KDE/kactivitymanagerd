@@ -10,7 +10,6 @@
 #include <QDir>
 #include <QProcess>
 #include <QStandardPaths>
-#include <QString>
 #include <QUrl>
 
 #include "DebugApplication.h"

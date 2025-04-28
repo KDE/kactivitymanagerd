@@ -9,7 +9,6 @@
 // Qt
 #include <QDBusVariant>
 #include <QObject>
-#include <QString>
 
 // Utils
 #include <utils/d_ptr.h>

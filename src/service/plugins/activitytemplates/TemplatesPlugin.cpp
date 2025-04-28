@@ -9,7 +9,6 @@
 
 // Qt
 #include <QDBusConnection>
-#include <QString>
 #include <QStringList>
 
 // Utils

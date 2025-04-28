@@ -21,7 +21,7 @@ class Features;
  * This can *not* be a QGuiApplication because
  * we need KWindowSystem widgets.
  */
-class Application : public QApplication
+class Application : public QCoreApplication
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Application")

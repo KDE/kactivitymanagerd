@@ -9,7 +9,6 @@
 // Qt
 #include <QDateTime>
 #include <QSqlError>
-#include <QString>
 
 // Utils
 #include <utils/d_ptr.h>

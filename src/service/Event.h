@@ -10,8 +10,6 @@
 
 // Qt
 #include <QDateTime>
-#include <QMetaType>
-#include <QString>
 
 /**
  *
@@ -26,10 +24,7 @@ public:
         Modified = 2, ///< previously opened resource was modified
         Closed = 3, ///< previously opened resource was closed
 
-        FocussedIn = 4, ///< resource get the keyboard focus
-        FocussedOut = 5, ///< resource lost the focus
-
-        LastEventType = 5,
+        LastEventType = 3,
         UserEventType = 32,
     };
 
@@ -42,7 +37,7 @@ public:
 
     Event();
 
-    explicit Event(const QString &application, quintptr wid, const QString &uri, int type = Accessed);
+    explicit Event(const QString &application, const QString &uri, int type = Accessed);
 
     Event deriveWithType(Type type) const;
 
@@ -50,7 +45,6 @@ public:
 
 public:
     QString application;
-    quintptr wid;
     QString uri;
     int type;
     QDateTime timestamp;

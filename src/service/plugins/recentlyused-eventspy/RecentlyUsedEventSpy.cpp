@@ -8,7 +8,6 @@
 
 #include <QFile>
 #include <QStandardPaths>
-#include <QString>
 #include <QUrl>
 #include <QXmlStreamReader>
 

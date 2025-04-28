@@ -6,9 +6,6 @@
 
 #pragma once
 
-// Qt
-#include <QString>
-
 // Utils
 #include <utils/d_ptr.h>
 
@@ -33,8 +30,7 @@ public Q_SLOTS:
      * Registers a new event
      * @param application the name of application that sent the event. Ignored
      *                    if the event is not of type Opened
-     * @param windowId ID of the window that displays the resource. Ignored if
-     *                 the event is of type Accessed
+     * @param windowId unused
      * @param uri URI of the resource on which the event happened
      * @param event type of the event
      */
