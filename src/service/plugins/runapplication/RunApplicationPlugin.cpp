@@ -97,9 +97,10 @@ void RunApplicationPlugin::activityStateChanged(const QString &activity, int sta
 void RunApplicationPlugin::executeIn(const QString &path) const
 {
     QDir directory(path);
-    for (const auto &item : directory.entryList(QDir::Files)) {
-        QString filePath = directory.filePath(item);
-        if (QFileInfo fileInfo(filePath); fileInfo.suffix() == "sh" && fileInfo.isExecutable()) {
+    const auto fileInfos = directory.entryInfoList(QDir::Files);
+    for (const auto &fileInfo : fileInfos) {
+        QString filePath = fileInfo.filePath();
+        if (fileInfo.suffix() == "sh" && fileInfo.isExecutable()) {
             qCDebug(KAMD_LOG_APPLICATION) << "Starting a shell script: " << filePath;
             QProcess::startDetached(filePath, QStringList());
 

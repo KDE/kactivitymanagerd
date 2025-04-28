@@ -99,11 +99,11 @@ void StatsPlugin::loadConfiguration()
     // Loading URL filters
     m_urlFilters.clear();
 
-    auto filters = conf.readEntry("url-filters",
-                                  QStringList{"about:*", // Ignore about: stuff
-                                              "*/.*", // Ignore hidden files
-                                              "/", // Ignore root
-                                              "/tmp/*"} // Ignore everything in /tmp
+    const auto filters = conf.readEntry("url-filters",
+                                        QStringList{"about:*", // Ignore about: stuff
+                                                    "*/.*", // Ignore hidden files
+                                                    "/", // Ignore root
+                                                    "/tmp/*"} // Ignore everything in /tmp
     );
 
     for (const auto &filter : filters) {

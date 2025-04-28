@@ -29,15 +29,16 @@ public:
     explicit Features(QObject *parent = nullptr);
     ~Features() override;
 
-public Q_SLOTS:
+    QStringList ListFeatures(const QString &module) const;
+
+    QDBusVariant GetValue(const QString &property) const;
+
     /**
      * Is the feature backend available?
      */
     bool IsFeatureOperational(const QString &feature) const;
 
-    QStringList ListFeatures(const QString &module) const;
-
-    QDBusVariant GetValue(const QString &property) const;
+public Q_SLOTS:
 
     void SetValue(const QString &property, const QDBusVariant &value);
 

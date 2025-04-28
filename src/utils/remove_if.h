@@ -7,7 +7,6 @@
 #pragma once
 
 #include <algorithm>
-#include <kactivities-features.h>
 
 /********************************************************************
  *  Syntactic sugar for the erase-remove idiom                      *

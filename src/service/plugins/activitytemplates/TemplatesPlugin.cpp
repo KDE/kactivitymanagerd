@@ -11,9 +11,6 @@
 #include <QDBusConnection>
 #include <QStringList>
 
-// Utils
-#include <utils/for_each_assoc.h>
-
 // Local
 #include "templatesadaptor.h"
 
@@ -82,8 +79,6 @@ void TemplatesPlugin::setFeatureValue(const QStringList &property, const QDBusVa
 
 void TemplatesPlugin::createActivity(const QDBusVariant &_values)
 {
-    using namespace kamd::utils;
-
     QVariantHash values = _values.variant().toHash();
 
     auto takeStringValue = [&values](const QString &key) {
@@ -103,9 +98,9 @@ void TemplatesPlugin::createActivity(const QDBusVariant &_values)
     KConfigGroup pluginConfig(config());
     KConfigGroup activityConfig(&pluginConfig, id);
 
-    for_each_assoc(values, [&activityConfig](const QString &key, const QVariant &value) {
+    for (const auto &[key, value] : values.asKeyValueRange()) {
         activityConfig.writeEntry(key, value);
-    });
+    }
 
     activityConfig.sync();
 

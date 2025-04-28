@@ -50,11 +50,57 @@ public:
     ~Activities() override;
 
     // workspace activities control
-public Q_SLOTS:
     /**
      * @returns the id of the current activity, empty string if none
      */
     QString CurrentActivity() const;
+
+    /**
+     * @returns the state of the activity
+     * @param activity id of the activity
+     */
+    int ActivityState(const QString &activity) const;
+
+    /**
+     * @returns the list of all existing activities
+     */
+    QStringList ListActivities() const;
+
+    /**
+     * @returns the list of activities with the specified state
+     * @param state state
+     */
+    QStringList ListActivities(int state) const;
+
+    /**
+     * @returns the name of the specified activity
+     * @param activity id of the activity
+     */
+    QString ActivityName(const QString &activity) const;
+
+    /**
+     * @returns the description of the specified activity
+     * @param activity id of the activity
+     */
+    QString ActivityDescription(const QString &activity) const;
+
+    /**
+     * @returns the icon of the specified activity
+     * @param activity id of the activity
+     */
+    QString ActivityIcon(const QString &activity) const;
+
+    /**
+     * @returns a list of activities with basic info about them
+     */
+    ActivityInfoList ListActivitiesWithInformation() const;
+
+    /**
+     * @returns the info about an activity
+     */
+    ActivityInfo ActivityInformation(const QString &activity) const;
+
+public Q_SLOTS:
 
     /**
      * Sets the current activity
@@ -92,33 +138,10 @@ public Q_SLOTS:
     void StopActivity(const QString &activity);
 
     /**
-     * @returns the state of the activity
-     * @param activity id of the activity
-     */
-    int ActivityState(const QString &activity) const;
-
-    /**
      * Removes the specified activity
      * @param activity id of the activity to delete
      */
     void RemoveActivity(const QString &activity);
-
-    /**
-     * @returns the list of all existing activities
-     */
-    QStringList ListActivities() const;
-
-    /**
-     * @returns the list of activities with the specified state
-     * @param state state
-     */
-    QStringList ListActivities(int state) const;
-
-    /**
-     * @returns the name of the specified activity
-     * @param activity id of the activity
-     */
-    QString ActivityName(const QString &activity) const;
 
     /**
      * Sets the name of the specified activity
@@ -128,12 +151,6 @@ public Q_SLOTS:
     void SetActivityName(const QString &activity, const QString &name);
 
     /**
-     * @returns the description of the specified activity
-     * @param activity id of the activity
-     */
-    QString ActivityDescription(const QString &activity) const;
-
-    /**
      * Sets the description of the specified activity
      * @param activity id of the activity
      * @param description description to be set
@@ -141,28 +158,11 @@ public Q_SLOTS:
     void SetActivityDescription(const QString &activity, const QString &description);
 
     /**
-     * @returns the icon of the specified activity
-     * @param activity id of the activity
-     */
-    QString ActivityIcon(const QString &activity) const;
-
-    /**
      * Sets the icon of the specified activity
      * @param activity id of the activity
      * @param icon icon to be set
      */
     void SetActivityIcon(const QString &activity, const QString &icon);
-
-public Q_SLOTS:
-    /**
-     * @returns a list of activities with basic info about them
-     */
-    ActivityInfoList ListActivitiesWithInformation() const;
-
-    /**
-     * @returns the info about an activity
-     */
-    ActivityInfo ActivityInformation(const QString &activity) const;
 
 Q_SIGNALS:
     /**

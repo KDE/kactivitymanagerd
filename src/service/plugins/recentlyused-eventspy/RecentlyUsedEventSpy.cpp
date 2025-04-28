@@ -137,7 +137,7 @@ void RecentlyUsedEventSpyPlugin::fileUpdated(const QString &filename)
     }
 
     // then find the files that were accessed since last run
-    for (const Bookmark &mark : bookmarks) {
+    for (const Bookmark &mark : std::as_const(bookmarks)) {
         if (mark.added > m_lastUpdate || mark.modified > m_lastUpdate || mark.visited > m_lastUpdate) {
             addDocument(mark.href, mark.latestApplication(), mark.mimetype);
         }
