@@ -108,6 +108,21 @@ Resources::~Resources()
 {
 }
 
+namespace
+{
+QString sanitizeUri(const QString &uri)
+{
+    auto _uri = uri;
+    if (uri.startsWith("file://")) {
+        _uri = _uri.mid(QStringLiteral("file:/").length());
+    }
+    if (uri.startsWith("//")) {
+        _uri = _uri.mid(QStringLiteral("/").length());
+    }
+    return _uri;
+}
+};
+
 void Resources::RegisterResourceEvent(const QString &application, uint _windowId, const QString &uri, uint event)
 {
     // TODO KF7 remove _windowId
@@ -117,7 +132,7 @@ void Resources::RegisterResourceEvent(const QString &application, uint _windowId
         return;
     }
 
-    d->addEvent(Event{application, uri, (Event::Type)event});
+    d->addEvent(Event{application, sanitizeUri(uri), (Event::Type)event});
 }
 
 void Resources::RegisterResourceMimetype(const QString &uri, const QString &mimetype)
@@ -126,7 +141,7 @@ void Resources::RegisterResourceMimetype(const QString &uri, const QString &mime
         return;
     }
 
-    Q_EMIT RegisteredResourceMimetype(uri, mimetype);
+    Q_EMIT RegisteredResourceMimetype(sanitizeUri(uri), mimetype);
 }
 
 void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
@@ -136,7 +151,7 @@ void Resources::RegisterResourceTitle(const QString &uri, const QString &title)
         return;
     }
 
-    Q_EMIT RegisteredResourceTitle(uri, title);
+    Q_EMIT RegisteredResourceTitle(sanitizeUri(uri), title);
 }
 
 #include "moc_Resources_p.cpp"
