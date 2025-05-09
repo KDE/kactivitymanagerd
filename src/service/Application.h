@@ -7,7 +7,7 @@
 #pragma once
 
 // Qt
-#include <QApplication>
+#include <QGuiApplication>
 
 // Utils
 #include <utils/d_ptr.h>
@@ -21,7 +21,7 @@ class Features;
  * This can *not* be a QGuiApplication because
  * we need KWindowSystem widgets.
  */
-class Application : public QCoreApplication
+class Application : public QGuiApplication
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.ActivityManager.Application")

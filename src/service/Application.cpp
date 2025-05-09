@@ -102,7 +102,7 @@ public:
 Application *Application::Private::s_instance = nullptr;
 
 Application::Application(int &argc, char **argv)
-    : QCoreApplication(argc, argv)
+    : QGuiApplication(argc, argv)
 {
 }
 
@@ -234,7 +234,7 @@ Resources &Application::resources() const
 
 void Application::quit()
 {
-    QApplication::quit();
+    QCoreApplication::quit();
 }
 
 #include "Version.h"
