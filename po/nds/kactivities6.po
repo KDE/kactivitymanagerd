@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
 "PO-Revision-Date: 2014-08-21 16:34+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -32,14 +32,14 @@ msgstr "s_dibbern@web.de"
 msgid "Default"
 msgstr "Standard"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, fuzzy, kde-format
 #| msgid "Activity"
 msgid "Activity Manager"
 msgstr "Aktiviteet"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""

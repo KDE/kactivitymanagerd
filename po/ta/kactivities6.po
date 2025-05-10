@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
 "PO-Revision-Date: 2024-09-08 13:06+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -32,13 +32,13 @@ msgstr "Kde-l10n-ta@kde.org"
 msgid "Default"
 msgstr "இயல்பிருப்பு"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, kde-format
 msgid "Activity Manager"
 msgstr "செயல்பாடு மேலாளி"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""

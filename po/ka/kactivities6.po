@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
 "PO-Revision-Date: 2024-08-05 03:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -33,13 +33,13 @@ msgstr "Temuri.doghonadze@gmail.com"
 msgid "Default"
 msgstr "აქტივობების მმართველის ჩვენება"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, kde-format
 msgid "Activity Manager"
 msgstr "აქტივობების მმართველის ჩვენება"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""

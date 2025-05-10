@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
 "PO-Revision-Date: 2018-09-22 22:43-0600\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -32,13 +32,13 @@ msgstr "alam.yellow@gmail.com"
 msgid "Default"
 msgstr "ਡਿਫਾਲਟ"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, kde-format
 msgid "Activity Manager"
 msgstr "ਸਰਗਰਮੀ ਮੈਨੇਜਰ"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""

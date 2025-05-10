@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd_fileitem_linking_plugin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
 "PO-Revision-Date: 2021-03-01 12:15+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -33,13 +33,13 @@ msgstr "smart2128vr@gmail.com,"
 msgid "Default"
 msgstr "Predefinita"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, kde-format
 msgid "Activity Manager"
 msgstr "Gestore delle attività"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""

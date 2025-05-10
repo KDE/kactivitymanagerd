@@ -1,15 +1,15 @@
-# Spanish translations for kactivities5.po package.
-# Copyright (C) 2016 This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
+# Spanish translations for kactivities6.po package.
+# Copyright (C) 2016-2025 This file is copyright:
+# This file is distributed under the same license as the kactivitymanagerd package.
 # Automatically generated, 2016.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2016, 2018, 2021.
+#
+# SPDX-FileCopyrightText: 2016, 2018, 2021, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: kactivities5\n"
+"Project-Id-Version: kactivities6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-05 00:40+0000\n"
-"PO-Revision-Date: 2021-02-28 12:27+0100\n"
+"POT-Creation-Date: 2025-05-10 00:44+0000\n"
+"PO-Revision-Date: 2025-05-10 00:46+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -34,13 +34,13 @@ msgstr "ecuadra@eloihr.net"
 msgid "Default"
 msgstr "Por omisión"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:29
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
 #, kde-format
 msgid "Activity Manager"
 msgstr "Gestor de actividades"
 
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:70
-#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:106
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
+#: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
 #, kde-format
 msgctxt "@action"
 msgid "Switch to activity \"%1\""
