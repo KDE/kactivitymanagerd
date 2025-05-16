@@ -50,6 +50,7 @@ public:
     ~Activities() override;
 
     // workspace activities control
+public Q_SLOTS:
     /**
      * @returns the id of the current activity, empty string if none
      */
@@ -99,8 +100,6 @@ public:
      * @returns the info about an activity
      */
     ActivityInfo ActivityInformation(const QString &activity) const;
-
-public Q_SLOTS:
 
     /**
      * Sets the current activity
