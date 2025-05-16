@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 00:44+0000\n"
+"POT-Creation-Date: 2025-05-16 02:42+0000\n"
 "PO-Revision-Date: 2021-09-05 20:23+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mschlander@opensuse.org"
 
-#: service/Activities.cpp:86
+#: service/Activities.cpp:87
 #, kde-format
 msgid "Default"
 msgstr "Standard"
