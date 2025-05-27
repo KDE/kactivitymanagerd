@@ -39,12 +39,12 @@ public:
     Activities &activities() const;
     Features &features() const;
 
-    QString serviceVersion() const;
     QStringList loadedPlugins() const;
 
 public Q_SLOTS:
     void quit();
     bool loadPlugin(const QString &plugin);
+    QString serviceVersion() const;
 
 private Q_SLOTS:
     void init();
