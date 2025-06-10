@@ -116,7 +116,7 @@ void StatsPlugin::loadConfiguration()
 
 void StatsPlugin::deleteOldEvents()
 {
-    DeleteEarlierStats(QString(), config().readEntry("keep-history-for", 0));
+    DeleteEarlierStats(QString(), config().readEntry("keep-history-for", 4));
 }
 
 void StatsPlugin::openResourceEvent(const QString &usedActivity,
