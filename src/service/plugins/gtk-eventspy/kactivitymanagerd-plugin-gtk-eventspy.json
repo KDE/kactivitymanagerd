@@ -66,6 +66,7 @@
         "Description[fi]": "Kerää tapahtumat GtkFileChooseria ja GtkRecentManageriä käyttävistä sovelluksista siten kuin https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/ määrittää",
         "Description[fr]": "Collecte les évènements d'applications utilisant GtkFileChooser et GtkRecentManager tel que spécifié par https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[gl]": "Recolle eventos de aplicacións que usan GtkFileChooser e GtkRecentManager como se indica en https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
+        "Description[he]": "איסוף אירועים מיישומים שמשתמשים ב־GtkFileChooser וב־GtkRecentManager כפי שמתואר על ידי https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[hi]": "https://www.freedesktop.org/wiki/ Specifications/desktop-bookmark-spec/ द्वारा निर्दिष्ट GtkFileChooser और GtkRecentManager का उपयोग करने वाले अनुप्रयोगों से धटनाएं एकत्र करता है",
         "Description[hu]": "Eseményeket gyűjt olyan alkalmazásoktól, amik a GtkFileChooser és GtkRecentManager API-t használják, ahogy itt specifikálták: https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
         "Description[ia]": "Collige eventos ab applicationes que usa GtkFileChooser e GtkRecentManager como specificate per https://www.freedesktop.org/wiki/Specifications/desktop-bookmark-spec/",
