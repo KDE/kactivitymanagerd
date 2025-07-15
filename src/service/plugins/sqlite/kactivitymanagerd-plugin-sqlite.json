@@ -70,6 +70,7 @@
         "Description[fi]": "Liitännäinen tapahtumien tallentamiseksi ja arvostelemiseksi Sqliteen",
         "Description[fr]": "Module pour enregistrer et marquer les évènements dans SQLite",
         "Description[gl]": "Un complemento para gardar e cualificar eventos en SQLite.",
+        "Description[he]": "תוסף לאחסון וניקוד אירועים ב־SQLite",
         "Description[hi]": "एस्क्यूलाइट में घटनाओं को संग्रहीत और स्कोर करने के लिए प्लगइन ",
         "Description[hu]": "Bővítmény események tárolásához és pontozásához SQLite-ban",
         "Description[ia]": "Plugin pro immagazinar e dar punctos a eventos in Sqlite",

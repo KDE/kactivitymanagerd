@@ -71,6 +71,7 @@
         "Description[fi]": "Aktiviteettia vaihdettaessa avaa sen virtuaalityöpöydän, jota kyseisellä aktiviteetilla viimeksi käytettiin",
         "Description[fr]": "Lors du changement vers une activité, ouvre le bureau virtuel utilisé en dernier avec cette activité",
         "Description[gl]": "Cando se cambia de actividade abre o último escritorio virtual usado con esa actividade.",
+        "Description[he]": "בעת מעבר לפעילות מסוימת, שולחן העבודה הווירטואלי האחרון שהיה בשימוש ייפתח עם הפעילות הזאת",
         "Description[hi]": "किसी गतिविधि पर बदलते समय, उस गतिविधि के साथ अंतिम बार उपयोग किया गया आभासी डेस्कटॉप खोलता है",
         "Description[hu]": "Aktivitásra váltáskor megnyitja az aktivitással utoljára használt virtuális asztalt",
         "Description[ia]": "Quando on commuta a un activitate, il aperi le ultime scriptorio virtual usate con celle activitate",
