@@ -43,12 +43,12 @@
     </method>
 
     <method name="ListActivitiesWithInformation">
-      <arg type="a(sssd)" direction="out"/>
+      <arg type="a(ssssi)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
     </method>
     <method name="ActivityInformation">
-      <arg type="(sssd)" direction="out"/>
+      <arg type="(ssssi)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfo" />
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfo" />
       <arg name="activity" type="s" direction="in"/>
