@@ -46,7 +46,6 @@
                 "Name[tr]": "Makis Marimpis",
                 "Name[uk]": "Makis Marimpis",
                 "Name[vi]": "Makis Marimpis",
-                "Name[x-test]": "xxMakis Marimpisxx",
                 "Name[zh_CN]": "Makis Marimpis",
                 "Name[zh_TW]": "Makis Marimpis"
             }
@@ -95,7 +94,6 @@
         "Description[tr]": "Etkinlik değiştirme için genel klavye kısayolları ekler",
         "Description[uk]": "Додає загальні клавіатурні скорочення для перемикання просторів дій",
         "Description[vi]": "Thêm các phím tắt toàn cục cho việc chuyển Hoạt động",
-        "Description[x-test]": "xxAdds global keyboard shortcuts for activity switchingxx",
         "Description[zh_CN]": "添加活动切换的全局键盘快捷方式",
         "Description[zh_TW]": "新增活動切換的全域快速鍵",
         "EnabledByDefault": true,
@@ -146,7 +144,6 @@
         "Name[tr]": "Global Kısayollar",
         "Name[uk]": "Загальні клавіатурні скорочення",
         "Name[vi]": "Phím tắt toàn cục",
-        "Name[x-test]": "xxGlobal Shortcutsxx",
         "Name[zh_CN]": "全局快捷键",
         "Name[zh_TW]": "全域捷徑",
         "Version": "1.0",
