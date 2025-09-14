@@ -34,7 +34,7 @@ QDBusArgument &operator<<(QDBusArgument &arg, const ActivityInfo &r)
     arg << r.name;
     arg << r.description;
     arg << r.icon;
-    arg << r.state;
+    arg << 2; // unused
 
     arg.endStructure();
 
@@ -45,11 +45,13 @@ const QDBusArgument &operator>>(const QDBusArgument &arg, ActivityInfo &r)
 {
     arg.beginStructure();
 
+    int unused;
+
     arg >> r.id;
     arg >> r.name;
     arg >> r.description;
     arg >> r.icon;
-    arg >> r.state;
+    arg >> unused;
 
     arg.endStructure();
 

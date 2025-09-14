@@ -16,14 +16,6 @@
 
 #include <KService>
 
-namespace
-{
-enum ActivityState {
-    Running = 2,
-    Stopped = 4,
-};
-}
-
 K_PLUGIN_CLASS(RunApplicationPlugin)
 
 RunApplicationPlugin::RunApplicationPlugin(QObject *parent)
@@ -44,7 +36,6 @@ bool RunApplicationPlugin::init(QHash<QString, QObject *> &modules)
     m_activitiesService = modules[QStringLiteral("activities")];
 
     connect(m_activitiesService, SIGNAL(CurrentActivityChanged(QString)), this, SLOT(currentActivityChanged(QString)));
-    connect(m_activitiesService, SIGNAL(ActivityStateChanged(QString, int)), this, SLOT(activityStateChanged(QString, int)));
 
     const auto currentActivity = Plugin::retrieve<QString>(m_activitiesService, "CurrentActivity");
 
@@ -74,24 +65,8 @@ void RunApplicationPlugin::currentActivityChanged(const QString &activity)
     executeIn(activityDirectory(activity) + QStringLiteral("activated"));
 
     if (!m_previousActivities.contains(activity)) {
-        // This is the first time we have switched
-        // to this activity in the current session,
-        // pretending it has just been started
-        activityStateChanged(activity, Running);
-
         m_previousActivities << activity;
     }
-}
-
-void RunApplicationPlugin::activityStateChanged(const QString &activity, int state)
-{
-    auto directory = (state == Running) ? QStringLiteral("started") : (state == Stopped) ? QStringLiteral("stopped") : QString();
-
-    if (directory.isEmpty()) {
-        return;
-    }
-
-    executeIn(activityDirectory(activity) + directory);
 }
 
 void RunApplicationPlugin::executeIn(const QString &path) const

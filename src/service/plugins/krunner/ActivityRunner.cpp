@@ -67,7 +67,7 @@ RemoteMatches ActivityRunner::Match(const QString &query)
                 m.text = i18n("Switch to \"%1\"", info.name);
                 m.iconName = info.icon;
                 m.type = Type::ExactMatch;
-                m.relevance = 0.7 + ((activityInfo.state == Activities::State::Running || activityInfo.state == Activities::State::Starting) ? 0.1 : 0);
+                m.relevance = 0.7;
                 matches.append(m);
             }
         }

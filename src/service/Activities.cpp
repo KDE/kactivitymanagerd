@@ -49,11 +49,6 @@ Activities::Private::Private(Activities *parent)
     //     << QStandardPaths::standardLocations(config.locationType())
     //     ;
 
-    const auto activtiesList = activityNameConfig().keyList();
-    for (const auto &activity : activtiesList) {
-        activities[activity] = Activities::Running;
-    }
-
     // Is this our first start?
     if (activities.isEmpty()) {
         // We need to add this only after the service has been properly started
@@ -74,8 +69,8 @@ Activities::Private::Private(Activities *parent)
 void Activities::Private::updateSortedActivityList()
 {
     QList<ActivityInfo> a;
-    for (auto activityKey = activities.keyBegin(); activityKey != activities.keyEnd(); ++activityKey) {
-        a.append(q->ActivityInformation(*activityKey));
+    for (auto activity : std::as_const(activities)) {
+        a.append(q->ActivityInformation(activity));
     }
 
     std::sort(a.begin(), a.end(), &nameBasedOrdering);
@@ -91,7 +86,7 @@ void Activities::Private::loadLastActivity()
     // If there are no public activities, try to load the last used activity
     const auto lastUsedActivity = mainConfig().readEntry("currentActivity", QString());
 
-    setCurrentActivity((lastUsedActivity.isEmpty() && activities.size() > 0) ? activities.constBegin().key() : lastUsedActivity);
+    setCurrentActivity((lastUsedActivity.isEmpty() && activities.size() > 0) ? *activities.constBegin() : lastUsedActivity);
 }
 
 Activities::Private::~Private()
@@ -138,7 +133,7 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
 
 bool Activities::Private::previousActivity()
 {
-    const auto a = q->ListActivities(Activities::Running);
+    const auto a = q->ListActivities();
 
     for (int i = 0; i < a.count(); ++i) {
         if (a[i] == currentActivity) {
@@ -151,7 +146,7 @@ bool Activities::Private::previousActivity()
 
 bool Activities::Private::nextActivity()
 {
-    const auto a = q->ListActivities(Activities::Running);
+    const auto a = q->ListActivities();
 
     for (int i = 0; i < a.count(); ++i) {
         if (a[i] == currentActivity) {
@@ -184,11 +179,9 @@ QString Activities::Private::addActivity(const QString &name)
 
         // Saves the activity info to the config
 
-        activities[activity] = Invalid;
+        activities << activity;
         activitiesCount = activities.size();
     }
-
-    setActivityState(activity, Running);
 
     q->SetActivityName(activity, name);
 
@@ -270,25 +263,6 @@ void Activities::Private::configSync()
     // Stop the timer and reset the interval to zero
     QMetaObject::invokeMethod(&configSyncTimer, "stop", Qt::QueuedConnection);
     config.sync();
-}
-
-void Activities::Private::setActivityState(const QString &activity, Activities::State state)
-{
-    {
-        QWriteLocker lock(&activitiesLock);
-
-        Q_ASSERT(activities.contains(activity));
-
-        if (activities.value(activity) == state) {
-            return;
-        }
-
-        activities[activity] = state;
-    }
-
-    Q_EMIT q->ActivityStateChanged(activity, state);
-
-    updateSortedActivityList();
 }
 
 // Main
@@ -378,19 +352,6 @@ QStringList Activities::ListActivities() const
     return s;
 }
 
-QStringList Activities::ListActivities(int state) const
-{
-    QReadLocker lock(&d->activitiesLock);
-
-    QStringList s;
-    for (const auto &a : std::as_const(d->sortedActivities)) {
-        if (a.state == (State)state) {
-            s << a.id;
-        }
-    }
-    return s;
-}
-
 QList<ActivityInfo> Activities::ListActivitiesWithInformation() const
 {
     using namespace kamd::utils;
@@ -402,7 +363,7 @@ QList<ActivityInfo> Activities::ListActivitiesWithInformation() const
 
 ActivityInfo Activities::ActivityInformation(const QString &activity) const
 {
-    return ActivityInfo{activity, ActivityName(activity), ActivityDescription(activity), ActivityIcon(activity), ActivityState(activity)};
+    return ActivityInfo{activity, ActivityName(activity), ActivityDescription(activity), ActivityIcon(activity)};
 }
 
 #define CREATE_GETTER_AND_SETTER(What)                                                                                                                         \
@@ -433,14 +394,6 @@ CREATE_GETTER_AND_SETTER(Description)
 CREATE_GETTER_AND_SETTER(Icon)
 
 #undef CREATE_GETTER_AND_SETTER
-
-// Main
-
-int Activities::ActivityState(const QString &activity) const
-{
-    QReadLocker lock(&d->activitiesLock);
-    return d->activities.contains(activity) ? d->activities[activity] : Invalid;
-}
 
 #include "moc_Activities.cpp"
 

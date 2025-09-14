@@ -20,7 +20,6 @@ public:
 
 private Q_SLOTS:
     void currentActivityChanged(const QString &activity);
-    void activityStateChanged(const QString &activity, int state);
 
 private:
     QString activityDirectory(const QString &activity) const;

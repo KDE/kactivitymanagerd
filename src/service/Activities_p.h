@@ -38,15 +38,13 @@ public Q_SLOTS:
     void updateSortedActivityList();
 
 public:
-    void setActivityState(const QString &activity, Activities::State state);
-
     QTimer configSyncTimer;
     KConfig config;
 
     // Interface to the session management
     KSMServer *ksmserver;
 
-    QHash<QString, Activities::State> activities;
+    QSet<QString> activities;
     QList<ActivityInfo> sortedActivities;
     QReadWriteLock activitiesLock;
     QString currentActivity;

@@ -20,20 +20,12 @@
       <arg type="s" direction="out"/>
       <arg name="name" type="s" direction="in"/>
     </method>
-    <method name="ActivityState">
-      <arg type="i" direction="out"/>
-      <arg name="activity" type="s" direction="in"/>
-    </method>
     <method name="RemoveActivity">
       <arg name="activity" type="s" direction="in"/>
     </method>
 
     <method name="ListActivities">
       <arg type="as" direction="out"/>
-    </method>
-    <method name="ListActivities">
-      <arg type="as" direction="out"/>
-      <arg name="state" type="i" direction="in"/>
     </method>
 
     <method name="ListActivitiesWithInformation">
@@ -105,10 +97,6 @@
     <signal name="ActivityIconChanged">
       <arg name="activity" type="s" direction="out"/>
       <arg name="icon" type="s" direction="out"/>
-    </signal>
-    <signal name="ActivityStateChanged">
-      <arg name="activity" type="s" direction="out"/>
-      <arg name="state" type="i" direction="out"/>
     </signal>
 
   </interface>

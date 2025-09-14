@@ -28,16 +28,6 @@ class Activities : public Module
 
 public:
     /**
-     * Activity state
-     * @note: Do not change the values, needed for bit-operations
-     */
-    enum State {
-        Invalid = 0,
-        Running = 2,
-        Starting = 3,
-    };
-
-    /**
      * Creates new Activities object
      */
     explicit Activities(QObject *parent = nullptr);
@@ -55,21 +45,9 @@ public Q_SLOTS:
     QString CurrentActivity() const;
 
     /**
-     * @returns the state of the activity
-     * @param activity id of the activity
-     */
-    int ActivityState(const QString &activity) const;
-
-    /**
      * @returns the list of all existing activities
      */
     QStringList ListActivities() const;
-
-    /**
-     * @returns the list of activities with the specified state
-     * @param state state
-     */
-    QStringList ListActivities(int state) const;
 
     /**
      * @returns the name of the specified activity
@@ -195,11 +173,6 @@ Q_SIGNALS:
      * @param activity id of the changed activity
      */
     void ActivityChanged(const QString &activity);
-
-    /**
-     * Emitted when the state of activity is changed
-     */
-    void ActivityStateChanged(const QString &activity, int state);
 
 private:
     D_PTR;
