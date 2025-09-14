@@ -30,9 +30,6 @@
 #include "activitiesadaptor.h"
 #include "common/dbus/common.h"
 
-// Private
-#define ACTIVITY_MANAGER_CONFIG_FILE_NAME QStringLiteral("kactivitymanagerdrc")
-
 namespace
 {
 inline bool nameBasedOrdering(const ActivityInfo &info, const ActivityInfo &other)
