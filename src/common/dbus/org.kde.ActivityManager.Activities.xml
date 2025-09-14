@@ -20,12 +20,6 @@
       <arg type="s" direction="out"/>
       <arg name="name" type="s" direction="in"/>
     </method>
-    <method name="StartActivity">
-      <arg name="activity" type="s" direction="in"/>
-    </method>
-    <method name="StopActivity">
-      <arg name="activity" type="s" direction="in"/>
-    </method>
     <method name="ActivityState">
       <arg type="i" direction="out"/>
       <arg name="activity" type="s" direction="in"/>

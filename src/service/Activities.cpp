@@ -52,30 +52,9 @@ Activities::Private::Private(Activities *parent)
     //     << QStandardPaths::standardLocations(config.locationType())
     //     ;
 
-    // Reading activities from the config file.
-    // Saving only the running activities means that if we have any
-    // errors in the config, we might end up with all activities
-    // stopped
-
-    const auto defaultState = !mainConfig().hasKey("runningActivities") ? Activities::Running
-        : !mainConfig().hasKey("stoppedActivities")                     ? Activities::Stopped
-                                                                        : Activities::Running;
-
-    const auto runningActivities = mainConfig().readEntry("runningActivities", QStringList());
-    const auto stoppedActivities = mainConfig().readEntry("stoppedActivities", QStringList());
-
-    // Do we have a running activity?
-    bool atLeastOneRunning = false;
-
     const auto activtiesList = activityNameConfig().keyList();
     for (const auto &activity : activtiesList) {
-        auto state = runningActivities.contains(activity) ? Activities::Running : stoppedActivities.contains(activity) ? Activities::Stopped : defaultState;
-
-        activities[activity] = state;
-
-        if (state == Activities::Running) {
-            atLeastOneRunning = true;
-        }
+        activities[activity] = Activities::Running;
     }
 
     // Is this our first start?
@@ -88,18 +67,11 @@ Activities::Private::Private(Activities *parent)
         for (const auto &name : names) {
             QMetaObject::invokeMethod(q, "AddActivity", Qt::QueuedConnection, Q_ARG(QString, name));
         }
-
-    } else if (!atLeastOneRunning) {
-        // If we have no running activities, but we have activities,
-        // we are in a problem. This should not happen unless the
-        // configuration file is in a big problem and told us there
-        // are no running activities, and enlists all of them as stopped.
-        // In that case, we will pretend all of them are running
-        qCWarning(KAMD_LOG_ACTIVITIES) << "The config file enlisted all activities as stopped";
-        for (auto activityKey = activities.keyBegin(); activityKey != activities.keyEnd(); ++activityKey) {
-            activities[*activityKey] = Activities::Running;
-        }
     }
+
+    // clean up no longer used config
+    mainConfig().deleteEntry("runningActivities");
+    mainConfig().deleteEntry("stoppedActivities");
 }
 
 void Activities::Private::updateSortedActivityList()
@@ -153,9 +125,6 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
             return false;
         }
     }
-
-    // Start activity
-    q->StartActivity(activity);
 
     // Saving the current activity, and notifying
     // clients of the change
@@ -257,13 +226,6 @@ void Activities::Private::removeActivity(const QString &activity)
         }
     }
 
-    // If the activity is running, stash it
-    q->StopActivity(activity);
-
-    setActivityState(activity, Activities::Invalid);
-
-    bool currentActivityDeleted = false;
-
     {
         QWriteLocker lock(&activitiesLock);
         // Removing the activity
@@ -275,19 +237,11 @@ void Activities::Private::removeActivity(const QString &activity)
                 break;
             }
         }
-
-        // If the removed activity was the current one,
-        // set another activity as current
-        currentActivityDeleted = (currentActivity == activity);
     }
 
     activityNameConfig().deleteEntry(activity);
     activityDescriptionConfig().deleteEntry(activity);
     activityIconConfig().deleteEntry(activity);
-
-    if (currentActivityDeleted) {
-        ensureCurrentActivityIsRunning();
-    }
 
     Q_EMIT q->ActivityRemoved(activity);
 
@@ -323,8 +277,6 @@ void Activities::Private::configSync()
 
 void Activities::Private::setActivityState(const QString &activity, Activities::State state)
 {
-    bool configNeedsUpdating = false;
-
     {
         QWriteLocker lock(&activitiesLock);
 
@@ -334,49 +286,12 @@ void Activities::Private::setActivityState(const QString &activity, Activities::
             return;
         }
 
-        // Treating 'Starting' as 'Running', and 'Stopping' as 'Stopped'
-        // as far as the config file is concerned
-        configNeedsUpdating = ((activities[activity] & 4) != (state & 4));
-
         activities[activity] = state;
-    }
-
-    switch (state) {
-    case Activities::Running:
-        Q_EMIT q->ActivityStarted(activity);
-        break;
-
-    case Activities::Stopped:
-        Q_EMIT q->ActivityStopped(activity);
-        break;
-
-    default:
-        break;
     }
 
     Q_EMIT q->ActivityStateChanged(activity, state);
 
-    if (configNeedsUpdating) {
-        QReadLocker lock(&activitiesLock);
-
-        mainConfig().writeEntry("runningActivities", activities.keys(Activities::Running) + activities.keys(Activities::Starting));
-        mainConfig().writeEntry("stoppedActivities", activities.keys(Activities::Stopped) + activities.keys(Activities::Stopping));
-        scheduleConfigSync();
-    }
-
     updateSortedActivityList();
-}
-
-void Activities::Private::ensureCurrentActivityIsRunning()
-{
-    // If the current activity is not running,
-    // make some other activity current
-
-    const auto runningActivities = q->ListActivities(Activities::Running);
-
-    if (!runningActivities.contains(currentActivity) && runningActivities.size() > 0) {
-        setCurrentActivity(runningActivities.first());
-    }
 }
 
 // Main
@@ -523,39 +438,6 @@ CREATE_GETTER_AND_SETTER(Icon)
 #undef CREATE_GETTER_AND_SETTER
 
 // Main
-
-void Activities::StartActivity(const QString &activity)
-{
-    {
-        QReadLocker lock(&d->activitiesLock);
-        if (!d->activities.contains(activity) || d->activities[activity] != Stopped) {
-            return;
-        }
-    }
-
-    d->setActivityState(activity, Running);
-}
-
-void Activities::StopActivity(const QString &activity)
-{
-    {
-        QReadLocker lock(&d->activitiesLock);
-        if (!d->activities.contains(activity) //
-            || d->activities[activity] == Stopped //
-            || d->activities.size() == 1 //
-            || d->activities.keys(Activities::Running).size() <= 1) {
-            return;
-        }
-    }
-
-    d->setActivityState(activity, Stopped);
-
-    if (d->currentActivity == activity) {
-        d->ensureCurrentActivityIsRunning();
-    }
-
-    QMetaObject::invokeMethod(this, "configSync", Qt::QueuedConnection);
-}
 
 int Activities::ActivityState(const QString &activity) const
 {

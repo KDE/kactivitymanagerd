@@ -35,8 +35,6 @@ public:
         Invalid = 0,
         Running = 2,
         Starting = 3,
-        Stopped = 4,
-        Stopping = 5,
     };
 
     /**
@@ -125,18 +123,6 @@ public Q_SLOTS:
     QString AddActivity(const QString &name);
 
     /**
-     * Starts the specified activity
-     * @param activity id of the activity to stash
-     */
-    void StartActivity(const QString &activity);
-
-    /**
-     * Stops the specified activity
-     * @param activity id of the activity to stash
-     */
-    void StopActivity(const QString &activity);
-
-    /**
      * Removes the specified activity
      * @param activity id of the activity to delete
      */
@@ -176,18 +162,6 @@ Q_SIGNALS:
      * @param activity id of the activity
      */
     void ActivityAdded(const QString &activity);
-
-    /**
-     * This signal is emitted when an activity is started
-     * @param activity id of the activity
-     */
-    void ActivityStarted(const QString &activity);
-
-    /**
-     * This signal is emitted when an activity is stashed
-     * @param activity id of the activity
-     */
-    void ActivityStopped(const QString &activity);
 
     /**
      * This signal is emitted when an activity is deleted

@@ -31,10 +31,6 @@ public:
     // the user has used
     void loadLastActivity();
 
-    // If the current activity is not running,
-    // make some other activity current
-    void ensureCurrentActivityIsRunning();
-
 public Q_SLOTS:
     bool setCurrentActivity(const QString &activity);
     bool previousActivity();
