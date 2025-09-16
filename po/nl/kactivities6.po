@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-16 00:43+0000\n"
 "PO-Revision-Date: 2021-02-28 12:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: service/Activities.cpp:62
+#: service/Activities.cpp:57
 #, kde-format
 msgid "Default"
 msgstr "Standaard"

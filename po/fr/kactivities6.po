@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_activities\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-16 00:43+0000\n"
 "PO-Revision-Date: 2016-01-23 11:53+0100\n"
 "Last-Translator: Thomas Vergnaud <thomas.vergnaud@gmx.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -34,7 +34,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "jcorn@free.fr, thomas.vergnaud@gmx.fr"
 
-#: service/Activities.cpp:62
+#: service/Activities.cpp:57
 #, kde-format
 msgid "Default"
 msgstr "Défaut"
