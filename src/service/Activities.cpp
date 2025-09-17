@@ -48,6 +48,10 @@ Activities::Private::Private(Activities *parent)
     //     << config.locationType()
     //     << QStandardPaths::standardLocations(config.locationType())
     //     ;
+    const auto activityList = activityNameConfig().keyList();
+    for (const auto &activity : activityList) {
+        activities.insert(activity);
+    }
 
     // Is this our first start?
     if (activities.isEmpty()) {
