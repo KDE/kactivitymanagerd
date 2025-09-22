@@ -33,7 +33,6 @@
 
 // Local
 #include "Activities.h"
-#include "Config.h"
 #include "DebugApplication.h"
 #include "Features.h"
 #include "Plugin.h"
@@ -115,7 +114,6 @@ void Application::init()
     d->resources = runInQThread<Resources>();
     d->activities = runInQThread<Activities>();
     d->features = runInQThread<Features>();
-    /* d->config */ new Config(this); // this does not need a separate thread
 
     QMetaObject::invokeMethod(this, "loadPlugins", Qt::QueuedConnection);
 

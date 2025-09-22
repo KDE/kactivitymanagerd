@@ -35,7 +35,6 @@ set (kactivitymanager_SRCS
    Activities.cpp
    Resources.cpp
    Features.cpp
-   Config.cpp
 
    )
 

@@ -11,6 +11,10 @@
 #include <QSqlQuery>
 #include <QTimer>
 #include <QRegularExpression>
+
+// KDE
+#include <KConfigWatcher>
+
 // STL
 #include <memory>
 
@@ -127,4 +131,6 @@ private:
     ResourceLinking *m_resourceLinking;
 
     static StatsPlugin *s_instance;
+
+    KConfigWatcher::Ptr m_configWatcher;
 };

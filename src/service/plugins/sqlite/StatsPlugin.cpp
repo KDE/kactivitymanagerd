@@ -46,6 +46,9 @@ StatsPlugin::StatsPlugin(QObject *parent)
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager/Resources/Scoring"), this);
 
     setName(QStringLiteral("org.kde.ActivityManager.Resources.Scoring"));
+
+    m_configWatcher = KConfigWatcher::create(KSharedConfig::openConfig(QStringLiteral("kactivitymanagerd-pluginsrc")));
+    connect(m_configWatcher.get(), &KConfigWatcher::configChanged, this, &StatsPlugin::loadConfiguration);
 }
 
 bool StatsPlugin::init(QHash<QString, QObject *> &modules)
@@ -65,8 +68,6 @@ bool StatsPlugin::init(QHash<QString, QObject *> &modules)
     connect(m_resources, SIGNAL(RegisteredResourceMimetype(QString, QString)), this, SLOT(saveResourceMimetype(QString, QString)));
     connect(m_resources, SIGNAL(RegisteredResourceTitle(QString, QString)), this, SLOT(saveResourceTitle(QString, QString)));
 
-    connect(modules[QStringLiteral("config")], SIGNAL(pluginConfigChanged()), this, SLOT(loadConfiguration()));
-
     loadConfiguration();
 
     return true;
@@ -74,8 +75,7 @@ bool StatsPlugin::init(QHash<QString, QObject *> &modules)
 
 void StatsPlugin::loadConfiguration()
 {
-    auto conf = config();
-    conf.config()->reparseConfiguration();
+    auto conf = m_configWatcher->config()->group(QStringLiteral("Plugin-org.kde.ActivityManager.Resources.Scoring"));
 
     m_blockedByDefault = conf.readEntry("blocked-by-default", false);
     m_blockAll = false;
