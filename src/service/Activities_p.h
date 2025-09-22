@@ -40,6 +40,7 @@ public Q_SLOTS:
 public:
     QTimer configSyncTimer;
     KConfig config;
+    KConfig stateConfig;
 
     // Interface to the session management
     KSMServer *ksmserver;

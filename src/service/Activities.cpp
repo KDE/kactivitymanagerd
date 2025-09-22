@@ -41,6 +41,7 @@ inline bool nameBasedOrdering(const ActivityInfo &info, const ActivityInfo &othe
 
 Activities::Private::Private(Activities *parent)
     : config(QStringLiteral("kactivitymanagerdrc"))
+    , stateConfig(QStringLiteral("kactivitymanagerdstaterc"), KConfig::SimpleConfig, QStandardPaths::GenericStateLocation)
     , q(parent)
 {
     // qCDebug(KAMD_ACTIVITIES) << "Using this configuration file:"
@@ -68,6 +69,9 @@ Activities::Private::Private(Activities *parent)
     // clean up no longer used config
     mainConfig().deleteEntry("runningActivities");
     mainConfig().deleteEntry("stoppedActivities");
+
+    auto mainState = stateConfig.group("main");
+    mainConfig().moveValuesTo({"currentActivity"}, mainState);
 }
 
 void Activities::Private::updateSortedActivityList()
@@ -88,7 +92,7 @@ void Activities::Private::loadLastActivity()
     // This is called from constructor, no need for locking
 
     // If there are no public activities, try to load the last used activity
-    const auto lastUsedActivity = mainConfig().readEntry("currentActivity", QString());
+    const auto lastUsedActivity = stateConfig.group("main").readEntry("currentActivity", QString());
 
     setCurrentActivity((lastUsedActivity.isEmpty() && activities.size() > 0) ? *activities.constBegin() : lastUsedActivity);
 }
@@ -126,7 +130,7 @@ bool Activities::Private::setCurrentActivity(const QString &activity)
     // clients of the change
     currentActivity = activity;
 
-    mainConfig().writeEntry("currentActivity", activity);
+    stateConfig.group("main").writeEntry("currentActivity", activity);
 
     scheduleConfigSync();
 
