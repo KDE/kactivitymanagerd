@@ -41,7 +41,8 @@
                 "Name[tr]": "Alexander Lohnau",
                 "Name[uk]": "Alexander Lohnau",
                 "Name[vi]": "Alexander Lohnau",
-                "Name[zh_CN]": "Alexander Lohnau"
+                "Name[zh_CN]": "Alexander Lohnau",
+                "Name[zh_TW]": "Alexander Lohnau"
             }
         ],
         "Category": "",
@@ -83,6 +84,7 @@
         "Description[uk]": "Додаток KRunner для показу списку просторів дій та перемикання між ними",
         "Description[vi]": "Phần cài cắm KRunner để liệt kê và chuyển Hoạt động",
         "Description[zh_CN]": "用于列出和切换活动的 KRunner 插件",
+        "Description[zh_TW]": "列出與切換活動用的 KRunner 外掛程式",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows",
         "Id": "org.kde.ActivityManager.ActivityRunner",
@@ -124,6 +126,7 @@
         "Name[uk]": "Засіб запуску просторів дій",
         "Name[vi]": "Trình chạy Hoạt động",
         "Name[zh_CN]": "活动 Runner 程序",
+        "Name[zh_TW]": "活動 runner",
         "Version": "1.0",
         "Website": "https://invent.kde.org/plasma/kactivitymanagerd"
     }
