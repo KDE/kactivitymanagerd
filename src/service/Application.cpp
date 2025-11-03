@@ -244,8 +244,7 @@ QString Application::serviceVersion() const
 int main(int argc, char **argv)
 {
     // Disable session management for this process
-    qunsetenv("SESSION_MANAGER");
-
+    QCoreApplication::setAttribute(Qt::AA_DisableSessionManager);
     QGuiApplication::setDesktopSettingsAware(false);
 
     Application application(argc, argv);
