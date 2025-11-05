@@ -271,6 +271,7 @@ void Activities::Private::configSync()
     // Stop the timer and reset the interval to zero
     QMetaObject::invokeMethod(&configSyncTimer, "stop", Qt::QueuedConnection);
     config.sync();
+    stateConfig.sync();
 }
 
 // Main
