@@ -115,9 +115,9 @@ void Application::init()
     d->activities = runInQThread<Activities>();
     d->features = runInQThread<Features>();
 
-    QMetaObject::invokeMethod(this, "loadPlugins", Qt::QueuedConnection);
-
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/ActivityManager"), this, QDBusConnection::ExportAllSlots);
+
+    loadPlugins();
 
     if (!QDBusConnection::sessionBus().registerService(KAMD_DBUS_SERVICE)) {
         QCoreApplication::exit(EXIT_SUCCESS);
