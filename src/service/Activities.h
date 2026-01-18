@@ -192,6 +192,11 @@ Q_SIGNALS:
      */
     void ActivityChanged(const QString &activity);
 
+    /**
+     * Emitted when the activities sorting order is changed
+     */
+    void ActivitiesSortOrderChanged(const ActivityInfoList &activities);
+
 private:
     D_PTR;
 };

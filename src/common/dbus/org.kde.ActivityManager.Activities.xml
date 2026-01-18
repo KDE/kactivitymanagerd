@@ -67,6 +67,13 @@
       <arg name="icon" type="s" direction="in"/>
     </method>
 
+    <method name="MoveActivityInSortOrder">
+      <arg name="activity" type="s" direction="in"/>
+      <arg name="newPosition" type="i" direction="in"/>
+    </method>
+    <method name="ReorderActivitiesByName">
+    </method>
+
     <signal name="CurrentActivityChanged">
       <arg name="activity" type="s" direction="out"/>
     </signal>
@@ -97,6 +104,11 @@
     <signal name="ActivityIconChanged">
       <arg name="activity" type="s" direction="out"/>
       <arg name="icon" type="s" direction="out"/>
+    </signal>
+    <signal name="ActivitiesSortOrderChanged">
+      <arg type="a(ssssi)" direction="out"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
     </signal>
 
   </interface>
