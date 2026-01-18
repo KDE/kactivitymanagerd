@@ -66,6 +66,11 @@ public:
         return KConfigGroup(&config, QStringLiteral("activities-icons"));
     }
 
+    inline KConfigGroup activitySortOrderConfig()
+    {
+        return KConfigGroup(&config, QStringLiteral("activities-order"));
+    }
+
     inline KConfigGroup mainConfig()
     {
         return KConfigGroup(&config, QStringLiteral("main"));
@@ -84,6 +89,11 @@ public:
     inline QString activityIcon(const QString &activity)
     {
         return activityIconConfig().readEntry(activity, QString());
+    }
+
+    inline int activitySortOrder(const QString &activity)
+    {
+        return activitySortOrderConfig().readEntry(activity, -1);
     }
 
 public Q_SLOTS:
