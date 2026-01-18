@@ -38,6 +38,11 @@ public Q_SLOTS:
     void updateSortedActivityList();
 
 public:
+    QList<ActivityInfo *> createSortedActivitiesByOrder();
+    void writeActivitiesSortOrder(const QList<ActivityInfo *> sortedActivitiesByOrder);
+    void moveActivityInSortOrder(const QString &activity, int newPosition);
+    void reorderActivitiesByName();
+
     QTimer configSyncTimer;
     KConfig config;
     KConfig stateConfig;

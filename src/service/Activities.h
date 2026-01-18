@@ -68,6 +68,12 @@ public Q_SLOTS:
     QString ActivityIcon(const QString &activity) const;
 
     /**
+     * @returns sort order value of the specified activity
+     * @param activity id of the activity
+     */
+    int ActivitySortOrder(const QString &activity) const;
+
+    /**
      * @returns a list of activities with basic info about them
      */
     ActivityInfoList ListActivitiesWithInformation() const;
@@ -126,6 +132,18 @@ public Q_SLOTS:
      * @param icon icon to be set
      */
     void SetActivityIcon(const QString &activity, const QString &icon);
+
+    /**
+     * Move an activity in the sorted order to a new position
+     * @param activity id of the activity
+     * @param newPosition index position to move activity
+     */
+    void MoveActivityInSortOrder(const QString &activity, int newPosition);
+
+    /**
+     * Reorder activities alphabetical by name
+     */
+    void ReorderActivitiesByName();
 
 Q_SIGNALS:
     /**
