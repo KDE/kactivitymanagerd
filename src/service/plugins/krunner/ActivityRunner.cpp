@@ -46,28 +46,48 @@ RemoteMatches ActivityRunner::Match(const QString &query)
     auto activities = Plugin::retrieve<ActivityInfoList>(m_activitiesService, "ListActivitiesWithInformation");
 
     const QString term = query.trimmed();
-    bool list = false;
-    QString name;
+    QString searchTerm = term;
 
+    // Allow optional 'activity' keyword prefix
     if (term.startsWith(m_keyword, Qt::CaseInsensitive)) {
-        name = term.right(term.size() - m_keyword.size()).trimmed();
+        searchTerm = term.right(term.size() - m_keyword.size()).trimmed();
     } else if (term.startsWith(m_keywordi18n, Qt::CaseInsensitive)) {
-        name = term.right(term.size() - m_keywordi18n.size()).trimmed();
-    } else {
-        list = true;
+        searchTerm = term.right(term.size() - m_keywordi18n.size()).trimmed();
+    }
+
+    // If search term is empty, don't return any results
+    if (searchTerm.isEmpty()) {
+        return {};
     }
 
     QList<RemoteMatch> matches;
     for (const ActivityInfo &activityInfo : std::as_const(activities)) {
         if (currentActivity != activityInfo.id) {
             auto info = Plugin::retrieve<ActivityInfo>(m_activitiesService, "ActivityInformation", Q_ARG(QString, activityInfo.id));
-            if (list || info.name.startsWith(name, Qt::CaseInsensitive)) {
+
+            // Calculate relevance based on match quality
+            qreal relevance = 0.0;
+            const QString activityName = info.name;
+
+            if (activityName.compare(searchTerm, Qt::CaseInsensitive) == 0) {
+                // Exact match
+                relevance = 1.0;
+            } else if (activityName.startsWith(searchTerm, Qt::CaseInsensitive)) {
+                // Starts with search term
+                relevance = 0.9;
+            } else if (activityName.contains(searchTerm, Qt::CaseInsensitive)) {
+                // Contains search term
+                relevance = 0.7;
+            }
+
+            // Only add matches that actually match the search term
+            if (relevance > 0.0) {
                 RemoteMatch m;
                 m.id = activityInfo.id;
                 m.text = i18n("Switch to \"%1\"", info.name);
                 m.iconName = info.icon;
                 m.type = Type::ExactMatch;
-                m.relevance = 0.7;
+                m.relevance = relevance;
                 matches.append(m);
             }
         }
