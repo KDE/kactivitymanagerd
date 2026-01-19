@@ -99,8 +99,7 @@ RemoteMatches ActivityRunner::Match(const QString &query)
 QVariantMap ActivityRunner::Config()
 {
     return {
-        {"MinLetterCount", qMin(m_keyword.length(), m_keywordi18n.length())},
-        {"MatchRegex", '^' + m_keyword + '|' + m_keywordi18n},
+        {"MinLetterCount", 3},
     };
 }
 
