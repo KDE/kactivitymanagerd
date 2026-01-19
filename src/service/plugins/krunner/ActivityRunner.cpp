@@ -113,6 +113,16 @@ void ActivityRunner::Run(const QString &matchId, const QString & /*actionId*/)
     QMetaObject::invokeMethod(m_activitiesService, "SetCurrentActivity", Q_ARG(QString, matchId));
 }
 
+void ActivityRunner::Teardown()
+{
+    // Nothing to clean up
+}
+
+void ActivityRunner::SetActivationToken(const QString &token)
+{
+    m_activationToken = token;
+}
+
 #include "ActivityRunner.moc"
 
 #include "moc_ActivityRunner.cpp"

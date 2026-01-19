@@ -79,5 +79,17 @@
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="RemoteMatches"/>
       <arg name="matches" type="a(sssida{sv})" direction="out"/>
     </method>
+
+    <!--
+        Lifecycle methods for DBus2 API
+    -->
+    <method name="Teardown">
+      <!-- Called when the runner is no longer needed -->
+    </method>
+
+    <method name="SetActivationToken">
+      <arg name="token" type="s" direction="in"/>
+      <!-- Called before running an action to set the activation token for proper window focus -->
+    </method>
   </interface>
 </node>

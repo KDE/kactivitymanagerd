@@ -22,9 +22,12 @@ public:
     RemoteMatches Match(const QString &query);
     RemoteActions Actions();
     QVariantMap Config();
+    void Teardown();
+    void SetActivationToken(const QString &token);
 
 private:
     QObject *m_activitiesService;
     const QString m_keywordi18n;
     const QString m_keyword;
+    QString m_activationToken;
 };
