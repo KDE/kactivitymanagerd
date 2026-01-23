@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd_fileitem_linking_plugin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-01-23 00:45+0000\n"
 "PO-Revision-Date: 2021-03-01 12:15+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "smart2128vr@gmail.com,"
 
-#: service/Activities.cpp:62
+#: service/Activities.cpp:67
 #, kde-format
 msgid "Default"
 msgstr "Predefinita"
@@ -51,7 +51,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "attività"
 
-#: service/plugins/krunner/ActivityRunner.cpp:67
+#: service/plugins/krunner/ActivityRunner.cpp:87
 #, kde-format
 msgid "Switch to \"%1\""
 msgstr "Passa a «%1»"

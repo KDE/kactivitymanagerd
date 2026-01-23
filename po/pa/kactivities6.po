@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-01-23 00:45+0000\n"
 "PO-Revision-Date: 2018-09-22 22:43-0600\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alam.yellow@gmail.com"
 
-#: service/Activities.cpp:62
+#: service/Activities.cpp:67
 #, kde-format
 msgid "Default"
 msgstr "ਡਿਫਾਲਟ"
@@ -51,7 +51,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "ਸਰਗਰਮੀ"
 
-#: service/plugins/krunner/ActivityRunner.cpp:67
+#: service/plugins/krunner/ActivityRunner.cpp:87
 #, fuzzy, kde-format
 #| msgctxt "@action"
 #| msgid "Switch to activity \"%1\""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivities5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-01-23 00:45+0000\n"
 "PO-Revision-Date: 2021-03-02 12:57+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -23,7 +23,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: service/Activities.cpp:62
+#: service/Activities.cpp:67
 #, kde-format
 msgid "Default"
 msgstr "Predefinição"
@@ -46,7 +46,7 @@ msgctxt "KRunner keyword"
 msgid "activity"
 msgstr "actividade"
 
-#: service/plugins/krunner/ActivityRunner.cpp:67
+#: service/plugins/krunner/ActivityRunner.cpp:87
 #, kde-format
 msgid "Switch to \"%1\""
 msgstr "Mudar para a \"%1\""
