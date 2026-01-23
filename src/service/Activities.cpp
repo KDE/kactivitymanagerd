@@ -37,11 +37,6 @@ inline bool nameBasedOrdering(const ActivityInfo &info, const ActivityInfo &othe
     const auto comp = QString::compare(info.name, other.name, Qt::CaseInsensitive);
     return comp < 0 || (comp == 0 && info.id < other.id);
 }
-
-inline bool manualSortOrdering(const ActivityInfo *info, const ActivityInfo *other)
-{
-    return info->sortOrder < other->sortOrder;
-}
 }
 
 Activities::Private::Private(Activities *parent)
@@ -211,48 +206,6 @@ QString Activities::Private::addActivity(const QString &name)
     return activity;
 }
 
-QList<ActivityInfo *> Activities::Private::createSortedActivitiesByOrder()
-{
-    QList<ActivityInfo *> sortedActivitiesByOrder;
-    sortedActivitiesByOrder.reserve(sortedActivities.size());
-
-    for (auto &info : sortedActivities) {
-        sortedActivitiesByOrder.append(&info);
-    }
-
-    return sortedActivitiesByOrder;
-}
-
-void Activities::Private::writeActivitiesSortOrder(const QList<ActivityInfo *> sortedActivitiesByOrder)
-{
-    for (int i = 0; i < sortedActivitiesByOrder.size(); i++) {
-        sortedActivitiesByOrder[i]->sortOrder = i;
-        activitySortOrderConfig().writeEntry(sortedActivitiesByOrder[i]->id, i);
-    }
-
-    Q_EMIT q->ActivitiesSortOrderChanged(sortedActivities);
-    scheduleConfigSync();
-}
-
-void Activities::Private::reorderActivitiesByName()
-{
-    auto sortedActivitiesByOrder = createSortedActivitiesByOrder();
-    writeActivitiesSortOrder(sortedActivitiesByOrder);
-}
-
-void Activities::Private::moveActivityInSortOrder(const QString &activity, int newPosition)
-{
-    auto sortedActivitiesByOrder = createSortedActivitiesByOrder();
-    std::ranges::sort(sortedActivitiesByOrder, &manualSortOrdering);
-
-    auto index = std::ranges::find(sortedActivitiesByOrder, activity, &ActivityInfo::id);
-
-    if (index != std::ranges::end(sortedActivitiesByOrder)) {
-        sortedActivitiesByOrder.move(std::ranges::distance(sortedActivitiesByOrder.begin(), index), newPosition);
-        writeActivitiesSortOrder(sortedActivitiesByOrder);
-    }
-}
-
 void Activities::Private::removeActivity(const QString &activity)
 {
     Q_ASSERT(!activity.isEmpty());
@@ -287,11 +240,6 @@ void Activities::Private::removeActivity(const QString &activity)
     activityNameConfig().deleteEntry(activity);
     activityDescriptionConfig().deleteEntry(activity);
     activityIconConfig().deleteEntry(activity);
-    activitySortOrderConfig().deleteEntry(activity);
-
-    // Update sortOrder of activities
-    auto sortedActivitiesByOrder = createSortedActivitiesByOrder();
-    writeActivitiesSortOrder(sortedActivitiesByOrder);
 
     Q_EMIT q->ActivityRemoved(activity);
 
@@ -424,7 +372,7 @@ QList<ActivityInfo> Activities::ListActivitiesWithInformation() const
 
 ActivityInfo Activities::ActivityInformation(const QString &activity) const
 {
-    return ActivityInfo{activity, ActivityName(activity), ActivityDescription(activity), ActivityIcon(activity), ActivitySortOrder(activity)};
+    return ActivityInfo{activity, ActivityName(activity), ActivityDescription(activity), ActivityIcon(activity)};
 }
 
 #define CREATE_GETTER_AND_SETTER(What)                                                                                                                         \
@@ -455,27 +403,6 @@ CREATE_GETTER_AND_SETTER(Description)
 CREATE_GETTER_AND_SETTER(Icon)
 
 #undef CREATE_GETTER_AND_SETTER
-
-int Activities::ActivitySortOrder(const QString &activity) const
-{
-    QReadLocker lock(&d->activitiesLock);
-    return d->activities.contains(activity) ? d->activitySortOrder(activity) : -1;
-}
-
-void Activities::ReorderActivitiesByName()
-{
-    d->reorderActivitiesByName();
-}
-
-void Activities::MoveActivityInSortOrder(const QString &activity, int sortOrder)
-{
-    QReadLocker lock(&d->activitiesLock);
-    if (sortOrder < 0 || sortOrder >= d->activities.size()) {
-        return;
-    }
-
-    d->moveActivityInSortOrder(activity, sortOrder);
-}
 
 #include "moc_Activities.cpp"
 

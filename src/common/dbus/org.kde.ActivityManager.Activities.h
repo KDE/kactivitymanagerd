@@ -15,18 +15,12 @@ struct ActivityInfo {
     QString name;
     QString description;
     QString icon;
-    int sortOrder;
 
-    ActivityInfo(const QString &id = QString(),
-                 const QString &name = QString(),
-                 const QString &description = QString(),
-                 const QString &icon = QString(),
-                 int sortOrder = -1)
+    ActivityInfo(const QString &id = QString(), const QString &name = QString(), const QString &description = QString(), const QString &icon = QString())
         : id(id)
         , name(name)
         , description(description)
         , icon(icon)
-        , sortOrder(sortOrder)
     {
     }
 };
