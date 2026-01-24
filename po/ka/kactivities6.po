@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kactivitymanagerd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-23 00:45+0000\n"
+"POT-Creation-Date: 2026-01-24 00:44+0000\n"
 "PO-Revision-Date: 2024-08-05 03:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
-#: service/Activities.cpp:67
+#: service/Activities.cpp:62
 #, kde-format
 msgid "Default"
 msgstr "აქტივობების მმართველის ჩვენება"
