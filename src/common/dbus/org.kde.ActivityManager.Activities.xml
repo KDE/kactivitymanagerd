@@ -29,12 +29,12 @@
     </method>
 
     <method name="ListActivitiesWithInformation">
-      <arg type="a(ssssi)" direction="out"/>
+      <arg type="a(ssssii)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
     </method>
     <method name="ActivityInformation">
-      <arg type="(ssssi)" direction="out"/>
+      <arg type="(ssssii)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfo" />
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfo" />
       <arg name="activity" type="s" direction="in"/>
@@ -97,6 +97,11 @@
     <signal name="ActivityIconChanged">
       <arg name="activity" type="s" direction="out"/>
       <arg name="icon" type="s" direction="out"/>
+    </signal>
+    <signal name="ActivitiesSortOrderChanged">
+      <arg type="a(ssssii)" direction="out"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="ActivityInfoList" />
     </signal>
 
   </interface>
