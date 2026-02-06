@@ -137,7 +137,7 @@ void Resources::RegisterResourceEvent(const QString &application, uint _windowId
 
 void Resources::RegisterResourceMimetype(const QString &uri, const QString &mimetype)
 {
-    if (!mimetype.isEmpty()) {
+    if (mimetype.isEmpty()) {
         return;
     }
 
