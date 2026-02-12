@@ -156,7 +156,7 @@ void initSchema(Database &database)
     // some of these should fail.
     // WARNING: Sqlite specific!
     database.execQueries(QStringList{
-        ".tables",
+        "SELECT name FROM sqlite_master WHERE type='table'",
         "SELECT count(*) FROM SchemaInfo",
         "SELECT count(*) FROM ResourceEvent",
         "SELECT count(*) FROM ResourceScoreCache",
