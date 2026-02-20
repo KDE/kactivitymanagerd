@@ -33,10 +33,9 @@ msgid "Default"
 msgstr ""
 
 #: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:28
-#, fuzzy, kde-format
-#| msgid "Activities"
+#, kde-format
 msgid "Activity Manager"
-msgstr "Gníomhartha"
+msgstr ""
 
 #: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:69
 #: service/plugins/globalshortcuts/GlobalShortcutsPlugin.cpp:105
@@ -46,106 +45,12 @@ msgid "Switch to activity \"%1\""
 msgstr "Athraigh go gníomhaíocht \"%1\""
 
 #: service/plugins/krunner/ActivityRunner.cpp:19
-#, fuzzy, kde-format
-#| msgid "Activities"
+#, kde-format
 msgctxt "KRunner keyword"
 msgid "activity"
-msgstr "Gníomhartha"
+msgstr ""
 
 #: service/plugins/krunner/ActivityRunner.cpp:67
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Switch to activity \"%1\""
+#, kde-format
 msgid "Switch to \"%1\""
-msgstr "Athraigh go gníomhaíocht \"%1\""
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgctxt "Header title for activity data model"
-#~ msgid "Activity"
-#~ msgstr "Gníomhartha"
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgid "Activities"
-#~ msgstr "Gníomhartha"
-
-#, fuzzy
-#~| msgid "Activity manager is not running properly."
-#~ msgid "The Activity Manager is not running"
-#~ msgstr "Tá ainghléas ar an mbainisteoir gníomhaíochta."
-
-#~ msgid "Link to the current activity"
-#~ msgstr "Nasc leis an ngníomhaíocht reatha"
-
-#~ msgid "Unlink from the current activity"
-#~ msgstr "Dínasc ón ghníomhaíocht reatha"
-
-#~ msgid "Link to:"
-#~ msgstr "Nasc le:"
-
-#~ msgid "Unlink from:"
-#~ msgstr "Dínasc ó:"
-
-#, fuzzy
-#~| msgid "Link to the current activity"
-#~ msgid "Current activity"
-#~ msgstr "Nasc leis an ngníomhaíocht reatha"
-
-#, fuzzy
-#~| msgid "Link to the current activity"
-#~ msgid "Delete activity"
-#~ msgstr "Nasc leis an ngníomhaíocht reatha"
-
-#, fuzzy
-#~| msgid "Link to the current activity"
-#~ msgid "Create a new activity"
-#~ msgstr "Nasc leis an ngníomhaíocht reatha"
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgid "Activity settings"
-#~ msgstr "Gníomhartha"
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgid "Activity information"
-#~ msgstr "Gníomhartha"
-
-#~ msgid "Privacy"
-#~ msgstr "Príobháideacht"
-
-#~ msgctxt "unlimited number of months"
-#~ msgid "forever"
-#~ msgstr "go brách"
-
-#~ msgctxt "for in 'keep history for 5 months'"
-#~ msgid "for "
-#~ msgstr "ar feadh "
-
-#, fuzzy
-#~| msgid "Link to the current activity"
-#~ msgid "Create activity..."
-#~ msgstr "Nasc leis an ngníomhaíocht reatha"
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgid "Activity switching"
-#~ msgstr "Gníomhartha"
-
-#~ msgid "Available Features"
-#~ msgstr "Gnéithe Le Fáil"
-
-#~ msgid "Plugins"
-#~ msgstr "Breiseáin"
-
-#~ msgid "Activity manager is not running properly."
-#~ msgstr "Tá ainghléas ar an mbainisteoir gníomhaíochta."
-
-#, fuzzy
-#~| msgid "Activities"
-#~ msgid "Activities..."
-#~ msgstr "Gníomhartha"
-
-#~ msgid "(c) 2012 Ivan Cukic"
-#~ msgstr "© 2012 Ivan Cukic"
+msgstr ""
