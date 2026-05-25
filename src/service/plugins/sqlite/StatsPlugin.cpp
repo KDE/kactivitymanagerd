@@ -353,7 +353,11 @@ void StatsPlugin::addEvents(const EventList &events)
 {
     using namespace kamd::utils;
 
-    if (m_blockAll || m_whatToRemember == NoApplications) {
+    // At this point, we can't be really sure currentActivity() is here, there can
+    // be a short moment, especially at startup we are in a limbo state with no current
+    // activity, in that moment no event is valid
+    // See bool Activities.cpp, Activities::Private::setCurrentActivity(const QString &activity)
+    if (m_blockAll || m_whatToRemember == NoApplications || currentActivity().isEmpty()) {
         return;
     }
 
