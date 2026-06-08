@@ -224,8 +224,14 @@ void Activities::Private::removeActivity(const QString &activity)
         }
     }
 
+    // Jump to the next activity before removing if it's current
+    if (currentActivity == activity) {
+        nextActivity();
+    }
+
     {
         QWriteLocker lock(&activitiesLock);
+
         // Removing the activity
         activities.remove(activity);
 
