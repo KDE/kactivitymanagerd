@@ -3,7 +3,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(PROJECT_VERSION "6.6.6")
-set(PROJECT_DEP_VERSION "6.6.5")
+set(PROJECT_DEP_VERSION "6.6.6")
 
 project (KActivityManagerd VERSION ${PROJECT_VERSION})
 
