@@ -574,7 +574,7 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity, const QString 
 
 bool StatsPlugin::isFeatureOperational(const QStringList &feature) const
 {
-    if (feature[0] == "isOTR") {
+    if (!feature.isEmpty() && feature[0] == "isOTR") {
         if (feature.size() != 2)
             return true;
 
