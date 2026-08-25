@@ -18,7 +18,6 @@
 #include <kfileitem.h>
 
 // Boost
-#include <boost/range/algorithm/binary_search.hpp>
 #include <utils/range.h>
 
 // Local
@@ -321,7 +320,7 @@ bool StatsPlugin::acceptedEvent(const Event &event)
         //     ignore event if the list doesn't contain the application
         // if not blocked by default, the list contains blocked applications
         //     ignore event if the list contains the application
-        (m_whatToRemember == SpecificApplications && m_blockedByDefault != boost::binary_search(m_apps, event.application)));
+        (m_whatToRemember == SpecificApplications && m_blockedByDefault != m_apps.contains(event.application)));
 }
 
 Event StatsPlugin::validateEvent(Event event)
