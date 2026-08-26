@@ -112,14 +112,14 @@ namespace
 {
 QString sanitizeUri(const QString &uri)
 {
-    auto _uri = uri;
-    if (uri.startsWith("file://")) {
+    QStringView _uri = uri;
+    if (_uri.startsWith(QLatin1StringView("file://"))) {
         _uri = _uri.mid(QStringLiteral("file:/").length());
     }
-    if (uri.startsWith("//")) {
-        _uri = _uri.mid(QStringLiteral("/").length());
+    if (_uri.startsWith(QLatin1StringView("//"))) {
+        _uri = _uri.mid(1); // QStringLiteral("/").length()
     }
-    return _uri;
+    return _uri.toString();
 }
 };
 
