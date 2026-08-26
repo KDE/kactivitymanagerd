@@ -1,5 +1,5 @@
 /*
- *   SPDX-FileCopyrightText: 2011, 2012, 2013, 2014 Ivan Cukic <ivan.cukic(at)kde.org>
+ *   SPDX-FileCopyrightText: 2011-2026 Ivan Cukic <ivan.cukic(at)kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -48,6 +48,8 @@ StatsPlugin::StatsPlugin(QObject *parent)
 
     m_configWatcher = KConfigWatcher::create(KSharedConfig::openConfig(QStringLiteral("kactivitymanagerd-pluginsrc")));
     connect(m_configWatcher.get(), &KConfigWatcher::configChanged, this, &StatsPlugin::loadConfiguration);
+
+    connect(&m_deleteOldEventsTimer, &QTimer::timeout, this, &StatsPlugin::deleteOldEvents);
 }
 
 bool StatsPlugin::init(QHash<QString, QObject *> &modules)
@@ -92,8 +94,7 @@ void StatsPlugin::loadConfiguration()
     // For people who do not restart their computers, we should do this from
     // time to time. Doing this twice a day should be more than enough.
     deleteOldEvents();
-    m_deleteOldEventsTimer.setInterval(12 * 60 * 60 * 1000);
-    connect(&m_deleteOldEventsTimer, &QTimer::timeout, this, &StatsPlugin::deleteOldEvents);
+    m_deleteOldEventsTimer.start(12 * 60 * 60 * 1000);
 
     // Loading URL filters
     m_urlFilters.clear();
