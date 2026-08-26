@@ -247,8 +247,6 @@ void Activities::Private::removeActivity(const QString &activity)
     activityDescriptionConfig().deleteEntry(activity);
     activityIconConfig().deleteEntry(activity);
 
-    Q_EMIT q->ActivityRemoved(activity);
-
     QMetaObject::invokeMethod(q, "ActivityRemoved", Qt::QueuedConnection, Q_ARG(QString, activity));
 
     QMetaObject::invokeMethod(this, "configSync", Qt::QueuedConnection);
