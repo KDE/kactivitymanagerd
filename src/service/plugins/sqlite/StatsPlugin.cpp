@@ -535,14 +535,8 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity, const QString 
 
     DATABASE_TRANSACTION(*resourcesDatabase());
 
-    // Check against sql injection
-    if (activity.contains('\'') || client.contains('\''))
-        return;
-
-    const auto activityFilter =
-        activity == ANY_ACTIVITY_TAG ? " 1 " : QStringLiteral(" usedActivity = '%1' ").arg(activity == CURRENT_ACTIVITY_TAG ? currentActivity() : activity);
-
-    const auto clientFilter = client == ANY_AGENT_TAG ? " 1 " : QStringLiteral(" initiatingAgent = '%1' ").arg(client);
+    const auto usedActivity = activity == ANY_ACTIVITY_TAG ? QVariant() : QVariant(activity == CURRENT_ACTIVITY_TAG ? currentActivity() : activity);
+    const auto initiatingAgent = client == ANY_AGENT_TAG ? QVariant() : QVariant(client);
 
     auto removeResourceInfoQuery = resourcesDatabase()->createQuery();
     removeResourceInfoQuery.prepare(
@@ -552,22 +546,32 @@ void StatsPlugin::DeleteStatsForResource(const QString &activity, const QString 
     auto removeEventsQuery = resourcesDatabase()->createQuery();
     removeEventsQuery.prepare(
         "DELETE FROM ResourceEvent "
-        "WHERE "
-        + activityFilter + " AND " + clientFilter + " AND " + "targettedResource LIKE :targettedResource ESCAPE '\\'");
+        "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
+        "AND initiatingAgent = COALESCE(:initiatingAgent, initiatingAgent) "
+        "AND targettedResource LIKE :targettedResource ESCAPE '\\'");
 
     auto removeScoreCachesQuery = resourcesDatabase()->createQuery();
     removeScoreCachesQuery.prepare(
         "DELETE FROM ResourceScoreCache "
-        "WHERE "
-        + activityFilter + " AND " + clientFilter + " AND " + "targettedResource LIKE :targettedResource ESCAPE '\\'");
+        "WHERE usedActivity = COALESCE(:usedActivity, usedActivity) "
+        "AND initiatingAgent = COALESCE(:initiatingAgent, initiatingAgent) "
+        "AND targettedResource LIKE :targettedResource ESCAPE '\\'");
 
     const auto pattern = Common::starPatternToLike(resource);
 
     Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeResourceInfoQuery, ":targettedResource", pattern);
 
-    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery, ":targettedResource", pattern);
+    // clang-format off
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeEventsQuery,
+                ":usedActivity", usedActivity,
+                ":initiatingAgent", initiatingAgent,
+                ":targettedResource", pattern);
 
-    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery, ":targettedResource", pattern);
+    Utils::exec(*resourcesDatabase(), Utils::FailOnError, removeScoreCachesQuery,
+                ":usedActivity", usedActivity,
+                ":initiatingAgent", initiatingAgent,
+                ":targettedResource", pattern);
+    // clang-format on
 
     Q_EMIT ResourceScoreDeleted(activity, client, resource);
 }
